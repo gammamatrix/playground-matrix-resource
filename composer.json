@@ -1,0 +1,27 @@
+{
+    "name": "gammamatrix/playground-matrix-resource",
+    "description": "",
+    "keywords": [
+        "laravel"
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GammaMatrix\\Playground\\Matrix\\Resource\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "GammaMatrix\\Playground\\Matrix\\Resource\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
