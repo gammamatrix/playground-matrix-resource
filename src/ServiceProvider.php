@@ -14,6 +14,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
  */
 class ServiceProvider extends AuthServiceProvider
 {
+    use ServiceProviderTrait;
+
     public const VERSION = '73.0.0';
 
     protected string $package = 'playground-matrix-resource';
@@ -49,11 +51,15 @@ class ServiceProvider extends AuthServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
         $config = config($this->package);
 
         if (!empty($config)) {
+
+            if (!empty($config['load']['policies'])) {
+                $this->setPolicyNamespace($config);
+                $this->registerPolicies();
+            }
+
             if (!empty($config['load']['routes'])) {
                 $this->routes($config);
             }
@@ -71,13 +77,6 @@ class ServiceProvider extends AuthServiceProvider
                     dirname(__DIR__).'/config/'.$this->package.'.php'
                         => config_path($this->package.'.php')
                 ], 'playground-config');
-
-                // Load migrations
-                if (!empty($config['load'])
-                    && !empty($config['load']['migrations'])
-                ) {
-                    $this->loadMigrationsFrom(dirname(__DIR__). '/database/migrations');
-                }
             }
         }
 

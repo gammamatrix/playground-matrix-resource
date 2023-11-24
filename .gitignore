@@ -24,6 +24,8 @@ Homestead.json
 
 resources/packages
 
+composer.lock
+
 /tmp
 /components
 /vendor
