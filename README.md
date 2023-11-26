@@ -2,8 +2,14 @@
 
 The `playground-matrix-resource` Laravel package.
 
-This package provides an API and a Blade UI for interacting with the [Playground Matrix](https://github.com/gammamatrix/playground-matrix).
+This package provides an API and a Blade UI for interacting with the [Playground Matrix](https://github.com/gammamatrix/playground-matrix), a project management and task system.
 
+If you only need the JSON API, the Blade UI may be disabled.
+
+This application provides Swagger documentation: [swagger.json](swagger.json).
+- See the [Playground Matrix Resource swagger.json on the Swagger Editor.](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/develop/swagger.json)
+- The endpoint models support locks, trash with force delete, restoring and more.
+- Index endpoints support advanced query filtering.
 
 ## Installation
 
@@ -97,7 +103,11 @@ This package requires the migrations in [playground-matrix](https://github.com/g
 ```sh
 composer test
 ```
+## About
 
+Playground provides information in the `artisan about` command.
+
+<img src="resources/docs/artisan-about-playground-matrix-resource.png" alt="screenshot of artisan about command with Playground Matrix Resource.">
 
 ## Changelog
 
