@@ -13,26 +13,11 @@
     ],
     "homepage": "https://github.com/gammamatrix/playground-matrix-resource",
     "license": "MIT",
-    "version": "73.0.0",
     "authors": [
         {
             "name": "Jeremy Postlethwaite",
             "email": "jeremy.postlethwaite@gmail.com",
             "role": "Developer"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:gammamatrix/playground.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:gammamatrix/playground-matrix.git"
-        },
-        {
-            "type": "vcs",
-            "url": "git@github.com:gammamatrix/playground-test.git"
         }
     ],
     "require": {
@@ -42,6 +27,9 @@
     },
     "require-dev": {
         "gammamatrix/playground-test": "dev-develop|dev-master|^73.0"
+    },
+    "suggest": {
+        "gammamatrix/playground-matrix": "Provides the models used by the Resource API in this package."
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
