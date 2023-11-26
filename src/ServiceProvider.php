@@ -55,6 +55,11 @@ class ServiceProvider extends AuthServiceProvider
 
         if (!empty($config)) {
 
+            // $this->loadTranslationsFrom(
+            //     dirname(__DIR__).'/resources/lang',
+            //     'playground-matrix-resource'
+            // );
+
             if (!empty($config['load']['policies'])) {
                 $this->setPolicyNamespace($config);
                 $this->registerPolicies();
@@ -74,9 +79,15 @@ class ServiceProvider extends AuthServiceProvider
             if ($this->app->runningInConsole()) {
                 // Publish configuration
                 $this->publishes([
-                    dirname(__DIR__).'/config/'.$this->package.'.php'
+                    dirname(__DIR__).'/config/playground-matrix-resource.php'
                         => config_path($this->package.'.php')
                 ], 'playground-config');
+
+                // Publish routes
+                $this->publishes([
+                    dirname(__DIR__).'/routes'
+                        => base_path('routes/playground-matrix-resource')
+                ], 'playground-routes');
             }
         }
 
@@ -91,7 +102,7 @@ class ServiceProvider extends AuthServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/config/'.$this->package.'.php',
+            dirname(__DIR__) . '/config/playground-matrix-resource.php',
             $this->package
         );
     }
