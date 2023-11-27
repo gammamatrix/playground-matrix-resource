@@ -1,5 +1,8 @@
 # Playground Matrix Resource
 
+![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/image-data/coverage.svg)
+![Playground CI Workflow](https://github.com/gammamatrix/playground-matrix-resource/actions/workflows/ci.yml/badge.svg?)
+
 The `playground-matrix-resource` Laravel package.
 
 This package provides an API and a Blade UI for interacting with the [Playground Matrix](https://github.com/gammamatrix/playground-matrix), a project management and task system.
