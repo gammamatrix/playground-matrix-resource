@@ -8,6 +8,8 @@ namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use GammaMatrix\Playground\ServiceProvider as PlaygroundServiceProvider;
+use GammaMatrix\Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
+use GammaMatrix\Playground\Matrix\ServiceProvider as PlaygroundMatrixServiceProvider;
 use GammaMatrix\Playground\Matrix\Resource\ServiceProvider;
 use Illuminate\Contracts\Config\Repository;
 
@@ -22,21 +24,12 @@ trait TestTrait
     protected function getPackageProviders($app)
     {
         return [
+            PlaygroundAuthServiceProvider::class,
+            PlaygroundMatrixServiceProvider::class,
             PlaygroundServiceProvider::class,
             ServiceProvider::class,
         ];
     }
-
-    // /**
-    //  * Define database migrations.
-    //  *
-    //  * @return void
-    //  */
-    // protected function defineDatabaseMigrations()
-    // {
-    //     $this->loadLaravelMigrations(['--database' => 'testbench']);
-    //     $this->loadMigrationsFrom(workbench_path('database/migrations'));
-    // }
 
     /**
      * Set up the environment.
@@ -52,14 +45,30 @@ trait TestTrait
 
         $app['config']->set('playground-matrix.load.migrations', true);
 
-        $app['config']->set('playground-matrix-resource.routes.confirm', true);
-        $app['config']->set('playground-matrix-resource.routes.forgot', true);
-        $app['config']->set('playground-matrix-resource.routes.logout', true);
-        $app['config']->set('playground-matrix-resource.routes.login', true);
-        $app['config']->set('playground-matrix-resource.routes.register', true);
-        $app['config']->set('playground-matrix-resource.routes.reset', true);
-        $app['config']->set('playground-matrix-resource.routes.token', true);
-        $app['config']->set('playground-matrix-resource.routes.verify', true);
+        $middleware = [];
+        // api,auth:sanctum,web
+
+        $app['config']->set('playground-matrix-resource.middleware', [
+            'auth',
+            'web',
+        ]);
+
+        $app['config']->set('playground-matrix-resource.routes.matrix', true);
+        $app['config']->set('playground-matrix-resource.routes.backlogs', true);
+        $app['config']->set('playground-matrix-resource.routes.boards', true);
+        $app['config']->set('playground-matrix-resource.routes.epics', true);
+        $app['config']->set('playground-matrix-resource.routes.flows', true);
+        $app['config']->set('playground-matrix-resource.routes.milestones', true);
+        $app['config']->set('playground-matrix-resource.routes.notes', true);
+        $app['config']->set('playground-matrix-resource.routes.projects', true);
+        $app['config']->set('playground-matrix-resource.routes.releases', true);
+        $app['config']->set('playground-matrix-resource.routes.roadmaps', true);
+        $app['config']->set('playground-matrix-resource.routes.sources', true);
+        $app['config']->set('playground-matrix-resource.routes.sprints', true);
+        $app['config']->set('playground-matrix-resource.routes.tags', true);
+        $app['config']->set('playground-matrix-resource.routes.teams', true);
+        $app['config']->set('playground-matrix-resource.routes.tickets', true);
+        $app['config']->set('playground-matrix-resource.routes.versions', true);
 
         $app['config']->set('playground-matrix-resource.sitemap.enable', true);
         $app['config']->set('playground-matrix-resource.sitemap.guest', true);
