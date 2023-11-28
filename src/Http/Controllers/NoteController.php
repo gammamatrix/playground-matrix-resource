@@ -358,11 +358,11 @@ class NoteController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Note resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.notes.post
-     */
+    /**
+      * Store a newly created API Note resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.notes.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

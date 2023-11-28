@@ -143,27 +143,27 @@ class StoreRequest extends AbstractStoreRequest
         if ($this->filled('description')) {
             $input['description'] = $this->exorcise($this->input('description'));
         } elseif ($this->has('description')) {
-            $input['description'] ='';
+            $input['description'] = '';
         }
 
         if ($this->filled('introduction')) {
             $input['introduction'] = $this->exorcise($this->input('introduction'));
         } elseif ($this->has('introduction')) {
-            $input['introduction'] ='';
+            $input['introduction'] = '';
         }
 
-        if (! empty($input)) {
+        if (!empty($input)) {
             $this->merge($input);
         }
     }
 
-//    /**
-//      * Handle a passed validation attempt.
-//      *
-//      * @return void
-//      */
-//     protected function passedValidation()
-//     {
-//
-//     }
+    //    /**
+    //      * Handle a passed validation attempt.
+    //      *
+    //      * @return void
+    //      */
+    //     protected function passedValidation()
+    //     {
+    //
+    //     }
 }

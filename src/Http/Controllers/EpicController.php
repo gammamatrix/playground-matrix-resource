@@ -358,11 +358,11 @@ class EpicController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Epic resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.epics.post
-     */
+    /**
+      * Store a newly created API Epic resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.epics.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

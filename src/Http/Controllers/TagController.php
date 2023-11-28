@@ -358,11 +358,11 @@ class TagController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Tag resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.tags.post
-     */
+    /**
+      * Store a newly created API Tag resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.tags.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

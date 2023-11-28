@@ -26,7 +26,7 @@ trait PaginationIdsTrait
     public function rules_filters_ids(array &$rules): void
     {
         foreach ($this->getPaginationIds() as $column => $meta) {
-            if (empty($column) || ! is_string($column)) {
+            if (empty($column) || !is_string($column)) {
                 continue;
             }
 

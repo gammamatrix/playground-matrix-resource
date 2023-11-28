@@ -358,11 +358,11 @@ class BoardController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Board resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.boards.post
-     */
+    /**
+      * Store a newly created API Board resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.boards.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

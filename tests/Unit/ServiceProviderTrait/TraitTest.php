@@ -7,6 +7,7 @@
 namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait;
 
 use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use GammaMatrix\Playground\Test\MockingTrait;
 
 /**
  * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait\TraitTest
@@ -14,6 +15,8 @@ use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestCase;
  */
 class TraitTest extends TestCase
 {
+    use MockingTrait;
+
     public const TRAIT_CLASS = \GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait::class;
 
     public $mock;
@@ -54,5 +57,27 @@ class TraitTest extends TestCase
         ];
 
         $this->assertSame($expected, $this->mock->setPolicyNamespace($config));
+    }
+
+    public function test_registerPolicies_getRegister_with_empty_policy_namespace(): void
+    {
+        $policy_namespace = '';
+        $this->setProtected($this->mock, 'policy_namespace', $policy_namespace);
+
+        $policy = \GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy::class;
+        $expected = $policy;
+
+        $this->assertSame($expected, $this->mock->registerPolicies_getRegister($policy));
+    }
+
+    public function test_registerPolicies_getRegister_with_app_policy_namespace(): void
+    {
+        $policy_namespace = 'App\\Policies';
+        $this->setProtected($this->mock, 'policy_namespace', $policy_namespace);
+
+        $policy = 'App\\\Policies\\\BacklogPolicy';
+        $expected = $policy;
+
+        $this->assertSame($expected, $this->mock->registerPolicies_getRegister($policy));
     }
 }

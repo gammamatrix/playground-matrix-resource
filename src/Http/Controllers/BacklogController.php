@@ -358,11 +358,11 @@ class BacklogController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Backlog resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.backlogs.post
-     */
+    /**
+      * Store a newly created API Backlog resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.backlogs.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

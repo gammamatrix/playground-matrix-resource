@@ -358,11 +358,11 @@ class SourceController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Source resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.sources.post
-     */
+    /**
+      * Store a newly created API Source resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.sources.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

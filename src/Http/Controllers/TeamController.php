@@ -358,11 +358,11 @@ class TeamController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Team resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.teams.post
-     */
+    /**
+      * Store a newly created API Team resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.teams.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

@@ -358,11 +358,11 @@ class ProjectController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Project resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.projects.post
-     */
+    /**
+      * Store a newly created API Project resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.projects.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

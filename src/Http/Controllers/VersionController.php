@@ -358,11 +358,11 @@ class VersionController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Version resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.versions.post
-     */
+    /**
+      * Store a newly created API Version resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.versions.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {
