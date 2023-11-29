@@ -43,7 +43,7 @@ class EpicRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'board_type',
+            'epic_type',
             'board_id',
             'backlog_id',
             'flow_id',
