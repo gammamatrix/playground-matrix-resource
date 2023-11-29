@@ -25,10 +25,7 @@ class DestroyRequest extends FormRequest
 
         $user = $this->user();
 
-        if (!empty($user)
-            && method_exists($user, 'isAdmin')
-            && $user->isAdmin()
-        ) {
+        if ($this->userHasAdminPrivileges($user)) {
             $rules['force'] = ['boolean'];
         }
 
