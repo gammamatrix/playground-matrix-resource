@@ -1,7 +1,7 @@
 # Playground Matrix Resource
 
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/image-data/coverage.svg)](tests/logs/coverage.txt)
-[![Playground CI Workflow](https://github.com/gammamatrix/playground-matrix-resource/actions/workflows/ci.yml/badge.svg?)](tests/logs/testdox.txt)
+[![Playground CI Workflow](https://github.com/gammamatrix/playground-matrix-resource/actions/workflows/ci.yml/badge.svg?branch=develop)](tests/logs/testdox.txt)
 
 The `playground-matrix-resource` Laravel package.
 
