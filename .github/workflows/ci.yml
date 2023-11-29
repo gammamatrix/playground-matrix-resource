@@ -26,8 +26,6 @@ jobs:
       with:
         php_extensions: xdebug
         coverage_clover: clover.xml
-        # testdox_html: output/testdox.html
-        # testdox_text: output/testdox.txt
         coverage_text: true
     - name: Make code coverage badge
       uses: timkrase/phpunit-coverage-badge@v1.2.1
