@@ -25,14 +25,14 @@ jobs:
         XDEBUG_MODE: coverage
       with:
         php_extensions: xdebug
-        coverage_clover: output/clover-${{ github.ref_name }}.xml
+        coverage_clover: clover.xml
+        testdox_text: output/testdox-develop.txt
         coverage_text: true
-        testdox_text: output/testdox-${{ github.ref_name }}.txt
     - name: Make code coverage badge
       uses: timkrase/phpunit-coverage-badge@v1.2.1
       with:
-        report: output/clover-${{ github.ref_name }}.xml
-        coverage_badge_path: output/coverage-${{ github.ref_name }}.svg
+        report: clover.xml
+        coverage_badge_path: output/coverage-develop.svg
         push_badge: false
     - name: Git push to image-data branch
       uses: peaceiris/actions-gh-pages@v3
