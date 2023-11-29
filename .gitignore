@@ -34,6 +34,8 @@ nbproject/private/
 
 database/migrations/*.disabled
 
+*.derp
+
 tmp-*
 temp-*
 

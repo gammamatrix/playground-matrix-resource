@@ -8,7 +8,7 @@ return [
     // 'middleware' => array_map('trim', explode(',', env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE', 'auth:sanctum,web'))),
     'policy_namespace' => (string) env('PLAYGROUND_MATRIX_RESOURCE_POLICY_NAMESPACE', ''),
     'load' => [
-        'policies' => (boolean) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
+        'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
         'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
         'views' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_VIEWS', true),
     ],

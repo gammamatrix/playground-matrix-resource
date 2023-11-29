@@ -24,7 +24,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
@@ -358,11 +357,11 @@ class BacklogController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Backlog resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.backlogs.post
-     */
+    /**
+      * Store a newly created API Backlog resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.backlogs.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

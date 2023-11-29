@@ -358,11 +358,11 @@ class ReleaseController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Release resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.releases.post
-     */
+    /**
+      * Store a newly created API Release resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.releases.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

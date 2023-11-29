@@ -358,11 +358,11 @@ class MilestoneController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Milestone resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.milestones.post
-     */
+    /**
+      * Store a newly created API Milestone resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.milestones.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

@@ -65,7 +65,7 @@ trait StoreFilterTrait
         $pBits = 0;
         // $pBits = 4 + 2 + 1;
 
-        for ($i=0; $i <= $exponent; $i++) {
+        for ($i = 0; $i <= $exponent; $i++) {
             $pBits += pow(2, $i);
         }
 

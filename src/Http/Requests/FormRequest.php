@@ -5,6 +5,7 @@
 
 namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 
 /**
@@ -19,7 +20,7 @@ abstract class FormRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        // return true;
         $user = $this->user();
 
         if (empty($user)) {
@@ -39,5 +40,19 @@ abstract class FormRequest extends BaseFormRequest
         $rules = is_array(static::RULES) ? static::RULES : [];
 
         return $rules;
+    }
+
+    public function userHasAdminPrivileges(Authenticatable $user = null): bool
+    {
+        $admin = false;
+        if (!empty($user)) {
+            if (method_exists($user, 'isAdmin')) {
+                $admin = $user->isAdmin();
+            } else {
+                // standard user, no roles or privileges
+                $admin = true;
+            }
+        }
+        return $admin;
     }
 }

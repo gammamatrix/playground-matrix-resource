@@ -358,11 +358,11 @@ class SprintController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Sprint resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.sprints.post
-     */
+    /**
+      * Store a newly created API Sprint resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.sprints.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

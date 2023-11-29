@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Gate;
 
 /**
  * \GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait
+ *
+ * NOTE We could enforce a pattern policy_namespace.
+ * TODO Do some tests with invalid input such as an array or the model class for the namespace.
  */
 trait ServiceProviderTrait
 {
@@ -29,6 +32,22 @@ trait ServiceProviderTrait
         return $this->policy_namespace;
     }
 
+    public function registerPolicies_getRegister(string $policy): string
+    {
+        $register = $policy;
+
+        if (!empty($this->policy_namespace)) {
+            // TODO test slashes with policies in App\Policies or another namespace.
+            $register = str_replace(
+                'GammaMatrix\\Playground\\Matrix\\Resource',
+                $this->policy_namespace,
+                $policy
+            );
+        }
+
+        return $register;
+    }
+
     /**
      * Register the application's policies.
      *
@@ -38,16 +57,12 @@ trait ServiceProviderTrait
     {
         foreach ($this->policies() as $model => $policy) {
 
-            if (empty($this->policy_namespace)) {
-                $register = $policy;
-            } else {
-                // TODO test slashes with policies in App\Policies or another namespace.
-                $register = str_replace(
-                    'GammaMatrix\\Playground\\Matrix\\Resource',
-                    $this->policy_namespace,
-                    $policy
-                );
+            $register = null;
+
+            if ($policy && is_string($policy)) {
+                $register = $this->registerPolicies_getRegister($policy);
             }
+
             // dd([
             //     '__METHOD__' => __METHOD__,
             //     '$model' => $model,
@@ -55,7 +70,9 @@ trait ServiceProviderTrait
             //     '$this->policy_namespace' => $this->policy_namespace,
             // ]);
 
-            Gate::policy($model, $register);
+            if ($register) {
+                Gate::policy($model, $register);
+            }
         }
     }
 }

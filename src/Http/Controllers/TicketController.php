@@ -358,11 +358,11 @@ class TicketController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Ticket resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.tickets.post
-     */
+    /**
+      * Store a newly created API Ticket resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.tickets.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

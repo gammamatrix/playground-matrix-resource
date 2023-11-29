@@ -34,7 +34,7 @@ trait PaginationDatesTrait
     public function rules_filters_dates(array &$rules): void
     {
         foreach ($this->getPaginationDates() as $column => $meta) {
-            if (empty($column) || ! is_string($column)) {
+            if (empty($column) || !is_string($column)) {
                 continue;
             }
 
@@ -117,10 +117,10 @@ trait PaginationDatesTrait
                         $filter[$column] = $options;
                     }
                 // dump([
-                    //     '__METHOD__' => __METHOD__,
-                    //     '__LINE__' => __LINE__,
-                    //     '$column' => $column,
-                    //     '$filter[$column]' => $filter[$column],
+                //     '__METHOD__' => __METHOD__,
+                //     '__LINE__' => __LINE__,
+                //     '$column' => $column,
+                //     '$filter[$column]' => $filter[$column],
                 // ]);
                 } elseif (is_string($filter[$column])) {
                     // dump([

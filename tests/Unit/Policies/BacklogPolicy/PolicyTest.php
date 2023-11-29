@@ -20,7 +20,7 @@ class PolicyTest extends TestCase
     {
         $policyClass = $this->policyClass;
 
-        $instance = new $policyClass;
+        $instance = new $policyClass();
 
         $this->assertInstanceOf($policyClass, $instance);
     }

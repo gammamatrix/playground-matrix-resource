@@ -358,11 +358,11 @@ class RoadmapController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Roadmap resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.roadmaps.post
-     */
+    /**
+      * Store a newly created API Roadmap resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.roadmaps.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {

@@ -24,7 +24,7 @@ trait PaginationFlagsTrait
     public function rules_filters_flags(array &$rules): void
     {
         foreach ($this->getPaginationFlags() as $column => $meta) {
-            if (empty($column) || ! is_string($column)) {
+            if (empty($column) || !is_string($column)) {
                 continue;
             }
 

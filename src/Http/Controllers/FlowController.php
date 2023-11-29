@@ -358,11 +358,11 @@ class FlowController extends Controller
         );
     }
 
-   /**
-     * Store a newly created API Flow resource in storage.
-     *
-     * @route POST /resource/matrix playground.matrix.resource.flows.post
-     */
+    /**
+      * Store a newly created API Flow resource in storage.
+      *
+      * @route POST /resource/matrix playground.matrix.resource.flows.post
+      */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse {
