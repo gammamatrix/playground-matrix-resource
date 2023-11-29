@@ -1,0 +1,282 @@
+Backlog Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Board Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Create Request (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest)
+ [x] Request instance
+
+Epic Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Flow Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Milestone Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Note Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Policy (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy\Policy)
+ [x] Policy instance
+
+Project Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Release Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Roadmap Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Source Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Sprint Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Tag Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Team Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Ticket Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
+Trait (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait\Trait)
+ [x] SetPolicyNamespace with invalid value
+ [x] SetPolicyNamespace with app namespace
+ [x] RegisterPolicies getRegister with empty policy namespace
+ [x] RegisterPolicies getRegister with app policy namespace
+
+Version Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionRoute)
+ [x] Guest cannot render create view
+ [x] Guest cannot render edit view
+ [x] Destroy as guest and fail authorization
+ [x] User can render create view with return url
+ [x] User can render edit view with return url
+ [x] Create with user using json
+ [x] Destroy as standard user and succeed
+ [x] Edit with user using json
+ [x] User can render create view with invalid parameter
+ [x] User can render edit view with invalid parameter
+ [x] Destroy as standard user and succeed with force delete
+ [x] Destroy as standard user using json and succeed with no content
+ [x] Destroy as standard user and succeed with redirect to index with trash
+ [x] Destroy as role user get denied and no force delete allowed
+ [x] Destroy as role admin and succeed
+ [x] Destroy as role admin and succeed with force delete
+
