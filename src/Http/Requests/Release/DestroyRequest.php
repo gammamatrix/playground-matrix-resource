@@ -31,16 +31,4 @@ class DestroyRequest extends FormRequest
 
         return $rules;
     }
-
-    /**
-     * Prepare the data for validation.
-     *
-     * @return void
-     */
-    protected function prepareForValidation()
-    {
-        if (method_exists($this, 'prepareForValidationForSlug')) {
-            $this->prepareForValidationForSlug();
-        }
-    }
 }
