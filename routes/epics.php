@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'epic')
     ;
 
-    Route::put('/unlock/{epic}', [
+    Route::delete('/lock/{epic}', [
         'as'   => 'playground.matrix.resource.epics.unlock',
         'uses' => 'EpicController@unlock',
     ])->whereUuid('epic')

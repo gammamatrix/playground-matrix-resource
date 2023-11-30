@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'version')
     ;
 
-    Route::put('/unlock/{version}', [
+    Route::delete('/lock/{version}', [
         'as'   => 'playground.matrix.resource.versions.unlock',
         'uses' => 'VersionController@unlock',
     ])->whereUuid('version')

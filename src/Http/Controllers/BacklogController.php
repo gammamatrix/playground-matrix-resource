@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog\Backlog as BacklogResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog\BacklogCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog as BacklogResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\BacklogCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -62,7 +62,7 @@ class BacklogController extends Controller
         $backlog = new Backlog($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -113,7 +113,7 @@ class BacklogController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $backlog->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -186,7 +186,7 @@ class BacklogController extends Controller
     public function lock(
         Backlog $backlog,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -196,14 +196,15 @@ class BacklogController extends Controller
         $backlog->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $backlog->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
+        // dump($request);
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -261,13 +262,13 @@ class BacklogController extends Controller
 
         if ($request->expectsJson()) {
             return (new BacklogCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -298,7 +299,7 @@ class BacklogController extends Controller
     public function restore(
         Backlog $backlog,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +307,7 @@ class BacklogController extends Controller
         $backlog->restore();
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -326,13 +327,13 @@ class BacklogController extends Controller
     public function show(
         Backlog $backlog,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $backlog->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -340,7 +341,7 @@ class BacklogController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -364,7 +365,7 @@ class BacklogController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +375,7 @@ class BacklogController extends Controller
         $backlog->save();
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -394,7 +395,7 @@ class BacklogController extends Controller
     public function unlock(
         Backlog $backlog,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -404,7 +405,7 @@ class BacklogController extends Controller
         $backlog->save();
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -424,7 +425,7 @@ class BacklogController extends Controller
     public function update(
         Backlog $backlog,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BacklogResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +433,7 @@ class BacklogController extends Controller
         $backlog->update($validated);
 
         if ($request->expectsJson()) {
-            return new BacklogResource($backlog);
+            return (new BacklogResource($backlog))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

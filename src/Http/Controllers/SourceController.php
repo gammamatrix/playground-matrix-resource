@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source\Source as SourceResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source\SourceCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source as SourceResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\SourceCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class SourceController extends Controller
         $source = new Source($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class SourceController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $source->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class SourceController extends Controller
     public function lock(
         Source $source,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class SourceController extends Controller
         $source->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $source->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class SourceController extends Controller
 
         if ($request->expectsJson()) {
             return (new SourceCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class SourceController extends Controller
     public function restore(
         Source $source,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class SourceController extends Controller
         $source->restore();
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class SourceController extends Controller
     public function show(
         Source $source,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $source->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class SourceController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class SourceController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class SourceController extends Controller
         $source->save();
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class SourceController extends Controller
     public function unlock(
         Source $source,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class SourceController extends Controller
         $source->save();
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class SourceController extends Controller
     public function update(
         Source $source,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SourceResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class SourceController extends Controller
         $source->update($validated);
 
         if ($request->expectsJson()) {
-            return new SourceResource($source);
+            return (new SourceResource($source))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

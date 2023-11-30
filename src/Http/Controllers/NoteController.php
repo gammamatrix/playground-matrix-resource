@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note\Note as NoteResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note\NoteCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\NoteCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class NoteController extends Controller
         $note = new Note($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class NoteController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $note->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class NoteController extends Controller
     public function lock(
         Note $note,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class NoteController extends Controller
         $note->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $note->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class NoteController extends Controller
 
         if ($request->expectsJson()) {
             return (new NoteCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class NoteController extends Controller
     public function restore(
         Note $note,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class NoteController extends Controller
         $note->restore();
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class NoteController extends Controller
     public function show(
         Note $note,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $note->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class NoteController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class NoteController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class NoteController extends Controller
         $note->save();
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class NoteController extends Controller
     public function unlock(
         Note $note,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class NoteController extends Controller
         $note->save();
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class NoteController extends Controller
     public function update(
         Note $note,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|NoteResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class NoteController extends Controller
         $note->update($validated);
 
         if ($request->expectsJson()) {
-            return new NoteResource($note);
+            return (new NoteResource($note))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

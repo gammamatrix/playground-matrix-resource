@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team\Team as TeamResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team\TeamCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team as TeamResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TeamCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class TeamController extends Controller
         $team = new Team($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class TeamController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $team->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class TeamController extends Controller
     public function lock(
         Team $team,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class TeamController extends Controller
         $team->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $team->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class TeamController extends Controller
 
         if ($request->expectsJson()) {
             return (new TeamCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class TeamController extends Controller
     public function restore(
         Team $team,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class TeamController extends Controller
         $team->restore();
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class TeamController extends Controller
     public function show(
         Team $team,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $team->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class TeamController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class TeamController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class TeamController extends Controller
         $team->save();
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class TeamController extends Controller
     public function unlock(
         Team $team,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class TeamController extends Controller
         $team->save();
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class TeamController extends Controller
     public function update(
         Team $team,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TeamResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class TeamController extends Controller
         $team->update($validated);
 
         if ($request->expectsJson()) {
-            return new TeamResource($team);
+            return (new TeamResource($team))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'backlog')
     ;
 
-    Route::put('/unlock/{backlog}', [
+    Route::delete('/lock/{backlog}', [
         'as'   => 'playground.matrix.resource.backlogs.unlock',
         'uses' => 'BacklogController@unlock',
     ])->whereUuid('backlog')

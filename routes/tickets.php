@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'ticket')
     ;
 
-    Route::put('/unlock/{ticket}', [
+    Route::delete('/lock/{ticket}', [
         'as'   => 'playground.matrix.resource.tickets.unlock',
         'uses' => 'TicketController@unlock',
     ])->whereUuid('ticket')

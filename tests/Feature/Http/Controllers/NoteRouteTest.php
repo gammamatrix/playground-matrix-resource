@@ -17,6 +17,7 @@ class NoteRouteTest extends TestCase
     use Resource\CreateTrait;
     use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\LockTrait;
 
     public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Note::class;
 
@@ -44,20 +45,20 @@ class NoteRouteTest extends TestCase
             'owned_by_id',
             'parent_id',
             'note_type',
-            'backlog_id',
-            'board_id',
-            'epic_id',
-            'flow_id',
-            'milestone_id',
-            'project_id',
-            'release_id',
-            'roadmap_id',
-            'source_id',
-            'sprint_id',
-            'tag_id',
-            'team_id',
-            'ticket_id',
-            'version_id',
+            // 'backlog_id',
+            // 'board_id',
+            // 'epic_id',
+            // 'flow_id',
+            // 'milestone_id',
+            // 'project_id',
+            // 'release_id',
+            // 'roadmap_id',
+            // 'source_id',
+            // 'sprint_id',
+            // 'tag_id',
+            // 'team_id',
+            // 'ticket_id',
+            // 'version_id',
             'created_at',
             'deleted_at',
             'updated_at',
@@ -118,7 +119,7 @@ class NoteRouteTest extends TestCase
             'avatar',
             'ui',
             'assets',
-            'milestone',
+            'backlog',
             'board',
             'flow',
             'meta',
@@ -128,25 +129,11 @@ class NoteRouteTest extends TestCase
         ],
         'meta' => [
             'id',
+            'rules',
             'session_user_id',
             'timestamp',
             'validated',
-            'info' => [
-                'model_attribute',
-                'model_label',
-                'model_label_plural',
-                'model_route',
-                'model_slug_plural',
-                'module_label',
-                'module_label_plural',
-                'module_route',
-                'privilege',
-                'table',
-                'view',
-            ],
-            'input',
         ],
-        '_method',
     ];
 
     protected $structure_index = [

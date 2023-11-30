@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'team')
     ;
 
-    Route::put('/unlock/{team}', [
+    Route::delete('/lock/{team}', [
         'as'   => 'playground.matrix.resource.teams.unlock',
         'uses' => 'TeamController@unlock',
     ])->whereUuid('team')

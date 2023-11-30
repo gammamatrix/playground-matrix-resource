@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release\Release as ReleaseResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release\ReleaseCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release as ReleaseResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\ReleaseCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class ReleaseController extends Controller
         $release = new Release($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class ReleaseController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $release->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class ReleaseController extends Controller
     public function lock(
         Release $release,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class ReleaseController extends Controller
         $release->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $release->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class ReleaseController extends Controller
 
         if ($request->expectsJson()) {
             return (new ReleaseCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class ReleaseController extends Controller
     public function restore(
         Release $release,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class ReleaseController extends Controller
         $release->restore();
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class ReleaseController extends Controller
     public function show(
         Release $release,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $release->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class ReleaseController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class ReleaseController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class ReleaseController extends Controller
         $release->save();
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class ReleaseController extends Controller
     public function unlock(
         Release $release,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class ReleaseController extends Controller
         $release->save();
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class ReleaseController extends Controller
     public function update(
         Release $release,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ReleaseResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class ReleaseController extends Controller
         $release->update($validated);
 
         if ($request->expectsJson()) {
-            return new ReleaseResource($release);
+            return (new ReleaseResource($release))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'sprint')
     ;
 
-    Route::put('/unlock/{sprint}', [
+    Route::delete('/lock/{sprint}', [
         'as'   => 'playground.matrix.resource.sprints.unlock',
         'uses' => 'SprintController@unlock',
     ])->whereUuid('sprint')

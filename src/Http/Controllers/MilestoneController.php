@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone\Milestone as MilestoneResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone\MilestoneCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone as MilestoneResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\MilestoneCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class MilestoneController extends Controller
         $milestone = new Milestone($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class MilestoneController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $milestone->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class MilestoneController extends Controller
     public function lock(
         Milestone $milestone,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class MilestoneController extends Controller
         $milestone->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $milestone->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class MilestoneController extends Controller
 
         if ($request->expectsJson()) {
             return (new MilestoneCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class MilestoneController extends Controller
     public function restore(
         Milestone $milestone,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class MilestoneController extends Controller
         $milestone->restore();
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class MilestoneController extends Controller
     public function show(
         Milestone $milestone,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $milestone->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class MilestoneController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class MilestoneController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class MilestoneController extends Controller
         $milestone->save();
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class MilestoneController extends Controller
     public function unlock(
         Milestone $milestone,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class MilestoneController extends Controller
         $milestone->save();
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class MilestoneController extends Controller
     public function update(
         Milestone $milestone,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|MilestoneResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class MilestoneController extends Controller
         $milestone->update($validated);
 
         if ($request->expectsJson()) {
-            return new MilestoneResource($milestone);
+            return (new MilestoneResource($milestone))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

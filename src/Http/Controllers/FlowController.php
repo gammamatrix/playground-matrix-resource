@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow\Flow as FlowResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow\FlowCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\FlowCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class FlowController extends Controller
         $flow = new Flow($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class FlowController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $flow->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class FlowController extends Controller
     public function lock(
         Flow $flow,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class FlowController extends Controller
         $flow->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $flow->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class FlowController extends Controller
 
         if ($request->expectsJson()) {
             return (new FlowCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class FlowController extends Controller
     public function restore(
         Flow $flow,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class FlowController extends Controller
         $flow->restore();
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class FlowController extends Controller
     public function show(
         Flow $flow,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $flow->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class FlowController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class FlowController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class FlowController extends Controller
         $flow->save();
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class FlowController extends Controller
     public function unlock(
         Flow $flow,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class FlowController extends Controller
         $flow->save();
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class FlowController extends Controller
     public function update(
         Flow $flow,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|FlowResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class FlowController extends Controller
         $flow->update($validated);
 
         if ($request->expectsJson()) {
-            return new FlowResource($flow);
+            return (new FlowResource($flow))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

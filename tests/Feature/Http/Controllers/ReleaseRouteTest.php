@@ -17,6 +17,7 @@ class ReleaseRouteTest extends TestCase
     use Resource\CreateTrait;
     use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\LockTrait;
 
     public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Release::class;
 
@@ -118,7 +119,7 @@ class ReleaseRouteTest extends TestCase
             'avatar',
             'ui',
             'assets',
-            'release',
+            'backlog',
             'board',
             'flow',
             'meta',
@@ -130,23 +131,9 @@ class ReleaseRouteTest extends TestCase
             'id',
             'session_user_id',
             'timestamp',
+            'rules',
             'validated',
-            'info' => [
-                'model_attribute',
-                'model_label',
-                'model_label_plural',
-                'model_route',
-                'model_slug_plural',
-                'module_label',
-                'module_label_plural',
-                'module_route',
-                'privilege',
-                'table',
-                'view',
-            ],
-            'input',
         ],
-        '_method',
     ];
 
     protected $structure_index = [

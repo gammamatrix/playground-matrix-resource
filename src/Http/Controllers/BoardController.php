@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board\Board as BoardResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board\BoardCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board as BoardResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\BoardCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class BoardController extends Controller
         $board = new Board($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class BoardController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $board->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class BoardController extends Controller
     public function lock(
         Board $board,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class BoardController extends Controller
         $board->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $board->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class BoardController extends Controller
 
         if ($request->expectsJson()) {
             return (new BoardCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class BoardController extends Controller
     public function restore(
         Board $board,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class BoardController extends Controller
         $board->restore();
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class BoardController extends Controller
     public function show(
         Board $board,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $board->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class BoardController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class BoardController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class BoardController extends Controller
         $board->save();
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class BoardController extends Controller
     public function unlock(
         Board $board,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class BoardController extends Controller
         $board->save();
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class BoardController extends Controller
     public function update(
         Board $board,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|BoardResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class BoardController extends Controller
         $board->update($validated);
 
         if ($request->expectsJson()) {
-            return new BoardResource($board);
+            return (new BoardResource($board))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

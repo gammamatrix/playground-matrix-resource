@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'roadmap')
     ;
 
-    Route::put('/unlock/{roadmap}', [
+    Route::delete('/lock/{roadmap}', [
         'as'   => 'playground.matrix.resource.roadmaps.unlock',
         'uses' => 'RoadmapController@unlock',
     ])->whereUuid('roadmap')
