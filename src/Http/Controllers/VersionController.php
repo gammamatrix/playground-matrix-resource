@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version\Version as VersionResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version\VersionCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version as VersionResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\VersionCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class VersionController extends Controller
         $version = new Version($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class VersionController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $version->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class VersionController extends Controller
     public function lock(
         Version $version,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class VersionController extends Controller
         $version->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $version->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class VersionController extends Controller
 
         if ($request->expectsJson()) {
             return (new VersionCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class VersionController extends Controller
     public function restore(
         Version $version,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class VersionController extends Controller
         $version->restore();
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class VersionController extends Controller
     public function show(
         Version $version,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $version->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class VersionController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class VersionController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class VersionController extends Controller
         $version->save();
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class VersionController extends Controller
     public function unlock(
         Version $version,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class VersionController extends Controller
         $version->save();
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class VersionController extends Controller
     public function update(
         Version $version,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|VersionResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class VersionController extends Controller
         $version->update($validated);
 
         if ($request->expectsJson()) {
-            return new VersionResource($version);
+            return (new VersionResource($version))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

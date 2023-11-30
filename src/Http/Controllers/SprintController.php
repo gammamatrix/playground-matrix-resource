@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint\Sprint as SprintResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint\SprintCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint as SprintResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\SprintCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class SprintController extends Controller
         $sprint = new Sprint($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class SprintController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $sprint->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class SprintController extends Controller
     public function lock(
         Sprint $sprint,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class SprintController extends Controller
         $sprint->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $sprint->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class SprintController extends Controller
 
         if ($request->expectsJson()) {
             return (new SprintCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class SprintController extends Controller
     public function restore(
         Sprint $sprint,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class SprintController extends Controller
         $sprint->restore();
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class SprintController extends Controller
     public function show(
         Sprint $sprint,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $sprint->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class SprintController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class SprintController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class SprintController extends Controller
         $sprint->save();
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class SprintController extends Controller
     public function unlock(
         Sprint $sprint,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class SprintController extends Controller
         $sprint->save();
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class SprintController extends Controller
     public function update(
         Sprint $sprint,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|SprintResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class SprintController extends Controller
         $sprint->update($validated);
 
         if ($request->expectsJson()) {
-            return new SprintResource($sprint);
+            return (new SprintResource($sprint))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

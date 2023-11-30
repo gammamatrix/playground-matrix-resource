@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project\Project as ProjectResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project\ProjectCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project as ProjectResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\ProjectCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class ProjectController extends Controller
         $project = new Project($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class ProjectController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $project->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class ProjectController extends Controller
     public function lock(
         Project $project,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class ProjectController extends Controller
         $project->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $project->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class ProjectController extends Controller
 
         if ($request->expectsJson()) {
             return (new ProjectCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class ProjectController extends Controller
     public function restore(
         Project $project,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class ProjectController extends Controller
         $project->restore();
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class ProjectController extends Controller
     public function show(
         Project $project,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $project->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class ProjectController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class ProjectController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class ProjectController extends Controller
         $project->save();
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class ProjectController extends Controller
     public function unlock(
         Project $project,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class ProjectController extends Controller
         $project->save();
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class ProjectController extends Controller
     public function update(
         Project $project,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|ProjectResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class ProjectController extends Controller
         $project->update($validated);
 
         if ($request->expectsJson()) {
-            return new ProjectResource($project);
+            return (new ProjectResource($project))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

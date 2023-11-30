@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap\Roadmap as RoadmapResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap\RoadmapCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap as RoadmapResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\RoadmapCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class RoadmapController extends Controller
         $roadmap = new Roadmap($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class RoadmapController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $roadmap->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class RoadmapController extends Controller
     public function lock(
         Roadmap $roadmap,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class RoadmapController extends Controller
         $roadmap->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $roadmap->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class RoadmapController extends Controller
 
         if ($request->expectsJson()) {
             return (new RoadmapCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class RoadmapController extends Controller
     public function restore(
         Roadmap $roadmap,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class RoadmapController extends Controller
         $roadmap->restore();
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class RoadmapController extends Controller
     public function show(
         Roadmap $roadmap,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $roadmap->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class RoadmapController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class RoadmapController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class RoadmapController extends Controller
         $roadmap->save();
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class RoadmapController extends Controller
     public function unlock(
         Roadmap $roadmap,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class RoadmapController extends Controller
         $roadmap->save();
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class RoadmapController extends Controller
     public function update(
         Roadmap $roadmap,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|RoadmapResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class RoadmapController extends Controller
         $roadmap->update($validated);
 
         if ($request->expectsJson()) {
-            return new RoadmapResource($roadmap);
+            return (new RoadmapResource($roadmap))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

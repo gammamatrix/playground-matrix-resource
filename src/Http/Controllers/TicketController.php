@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket\Ticket as TicketResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket\TicketCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket as TicketResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TicketCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class TicketController extends Controller
         $ticket = new Ticket($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class TicketController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $ticket->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class TicketController extends Controller
     public function lock(
         Ticket $ticket,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class TicketController extends Controller
         $ticket->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $ticket->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class TicketController extends Controller
 
         if ($request->expectsJson()) {
             return (new TicketCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class TicketController extends Controller
     public function restore(
         Ticket $ticket,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class TicketController extends Controller
         $ticket->restore();
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class TicketController extends Controller
     public function show(
         Ticket $ticket,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $ticket->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class TicketController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class TicketController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class TicketController extends Controller
     public function unlock(
         Ticket $ticket,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class TicketController extends Controller
     public function update(
         Ticket $ticket,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TicketResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class TicketController extends Controller
         $ticket->update($validated);
 
         if ($request->expectsJson()) {
-            return new TicketResource($ticket);
+            return (new TicketResource($ticket))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

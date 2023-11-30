@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'note')
     ;
 
-    Route::put('/unlock/{note}', [
+    Route::delete('/lock/{note}', [
         'as'   => 'playground.matrix.resource.notes.unlock',
         'uses' => 'NoteController@unlock',
     ])->whereUuid('note')

@@ -17,6 +17,7 @@ class MilestoneRouteTest extends TestCase
     use Resource\CreateTrait;
     use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\LockTrait;
 
     public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Milestone::class;
 
@@ -118,7 +119,7 @@ class MilestoneRouteTest extends TestCase
             'avatar',
             'ui',
             'assets',
-            'milestone',
+            'backlog',
             'board',
             'flow',
             'meta',
@@ -128,25 +129,11 @@ class MilestoneRouteTest extends TestCase
         ],
         'meta' => [
             'id',
+            'rules',
             'session_user_id',
             'timestamp',
             'validated',
-            'info' => [
-                'model_attribute',
-                'model_label',
-                'model_label_plural',
-                'model_route',
-                'model_slug_plural',
-                'module_label',
-                'module_label_plural',
-                'module_route',
-                'privilege',
-                'table',
-                'view',
-            ],
-            'input',
         ],
-        '_method',
     ];
 
     protected $structure_index = [

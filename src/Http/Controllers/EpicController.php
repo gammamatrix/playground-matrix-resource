@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic\Epic as EpicResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic\EpicCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic as EpicResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\EpicCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class EpicController extends Controller
         $epic = new Epic($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class EpicController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $epic->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class EpicController extends Controller
     public function lock(
         Epic $epic,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class EpicController extends Controller
         $epic->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $epic->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class EpicController extends Controller
 
         if ($request->expectsJson()) {
             return (new EpicCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class EpicController extends Controller
     public function restore(
         Epic $epic,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class EpicController extends Controller
         $epic->restore();
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class EpicController extends Controller
     public function show(
         Epic $epic,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $epic->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -341,7 +341,7 @@ class EpicController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -365,7 +365,7 @@ class EpicController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class EpicController extends Controller
         $epic->save();
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class EpicController extends Controller
     public function unlock(
         Epic $epic,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class EpicController extends Controller
         $epic->save();
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class EpicController extends Controller
     public function update(
         Epic $epic,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|EpicResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class EpicController extends Controller
         $epic->update($validated);
 
         if ($request->expectsJson()) {
-            return new EpicResource($epic);
+            return (new EpicResource($epic))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

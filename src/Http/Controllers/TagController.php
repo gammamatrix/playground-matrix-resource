@@ -17,8 +17,8 @@ use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest;
 use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag\Tag as TagResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag\TagCollection;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag as TagResource;
+use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TagCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -63,7 +63,7 @@ class TagController extends Controller
         $tag = new Tag($validated);
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => null,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -114,7 +114,7 @@ class TagController extends Controller
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $tag->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -187,7 +187,7 @@ class TagController extends Controller
     public function lock(
         Tag $tag,
         LockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -197,14 +197,14 @@ class TagController extends Controller
         $tag->save();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $tag->id,
             'timestamp'       => Carbon::now()->toJson(),
             'info'            => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -262,13 +262,13 @@ class TagController extends Controller
 
         if ($request->expectsJson()) {
             return (new TagCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user->id,
+                'session_user_id' => $user?->id,
                 'validated'       => $validated,
             ]]);
         }
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'columns'         => $request->getPaginationColumns(),
             'dates'           => $request->getPaginationDates(),
             'flags'           => $request->getPaginationFlags(),
@@ -299,7 +299,7 @@ class TagController extends Controller
     public function restore(
         Tag $tag,
         RestoreRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -307,7 +307,7 @@ class TagController extends Controller
         $tag->restore();
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -327,13 +327,13 @@ class TagController extends Controller
     public function show(
         Tag $tag,
         ShowRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
 
         $meta = [
-            'session_user_id' => $user->id,
+            'session_user_id' => $user?->id,
             'id'              => $tag->id,
             'timestamp'       => Carbon::now()->toJson(),
             'validated'       => $validated,
@@ -365,7 +365,7 @@ class TagController extends Controller
       */
     public function store(
         StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse {
+    ): Response|JsonResponse|RedirectResponse|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -375,7 +375,7 @@ class TagController extends Controller
         $tag->save();
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -395,7 +395,7 @@ class TagController extends Controller
     public function unlock(
         Tag $tag,
         UnlockRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -405,7 +405,7 @@ class TagController extends Controller
         $tag->save();
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';
@@ -425,7 +425,7 @@ class TagController extends Controller
     public function update(
         Tag $tag,
         UpdateRequest $request
-    ): JsonResponse|RedirectResponse {
+    ): JsonResponse|RedirectResponse|TagResource {
         $validated = $request->validated();
 
         $user = $request->user();
@@ -433,7 +433,7 @@ class TagController extends Controller
         $tag->update($validated);
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $returnUrl = $validated['return_url'] ?? '';

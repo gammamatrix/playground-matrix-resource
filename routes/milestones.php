@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'milestone')
     ;
 
-    Route::put('/unlock/{milestone}', [
+    Route::delete('/lock/{milestone}', [
         'as'   => 'playground.matrix.resource.milestones.unlock',
         'uses' => 'MilestoneController@unlock',
     ])->whereUuid('milestone')

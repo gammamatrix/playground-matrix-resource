@@ -27,8 +27,11 @@ class Board extends JsonResource
     {
         return [
             'meta' => [
-                'rules'     => $request->rules(),
+                'id' => $request?->board?->id,
+                'rules' => $request->rules(),
+                'session_user_id' => $request->user()->id,
                 'timestamp' => Carbon::now()->toJson(),
+                'validated' => $request->validated(),
             ],
         ];
     }

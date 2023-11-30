@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'flow')
     ;
 
-    Route::put('/unlock/{flow}', [
+    Route::delete('/lock/{flow}', [
         'as'   => 'playground.matrix.resource.flows.unlock',
         'uses' => 'FlowController@unlock',
     ])->whereUuid('flow')

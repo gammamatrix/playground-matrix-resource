@@ -26,6 +26,7 @@ return new class () extends Migration {
             $table->uuid('owned_by_id')->nullable()->index();
             $table->uuid('parent_id')->nullable()->index();
             $table->string('board_type')->nullable()->index();
+            $table->uuid('backlog_id')->nullable()->index();
             $table->uuid('epic_id')->nullable()->index();
             $table->uuid('flow_id')->nullable()->index();
             $table->uuid('milestone_id')->nullable()->index();

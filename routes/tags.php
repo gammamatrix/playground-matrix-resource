@@ -65,7 +65,7 @@ Route::group([
         ->can('lock', 'tag')
     ;
 
-    Route::put('/unlock/{tag}', [
+    Route::delete('/lock/{tag}', [
         'as'   => 'playground.matrix.resource.tags.unlock',
         'uses' => 'TagController@unlock',
     ])->whereUuid('tag')
