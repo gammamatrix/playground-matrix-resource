@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.28394762366634" branch-rate="0" lines-covered="1171" lines-valid="4124" branches-covered="0" branches-valid="0" complexity="1031" version="0.4" timestamp="1701299715">
+<coverage line-rate="0.37175517980472" branch-rate="0" lines-covered="1561" lines-valid="4199" branches-covered="0" branches-valid="0" complexity="1031" version="0.4" timestamp="1701324861">
   <sources>
     <source>/app/src</source>
   </sources>
   <packages>
-    <package name="Http/Controllers/BacklogController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/BacklogController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController" filename="Http/Controllers/BacklogController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController" filename="Http/Controllers/BacklogController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -87,58 +87,57 @@
                 <line number="178" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="190" hits="0"/>
-                <line number="192" hits="0"/>
-                <line number="194" hits="0"/>
-                <line number="196" hits="0"/>
-                <line number="198" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="205" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="209" hits="0"/>
-                <line number="211" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="215" hits="0"/>
+                <line number="190" hits="5"/>
+                <line number="192" hits="5"/>
+                <line number="194" hits="5"/>
+                <line number="196" hits="5"/>
+                <line number="198" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
               <lines>
-                <line number="226" hits="0"/>
-                <line number="228" hits="0"/>
-                <line number="230" hits="0"/>
-                <line number="232" hits="0"/>
-                <line number="234" hits="0"/>
+                <line number="227" hits="0"/>
+                <line number="229" hits="0"/>
+                <line number="231" hits="0"/>
+                <line number="233" hits="0"/>
                 <line number="235" hits="0"/>
-                <line number="237" hits="0"/>
+                <line number="236" hits="0"/>
                 <line number="238" hits="0"/>
                 <line number="239" hits="0"/>
                 <line number="240" hits="0"/>
-                <line number="242" hits="0"/>
+                <line number="241" hits="0"/>
                 <line number="243" hits="0"/>
                 <line number="244" hits="0"/>
                 <line number="245" hits="0"/>
-                <line number="247" hits="0"/>
+                <line number="246" hits="0"/>
                 <line number="248" hits="0"/>
                 <line number="249" hits="0"/>
                 <line number="250" hits="0"/>
-                <line number="252" hits="0"/>
+                <line number="251" hits="0"/>
                 <line number="253" hits="0"/>
                 <line number="254" hits="0"/>
                 <line number="255" hits="0"/>
-                <line number="258" hits="0"/>
-                <line number="260" hits="0"/>
-                <line number="262" hits="0"/>
+                <line number="256" hits="0"/>
+                <line number="259" hits="0"/>
+                <line number="261" hits="0"/>
                 <line number="263" hits="0"/>
                 <line number="264" hits="0"/>
                 <line number="265" hits="0"/>
                 <line number="266" hits="0"/>
-                <line number="269" hits="0"/>
+                <line number="267" hits="0"/>
                 <line number="270" hits="0"/>
                 <line number="271" hits="0"/>
                 <line number="272" hits="0"/>
@@ -150,93 +149,94 @@
                 <line number="278" hits="0"/>
                 <line number="279" hits="0"/>
                 <line number="280" hits="0"/>
-                <line number="282" hits="0"/>
+                <line number="281" hits="0"/>
                 <line number="283" hits="0"/>
                 <line number="284" hits="0"/>
                 <line number="285" hits="0"/>
-                <line number="287" hits="0"/>
+                <line number="286" hits="0"/>
                 <line number="288" hits="0"/>
                 <line number="289" hits="0"/>
                 <line number="290" hits="0"/>
+                <line number="291" hits="0"/>
               </lines>
             </method>
             <method name="restore" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request" line-rate="0" branch-rate="0" complexity="3">
               <lines>
-                <line number="302" hits="0"/>
-                <line number="304" hits="0"/>
-                <line number="306" hits="0"/>
-                <line number="308" hits="0"/>
+                <line number="303" hits="0"/>
+                <line number="305" hits="0"/>
+                <line number="307" hits="0"/>
                 <line number="309" hits="0"/>
-                <line number="312" hits="0"/>
-                <line number="314" hits="0"/>
+                <line number="310" hits="0"/>
+                <line number="313" hits="0"/>
                 <line number="315" hits="0"/>
-                <line number="318" hits="0"/>
+                <line number="316" hits="0"/>
+                <line number="319" hits="0"/>
               </lines>
             </method>
             <method name="show" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request" line-rate="0" branch-rate="0" complexity="2">
               <lines>
-                <line number="330" hits="0"/>
-                <line number="332" hits="0"/>
-                <line number="334" hits="0"/>
+                <line number="331" hits="0"/>
+                <line number="333" hits="0"/>
                 <line number="335" hits="0"/>
                 <line number="336" hits="0"/>
                 <line number="337" hits="0"/>
                 <line number="338" hits="0"/>
                 <line number="339" hits="0"/>
                 <line number="340" hits="0"/>
-                <line number="342" hits="0"/>
+                <line number="341" hits="0"/>
                 <line number="343" hits="0"/>
-                <line number="346" hits="0"/>
+                <line number="344" hits="0"/>
                 <line number="347" hits="0"/>
-                <line number="349" hits="0"/>
+                <line number="348" hits="0"/>
                 <line number="350" hits="0"/>
                 <line number="351" hits="0"/>
                 <line number="352" hits="0"/>
-                <line number="354" hits="0"/>
+                <line number="353" hits="0"/>
                 <line number="355" hits="0"/>
                 <line number="356" hits="0"/>
                 <line number="357" hits="0"/>
+                <line number="358" hits="0"/>
               </lines>
             </method>
             <method name="store" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request" line-rate="0" branch-rate="0" complexity="3">
               <lines>
-                <line number="368" hits="0"/>
-                <line number="370" hits="0"/>
-                <line number="372" hits="0"/>
-                <line number="374" hits="0"/>
-                <line number="376" hits="0"/>
+                <line number="369" hits="0"/>
+                <line number="371" hits="0"/>
+                <line number="373" hits="0"/>
+                <line number="375" hits="0"/>
                 <line number="377" hits="0"/>
-                <line number="380" hits="0"/>
-                <line number="382" hits="0"/>
+                <line number="378" hits="0"/>
+                <line number="381" hits="0"/>
                 <line number="383" hits="0"/>
-                <line number="386" hits="0"/>
+                <line number="384" hits="0"/>
+                <line number="387" hits="0"/>
               </lines>
             </method>
             <method name="unlock" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request" line-rate="0" branch-rate="0" complexity="3">
               <lines>
-                <line number="398" hits="0"/>
-                <line number="400" hits="0"/>
-                <line number="402" hits="0"/>
-                <line number="404" hits="0"/>
-                <line number="406" hits="0"/>
+                <line number="399" hits="0"/>
+                <line number="401" hits="0"/>
+                <line number="403" hits="0"/>
+                <line number="405" hits="0"/>
                 <line number="407" hits="0"/>
-                <line number="410" hits="0"/>
-                <line number="412" hits="0"/>
+                <line number="408" hits="0"/>
+                <line number="411" hits="0"/>
                 <line number="413" hits="0"/>
-                <line number="416" hits="0"/>
+                <line number="414" hits="0"/>
+                <line number="417" hits="0"/>
               </lines>
             </method>
             <method name="update" signature="GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request" line-rate="0" branch-rate="0" complexity="3">
               <lines>
-                <line number="428" hits="0"/>
-                <line number="430" hits="0"/>
-                <line number="432" hits="0"/>
-                <line number="434" hits="0"/>
+                <line number="429" hits="0"/>
+                <line number="431" hits="0"/>
+                <line number="433" hits="0"/>
                 <line number="435" hits="0"/>
-                <line number="438" hits="0"/>
-                <line number="440" hits="0"/>
+                <line number="436" hits="0"/>
+                <line number="439" hits="0"/>
                 <line number="441" hits="0"/>
-                <line number="444" hits="0"/>
+                <line number="442" hits="0"/>
+                <line number="445" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -307,52 +307,51 @@
             <line number="174" hits="5"/>
             <line number="175" hits="1"/>
             <line number="178" hits="4"/>
-            <line number="190" hits="0"/>
-            <line number="192" hits="0"/>
-            <line number="194" hits="0"/>
-            <line number="196" hits="0"/>
-            <line number="198" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="205" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="209" hits="0"/>
-            <line number="211" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="215" hits="0"/>
-            <line number="226" hits="0"/>
-            <line number="228" hits="0"/>
-            <line number="230" hits="0"/>
-            <line number="232" hits="0"/>
-            <line number="234" hits="0"/>
+            <line number="190" hits="5"/>
+            <line number="192" hits="5"/>
+            <line number="194" hits="5"/>
+            <line number="196" hits="5"/>
+            <line number="198" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
+            <line number="227" hits="0"/>
+            <line number="229" hits="0"/>
+            <line number="231" hits="0"/>
+            <line number="233" hits="0"/>
             <line number="235" hits="0"/>
-            <line number="237" hits="0"/>
+            <line number="236" hits="0"/>
             <line number="238" hits="0"/>
             <line number="239" hits="0"/>
             <line number="240" hits="0"/>
-            <line number="242" hits="0"/>
+            <line number="241" hits="0"/>
             <line number="243" hits="0"/>
             <line number="244" hits="0"/>
             <line number="245" hits="0"/>
-            <line number="247" hits="0"/>
+            <line number="246" hits="0"/>
             <line number="248" hits="0"/>
             <line number="249" hits="0"/>
             <line number="250" hits="0"/>
-            <line number="252" hits="0"/>
+            <line number="251" hits="0"/>
             <line number="253" hits="0"/>
             <line number="254" hits="0"/>
             <line number="255" hits="0"/>
-            <line number="258" hits="0"/>
-            <line number="260" hits="0"/>
-            <line number="262" hits="0"/>
+            <line number="256" hits="0"/>
+            <line number="259" hits="0"/>
+            <line number="261" hits="0"/>
             <line number="263" hits="0"/>
             <line number="264" hits="0"/>
             <line number="265" hits="0"/>
             <line number="266" hits="0"/>
-            <line number="269" hits="0"/>
+            <line number="267" hits="0"/>
             <line number="270" hits="0"/>
             <line number="271" hits="0"/>
             <line number="272" hits="0"/>
@@ -364,80 +363,81 @@
             <line number="278" hits="0"/>
             <line number="279" hits="0"/>
             <line number="280" hits="0"/>
-            <line number="282" hits="0"/>
+            <line number="281" hits="0"/>
             <line number="283" hits="0"/>
             <line number="284" hits="0"/>
             <line number="285" hits="0"/>
-            <line number="287" hits="0"/>
+            <line number="286" hits="0"/>
             <line number="288" hits="0"/>
             <line number="289" hits="0"/>
             <line number="290" hits="0"/>
-            <line number="302" hits="0"/>
-            <line number="304" hits="0"/>
-            <line number="306" hits="0"/>
-            <line number="308" hits="0"/>
+            <line number="291" hits="0"/>
+            <line number="303" hits="0"/>
+            <line number="305" hits="0"/>
+            <line number="307" hits="0"/>
             <line number="309" hits="0"/>
-            <line number="312" hits="0"/>
-            <line number="314" hits="0"/>
+            <line number="310" hits="0"/>
+            <line number="313" hits="0"/>
             <line number="315" hits="0"/>
-            <line number="318" hits="0"/>
-            <line number="330" hits="0"/>
-            <line number="332" hits="0"/>
-            <line number="334" hits="0"/>
+            <line number="316" hits="0"/>
+            <line number="319" hits="0"/>
+            <line number="331" hits="0"/>
+            <line number="333" hits="0"/>
             <line number="335" hits="0"/>
             <line number="336" hits="0"/>
             <line number="337" hits="0"/>
             <line number="338" hits="0"/>
             <line number="339" hits="0"/>
             <line number="340" hits="0"/>
-            <line number="342" hits="0"/>
+            <line number="341" hits="0"/>
             <line number="343" hits="0"/>
-            <line number="346" hits="0"/>
+            <line number="344" hits="0"/>
             <line number="347" hits="0"/>
-            <line number="349" hits="0"/>
+            <line number="348" hits="0"/>
             <line number="350" hits="0"/>
             <line number="351" hits="0"/>
             <line number="352" hits="0"/>
-            <line number="354" hits="0"/>
+            <line number="353" hits="0"/>
             <line number="355" hits="0"/>
             <line number="356" hits="0"/>
             <line number="357" hits="0"/>
-            <line number="368" hits="0"/>
-            <line number="370" hits="0"/>
-            <line number="372" hits="0"/>
-            <line number="374" hits="0"/>
-            <line number="376" hits="0"/>
+            <line number="358" hits="0"/>
+            <line number="369" hits="0"/>
+            <line number="371" hits="0"/>
+            <line number="373" hits="0"/>
+            <line number="375" hits="0"/>
             <line number="377" hits="0"/>
-            <line number="380" hits="0"/>
-            <line number="382" hits="0"/>
+            <line number="378" hits="0"/>
+            <line number="381" hits="0"/>
             <line number="383" hits="0"/>
-            <line number="386" hits="0"/>
-            <line number="398" hits="0"/>
-            <line number="400" hits="0"/>
-            <line number="402" hits="0"/>
-            <line number="404" hits="0"/>
-            <line number="406" hits="0"/>
+            <line number="384" hits="0"/>
+            <line number="387" hits="0"/>
+            <line number="399" hits="0"/>
+            <line number="401" hits="0"/>
+            <line number="403" hits="0"/>
+            <line number="405" hits="0"/>
             <line number="407" hits="0"/>
-            <line number="410" hits="0"/>
-            <line number="412" hits="0"/>
+            <line number="408" hits="0"/>
+            <line number="411" hits="0"/>
             <line number="413" hits="0"/>
-            <line number="416" hits="0"/>
-            <line number="428" hits="0"/>
-            <line number="430" hits="0"/>
-            <line number="432" hits="0"/>
-            <line number="434" hits="0"/>
+            <line number="414" hits="0"/>
+            <line number="417" hits="0"/>
+            <line number="429" hits="0"/>
+            <line number="431" hits="0"/>
+            <line number="433" hits="0"/>
             <line number="435" hits="0"/>
-            <line number="438" hits="0"/>
-            <line number="440" hits="0"/>
+            <line number="436" hits="0"/>
+            <line number="439" hits="0"/>
             <line number="441" hits="0"/>
-            <line number="444" hits="0"/>
+            <line number="442" hits="0"/>
+            <line number="445" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/BoardController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/BoardController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController" filename="Http/Controllers/BoardController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController" filename="Http/Controllers/BoardController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -517,24 +517,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -737,22 +737,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -865,9 +865,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/EpicController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/EpicController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController" filename="Http/Controllers/EpicController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController" filename="Http/Controllers/EpicController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -947,24 +947,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -1167,22 +1167,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -1295,9 +1295,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/FlowController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/FlowController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController" filename="Http/Controllers/FlowController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController" filename="Http/Controllers/FlowController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -1377,24 +1377,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -1597,22 +1597,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -1741,9 +1741,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/MilestoneController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/MilestoneController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController" filename="Http/Controllers/MilestoneController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController" filename="Http/Controllers/MilestoneController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -1823,24 +1823,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -2043,22 +2043,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -2171,9 +2171,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/NoteController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/NoteController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController" filename="Http/Controllers/NoteController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController" filename="Http/Controllers/NoteController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -2253,24 +2253,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -2473,22 +2473,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -2601,9 +2601,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/ProjectController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/ProjectController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController" filename="Http/Controllers/ProjectController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController" filename="Http/Controllers/ProjectController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -2683,24 +2683,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -2903,22 +2903,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -3031,9 +3031,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/ReleaseController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/ReleaseController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController" filename="Http/Controllers/ReleaseController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController" filename="Http/Controllers/ReleaseController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -3113,24 +3113,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -3333,22 +3333,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -3461,9 +3461,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/RoadmapController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/RoadmapController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController" filename="Http/Controllers/RoadmapController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController" filename="Http/Controllers/RoadmapController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -3543,24 +3543,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -3763,22 +3763,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -3891,9 +3891,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/SourceController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/SourceController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController" filename="Http/Controllers/SourceController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController" filename="Http/Controllers/SourceController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -3973,24 +3973,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -4193,22 +4193,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -4321,9 +4321,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/SprintController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/SprintController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController" filename="Http/Controllers/SprintController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController" filename="Http/Controllers/SprintController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -4403,24 +4403,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -4623,22 +4623,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -4751,9 +4751,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/TagController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/TagController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController" filename="Http/Controllers/TagController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController" filename="Http/Controllers/TagController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -4833,24 +4833,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -5053,22 +5053,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -5181,9 +5181,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/TeamController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/TeamController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController" filename="Http/Controllers/TeamController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController" filename="Http/Controllers/TeamController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -5263,24 +5263,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -5483,22 +5483,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -5611,9 +5611,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/TicketController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/TicketController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController" filename="Http/Controllers/TicketController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController" filename="Http/Controllers/TicketController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -5693,24 +5693,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -5913,22 +5913,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -6041,9 +6041,9 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/VersionController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+    <package name="Http/Controllers/VersionController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController" filename="Http/Controllers/VersionController.php" line-rate="0.34736842105263" branch-rate="0" complexity="32">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController" filename="Http/Controllers/VersionController.php" line-rate="0.43157894736842" branch-rate="0" complexity="32">
           <methods>
             <method name="create" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\CreateRequest $request" line-rate="1" branch-rate="0" complexity="4">
               <lines>
@@ -6123,24 +6123,24 @@
                 <line number="179" hits="4"/>
               </lines>
             </method>
-            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request" line-rate="0" branch-rate="0" complexity="3">
+            <method name="lock" signature="GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="191" hits="0"/>
-                <line number="193" hits="0"/>
-                <line number="195" hits="0"/>
-                <line number="197" hits="0"/>
-                <line number="199" hits="0"/>
-                <line number="200" hits="0"/>
-                <line number="201" hits="0"/>
-                <line number="202" hits="0"/>
-                <line number="203" hits="0"/>
-                <line number="204" hits="0"/>
-                <line number="206" hits="0"/>
-                <line number="207" hits="0"/>
-                <line number="210" hits="0"/>
-                <line number="212" hits="0"/>
-                <line number="213" hits="0"/>
-                <line number="216" hits="0"/>
+                <line number="191" hits="5"/>
+                <line number="193" hits="5"/>
+                <line number="195" hits="5"/>
+                <line number="197" hits="5"/>
+                <line number="199" hits="5"/>
+                <line number="200" hits="5"/>
+                <line number="201" hits="5"/>
+                <line number="202" hits="5"/>
+                <line number="203" hits="5"/>
+                <line number="204" hits="5"/>
+                <line number="206" hits="5"/>
+                <line number="207" hits="2"/>
+                <line number="210" hits="3"/>
+                <line number="212" hits="3"/>
+                <line number="213" hits="1"/>
+                <line number="216" hits="2"/>
               </lines>
             </method>
             <method name="index" signature="GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request" line-rate="0" branch-rate="0" complexity="4">
@@ -6343,22 +6343,22 @@
             <line number="175" hits="5"/>
             <line number="176" hits="1"/>
             <line number="179" hits="4"/>
-            <line number="191" hits="0"/>
-            <line number="193" hits="0"/>
-            <line number="195" hits="0"/>
-            <line number="197" hits="0"/>
-            <line number="199" hits="0"/>
-            <line number="200" hits="0"/>
-            <line number="201" hits="0"/>
-            <line number="202" hits="0"/>
-            <line number="203" hits="0"/>
-            <line number="204" hits="0"/>
-            <line number="206" hits="0"/>
-            <line number="207" hits="0"/>
-            <line number="210" hits="0"/>
-            <line number="212" hits="0"/>
-            <line number="213" hits="0"/>
-            <line number="216" hits="0"/>
+            <line number="191" hits="5"/>
+            <line number="193" hits="5"/>
+            <line number="195" hits="5"/>
+            <line number="197" hits="5"/>
+            <line number="199" hits="5"/>
+            <line number="200" hits="5"/>
+            <line number="201" hits="5"/>
+            <line number="202" hits="5"/>
+            <line number="203" hits="5"/>
+            <line number="204" hits="5"/>
+            <line number="206" hits="5"/>
+            <line number="207" hits="2"/>
+            <line number="210" hits="3"/>
+            <line number="212" hits="3"/>
+            <line number="213" hits="1"/>
+            <line number="216" hits="2"/>
             <line number="227" hits="0"/>
             <line number="229" hits="0"/>
             <line number="231" hits="0"/>
@@ -7373,16 +7373,16 @@
           <methods>
             <method name="authorize" signature="" line-rate="0.75" branch-rate="0" complexity="2">
               <lines>
-                <line number="24" hits="180"/>
-                <line number="26" hits="180"/>
+                <line number="24" hits="255"/>
+                <line number="26" hits="255"/>
                 <line number="27" hits="0"/>
-                <line number="30" hits="180"/>
+                <line number="30" hits="255"/>
               </lines>
             </method>
             <method name="rules" signature="" line-rate="1" branch-rate="0" complexity="2">
               <lines>
-                <line number="40" hits="180"/>
-                <line number="42" hits="180"/>
+                <line number="40" hits="255"/>
+                <line number="42" hits="255"/>
               </lines>
             </method>
             <method name="userHasAdminPrivileges" signature="Illuminate\Contracts\Auth\Authenticatable $user" line-rate="1" branch-rate="0" complexity="3">
@@ -7397,12 +7397,12 @@
             </method>
           </methods>
           <lines>
-            <line number="24" hits="180"/>
-            <line number="26" hits="180"/>
+            <line number="24" hits="255"/>
+            <line number="26" hits="255"/>
             <line number="27" hits="0"/>
-            <line number="30" hits="180"/>
-            <line number="40" hits="180"/>
-            <line number="42" hits="180"/>
+            <line number="30" hits="255"/>
+            <line number="40" hits="255"/>
+            <line number="42" hits="255"/>
             <line number="47" hits="90"/>
             <line number="48" hits="90"/>
             <line number="49" hits="90"/>
@@ -10043,34 +10043,40 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Backlog.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Backlog.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog" filename="Http/Resources/Backlog.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog" filename="Http/Resources/Backlog.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10097,6 +10103,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10113,38 +10121,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Board.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Board.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board" filename="Http/Resources/Board.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board" filename="Http/Resources/Board.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10171,6 +10187,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10187,38 +10205,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Epic.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Epic.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic" filename="Http/Resources/Epic.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic" filename="Http/Resources/Epic.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10245,6 +10271,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10261,38 +10289,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Flow.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Flow.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow" filename="Http/Resources/Flow.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow" filename="Http/Resources/Flow.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10319,6 +10355,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10335,38 +10373,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Milestone.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Milestone.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone" filename="Http/Resources/Milestone.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone" filename="Http/Resources/Milestone.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10393,6 +10439,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10409,38 +10457,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Note.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Note.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note" filename="Http/Resources/Note.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note" filename="Http/Resources/Note.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10467,6 +10523,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10483,38 +10541,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Project.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Project.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project" filename="Http/Resources/Project.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project" filename="Http/Resources/Project.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10541,6 +10607,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10557,38 +10625,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Release.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Release.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release" filename="Http/Resources/Release.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release" filename="Http/Resources/Release.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10615,6 +10691,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10631,38 +10709,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Roadmap.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Roadmap.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap" filename="Http/Resources/Roadmap.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap" filename="Http/Resources/Roadmap.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10689,6 +10775,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10705,38 +10793,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Source.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Source.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source" filename="Http/Resources/Source.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source" filename="Http/Resources/Source.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10763,6 +10859,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10779,38 +10877,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Sprint.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Sprint.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint" filename="Http/Resources/Sprint.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint" filename="Http/Resources/Sprint.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10837,6 +10943,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10853,38 +10961,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Tag.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Tag.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag" filename="Http/Resources/Tag.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag" filename="Http/Resources/Tag.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10911,6 +11027,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -10927,38 +11045,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Team.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Team.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team" filename="Http/Resources/Team.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team" filename="Http/Resources/Team.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -10985,6 +11111,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -11001,38 +11129,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Ticket.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Ticket.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket" filename="Http/Resources/Ticket.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket" filename="Http/Resources/Ticket.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -11059,6 +11195,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -11075,38 +11213,46 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
     </package>
-    <package name="Http/Resources/Version.php" line-rate="0" branch-rate="0" complexity="2">
+    <package name="Http/Resources/Version.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version" filename="Http/Resources/Version.php" line-rate="0" branch-rate="0" complexity="2">
+        <class name="GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version" filename="Http/Resources/Version.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="toArray" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="18" hits="0"/>
+                <line number="18" hits="2"/>
               </lines>
             </method>
-            <method name="with" signature="Illuminate\Http\Request $request" line-rate="0" branch-rate="0" complexity="1">
+            <method name="with" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="28" hits="0"/>
-                <line number="29" hits="0"/>
-                <line number="30" hits="0"/>
-                <line number="31" hits="0"/>
-                <line number="32" hits="0"/>
-                <line number="33" hits="0"/>
+                <line number="28" hits="2"/>
+                <line number="29" hits="2"/>
+                <line number="30" hits="2"/>
+                <line number="31" hits="2"/>
+                <line number="32" hits="2"/>
+                <line number="33" hits="2"/>
+                <line number="34" hits="2"/>
+                <line number="35" hits="2"/>
+                <line number="36" hits="2"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="18" hits="0"/>
-            <line number="28" hits="0"/>
-            <line number="29" hits="0"/>
-            <line number="30" hits="0"/>
-            <line number="31" hits="0"/>
-            <line number="32" hits="0"/>
-            <line number="33" hits="0"/>
+            <line number="18" hits="2"/>
+            <line number="28" hits="2"/>
+            <line number="29" hits="2"/>
+            <line number="30" hits="2"/>
+            <line number="31" hits="2"/>
+            <line number="32" hits="2"/>
+            <line number="33" hits="2"/>
+            <line number="34" hits="2"/>
+            <line number="35" hits="2"/>
+            <line number="36" hits="2"/>
           </lines>
         </class>
       </classes>
@@ -11133,6 +11279,8 @@
                 <line number="36" hits="0"/>
                 <line number="37" hits="0"/>
                 <line number="38" hits="0"/>
+                <line number="39" hits="0"/>
+                <line number="40" hits="0"/>
               </lines>
             </method>
           </methods>
@@ -11149,6 +11297,8 @@
             <line number="36" hits="0"/>
             <line number="37" hits="0"/>
             <line number="38" hits="0"/>
+            <line number="39" hits="0"/>
+            <line number="40" hits="0"/>
           </lines>
         </class>
       </classes>
@@ -11279,180 +11429,180 @@
           <methods>
             <method name="boot" signature="" line-rate="1" branch-rate="0" complexity="6">
               <lines>
-                <line number="54" hits="246"/>
-                <line number="56" hits="246"/>
-                <line number="63" hits="246"/>
-                <line number="64" hits="246"/>
-                <line number="65" hits="246"/>
-                <line number="68" hits="246"/>
-                <line number="69" hits="246"/>
-                <line number="72" hits="246"/>
-                <line number="73" hits="246"/>
-                <line number="74" hits="246"/>
-                <line number="75" hits="246"/>
-                <line number="76" hits="246"/>
-                <line number="79" hits="246"/>
-                <line number="81" hits="246"/>
-                <line number="82" hits="246"/>
-                <line number="83" hits="246"/>
-                <line number="84" hits="246"/>
-                <line number="87" hits="246"/>
-                <line number="88" hits="246"/>
-                <line number="89" hits="246"/>
-                <line number="90" hits="246"/>
-                <line number="94" hits="246"/>
+                <line number="54" hits="351"/>
+                <line number="56" hits="351"/>
+                <line number="63" hits="351"/>
+                <line number="64" hits="351"/>
+                <line number="65" hits="351"/>
+                <line number="68" hits="351"/>
+                <line number="69" hits="351"/>
+                <line number="72" hits="351"/>
+                <line number="73" hits="351"/>
+                <line number="74" hits="351"/>
+                <line number="75" hits="351"/>
+                <line number="76" hits="351"/>
+                <line number="79" hits="351"/>
+                <line number="81" hits="351"/>
+                <line number="82" hits="351"/>
+                <line number="83" hits="351"/>
+                <line number="84" hits="351"/>
+                <line number="87" hits="351"/>
+                <line number="88" hits="351"/>
+                <line number="89" hits="351"/>
+                <line number="90" hits="351"/>
+                <line number="94" hits="351"/>
               </lines>
             </method>
             <method name="register" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="104" hits="246"/>
-                <line number="105" hits="246"/>
-                <line number="106" hits="246"/>
-                <line number="107" hits="246"/>
+                <line number="104" hits="351"/>
+                <line number="105" hits="351"/>
+                <line number="106" hits="351"/>
+                <line number="107" hits="351"/>
               </lines>
             </method>
             <method name="routes" signature="array $config" line-rate="1" branch-rate="0" complexity="17">
               <lines>
-                <line number="112" hits="246"/>
-                <line number="113" hits="246"/>
-                <line number="115" hits="246"/>
-                <line number="116" hits="246"/>
-                <line number="118" hits="246"/>
-                <line number="119" hits="246"/>
-                <line number="121" hits="246"/>
-                <line number="122" hits="246"/>
-                <line number="124" hits="246"/>
-                <line number="125" hits="246"/>
-                <line number="127" hits="246"/>
-                <line number="128" hits="246"/>
-                <line number="130" hits="246"/>
-                <line number="131" hits="246"/>
-                <line number="133" hits="246"/>
-                <line number="134" hits="246"/>
-                <line number="136" hits="246"/>
-                <line number="137" hits="246"/>
-                <line number="139" hits="246"/>
-                <line number="140" hits="246"/>
-                <line number="142" hits="246"/>
-                <line number="143" hits="246"/>
-                <line number="145" hits="246"/>
-                <line number="146" hits="246"/>
-                <line number="148" hits="246"/>
-                <line number="149" hits="246"/>
-                <line number="151" hits="246"/>
-                <line number="152" hits="246"/>
-                <line number="154" hits="246"/>
-                <line number="155" hits="246"/>
-                <line number="157" hits="246"/>
-                <line number="158" hits="246"/>
+                <line number="112" hits="351"/>
+                <line number="113" hits="351"/>
+                <line number="115" hits="351"/>
+                <line number="116" hits="351"/>
+                <line number="118" hits="351"/>
+                <line number="119" hits="351"/>
+                <line number="121" hits="351"/>
+                <line number="122" hits="351"/>
+                <line number="124" hits="351"/>
+                <line number="125" hits="351"/>
+                <line number="127" hits="351"/>
+                <line number="128" hits="351"/>
+                <line number="130" hits="351"/>
+                <line number="131" hits="351"/>
+                <line number="133" hits="351"/>
+                <line number="134" hits="351"/>
+                <line number="136" hits="351"/>
+                <line number="137" hits="351"/>
+                <line number="139" hits="351"/>
+                <line number="140" hits="351"/>
+                <line number="142" hits="351"/>
+                <line number="143" hits="351"/>
+                <line number="145" hits="351"/>
+                <line number="146" hits="351"/>
+                <line number="148" hits="351"/>
+                <line number="149" hits="351"/>
+                <line number="151" hits="351"/>
+                <line number="152" hits="351"/>
+                <line number="154" hits="351"/>
+                <line number="155" hits="351"/>
+                <line number="157" hits="351"/>
+                <line number="158" hits="351"/>
               </lines>
             </method>
             <method name="about" signature="" line-rate="1" branch-rate="0" complexity="8">
               <lines>
-                <line number="164" hits="246"/>
-                <line number="166" hits="246"/>
-                <line number="168" hits="246"/>
-                <line number="170" hits="246"/>
-                <line number="171" hits="246"/>
-                <line number="172" hits="246"/>
-                <line number="173" hits="246"/>
-                <line number="175" hits="246"/>
-                <line number="176" hits="246"/>
-                <line number="178" hits="246"/>
-                <line number="179" hits="246"/>
-                <line number="180" hits="246"/>
-                <line number="181" hits="246"/>
-                <line number="183" hits="246"/>
-                <line number="184" hits="246"/>
-                <line number="186" hits="246"/>
-                <line number="187" hits="246"/>
-                <line number="188" hits="246"/>
+                <line number="164" hits="351"/>
+                <line number="166" hits="351"/>
+                <line number="168" hits="351"/>
+                <line number="170" hits="351"/>
+                <line number="171" hits="351"/>
+                <line number="172" hits="351"/>
+                <line number="173" hits="351"/>
+                <line number="175" hits="351"/>
+                <line number="176" hits="351"/>
+                <line number="178" hits="351"/>
+                <line number="179" hits="351"/>
+                <line number="180" hits="351"/>
+                <line number="181" hits="351"/>
+                <line number="183" hits="351"/>
+                <line number="184" hits="351"/>
+                <line number="186" hits="351"/>
+                <line number="187" hits="351"/>
+                <line number="188" hits="351"/>
               </lines>
             </method>
             <method name="version" signature="" line-rate="1" branch-rate="0" complexity="1">
               <lines>
-                <line number="193" hits="246"/>
+                <line number="193" hits="351"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="54" hits="246"/>
-            <line number="56" hits="246"/>
-            <line number="63" hits="246"/>
-            <line number="64" hits="246"/>
-            <line number="65" hits="246"/>
-            <line number="68" hits="246"/>
-            <line number="69" hits="246"/>
-            <line number="72" hits="246"/>
-            <line number="73" hits="246"/>
-            <line number="74" hits="246"/>
-            <line number="75" hits="246"/>
-            <line number="76" hits="246"/>
-            <line number="79" hits="246"/>
-            <line number="81" hits="246"/>
-            <line number="82" hits="246"/>
-            <line number="83" hits="246"/>
-            <line number="84" hits="246"/>
-            <line number="87" hits="246"/>
-            <line number="88" hits="246"/>
-            <line number="89" hits="246"/>
-            <line number="90" hits="246"/>
-            <line number="94" hits="246"/>
-            <line number="104" hits="246"/>
-            <line number="105" hits="246"/>
-            <line number="106" hits="246"/>
-            <line number="107" hits="246"/>
-            <line number="112" hits="246"/>
-            <line number="113" hits="246"/>
-            <line number="115" hits="246"/>
-            <line number="116" hits="246"/>
-            <line number="118" hits="246"/>
-            <line number="119" hits="246"/>
-            <line number="121" hits="246"/>
-            <line number="122" hits="246"/>
-            <line number="124" hits="246"/>
-            <line number="125" hits="246"/>
-            <line number="127" hits="246"/>
-            <line number="128" hits="246"/>
-            <line number="130" hits="246"/>
-            <line number="131" hits="246"/>
-            <line number="133" hits="246"/>
-            <line number="134" hits="246"/>
-            <line number="136" hits="246"/>
-            <line number="137" hits="246"/>
-            <line number="139" hits="246"/>
-            <line number="140" hits="246"/>
-            <line number="142" hits="246"/>
-            <line number="143" hits="246"/>
-            <line number="145" hits="246"/>
-            <line number="146" hits="246"/>
-            <line number="148" hits="246"/>
-            <line number="149" hits="246"/>
-            <line number="151" hits="246"/>
-            <line number="152" hits="246"/>
-            <line number="154" hits="246"/>
-            <line number="155" hits="246"/>
-            <line number="157" hits="246"/>
-            <line number="158" hits="246"/>
-            <line number="164" hits="246"/>
-            <line number="166" hits="246"/>
-            <line number="168" hits="246"/>
-            <line number="170" hits="246"/>
-            <line number="171" hits="246"/>
-            <line number="172" hits="246"/>
-            <line number="173" hits="246"/>
-            <line number="175" hits="246"/>
-            <line number="176" hits="246"/>
-            <line number="178" hits="246"/>
-            <line number="179" hits="246"/>
-            <line number="180" hits="246"/>
-            <line number="181" hits="246"/>
-            <line number="183" hits="246"/>
-            <line number="184" hits="246"/>
-            <line number="186" hits="246"/>
-            <line number="187" hits="246"/>
-            <line number="188" hits="246"/>
-            <line number="193" hits="246"/>
+            <line number="54" hits="351"/>
+            <line number="56" hits="351"/>
+            <line number="63" hits="351"/>
+            <line number="64" hits="351"/>
+            <line number="65" hits="351"/>
+            <line number="68" hits="351"/>
+            <line number="69" hits="351"/>
+            <line number="72" hits="351"/>
+            <line number="73" hits="351"/>
+            <line number="74" hits="351"/>
+            <line number="75" hits="351"/>
+            <line number="76" hits="351"/>
+            <line number="79" hits="351"/>
+            <line number="81" hits="351"/>
+            <line number="82" hits="351"/>
+            <line number="83" hits="351"/>
+            <line number="84" hits="351"/>
+            <line number="87" hits="351"/>
+            <line number="88" hits="351"/>
+            <line number="89" hits="351"/>
+            <line number="90" hits="351"/>
+            <line number="94" hits="351"/>
+            <line number="104" hits="351"/>
+            <line number="105" hits="351"/>
+            <line number="106" hits="351"/>
+            <line number="107" hits="351"/>
+            <line number="112" hits="351"/>
+            <line number="113" hits="351"/>
+            <line number="115" hits="351"/>
+            <line number="116" hits="351"/>
+            <line number="118" hits="351"/>
+            <line number="119" hits="351"/>
+            <line number="121" hits="351"/>
+            <line number="122" hits="351"/>
+            <line number="124" hits="351"/>
+            <line number="125" hits="351"/>
+            <line number="127" hits="351"/>
+            <line number="128" hits="351"/>
+            <line number="130" hits="351"/>
+            <line number="131" hits="351"/>
+            <line number="133" hits="351"/>
+            <line number="134" hits="351"/>
+            <line number="136" hits="351"/>
+            <line number="137" hits="351"/>
+            <line number="139" hits="351"/>
+            <line number="140" hits="351"/>
+            <line number="142" hits="351"/>
+            <line number="143" hits="351"/>
+            <line number="145" hits="351"/>
+            <line number="146" hits="351"/>
+            <line number="148" hits="351"/>
+            <line number="149" hits="351"/>
+            <line number="151" hits="351"/>
+            <line number="152" hits="351"/>
+            <line number="154" hits="351"/>
+            <line number="155" hits="351"/>
+            <line number="157" hits="351"/>
+            <line number="158" hits="351"/>
+            <line number="164" hits="351"/>
+            <line number="166" hits="351"/>
+            <line number="168" hits="351"/>
+            <line number="170" hits="351"/>
+            <line number="171" hits="351"/>
+            <line number="172" hits="351"/>
+            <line number="173" hits="351"/>
+            <line number="175" hits="351"/>
+            <line number="176" hits="351"/>
+            <line number="178" hits="351"/>
+            <line number="179" hits="351"/>
+            <line number="180" hits="351"/>
+            <line number="181" hits="351"/>
+            <line number="183" hits="351"/>
+            <line number="184" hits="351"/>
+            <line number="186" hits="351"/>
+            <line number="187" hits="351"/>
+            <line number="188" hits="351"/>
+            <line number="193" hits="351"/>
           </lines>
         </class>
       </classes>
@@ -11463,54 +11613,54 @@
           <methods>
             <method name="setPolicyNamespace" signature="array $config" line-rate="1" branch-rate="0" complexity="3">
               <lines>
-                <line number="24" hits="246"/>
-                <line number="25" hits="246"/>
+                <line number="24" hits="351"/>
+                <line number="25" hits="351"/>
                 <line number="29" hits="1"/>
-                <line number="32" hits="246"/>
+                <line number="32" hits="351"/>
               </lines>
             </method>
             <method name="registerPolicies_getRegister" signature="string $policy" line-rate="1" branch-rate="0" complexity="2">
               <lines>
-                <line number="37" hits="246"/>
-                <line number="39" hits="246"/>
+                <line number="37" hits="351"/>
+                <line number="39" hits="351"/>
                 <line number="41" hits="1"/>
                 <line number="42" hits="1"/>
                 <line number="43" hits="1"/>
                 <line number="44" hits="1"/>
                 <line number="45" hits="1"/>
-                <line number="48" hits="246"/>
+                <line number="48" hits="351"/>
               </lines>
             </method>
             <method name="registerPolicies" signature="" line-rate="1" branch-rate="0" complexity="5">
               <lines>
-                <line number="58" hits="246"/>
-                <line number="60" hits="246"/>
-                <line number="62" hits="246"/>
-                <line number="63" hits="246"/>
-                <line number="73" hits="246"/>
-                <line number="74" hits="246"/>
+                <line number="58" hits="351"/>
+                <line number="60" hits="351"/>
+                <line number="62" hits="351"/>
+                <line number="63" hits="351"/>
+                <line number="73" hits="351"/>
+                <line number="74" hits="351"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="24" hits="246"/>
-            <line number="25" hits="246"/>
+            <line number="24" hits="351"/>
+            <line number="25" hits="351"/>
             <line number="29" hits="1"/>
-            <line number="32" hits="246"/>
-            <line number="37" hits="246"/>
-            <line number="39" hits="246"/>
+            <line number="32" hits="351"/>
+            <line number="37" hits="351"/>
+            <line number="39" hits="351"/>
             <line number="41" hits="1"/>
             <line number="42" hits="1"/>
             <line number="43" hits="1"/>
             <line number="44" hits="1"/>
             <line number="45" hits="1"/>
-            <line number="48" hits="246"/>
-            <line number="58" hits="246"/>
-            <line number="60" hits="246"/>
-            <line number="62" hits="246"/>
-            <line number="63" hits="246"/>
-            <line number="73" hits="246"/>
-            <line number="74" hits="246"/>
+            <line number="48" hits="351"/>
+            <line number="58" hits="351"/>
+            <line number="60" hits="351"/>
+            <line number="62" hits="351"/>
+            <line number="63" hits="351"/>
+            <line number="73" hits="351"/>
+            <line number="74" hits="351"/>
           </lines>
         </class>
       </classes>

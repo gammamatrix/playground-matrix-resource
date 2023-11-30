@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2023-11-29 23:15:15</timestamp>
+  <timestamp>2023-11-30 06:14:21</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>316</methodCount>
     <crapMethodCount>36</crapMethodCount>
     <crapLoad>321</crapLoad>
-    <totalCrap>5329.06</totalCrap>
+    <totalCrap>5164.06</totalCrap>
     <crapMethodPercent>11.39</crapMethodPercent>
   </stats>
   <methods>
@@ -48,11 +48,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -70,8 +70,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -81,8 +81,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -92,8 +92,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -103,8 +103,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -114,8 +114,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -158,11 +158,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -180,8 +180,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -191,8 +191,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -202,8 +202,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -213,8 +213,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -224,8 +224,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -268,11 +268,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -290,8 +290,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -301,8 +301,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -312,8 +312,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -323,8 +323,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -334,8 +334,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -378,11 +378,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -400,8 +400,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -411,8 +411,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -422,8 +422,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -433,8 +433,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -444,8 +444,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -499,11 +499,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -521,8 +521,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -532,8 +532,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -543,8 +543,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -554,8 +554,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -565,8 +565,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -609,11 +609,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -631,8 +631,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -642,8 +642,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -653,8 +653,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -664,8 +664,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -675,8 +675,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -719,11 +719,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -741,8 +741,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -752,8 +752,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -763,8 +763,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -774,8 +774,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -785,8 +785,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -829,11 +829,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -851,8 +851,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -862,8 +862,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -873,8 +873,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -884,8 +884,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -895,8 +895,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -939,11 +939,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -961,8 +961,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -972,8 +972,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -983,8 +983,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -994,8 +994,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1005,8 +1005,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1049,11 +1049,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1071,8 +1071,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1082,8 +1082,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1093,8 +1093,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1104,8 +1104,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1115,8 +1115,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1159,11 +1159,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1181,8 +1181,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1192,8 +1192,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1203,8 +1203,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1214,8 +1214,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1225,8 +1225,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1269,11 +1269,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1291,8 +1291,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1302,8 +1302,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1313,8 +1313,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1324,8 +1324,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1335,8 +1335,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1379,11 +1379,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1401,8 +1401,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1412,8 +1412,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1423,8 +1423,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1434,8 +1434,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1445,8 +1445,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1489,11 +1489,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1511,8 +1511,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1522,8 +1522,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1533,8 +1533,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1544,8 +1544,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1555,8 +1555,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1599,11 +1599,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>lock</methodName>
-      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>12</crap>
+      <methodSignature>lock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>lock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1621,8 +1621,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>restore</methodName>
-      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1632,8 +1632,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>show</methodName>
-      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>6</crap>
       <complexity>2</complexity>
       <coverage>0</coverage>
@@ -1643,8 +1643,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>store</methodName>
-      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>store(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1654,8 +1654,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>unlock</methodName>
-      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -1665,8 +1665,8 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>update</methodName>
-      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</methodSignature>
-      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse</fullMethod>
+      <methodSignature>update(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>update(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -2745,9 +2745,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2756,9 +2756,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2789,9 +2789,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2800,9 +2800,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2833,9 +2833,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2844,9 +2844,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2877,9 +2877,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2888,9 +2888,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2921,9 +2921,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2932,9 +2932,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2965,9 +2965,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2976,9 +2976,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3009,9 +3009,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3020,9 +3020,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3053,9 +3053,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3064,9 +3064,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3097,9 +3097,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3108,9 +3108,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3141,9 +3141,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3152,9 +3152,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3185,9 +3185,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3196,9 +3196,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3229,9 +3229,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3240,9 +3240,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3273,9 +3273,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3284,9 +3284,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3317,9 +3317,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3328,9 +3328,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3361,9 +3361,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3372,9 +3372,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
