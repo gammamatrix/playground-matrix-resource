@@ -261,10 +261,7 @@ class VersionController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new VersionCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user?->id,
-                'validated'       => $validated,
-            ]]);
+            return (new VersionCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -378,7 +375,7 @@ class VersionController extends Controller
             return (new VersionResource($version))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -408,7 +405,7 @@ class VersionController extends Controller
             return (new VersionResource($version))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -436,7 +433,7 @@ class VersionController extends Controller
             return (new VersionResource($version))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);

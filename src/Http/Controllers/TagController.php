@@ -223,7 +223,7 @@ class TagController extends Controller
      */
     public function index(
         IndexRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|TagCollection {
         $user = $request->user();
 
         $validated = $request->validated();
@@ -261,10 +261,7 @@ class TagController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new TagCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user?->id,
-                'validated'       => $validated,
-            ]]);
+            return (new TagCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -341,7 +338,7 @@ class TagController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return new TagResource($tag);
+            return (new TagResource($tag))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -378,7 +375,7 @@ class TagController extends Controller
             return (new TagResource($tag))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -408,7 +405,7 @@ class TagController extends Controller
             return (new TagResource($tag))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -436,7 +433,7 @@ class TagController extends Controller
             return (new TagResource($tag))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
