@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2023-11-30 06:19:54</timestamp>
+  <timestamp>2023-12-01 05:22:54</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>316</methodCount>
-    <crapMethodCount>36</crapMethodCount>
-    <crapLoad>321</crapLoad>
-    <totalCrap>5164.06</totalCrap>
-    <crapMethodPercent>11.39</crapMethodPercent>
+    <crapMethodCount>34</crapMethodCount>
+    <crapLoad>299</crapLoad>
+    <totalCrap>4166.19</totalCrap>
+    <crapMethodPercent>10.76</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -59,11 +59,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\BacklogCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\BacklogCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -72,9 +72,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -83,9 +83,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -105,9 +105,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Backlog $backlog, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -169,11 +169,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\BoardCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\BoardCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -182,9 +182,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -193,9 +193,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -215,9 +215,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Board $board, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -279,11 +279,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\EpicCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\EpicCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -292,9 +292,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -303,9 +303,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -325,9 +325,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Epic $epic, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -389,11 +389,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\FlowCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\FlowCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -402,9 +402,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -413,9 +413,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -435,9 +435,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Flow $flow, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -510,11 +510,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\MilestoneCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\MilestoneCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -523,9 +523,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -534,9 +534,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -556,9 +556,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Milestone $milestone, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -620,11 +620,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\NoteCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\NoteCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -633,9 +633,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -644,9 +644,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -666,9 +666,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Note $note, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -730,11 +730,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\ProjectCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\ProjectCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -743,9 +743,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -754,9 +754,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -776,9 +776,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Project $project, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -840,11 +840,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\ReleaseCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\ReleaseCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -853,9 +853,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -864,9 +864,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -886,9 +886,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Release $release, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -950,11 +950,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\RoadmapCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\RoadmapCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -963,9 +963,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -974,9 +974,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -996,9 +996,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Roadmap $roadmap, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1060,11 +1060,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\SourceCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\SourceCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1073,9 +1073,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1084,9 +1084,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1106,9 +1106,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Source $source, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1170,11 +1170,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\SprintCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\SprintCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1183,9 +1183,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1194,9 +1194,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1216,9 +1216,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Sprint $sprint, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1280,11 +1280,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TagCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TagCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1293,9 +1293,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1304,9 +1304,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1326,9 +1326,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Tag $tag, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1390,11 +1390,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TeamCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TeamCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1403,9 +1403,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1414,9 +1414,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1436,9 +1436,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Team $team, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1500,11 +1500,11 @@
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Controllers</package>
       <className>GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>index</methodName>
-      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TicketCollection</methodSignature>
+      <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\TicketCollection</fullMethod>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1513,9 +1513,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1524,9 +1524,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1546,9 +1546,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Ticket $ticket, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1612,9 +1612,9 @@
       <methodName>index</methodName>
       <methodSignature>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
       <fullMethod>index(GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
-      <crap>20</crap>
+      <crap>4.81</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>63.04</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1623,9 +1623,9 @@
       <methodName>restore</methodName>
       <methodSignature>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>restore(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1634,9 +1634,9 @@
       <methodName>show</methodName>
       <methodSignature>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>show(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1656,9 +1656,9 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>unlock(GammaMatrix\Playground\Matrix\Models\Version $version, GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1689,9 +1689,9 @@
       <methodName>rules</methodName>
       <methodSignature>rules(): array</methodSignature>
       <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1700,9 +1700,9 @@
       <methodName>rules_filters</methodName>
       <methodSignature>rules_filters(array $rules): void</methodSignature>
       <fullMethod>rules_filters(array $rules): void</fullMethod>
-      <crap>30</crap>
+      <crap>5</crap>
       <complexity>5</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1711,9 +1711,9 @@
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1722,9 +1722,9 @@
       <methodName>passedValidation</methodName>
       <methodSignature>passedValidation()</methodSignature>
       <fullMethod>passedValidation()</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1733,9 +1733,9 @@
       <methodName>prepareForValidationPagination</methodName>
       <methodSignature>prepareForValidationPagination(): array</methodSignature>
       <fullMethod>prepareForValidationPagination(): array</fullMethod>
-      <crap>20</crap>
+      <crap>4</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2041,9 +2041,9 @@
       <methodName>getPaginationColumns</methodName>
       <methodSignature>getPaginationColumns(): array</methodSignature>
       <fullMethod>getPaginationColumns(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2052,10 +2052,10 @@
       <methodName>rules_filters_columns</methodName>
       <methodSignature>rules_filters_columns(array $rules): void</methodSignature>
       <fullMethod>rules_filters_columns(array $rules): void</fullMethod>
-      <crap>182</crap>
+      <crap>13.17</crap>
       <complexity>13</complexity>
-      <coverage>0</coverage>
-      <crapLoad>13</crapLoad>
+      <coverage>90</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Requests</package>
@@ -2096,9 +2096,9 @@
       <methodName>getPaginationDates</methodName>
       <methodSignature>getPaginationDates(): array</methodSignature>
       <fullMethod>getPaginationDates(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2107,9 +2107,9 @@
       <methodName>rules_filters_dates</methodName>
       <methodSignature>rules_filters_dates(array $rules): void</methodSignature>
       <fullMethod>rules_filters_dates(array $rules): void</fullMethod>
-      <crap>20</crap>
+      <crap>4.13</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>80</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2118,10 +2118,10 @@
       <methodName>prepareForValidationForDates</methodName>
       <methodSignature>prepareForValidationForDates(): ?array</methodSignature>
       <fullMethod>prepareForValidationForDates(): ?array</fullMethod>
-      <crap>420</crap>
+      <crap>331.48</crap>
       <complexity>20</complexity>
-      <coverage>0</coverage>
-      <crapLoad>20</crapLoad>
+      <coverage>8</coverage>
+      <crapLoad>19</crapLoad>
     </method>
     <method>
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Requests</package>
@@ -2129,9 +2129,9 @@
       <methodName>getPaginationFlags</methodName>
       <methodSignature>getPaginationFlags(): array</methodSignature>
       <fullMethod>getPaginationFlags(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2140,10 +2140,10 @@
       <methodName>rules_filters_flags</methodName>
       <methodSignature>rules_filters_flags(array $rules): void</methodSignature>
       <fullMethod>rules_filters_flags(array $rules): void</fullMethod>
-      <crap>56</crap>
+      <crap>7.05</crap>
       <complexity>7</complexity>
-      <coverage>0</coverage>
-      <crapLoad>7</crapLoad>
+      <coverage>90</coverage>
+      <crapLoad>0</crapLoad>
     </method>
     <method>
       <package>GammaMatrix\Playground\Matrix\Resource\Http\Requests</package>
@@ -2151,9 +2151,9 @@
       <methodName>getPaginationIds</methodName>
       <methodSignature>getPaginationIds(): array</methodSignature>
       <fullMethod>getPaginationIds(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2162,9 +2162,9 @@
       <methodName>rules_filters_ids</methodName>
       <methodSignature>rules_filters_ids(array $rules): void</methodSignature>
       <fullMethod>rules_filters_ids(array $rules): void</fullMethod>
-      <crap>20</crap>
+      <crap>4.13</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>80</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2184,9 +2184,9 @@
       <methodName>getSortable</methodName>
       <methodSignature>getSortable(): array</methodSignature>
       <fullMethod>getSortable(): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2206,9 +2206,9 @@
       <methodName>prepareForValidationSort</methodName>
       <methodSignature>prepareForValidationSort(): void</methodSignature>
       <fullMethod>prepareForValidationSort(): void</fullMethod>
-      <crap>20</crap>
+      <crap>5.02</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>60</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2767,9 +2767,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2778,9 +2778,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2811,9 +2811,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2822,9 +2822,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2855,9 +2855,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2866,9 +2866,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2899,9 +2899,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2910,9 +2910,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2943,9 +2943,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2954,9 +2954,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2987,9 +2987,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2998,9 +2998,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3031,9 +3031,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3042,9 +3042,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3075,9 +3075,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3086,9 +3086,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3119,9 +3119,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3130,9 +3130,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3163,9 +3163,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3174,9 +3174,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3207,9 +3207,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3218,9 +3218,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3251,9 +3251,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3262,9 +3262,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3295,9 +3295,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3306,9 +3306,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3339,9 +3339,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3350,9 +3350,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3383,9 +3383,9 @@
       <methodName>toArray</methodName>
       <methodSignature>toArray(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>toArray(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3394,9 +3394,9 @@
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
+      <crap>1</crap>
       <complexity>1</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>

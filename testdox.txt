@@ -3,24 +3,43 @@ Backlog Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Control
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Board Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardRoute)
@@ -28,24 +47,43 @@ Board Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controlle
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Create Request (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest)
@@ -56,24 +94,43 @@ Epic Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controller
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Flow Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowRoute)
@@ -81,24 +138,43 @@ Flow Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controller
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Milestone Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneRoute)
@@ -106,24 +182,43 @@ Milestone Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Contr
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Note Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteRoute)
@@ -131,24 +226,43 @@ Note Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controller
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Policy (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy\Policy)
@@ -159,24 +273,43 @@ Project Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Control
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Release Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseRoute)
@@ -184,24 +317,43 @@ Release Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Control
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Roadmap Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\RoadmapRoute)
@@ -209,24 +361,43 @@ Roadmap Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Control
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Source Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceRoute)
@@ -234,24 +405,43 @@ Source Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controll
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Sprint Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintRoute)
@@ -259,24 +449,43 @@ Sprint Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controll
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Tag Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagRoute)
@@ -284,24 +493,43 @@ Tag Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Team Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamRoute)
@@ -309,24 +537,43 @@ Team Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controller
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Ticket Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketRoute)
@@ -334,24 +581,43 @@ Ticket Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controll
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
 Trait (Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait\Trait)
@@ -365,23 +631,42 @@ Version Route (Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Control
  [x] Guest cannot render edit view
  [x] Guest cannot destroy
  [x] Guest cannot lock
+ [x] Guest cannot unlock
+ [x] Guest cannot render index view
+ [x] Guest cannot restore
+ [x] Guest cannot render show view
  [x] Create view rendered by user with return url
+ [x] Index view rendered by user
  [x] Edit view rendered by user with return url
+ [x] Show view rendered by user
+ [x] Index info with user using json
  [x] Create info with user using json
  [x] Destroy as standard user and succeed
  [x] Lock as standard user and succeed
+ [x] Show info with user using json
+ [x] Unlock as standard user and succeed
+ [x] Restore as standard user and succeed
  [x] Edit info with user using json
  [x] Create view rendered by user with invalid parameter
  [x] Edit view rendered by user with invalid parameter
  [x] Lock as standard user using json and succeed
  [x] Destroy as standard user and succeed with force delete
+ [x] Unlock as standard user using json and succeed
+ [x] Restore as standard user using json and succeed
  [x] Lock as standard user and succeed with redirect to index with sorted by locked desc
  [x] Destroy as standard user using json and succeed with no content
+ [x] Unlock as standard user and succeed with redirect to index with sorted by unlocked desc
+ [x] Restore as standard user and succeed with redirect to index with only trash
  [x] Destroy as standard user and succeed with redirect to index with trash
  [x] Lock with user role and get denied
+ [x] Unlock with user role and get denied
+ [x] Restore with user role and get denied
  [x] Lock with admin role and succeed
  [x] Destroy with user role and get denied and no force delete allowed
+ [x] Unlock with admin role and succeed
+ [x] Restore with admin role and succeed
  [x] Destroy with admin role and succeed
  [x] Lock with admin role and succeed with json
+ [x] Unlock with admin role and succeed with json
  [x] Destroy with admin role and succeed with force delete
 
