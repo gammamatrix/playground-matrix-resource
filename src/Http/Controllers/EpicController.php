@@ -223,7 +223,7 @@ class EpicController extends Controller
      */
     public function index(
         IndexRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|EpicCollection {
         $user = $request->user();
 
         $validated = $request->validated();
@@ -261,10 +261,7 @@ class EpicController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new EpicCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user?->id,
-                'validated'       => $validated,
-            ]]);
+            return (new EpicCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -378,7 +375,7 @@ class EpicController extends Controller
             return (new EpicResource($epic))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -408,7 +405,7 @@ class EpicController extends Controller
             return (new EpicResource($epic))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -436,7 +433,7 @@ class EpicController extends Controller
             return (new EpicResource($epic))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);

@@ -8,6 +8,7 @@ namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource;
 
 use GammaMatrix\Playground\Test\OrchestraTestCase;
 use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestTrait;
+use Illuminate\Support\Carbon;
 
 /**
  * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase
@@ -23,6 +24,9 @@ class TestCase extends OrchestraTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        Carbon::setTestNow(Carbon::now());
+
         // dd([
         //     '__METHOD__' => __METHOD__,
         //     'path' => dirname(dirname(__DIR__)) . '/database/migrations',

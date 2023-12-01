@@ -223,7 +223,7 @@ class RoadmapController extends Controller
      */
     public function index(
         IndexRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|RoadmapCollection {
         $user = $request->user();
 
         $validated = $request->validated();
@@ -261,10 +261,7 @@ class RoadmapController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new RoadmapCollection($paginator))->additional(['meta' => [
-                'session_user_id' => $user?->id,
-                'validated'       => $validated,
-            ]]);
+            return (new RoadmapCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -378,7 +375,7 @@ class RoadmapController extends Controller
             return (new RoadmapResource($roadmap))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -408,7 +405,7 @@ class RoadmapController extends Controller
             return (new RoadmapResource($roadmap))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);
@@ -436,7 +433,7 @@ class RoadmapController extends Controller
             return (new RoadmapResource($roadmap))->response($request);
         }
 
-        $returnUrl = $validated['return_url'] ?? '';
+        $returnUrl = $validated['_return_url'] ?? '';
 
         if ($returnUrl) {
             return redirect($returnUrl);

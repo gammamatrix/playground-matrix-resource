@@ -19,7 +19,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6
+    # - uses: php-actions/composer@v6
+    - name: Run php-actions/composer@v6
+      uses: php-actions/composer@v6
+      with:
+        php_version: "8.2"
+        php_extensions: intl
+        version: 2.x
     - uses: php-actions/phpunit@v3
       env:
         XDEBUG_MODE: coverage
@@ -30,7 +36,6 @@ jobs:
     - name: Make code coverage badge
       uses: timkrase/phpunit-coverage-badge@v1.2.1
       with:
-        report: clover.xml
         coverage_badge_path: output/coverage.svg
         push_badge: false
     - name: Git push to testing/develop branch
