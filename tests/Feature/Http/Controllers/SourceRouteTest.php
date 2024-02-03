@@ -17,7 +17,11 @@ class SourceRouteTest extends TestCase
     use Resource\CreateTrait;
     use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\IndexTrait;
     use Resource\LockTrait;
+    use Resource\RestoreTrait;
+    use Resource\ShowTrait;
+    use Resource\UnlockTrait;
 
     public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Source::class;
 
