@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Backlog;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Backlog as BacklogResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\BacklogCollection;
+use Playground\Matrix\Models\Backlog;
+use Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Backlog as BacklogResource;
+use Playground\Matrix\Resource\Http\Resources\BacklogCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -27,10 +26,13 @@ use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BacklogController
+ * \Playground\Matrix\Resource\Http\Controllers\BacklogController
  */
 class BacklogController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Backlog',
@@ -93,10 +95,13 @@ class BacklogController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::backlog/form',
-            $data
-        );
+        return view($this->getPackageViewPathFromConfig(
+            $this->package_config_matrix_resource,
+            'backlog',
+            'form'
+        ), [
+            'package_config_site_blade' => $this->package_config_matrix_resource,
+        ]);
     }
 
     /**
@@ -171,7 +176,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -191,7 +196,7 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
-        $backlog->locked = true;
+        $backlog->setAttribute('locked', true);
 
         $backlog->save();
 
@@ -209,7 +214,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +261,8 @@ class BacklogController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +315,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +383,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +403,7 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
-        $backlog->locked = false;
+        $backlog->setAttribute('locked', false);
 
         $backlog->save();
 
@@ -407,7 +413,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +441,7 @@ class BacklogController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

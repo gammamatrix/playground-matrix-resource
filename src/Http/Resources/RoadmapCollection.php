@@ -1,6 +1,6 @@
 <?php
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Resources;
+namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;

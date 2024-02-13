@@ -1,15 +1,15 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicRouteTest
  *
  */
 class EpicRouteTest extends TestCase
@@ -23,7 +23,7 @@ class EpicRouteTest extends TestCase
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Epic::class;
+    public string $fqdn = \Playground\Matrix\Models\Epic::class;
 
     public array $packageInfo = [
         'model_attribute'     => 'label',

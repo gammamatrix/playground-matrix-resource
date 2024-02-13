@@ -1,15 +1,15 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest
+ * \Playground\Matrix\Resource\Http\Requests\FormRequest
  */
 abstract class FormRequest extends BaseFormRequest
 {

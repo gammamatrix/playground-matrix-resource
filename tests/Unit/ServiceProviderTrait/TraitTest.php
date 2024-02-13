@@ -1,23 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait;
+namespace Tests\Unit\Playground\Matrix\Resource\ServiceProviderTrait;
 
-use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestCase;
-use GammaMatrix\Playground\Test\MockingTrait;
+use Tests\Unit\Playground\Matrix\Resource\TestCase;
+use Playground\Test\MockingTrait;
 
 /**
- * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait\TraitTest
+ * \Tests\Unit\Playground\Matrix\Resource\ServiceProviderTrait\TraitTest
  *
  */
 class TraitTest extends TestCase
 {
     use MockingTrait;
 
-    public const TRAIT_CLASS = \GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait::class;
+    public const TRAIT_CLASS = \Playground\Matrix\Resource\ServiceProviderTrait::class;
 
     public $mock;
 
@@ -64,7 +64,7 @@ class TraitTest extends TestCase
         $policy_namespace = '';
         $this->setProtected($this->mock, 'policy_namespace', $policy_namespace);
 
-        $policy = \GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy::class;
+        $policy = \Playground\Matrix\Resource\Policies\BacklogPolicy::class;
         $expected = $policy;
 
         $this->assertSame($expected, $this->mock->registerPolicies_getRegister($policy));

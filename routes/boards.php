@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/boards',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.boards',
         'uses' => 'BoardController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Board::class);
+    ])->can('index', \Playground\Matrix\Models\Board::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.boards.create',
         'uses' => 'BoardController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Board::class);
+    ])->can('create', \Playground\Matrix\Models\Board::class);
 
     Route::get('/edit/{board}', [
         'as'   => 'playground.matrix.resource.boards.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.boards.store',
     //     'uses' => 'BoardController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Board::class);
+    // ])->can('store', \Playground\Matrix\Models\Board::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.boards.post',
         'uses' => 'BoardController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Board::class);
+    ])->can('store', \Playground\Matrix\Models\Board::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.boards.put',
     //     'uses' => 'BoardController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Board::class);
+    // ])->can('store', \Playground\Matrix\Models\Board::class);
     //
     // Route::put('/{board}', [
     //     'as'   => 'playground.matrix.resource.boards.put.id',

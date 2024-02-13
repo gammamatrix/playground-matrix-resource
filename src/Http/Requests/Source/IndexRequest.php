@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source;
+namespace Playground\Matrix\Resource\Http\Requests\Source;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
+use Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest
+ * \Playground\Matrix\Resource\Http\Requests\Source\IndexRequest
  */
 class IndexRequest extends AbstractIndexRequest
 {

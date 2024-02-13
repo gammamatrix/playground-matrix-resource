@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/sprints',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.sprints',
         'uses' => 'SprintController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('index', \Playground\Matrix\Models\Sprint::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.sprints.create',
         'uses' => 'SprintController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('create', \Playground\Matrix\Models\Sprint::class);
 
     Route::get('/edit/{sprint}', [
         'as'   => 'playground.matrix.resource.sprints.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.sprints.store',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.sprints.post',
         'uses' => 'SprintController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('store', \Playground\Matrix\Models\Sprint::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.sprints.put',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
     //
     // Route::put('/{sprint}', [
     //     'as'   => 'playground.matrix.resource.sprints.put.id',

@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Epic;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Epic as EpicResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\EpicCollection;
+use Playground\Matrix\Models\Epic;
+use Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Epic as EpicResource;
+use Playground\Matrix\Resource\Http\Resources\EpicCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicController
+ * \Playground\Matrix\Resource\Http\Controllers\EpicController
  */
 class EpicController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Epic',
@@ -172,7 +174,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class EpicController extends Controller
 
         $user = $request->user();
 
-        $epic->locked = true;
+        $epic->setAttribute('locked', true);
 
         $epic->save();
 
@@ -209,7 +211,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class EpicController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class EpicController extends Controller
 
         $user = $request->user();
 
-        $epic->locked = false;
+        $epic->setAttribute('locked', false);
 
         $epic->save();
 
@@ -407,7 +410,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class EpicController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

@@ -1,15 +1,15 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
+use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\IndexController
+ * \Playground\Matrix\Resource\Http\Controllers\IndexController
  *
  */
 class IndexController extends Controller
@@ -17,9 +17,8 @@ class IndexController extends Controller
     /**
      * Show the index.
      *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         return view('playground-matrix-resource::index');
     }

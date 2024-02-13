@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Release;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Release as ReleaseResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\ReleaseCollection;
+use Playground\Matrix\Models\Release;
+use Playground\Matrix\Resource\Http\Requests\Release\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Release as ReleaseResource;
+use Playground\Matrix\Resource\Http\Resources\ReleaseCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ReleaseController
+ * \Playground\Matrix\Resource\Http\Controllers\ReleaseController
  */
 class ReleaseController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Release',
@@ -172,7 +174,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
-        $release->locked = true;
+        $release->setAttribute('locked', true);
 
         $release->save();
 
@@ -209,7 +211,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class ReleaseController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
-        $release->locked = false;
+        $release->setAttribute('locked', false);
 
         $release->save();
 
@@ -407,7 +410,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class ReleaseController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

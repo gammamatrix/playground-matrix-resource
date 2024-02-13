@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/flows',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.flows',
         'uses' => 'FlowController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('index', \Playground\Matrix\Models\Flow::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.flows.create',
         'uses' => 'FlowController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('create', \Playground\Matrix\Models\Flow::class);
 
     Route::get('/edit/{flow}', [
         'as'   => 'playground.matrix.resource.flows.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.flows.store',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    // ])->can('store', \Playground\Matrix\Models\Flow::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.flows.post',
         'uses' => 'FlowController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('store', \Playground\Matrix\Models\Flow::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.flows.put',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    // ])->can('store', \Playground\Matrix\Models\Flow::class);
     //
     // Route::put('/{flow}', [
     //     'as'   => 'playground.matrix.resource.flows.put.id',

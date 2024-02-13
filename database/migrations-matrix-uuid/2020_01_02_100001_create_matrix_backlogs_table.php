@@ -1,6 +1,6 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
 use Illuminate\Database\Migrations\Migration;

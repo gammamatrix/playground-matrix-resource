@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/tags',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.tags',
         'uses' => 'TagController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Tag::class);
+    ])->can('index', \Playground\Matrix\Models\Tag::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.tags.create',
         'uses' => 'TagController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Tag::class);
+    ])->can('create', \Playground\Matrix\Models\Tag::class);
 
     Route::get('/edit/{tag}', [
         'as'   => 'playground.matrix.resource.tags.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.tags.store',
     //     'uses' => 'TagController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Tag::class);
+    // ])->can('store', \Playground\Matrix\Models\Tag::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.tags.post',
         'uses' => 'TagController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Tag::class);
+    ])->can('store', \Playground\Matrix\Models\Tag::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.tags.put',
     //     'uses' => 'TagController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Tag::class);
+    // ])->can('store', \Playground\Matrix\Models\Tag::class);
     //
     // Route::put('/{tag}', [
     //     'as'   => 'playground.matrix.resource.tags.put.id',

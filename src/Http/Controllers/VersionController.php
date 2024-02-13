@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Version;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Version as VersionResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\VersionCollection;
+use Playground\Matrix\Models\Version;
+use Playground\Matrix\Resource\Http\Requests\Version\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Version as VersionResource;
+use Playground\Matrix\Resource\Http\Resources\VersionCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\VersionController
+ * \Playground\Matrix\Resource\Http\Controllers\VersionController
  */
 class VersionController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Version',
@@ -172,7 +174,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class VersionController extends Controller
 
         $user = $request->user();
 
-        $version->locked = true;
+        $version->setAttribute('locked', true);
 
         $version->save();
 
@@ -209,7 +211,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class VersionController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class VersionController extends Controller
 
         $user = $request->user();
 
-        $version->locked = false;
+        $version->setAttribute('locked', false);
 
         $version->save();
 
@@ -407,7 +410,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class VersionController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

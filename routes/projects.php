@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/projects',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.projects',
         'uses' => 'ProjectController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Project::class);
+    ])->can('index', \Playground\Matrix\Models\Project::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.projects.create',
         'uses' => 'ProjectController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Project::class);
+    ])->can('create', \Playground\Matrix\Models\Project::class);
 
     Route::get('/edit/{project}', [
         'as'   => 'playground.matrix.resource.projects.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.projects.store',
     //     'uses' => 'ProjectController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Project::class);
+    // ])->can('store', \Playground\Matrix\Models\Project::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.projects.post',
         'uses' => 'ProjectController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Project::class);
+    ])->can('store', \Playground\Matrix\Models\Project::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.projects.put',
     //     'uses' => 'ProjectController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Project::class);
+    // ])->can('store', \Playground\Matrix\Models\Project::class);
     //
     // Route::put('/{project}', [
     //     'as'   => 'playground.matrix.resource.projects.put.id',

@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket;
+namespace Playground\Matrix\Resource\Http\Requests\Ticket;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
+use Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest
+ * \Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest
  */
 class StoreRequest extends AbstractStoreRequest
 {

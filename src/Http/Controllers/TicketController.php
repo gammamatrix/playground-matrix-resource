@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Ticket;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Ticket as TicketResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TicketCollection;
+use Playground\Matrix\Models\Ticket;
+use Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Ticket as TicketResource;
+use Playground\Matrix\Resource\Http\Resources\TicketCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketController
+ * \Playground\Matrix\Resource\Http\Controllers\TicketController
  */
 class TicketController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Ticket',
@@ -172,7 +174,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        $ticket->locked = true;
+        $ticket->setAttribute('locked', true);
 
         $ticket->save();
 
@@ -209,7 +211,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class TicketController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        $ticket->locked = false;
+        $ticket->setAttribute('locked', false);
 
         $ticket->save();
 
@@ -407,7 +410,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class TicketController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

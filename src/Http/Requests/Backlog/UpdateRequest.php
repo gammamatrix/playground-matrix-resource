@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog;
+namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractUpdateRequest;
+use Playground\Matrix\Resource\Http\Requests\AbstractUpdateRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest
+ * \Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest
  */
 class UpdateRequest extends AbstractUpdateRequest
 {

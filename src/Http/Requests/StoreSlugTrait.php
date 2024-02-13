@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Support\Str;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\StoreSlugTrait
+ * \Playground\Matrix\Resource\Http\Requests\StoreSlugTrait
  */
 trait StoreSlugTrait
 {

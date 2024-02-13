@@ -1,12 +1,12 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\PaginationIdsTrait
+ * \Playground\Matrix\Resource\Http\Requests\PaginationIdsTrait
  */
 trait PaginationIdsTrait
 {

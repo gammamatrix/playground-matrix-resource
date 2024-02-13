@@ -1,16 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource;
+namespace Playground\Matrix\Resource;
 
-use GammaMatrix\Playground\Matrix\Models;
+use Playground\Matrix\Models;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
+use Playground\Policies\ModelPolicy;
+use Playground\Models\Model;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\ServiceProvider
+ * \Playground\Matrix\Resource\ServiceProvider
  */
 class ServiceProvider extends AuthServiceProvider
 {
@@ -23,7 +25,7 @@ class ServiceProvider extends AuthServiceProvider
     /**
      * The policy mappings for the application.
      *
-     * @var array
+     * @var array<class-string, class-string>
      */
     protected $policies = [
         Models\Backlog::class => Policies\BacklogPolicy::class,
@@ -49,11 +51,14 @@ class ServiceProvider extends AuthServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
+        /**
+         * @var array<string, mixed> $config
+         */
         $config = config($this->package);
 
-        if (!empty($config)) {
+        if (! empty($config['load']) && is_array($config['load'])) {
 
             // $this->loadTranslationsFrom(
             //     dirname(__DIR__).'/resources/lang',
@@ -79,8 +84,8 @@ class ServiceProvider extends AuthServiceProvider
             if ($this->app->runningInConsole()) {
                 // Publish configuration
                 $this->publishes([
-                    dirname(__DIR__).'/config/playground-matrix-resource.php'
-                        => config_path($this->package.'.php')
+                    sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package)
+                    => config_path(sprintf('%1$s.php', $this->package)),
                 ], 'playground-config');
 
                 // Publish routes
@@ -99,7 +104,7 @@ class ServiceProvider extends AuthServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
             dirname(__DIR__) . '/config/playground-matrix-resource.php',
@@ -107,7 +112,10 @@ class ServiceProvider extends AuthServiceProvider
         );
     }
 
-    public function routes(array $config)
+    /**
+     * @param array<string, mixed> $config
+     */
+    public function routes(array $config): void
     {
         if (!empty($config['routes']['matrix'])) {
             $this->loadRoutesFrom(dirname(__DIR__) . '/routes/matrix.php');
@@ -159,36 +167,62 @@ class ServiceProvider extends AuthServiceProvider
         }
     }
 
-    public function about()
+    public function about(): void
     {
         $config = config($this->package);
+        $config = is_array($config) ? $config : [];
+
+        $load = ! empty($config['load']) && is_array($config['load']) ? $config['load'] : [];
+
+        $middleware = ! empty($config['middleware']) && is_array($config['middleware']) ? $config['middleware'] : [];
+
+        $routes = ! empty($config['routes']) && is_array($config['routes']) ? $config['routes'] : [];
+
+        $sitemap = ! empty($config['sitemap']) && is_array($config['sitemap']) ? $config['sitemap'] : [];
 
         $version = $this->version();
 
-        $redirect = defined('\App\Providers\RouteServiceProvider::HOME') ? \App\Providers\RouteServiceProvider::HOME : null;
-
         AboutCommand::add('Playground Matrix Resource', fn () => [
-            '<fg=yellow;options=bold>Load</> Policies' => !empty($config['load']['policies']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=yellow;options=bold>Load</> Routes' => !empty($config['load']['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=yellow;options=bold>Load</> Views' => !empty($config['load']['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=yellow;options=bold>Load</> Policies' => ! empty($load['policies']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=cyan;options=bold>Policy</> [namespace]' => sprintf('[%s]', $config['policy_namespace']),
+
+            '<fg=yellow;options=bold>Middleware</> auth' => sprintf('%s', json_encode($middleware['auth'])),
+            '<fg=yellow;options=bold>Middleware</> default' => sprintf('%s', json_encode($middleware['default'])),
+            '<fg=yellow;options=bold>Middleware</> guest' => sprintf('%s', json_encode($middleware['guest'])),
 
             '<fg=blue;options=bold>View</> [layout]' => sprintf('[%s]', $config['layout']),
             '<fg=blue;options=bold>View</> [prefix]' => sprintf('[%s]', $config['view']),
 
-            '<fg=magenta;options=bold>Sitemap</> Views' => !empty($config['sitemap']['enable']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=magenta;options=bold>Sitemap</> Guest' => !empty($config['sitemap']['guest']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=magenta;options=bold>Sitemap</> User' => !empty($config['sitemap']['user']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
-            '<fg=magenta;options=bold>Sitemap</> [view]' => sprintf('[%s]', $config['sitemap']['view']),
+            '<fg=magenta;options=bold>Sitemap</> Views' => ! empty($sitemap['enable']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=magenta;options=bold>Sitemap</> Guest' => ! empty($sitemap['guest']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=magenta;options=bold>Sitemap</> User' => ! empty($sitemap['user']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=magenta;options=bold>Sitemap</> [view]' => sprintf('[%s]', $sitemap['view']),
 
-            '<fg=cyan;options=bold>Policy</> [Middleware]' => sprintf('[%s]', implode(', ', $config['middleware'])),
-            '<fg=cyan;options=bold>Policy</> [namespace]' => sprintf('[%s]', $config['policy_namespace']),
+            '<fg=red;options=bold>Route</> matrix' => ! empty($routes['matrix']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> backlogs' => ! empty($routes['backlogs']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> boards' => ! empty($routes['boards']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> epics' => ! empty($routes['epics']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> flows' => ! empty($routes['flows']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> milestones' => ! empty($routes['milestones']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> notes' => ! empty($routes['notes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> projects' => ! empty($routes['projects']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> releases' => ! empty($routes['releases']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> roadmaps' => ! empty($routes['roadmaps']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> sources' => ! empty($routes['sources']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> sprints' => ! empty($routes['sprints']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> tags' => ! empty($routes['tags']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> teams' => ! empty($routes['teams']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> tickets' => ! empty($routes['tickets']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> versions' => ! empty($routes['versions']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
 
             'Package' => $this->package,
             'Version' => $version,
         ]);
     }
 
-    public function version()
+    public function version(): string
     {
         return static::VERSION;
     }

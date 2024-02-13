@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Source;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Source as SourceResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\SourceCollection;
+use Playground\Matrix\Models\Source;
+use Playground\Matrix\Resource\Http\Requests\Source\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Source as SourceResource;
+use Playground\Matrix\Resource\Http\Resources\SourceCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SourceController
+ * \Playground\Matrix\Resource\Http\Controllers\SourceController
  */
 class SourceController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Source',
@@ -172,7 +174,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class SourceController extends Controller
 
         $user = $request->user();
 
-        $source->locked = true;
+        $source->setAttribute('locked', true);
 
         $source->save();
 
@@ -209,7 +211,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class SourceController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class SourceController extends Controller
 
         $user = $request->user();
 
-        $source->locked = false;
+        $source->setAttribute('locked', false);
 
         $source->save();
 
@@ -407,7 +410,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class SourceController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

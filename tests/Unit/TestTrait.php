@@ -1,20 +1,20 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource;
+namespace Tests\Unit\Playground\Matrix\Resource;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use GammaMatrix\Playground\ServiceProvider as PlaygroundServiceProvider;
-use GammaMatrix\Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
-use GammaMatrix\Playground\Matrix\ServiceProvider as PlaygroundMatrixServiceProvider;
-use GammaMatrix\Playground\Matrix\Resource\ServiceProvider;
+use Playground\ServiceProvider as PlaygroundServiceProvider;
+use Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
+use Playground\Matrix\ServiceProvider as PlaygroundMatrixServiceProvider;
+use Playground\Matrix\Resource\ServiceProvider;
 use Illuminate\Contracts\Config\Repository;
 
 /**
- * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestTrait
+ * \Tests\Unit\Playground\Matrix\Resource\TestTrait
  *
  */
 trait TestTrait
@@ -39,8 +39,8 @@ trait TestTrait
     protected function getEnvironmentSetUp($app)
     {
         // dd(__METHOD__);
-        $app['config']->set('auth.providers.users.model', 'GammaMatrix\\Playground\\Test\\Models\\User');
-        $app['config']->set('playground.user', 'GammaMatrix\\Playground\\Test\\Models\\User');
+        $app['config']->set('auth.providers.users.model', 'Playground\\Test\\Models\\User');
+        $app['config']->set('playground.user', 'Playground\\Test\\Models\\User');
         $app['config']->set('playground.auth.verify', 'user');
 
         $app['config']->set('playground-matrix.load.migrations', true);

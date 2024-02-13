@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note;
+namespace Playground\Matrix\Resource\Http\Requests\Note;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest
+ * \Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest
  */
 class UnlockRequest extends FormRequest
 {

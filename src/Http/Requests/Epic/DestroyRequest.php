@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic;
+namespace Playground\Matrix\Resource\Http\Requests\Epic;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest
+ * \Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest
  */
 class DestroyRequest extends FormRequest
 {

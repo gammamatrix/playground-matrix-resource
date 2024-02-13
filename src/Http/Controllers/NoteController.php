@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Note;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\NoteCollection;
+use Playground\Matrix\Models\Note;
+use Playground\Matrix\Resource\Http\Requests\Note\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
+use Playground\Matrix\Resource\Http\Resources\NoteCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController
+ * \Playground\Matrix\Resource\Http\Controllers\NoteController
  */
 class NoteController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Note',
@@ -172,7 +174,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        $note->locked = true;
+        $note->setAttribute('locked', true);
 
         $note->save();
 
@@ -209,7 +211,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class NoteController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        $note->locked = false;
+        $note->setAttribute('locked', false);
 
         $note->save();
 
@@ -407,7 +410,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

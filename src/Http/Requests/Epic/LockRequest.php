@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic;
+namespace Playground\Matrix\Resource\Http\Requests\Epic;
 
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\LockRequest
+ * \Playground\Matrix\Resource\Http\Requests\Epic\LockRequest
  */
 class LockRequest extends FormRequest
 {

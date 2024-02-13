@@ -1,16 +1,16 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use Carbon\Carbon;
 use Ramsey\Uuid\Uuid;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\StoreFilterTrait
+ * \Playground\Matrix\Resource\Http\Requests\StoreFilterTrait
  */
 trait StoreFilterTrait
 {

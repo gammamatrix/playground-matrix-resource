@@ -1,12 +1,12 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest
+ * \Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest
  */
 abstract class AbstractStoreRequest extends FormRequest
 {
@@ -14,6 +14,9 @@ abstract class AbstractStoreRequest extends FormRequest
     use StoreSlugTrait;
     use StoreFilterTrait;
 
+    /**
+     * @return array<string, string>
+     */
     public function messages(): array
     {
         return [

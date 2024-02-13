@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/teams',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.teams',
         'uses' => 'TeamController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Team::class);
+    ])->can('index', \Playground\Matrix\Models\Team::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.teams.create',
         'uses' => 'TeamController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Team::class);
+    ])->can('create', \Playground\Matrix\Models\Team::class);
 
     Route::get('/edit/{team}', [
         'as'   => 'playground.matrix.resource.teams.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.teams.store',
     //     'uses' => 'TeamController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Team::class);
+    // ])->can('store', \Playground\Matrix\Models\Team::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.teams.post',
         'uses' => 'TeamController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Team::class);
+    ])->can('store', \Playground\Matrix\Models\Team::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.teams.put',
     //     'uses' => 'TeamController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Team::class);
+    // ])->can('store', \Playground\Matrix\Models\Team::class);
     //
     // Route::put('/{team}', [
     //     'as'   => 'playground.matrix.resource.teams.put.id',

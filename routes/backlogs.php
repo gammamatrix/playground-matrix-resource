@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/backlogs',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.backlogs',
         'uses' => 'BacklogController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Backlog::class);
+    ])->can('index', \Playground\Matrix\Models\Backlog::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.backlogs.create',
         'uses' => 'BacklogController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Backlog::class);
+    ])->can('create', \Playground\Matrix\Models\Backlog::class);
 
     Route::get('/edit/{backlog}', [
         'as'   => 'playground.matrix.resource.backlogs.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.backlogs.store',
     //     'uses' => 'BacklogController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Backlog::class);
+    // ])->can('store', \Playground\Matrix\Models\Backlog::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.backlogs.post',
         'uses' => 'BacklogController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Backlog::class);
+    ])->can('store', \Playground\Matrix\Models\Backlog::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.backlogs.put',
     //     'uses' => 'BacklogController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Backlog::class);
+    // ])->can('store', \Playground\Matrix\Models\Backlog::class);
     //
     // Route::put('/{backlog}', [
     //     'as'   => 'playground.matrix.resource.backlogs.put.id',

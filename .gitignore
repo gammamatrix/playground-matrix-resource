@@ -61,6 +61,8 @@ public/storage
 # Test ignores
 ################################################################################
 
+output
+
 public/tests
 
 phpunit.xml

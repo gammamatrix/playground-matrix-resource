@@ -1,15 +1,15 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource;
+namespace Tests\Unit\Playground\Matrix\Resource;
 
-use GammaMatrix\Playground\Test\OrchestraTestCase;
+use Playground\Test\OrchestraTestCase;
 
 /**
- * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestCase
+ * \Tests\Unit\Playground\Matrix\Resource\TestCase
  *
  */
 class TestCase extends OrchestraTestCase

@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Support\Carbon;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\PaginationDatesTrait
+ * \Playground\Matrix\Resource\Http\Requests\PaginationDatesTrait
  */
 trait PaginationDatesTrait
 {
@@ -20,12 +20,16 @@ trait PaginationDatesTrait
         // 'end_at' => ['label' => 'End'],
     ];
 
+    /**
+     * @return array<string, mixed>
+     */
     abstract public function getPaginationOperators(): array;
 
     abstract public function get(string $key, mixed $default = null);
 
-    abstract public function merge(array $input);
-
+    /**
+     * @return array<string, mixed>
+     */
     public function getPaginationDates(): array
     {
         return $this->paginationDates;

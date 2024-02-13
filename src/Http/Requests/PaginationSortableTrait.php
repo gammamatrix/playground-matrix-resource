@@ -1,12 +1,12 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\PaginationSortableTrait
+ * \Playground\Matrix\Resource\Http\Requests\PaginationSortableTrait
  */
 trait PaginationSortableTrait
 {

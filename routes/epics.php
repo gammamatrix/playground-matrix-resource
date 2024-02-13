@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/epics',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.epics',
         'uses' => 'EpicController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Epic::class);
+    ])->can('index', \Playground\Matrix\Models\Epic::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.epics.create',
         'uses' => 'EpicController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Epic::class);
+    ])->can('create', \Playground\Matrix\Models\Epic::class);
 
     Route::get('/edit/{epic}', [
         'as'   => 'playground.matrix.resource.epics.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.epics.store',
     //     'uses' => 'EpicController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Epic::class);
+    // ])->can('store', \Playground\Matrix\Models\Epic::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.epics.post',
         'uses' => 'EpicController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Epic::class);
+    ])->can('store', \Playground\Matrix\Models\Epic::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.epics.put',
     //     'uses' => 'EpicController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Epic::class);
+    // ])->can('store', \Playground\Matrix\Models\Epic::class);
     //
     // Route::put('/{epic}', [
     //     'as'   => 'playground.matrix.resource.epics.put.id',

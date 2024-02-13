@@ -22,12 +22,11 @@
     ],
     "require": {
         "php": "^8.1",
-        "gammamatrix/playground": "dev-develop|dev-master|^73.0",
-        "gammamatrix/playground-matrix": "dev-develop|dev-master|^73.0"
+        "gammamatrix/playground-matrix": "dev-develop|dev-master|dev-feature/*|^73.0"
     },
     "require-dev": {
-        "gammamatrix/playground-auth": "dev-develop|dev-master|^73.0",
-        "gammamatrix/playground-test": "dev-develop|dev-master|^73.0"
+        "gammamatrix/playground-auth": "dev-develop|dev-master|dev-feature/*|^73.0",
+        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^73.0"
     },
     "suggest": {
         "gammamatrix/playground-matrix": "Provides the models used by the Resource API in this package."
@@ -36,13 +35,13 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "GammaMatrix\\Playground\\Matrix\\Resource\\": "src/"
+            "Playground\\Matrix\\Resource\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\Feature\\GammaMatrix\\Playground\\Matrix\\Resource\\": "tests/Feature/",
-            "Tests\\Unit\\GammaMatrix\\Playground\\Matrix\\Resource\\": "tests/Unit/"
+            "Tests\\Feature\\Playground\\Matrix\\Resource\\": "tests/Feature/",
+            "Tests\\Unit\\Playground\\Matrix\\Resource\\": "tests/Unit/"
         }
     },
     "config": {
@@ -59,13 +58,13 @@
         },
         "laravel": {
             "providers": [
-                "GammaMatrix\\Playground\\Matrix\\Resource\\ServiceProvider"
+                "Playground\\Matrix\\Resource\\ServiceProvider"
             ]
         }
     },
     "scripts": {
-        "test": "phpunit",
-        "format": "php-cs-fixer fix --allow-risky=yes",
-        "analyse": "phpstan analyse"
+        "test": "vendor/bin/phpunit",
+        "format": "vendor/bin/php-cs-fixer fix",
+        "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max"
     }
 }

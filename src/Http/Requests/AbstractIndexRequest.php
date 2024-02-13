@@ -1,12 +1,12 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest
+ * \Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest
  */
 abstract class AbstractIndexRequest extends FormRequest
 {
@@ -53,6 +53,9 @@ abstract class AbstractIndexRequest extends FormRequest
         ],
     ];
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPaginationOperators(): array
     {
         return [

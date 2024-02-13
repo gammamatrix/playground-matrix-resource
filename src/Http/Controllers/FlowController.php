@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Flow;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\FlowCollection;
+use Playground\Matrix\Models\Flow;
+use Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
+use Playground\Matrix\Resource\Http\Resources\FlowCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController
+ * \Playground\Matrix\Resource\Http\Controllers\FlowController
  */
 class FlowController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Flow',
@@ -172,7 +174,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        $flow->locked = true;
+        $flow->setAttribute('locked', true);
 
         $flow->save();
 
@@ -209,7 +211,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class FlowController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        $flow->locked = false;
+        $flow->setAttribute('locked', false);
 
         $flow->save();
 
@@ -407,7 +410,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

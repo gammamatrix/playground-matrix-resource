@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/sources',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.sources',
         'uses' => 'SourceController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Source::class);
+    ])->can('index', \Playground\Matrix\Models\Source::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.sources.create',
         'uses' => 'SourceController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Source::class);
+    ])->can('create', \Playground\Matrix\Models\Source::class);
 
     Route::get('/edit/{source}', [
         'as'   => 'playground.matrix.resource.sources.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.sources.store',
     //     'uses' => 'SourceController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Source::class);
+    // ])->can('store', \Playground\Matrix\Models\Source::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.sources.post',
         'uses' => 'SourceController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Source::class);
+    ])->can('store', \Playground\Matrix\Models\Source::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.sources.put',
     //     'uses' => 'SourceController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Source::class);
+    // ])->can('store', \Playground\Matrix\Models\Source::class);
     //
     // Route::put('/{source}', [
     //     'as'   => 'playground.matrix.resource.sources.put.id',

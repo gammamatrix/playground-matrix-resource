@@ -1,18 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog;
+namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests\Backlog;
 
-use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
+use Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
 
 /**
- * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequestTest
+ * \Tests\Unit\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequestTest
  *
  */
 class CreateRequestTest extends RequestTestCase
 {
-    protected string $requestClass = \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest::class;
+    protected string $requestClass = \Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest::class;
 }

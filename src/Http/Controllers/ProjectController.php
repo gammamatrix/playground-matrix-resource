@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Project;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Project as ProjectResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\ProjectCollection;
+use Playground\Matrix\Models\Project;
+use Playground\Matrix\Resource\Http\Requests\Project\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Project as ProjectResource;
+use Playground\Matrix\Resource\Http\Resources\ProjectCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectController
+ * \Playground\Matrix\Resource\Http\Controllers\ProjectController
  */
 class ProjectController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Project',
@@ -172,7 +174,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
-        $project->locked = true;
+        $project->setAttribute('locked', true);
 
         $project->save();
 
@@ -209,7 +211,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class ProjectController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
-        $project->locked = false;
+        $project->setAttribute('locked', false);
 
         $project->save();
 
@@ -407,7 +410,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class ProjectController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

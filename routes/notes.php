@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/notes',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.notes',
         'uses' => 'NoteController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Note::class);
+    ])->can('index', \Playground\Matrix\Models\Note::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.notes.create',
         'uses' => 'NoteController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Note::class);
+    ])->can('create', \Playground\Matrix\Models\Note::class);
 
     Route::get('/edit/{note}', [
         'as'   => 'playground.matrix.resource.notes.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.notes.store',
     //     'uses' => 'NoteController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Note::class);
+    // ])->can('store', \Playground\Matrix\Models\Note::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.notes.post',
         'uses' => 'NoteController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Note::class);
+    ])->can('store', \Playground\Matrix\Models\Note::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.notes.put',
     //     'uses' => 'NoteController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Note::class);
+    // ])->can('store', \Playground\Matrix\Models\Note::class);
     //
     // Route::put('/{note}', [
     //     'as'   => 'playground.matrix.resource.notes.put.id',

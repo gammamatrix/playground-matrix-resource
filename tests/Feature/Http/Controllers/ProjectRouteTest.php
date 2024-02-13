@@ -1,15 +1,15 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\ProjectRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ProjectRouteTest
  *
  */
 class ProjectRouteTest extends TestCase
@@ -23,8 +23,11 @@ class ProjectRouteTest extends TestCase
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Project::class;
+    public string $fqdn = \Playground\Matrix\Models\Project::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Project',
@@ -41,6 +44,9 @@ class ProjectRouteTest extends TestCase
         'view'                => 'playground-matrix-resource::project',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -140,6 +146,9 @@ class ProjectRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data

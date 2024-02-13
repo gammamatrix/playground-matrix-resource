@@ -1,21 +1,21 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Policies;
+namespace Playground\Matrix\Resource\Policies;
 
-use GammaMatrix\Playground\Policies\ModelPolicy;
+use Playground\Policies\ModelPolicy;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Policies\VersionPolicy
+ * \Playground\Matrix\Resource\Policies\VersionPolicy
  */
 class VersionPolicy extends ModelPolicy
 {
     protected string $package = 'playground-matrix-resource';
 
     /**
-     * @var array $rolesToView The roles allowed to view the MVC.
+     * @var array<int, string> $rolesToView The roles allowed to view the MVC.
      */
     protected $rolesToView = [
         'user',
@@ -27,7 +27,7 @@ class VersionPolicy extends ModelPolicy
     ];
 
     /**
-     * @var array $rolesForAction The roles allowed for actions in the MVC.
+     * @var array<int, string> $rolesForAction The roles allowed for actions in the MVC.
      */
     protected $rolesForAction = [
         'publisher',

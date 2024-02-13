@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource;
+namespace Playground\Matrix\Resource;
 
 use Illuminate\Support\Facades\Gate;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\ServiceProviderTrait
+ * \Playground\Matrix\Resource\ServiceProviderTrait
  *
  * NOTE We could enforce a pattern policy_namespace.
  * TODO Do some tests with invalid input such as an array or the model class for the namespace.
@@ -17,6 +17,9 @@ trait ServiceProviderTrait
 {
     protected string $policy_namespace = '';
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function setPolicyNamespace(array $config): string
     {
         // $pattern = '/(?:\\{1,2}\w+|\w+\\{1,2})(?:\w+\\{0,2}\w+)/';
@@ -39,7 +42,7 @@ trait ServiceProviderTrait
         if (!empty($this->policy_namespace)) {
             // TODO test slashes with policies in App\Policies or another namespace.
             $register = str_replace(
-                'GammaMatrix\\Playground\\Matrix\\Resource',
+                'Playground\\Matrix\\Resource',
                 $this->policy_namespace,
                 $policy
             );

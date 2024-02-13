@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Milestone;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Milestone as MilestoneResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\MilestoneCollection;
+use Playground\Matrix\Models\Milestone;
+use Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Milestone as MilestoneResource;
+use Playground\Matrix\Resource\Http\Resources\MilestoneCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\MilestoneController
+ * \Playground\Matrix\Resource\Http\Controllers\MilestoneController
  */
 class MilestoneController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Milestone',
@@ -172,7 +174,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
-        $milestone->locked = true;
+        $milestone->setAttribute('locked', true);
 
         $milestone->save();
 
@@ -209,7 +211,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class MilestoneController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
-        $milestone->locked = false;
+        $milestone->setAttribute('locked', false);
 
         $milestone->save();
 
@@ -407,7 +410,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class MilestoneController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

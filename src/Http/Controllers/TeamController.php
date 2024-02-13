@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Team;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Team as TeamResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TeamCollection;
+use Playground\Matrix\Models\Team;
+use Playground\Matrix\Resource\Http\Requests\Team\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Team as TeamResource;
+use Playground\Matrix\Resource\Http\Resources\TeamCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TeamController
+ * \Playground\Matrix\Resource\Http\Controllers\TeamController
  */
 class TeamController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Team',
@@ -172,7 +174,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class TeamController extends Controller
 
         $user = $request->user();
 
-        $team->locked = true;
+        $team->setAttribute('locked', true);
 
         $team->save();
 
@@ -209,7 +211,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class TeamController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class TeamController extends Controller
 
         $user = $request->user();
 
-        $team->locked = false;
+        $team->setAttribute('locked', false);
 
         $team->save();
 
@@ -407,7 +410,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class TeamController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

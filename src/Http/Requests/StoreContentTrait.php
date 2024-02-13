@@ -1,14 +1,14 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use HTMLPurifier;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\StoreContentTrait
+ * \Playground\Matrix\Resource\Http\Requests\StoreContentTrait
  */
 trait StoreContentTrait
 {

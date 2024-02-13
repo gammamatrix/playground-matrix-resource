@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/releases',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
         'as'   => 'playground.matrix.resource.releases',
         'uses' => 'ReleaseController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('index', \Playground\Matrix\Models\Release::class);
 
     # UI
 
     Route::get('/create', [
         'as'   => 'playground.matrix.resource.releases.create',
         'uses' => 'ReleaseController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('create', \Playground\Matrix\Models\Release::class);
 
     Route::get('/edit/{release}', [
         'as'   => 'playground.matrix.resource.releases.edit',
@@ -54,7 +54,7 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.releases.store',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    // ])->can('store', \Playground\Matrix\Models\Release::class);
 
     # API
 
@@ -91,12 +91,12 @@ Route::group([
     Route::post('/', [
         'as'   => 'playground.matrix.resource.releases.post',
         'uses' => 'ReleaseController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('store', \Playground\Matrix\Models\Release::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.releases.put',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    // ])->can('store', \Playground\Matrix\Models\Release::class);
     //
     // Route::put('/{release}', [
     //     'as'   => 'playground.matrix.resource.releases.put.id',

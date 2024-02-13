@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Board;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board as BoardResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\BoardCollection;
+use Playground\Matrix\Models\Board;
+use Playground\Matrix\Resource\Http\Requests\Board\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Board as BoardResource;
+use Playground\Matrix\Resource\Http\Resources\BoardCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController
+ * \Playground\Matrix\Resource\Http\Controllers\BoardController
  */
 class BoardController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Board',
@@ -172,7 +174,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        $board->locked = true;
+        $board->setAttribute('locked', true);
 
         $board->save();
 
@@ -209,7 +211,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class BoardController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        $board->locked = false;
+        $board->setAttribute('locked', false);
 
         $board->save();
 
@@ -407,7 +410,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

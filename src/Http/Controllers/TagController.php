@@ -1,24 +1,23 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Tag;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Tag as TagResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\TagCollection;
+use Playground\Matrix\Models\Tag;
+use Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Tag as TagResource;
+use Playground\Matrix\Resource\Http\Resources\TagCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -28,10 +27,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TagController
+ * \Playground\Matrix\Resource\Http\Controllers\TagController
  */
 class TagController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute'     => 'label',
         'model_label'         => 'Tag',
@@ -172,7 +174,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,7 +194,7 @@ class TagController extends Controller
 
         $user = $request->user();
 
-        $tag->locked = true;
+        $tag->setAttribute('locked', true);
 
         $tag->save();
 
@@ -209,7 +211,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -256,7 +258,8 @@ class TagController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -309,7 +312,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -377,7 +380,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +400,7 @@ class TagController extends Controller
 
         $user = $request->user();
 
-        $tag->locked = false;
+        $tag->setAttribute('locked', false);
 
         $tag->save();
 
@@ -407,7 +410,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +438,7 @@ class TagController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
