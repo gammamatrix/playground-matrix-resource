@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests\Source;
 
 use Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;

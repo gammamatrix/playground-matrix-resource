@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
@@ -10,10 +9,10 @@ namespace Playground\Matrix\Resource\Http\Requests;
  */
 abstract class AbstractIndexRequest extends FormRequest
 {
+    use PaginationColumnsTrait;
     use PaginationDatesTrait;
     use PaginationFlagsTrait;
     use PaginationIdsTrait;
-    use PaginationColumnsTrait;
     use PaginationSortableTrait;
 
     /**

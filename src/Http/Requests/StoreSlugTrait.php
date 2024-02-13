@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Support\Str;
@@ -46,15 +45,15 @@ trait StoreSlugTrait
 
         $merge = false;
 
-        if (empty($slug) && (!empty($label) || !empty($title))) {
-            if (!empty($title)) {
+        if (empty($slug) && (! empty($label) || ! empty($title))) {
+            if (! empty($title)) {
                 $merge = true;
                 $slug = Str::of($title)->slug('-')->toString();
-            } elseif (!empty($label)) {
+            } elseif (! empty($label)) {
                 $merge = true;
                 $slug = Str::of($label)->slug('-')->toString();
             }
-        } elseif (!empty($slug)) {
+        } elseif (! empty($slug)) {
             $merge = true;
             $slug = Str::of($slug)->slug('-')->toString();
         }

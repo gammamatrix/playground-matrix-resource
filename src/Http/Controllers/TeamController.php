@@ -2,9 +2,13 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 use Playground\Matrix\Models\Team;
 use Playground\Matrix\Resource\Http\Requests\Team\CreateRequest;
 use Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest;
@@ -18,13 +22,6 @@ use Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest;
 use Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest;
 use Playground\Matrix\Resource\Http\Resources\Team as TeamResource;
 use Playground\Matrix\Resource\Http\Resources\TeamCollection;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\TeamController
@@ -35,19 +32,19 @@ class TeamController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Team',
-        'model_label_plural'  => 'Teams',
-        'model_route'         => 'playground.matrix.resource.teams',
-        'model_slug'          => 'team',
-        'model_slug_plural'   => 'teams',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Team',
+        'model_label_plural' => 'Teams',
+        'model_route' => 'playground.matrix.resource.teams',
+        'model_slug' => 'team',
+        'model_slug_plural' => 'teams',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:team',
-        'table'               => 'matrix_teams',
-        'view'                => 'playground-matrix-resource::team',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:team',
+        'table' => 'matrix_teams',
+        'view' => 'playground-matrix-resource::team',
     ];
 
     /**
@@ -66,10 +63,10 @@ class TeamController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -87,12 +84,12 @@ class TeamController extends Controller
 
         $flash = $team->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -117,10 +114,10 @@ class TeamController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $team->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $team->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -138,7 +135,7 @@ class TeamController extends Controller
 
         $flash = $team->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -200,9 +197,9 @@ class TeamController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $team->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $team->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -234,7 +231,7 @@ class TeamController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,7 +255,7 @@ class TeamController extends Controller
             );
         }
 
-        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
         $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
@@ -269,15 +266,15 @@ class TeamController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -334,10 +331,10 @@ class TeamController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $team->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $team->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -359,10 +356,10 @@ class TeamController extends Controller
     }
 
     /**
-      * Store a newly created API Team resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.teams.post
-      */
+     * Store a newly created API Team resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.teams.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|TeamResource {

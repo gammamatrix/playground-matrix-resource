@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests\Note;
 
 use Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
@@ -112,7 +111,7 @@ class StoreRequest extends AbstractStoreRequest
             $input['introduction'] = '';
         }
 
-        if (!empty($input)) {
+        if (! empty($input)) {
             $this->merge($input);
         }
     }

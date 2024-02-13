@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
@@ -26,7 +25,7 @@ trait PaginationIdsTrait
     public function rules_filters_ids(array &$rules): void
     {
         foreach ($this->getPaginationIds() as $column => $meta) {
-            if (empty($column) || !is_string($column)) {
+            if (empty($column) || ! is_string($column)) {
                 continue;
             }
 
@@ -43,11 +42,11 @@ trait PaginationIdsTrait
         $merge = false;
 
         foreach ($this->getPaginationIds() as $column => $meta) {
-            if (!empty($filter[$column])) {
+            if (! empty($filter[$column])) {
                 $id = [];
                 if (is_array($filter[$column])) {
                     foreach ($filter[$column] as $key => $value) {
-                        if (!empty($meta['type']) && 'integer' === $meta['type']) {
+                        if (! empty($meta['type']) && $meta['type'] === 'integer') {
                             if (is_numeric($value) && $value > 0) {
                                 $id[] = intval($value);
                             }

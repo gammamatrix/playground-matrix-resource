@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
 use Playground\Test\Feature\Http\Controllers\Resource;
@@ -10,13 +9,12 @@ use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneRouteTest
- *
  */
 class MilestoneRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
@@ -29,19 +27,19 @@ class MilestoneRouteTest extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Milestone',
-        'model_label_plural'  => 'Milestones',
-        'model_route'         => 'playground.matrix.resource.milestones',
-        'model_slug'          => 'milestone',
-        'model_slug_plural'   => 'milestones',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Milestone',
+        'model_label_plural' => 'Milestones',
+        'model_route' => 'playground.matrix.resource.milestones',
+        'model_slug' => 'milestone',
+        'model_slug_plural' => 'milestones',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:milestone',
-        'table'               => 'matrix_milestones',
-        'view'                => 'playground-matrix-resource::milestone',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:milestone',
+        'table' => 'matrix_milestones',
+        'view' => 'playground-matrix-resource::milestone',
     ];
 
     /**

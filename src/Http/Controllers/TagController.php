@@ -2,9 +2,13 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 use Playground\Matrix\Models\Tag;
 use Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest;
 use Playground\Matrix\Resource\Http\Requests\Tag\DestroyRequest;
@@ -18,13 +22,6 @@ use Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest;
 use Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest;
 use Playground\Matrix\Resource\Http\Resources\Tag as TagResource;
 use Playground\Matrix\Resource\Http\Resources\TagCollection;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\TagController
@@ -35,19 +32,19 @@ class TagController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Tag',
-        'model_label_plural'  => 'Tags',
-        'model_route'         => 'playground.matrix.resource.tags',
-        'model_slug'          => 'tag',
-        'model_slug_plural'   => 'tags',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Tag',
+        'model_label_plural' => 'Tags',
+        'model_route' => 'playground.matrix.resource.tags',
+        'model_slug' => 'tag',
+        'model_slug_plural' => 'tags',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:tag',
-        'table'               => 'matrix_tags',
-        'view'                => 'playground-matrix-resource::tag',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:tag',
+        'table' => 'matrix_tags',
+        'view' => 'playground-matrix-resource::tag',
     ];
 
     /**
@@ -66,10 +63,10 @@ class TagController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -87,12 +84,12 @@ class TagController extends Controller
 
         $flash = $tag->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -117,10 +114,10 @@ class TagController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $tag->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $tag->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -138,7 +135,7 @@ class TagController extends Controller
 
         $flash = $tag->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -200,9 +197,9 @@ class TagController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $tag->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $tag->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -234,7 +231,7 @@ class TagController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,7 +255,7 @@ class TagController extends Controller
             );
         }
 
-        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
         $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
@@ -269,15 +266,15 @@ class TagController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -334,10 +331,10 @@ class TagController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $tag->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $tag->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -359,10 +356,10 @@ class TagController extends Controller
     }
 
     /**
-      * Store a newly created API Tag resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.tags.post
-      */
+     * Store a newly created API Tag resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.tags.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|TagResource {

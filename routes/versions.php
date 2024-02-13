@@ -16,23 +16,22 @@ Route::group([
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource.versions',
+        'as' => 'playground.matrix.resource.versions',
         'uses' => 'VersionController@index',
-    ])->can('index', \Playground\Matrix\Models\Version::class);
+    ])->can('index', Playground\Matrix\Models\Version::class);
 
-    # UI
+    // UI
 
     Route::get('/create', [
-        'as'   => 'playground.matrix.resource.versions.create',
+        'as' => 'playground.matrix.resource.versions.create',
         'uses' => 'VersionController@create',
-    ])->can('create', \Playground\Matrix\Models\Version::class);
+    ])->can('create', Playground\Matrix\Models\Version::class);
 
     Route::get('/edit/{version}', [
-        'as'   => 'playground.matrix.resource.versions.edit',
+        'as' => 'playground.matrix.resource.versions.edit',
         'uses' => 'VersionController@edit',
     ])->whereUuid('version')
-        ->can('edit', 'version')
-    ;
+        ->can('edit', 'version');
 
     // Route::get('/go/{id}', [
     //     'as'   => 'playground.matrix.resource.versions.go',
@@ -40,11 +39,10 @@ Route::group([
     // ]);
 
     Route::get('/{version}', [
-        'as'   => 'playground.matrix.resource.versions.show',
+        'as' => 'playground.matrix.resource.versions.show',
         'uses' => 'VersionController@show',
     ])->whereUuid('version')
-        ->can('detail', 'version')
-    ;
+        ->can('detail', 'version');
 
     // Route::get('/{slug}', [
     //     'as'   => 'playground.matrix.resource.versions.slug',
@@ -56,42 +54,38 @@ Route::group([
     //     'uses' => 'VersionController@store',
     // ])->can('store', \Playground\Matrix\Models\Version::class);
 
-    # API
+    // API
 
     Route::put('/lock/{version}', [
-        'as'   => 'playground.matrix.resource.versions.lock',
+        'as' => 'playground.matrix.resource.versions.lock',
         'uses' => 'VersionController@lock',
     ])->whereUuid('version')
-        ->can('lock', 'version')
-    ;
+        ->can('lock', 'version');
 
     Route::delete('/lock/{version}', [
-        'as'   => 'playground.matrix.resource.versions.unlock',
+        'as' => 'playground.matrix.resource.versions.unlock',
         'uses' => 'VersionController@unlock',
     ])->whereUuid('version')
-        ->can('unlock', 'version')
-    ;
+        ->can('unlock', 'version');
 
     Route::delete('/{version}', [
-        'as'   => 'playground.matrix.resource.versions.destroy',
+        'as' => 'playground.matrix.resource.versions.destroy',
         'uses' => 'VersionController@destroy',
     ])->whereUuid('version')
         ->can('delete', 'version')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::put('/restore/{version}', [
-        'as'   => 'playground.matrix.resource.versions.restore',
+        'as' => 'playground.matrix.resource.versions.restore',
         'uses' => 'VersionController@restore',
     ])->whereUuid('version')
         ->can('restore', 'version')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::post('/', [
-        'as'   => 'playground.matrix.resource.versions.post',
+        'as' => 'playground.matrix.resource.versions.post',
         'uses' => 'VersionController@store',
-    ])->can('store', \Playground\Matrix\Models\Version::class);
+    ])->can('store', Playground\Matrix\Models\Version::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.versions.put',
@@ -104,7 +98,7 @@ Route::group([
     // ])->whereUuid('version')->can('update', 'version');
 
     Route::patch('/{version}', [
-        'as'   => 'playground.matrix.resource.versions.patch',
+        'as' => 'playground.matrix.resource.versions.patch',
         'uses' => 'VersionController@update',
     ])->whereUuid('version')->can('update', 'version');
 });

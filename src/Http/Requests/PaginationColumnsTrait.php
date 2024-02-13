@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
@@ -30,7 +29,7 @@ trait PaginationColumnsTrait
     public function rules_filters_columns(array &$rules): void
     {
         foreach ($this->getPaginationColumns() as $column => $meta) {
-            if (empty($column) || !is_string($column)) {
+            if (empty($column) || ! is_string($column)) {
                 continue;
             }
 
@@ -47,7 +46,7 @@ trait PaginationColumnsTrait
                 $set_rules[] = 'nullable';
             }
 
-            if (!empty($meta['type'])
+            if (! empty($meta['type'])
                 && is_string($meta['type'])
             ) {
                 // Dates

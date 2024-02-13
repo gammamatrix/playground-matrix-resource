@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests\Flow;
 
 use Playground\Matrix\Resource\Http\Requests\AbstractUpdateRequest;
@@ -109,7 +108,7 @@ class UpdateRequest extends AbstractUpdateRequest
             $input['introduction'] = '';
         }
 
-        if (!empty($input)) {
+        if (! empty($input)) {
             $this->merge($input);
         }
     }

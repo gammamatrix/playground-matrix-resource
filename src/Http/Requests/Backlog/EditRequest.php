@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;

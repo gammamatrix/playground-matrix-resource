@@ -16,23 +16,22 @@ Route::group([
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource.teams',
+        'as' => 'playground.matrix.resource.teams',
         'uses' => 'TeamController@index',
-    ])->can('index', \Playground\Matrix\Models\Team::class);
+    ])->can('index', Playground\Matrix\Models\Team::class);
 
-    # UI
+    // UI
 
     Route::get('/create', [
-        'as'   => 'playground.matrix.resource.teams.create',
+        'as' => 'playground.matrix.resource.teams.create',
         'uses' => 'TeamController@create',
-    ])->can('create', \Playground\Matrix\Models\Team::class);
+    ])->can('create', Playground\Matrix\Models\Team::class);
 
     Route::get('/edit/{team}', [
-        'as'   => 'playground.matrix.resource.teams.edit',
+        'as' => 'playground.matrix.resource.teams.edit',
         'uses' => 'TeamController@edit',
     ])->whereUuid('team')
-        ->can('edit', 'team')
-    ;
+        ->can('edit', 'team');
 
     // Route::get('/go/{id}', [
     //     'as'   => 'playground.matrix.resource.teams.go',
@@ -40,11 +39,10 @@ Route::group([
     // ]);
 
     Route::get('/{team}', [
-        'as'   => 'playground.matrix.resource.teams.show',
+        'as' => 'playground.matrix.resource.teams.show',
         'uses' => 'TeamController@show',
     ])->whereUuid('team')
-        ->can('detail', 'team')
-    ;
+        ->can('detail', 'team');
 
     // Route::get('/{slug}', [
     //     'as'   => 'playground.matrix.resource.teams.slug',
@@ -56,42 +54,38 @@ Route::group([
     //     'uses' => 'TeamController@store',
     // ])->can('store', \Playground\Matrix\Models\Team::class);
 
-    # API
+    // API
 
     Route::put('/lock/{team}', [
-        'as'   => 'playground.matrix.resource.teams.lock',
+        'as' => 'playground.matrix.resource.teams.lock',
         'uses' => 'TeamController@lock',
     ])->whereUuid('team')
-        ->can('lock', 'team')
-    ;
+        ->can('lock', 'team');
 
     Route::delete('/lock/{team}', [
-        'as'   => 'playground.matrix.resource.teams.unlock',
+        'as' => 'playground.matrix.resource.teams.unlock',
         'uses' => 'TeamController@unlock',
     ])->whereUuid('team')
-        ->can('unlock', 'team')
-    ;
+        ->can('unlock', 'team');
 
     Route::delete('/{team}', [
-        'as'   => 'playground.matrix.resource.teams.destroy',
+        'as' => 'playground.matrix.resource.teams.destroy',
         'uses' => 'TeamController@destroy',
     ])->whereUuid('team')
         ->can('delete', 'team')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::put('/restore/{team}', [
-        'as'   => 'playground.matrix.resource.teams.restore',
+        'as' => 'playground.matrix.resource.teams.restore',
         'uses' => 'TeamController@restore',
     ])->whereUuid('team')
         ->can('restore', 'team')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::post('/', [
-        'as'   => 'playground.matrix.resource.teams.post',
+        'as' => 'playground.matrix.resource.teams.post',
         'uses' => 'TeamController@store',
-    ])->can('store', \Playground\Matrix\Models\Team::class);
+    ])->can('store', Playground\Matrix\Models\Team::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.teams.put',
@@ -104,7 +98,7 @@ Route::group([
     // ])->whereUuid('team')->can('update', 'team');
 
     Route::patch('/{team}', [
-        'as'   => 'playground.matrix.resource.teams.patch',
+        'as' => 'playground.matrix.resource.teams.patch',
         'uses' => 'TeamController@update',
     ])->whereUuid('team')->can('update', 'team');
 });

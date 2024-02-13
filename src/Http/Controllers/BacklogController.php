@@ -2,9 +2,13 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
 use Playground\Matrix\Models\Backlog;
 use Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest;
 use Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest;
@@ -18,12 +22,6 @@ use Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest;
 use Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
 use Playground\Matrix\Resource\Http\Resources\Backlog as BacklogResource;
 use Playground\Matrix\Resource\Http\Resources\BacklogCollection;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Response;
-use Illuminate\Support\Carbon;
-use Illuminate\View\View;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\BacklogController
@@ -34,19 +32,19 @@ class BacklogController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Backlog',
-        'model_label_plural'  => 'Backlogs',
-        'model_route'         => 'playground.matrix.resource.backlogs',
-        'model_slug'          => 'backlog',
-        'model_slug_plural'   => 'backlogs',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Backlog',
+        'model_label_plural' => 'Backlogs',
+        'model_route' => 'playground.matrix.resource.backlogs',
+        'model_slug' => 'backlog',
+        'model_slug_plural' => 'backlogs',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:backlog',
-        'table'               => 'matrix_backlogs',
-        'view'                => 'playground-matrix-resource::backlog',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:backlog',
+        'table' => 'matrix_backlogs',
+        'view' => 'playground-matrix-resource::backlog',
     ];
 
     /**
@@ -65,10 +63,10 @@ class BacklogController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -86,12 +84,12 @@ class BacklogController extends Controller
 
         $flash = $backlog->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -119,10 +117,10 @@ class BacklogController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $backlog->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $backlog->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -140,7 +138,7 @@ class BacklogController extends Controller
 
         $flash = $backlog->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -202,9 +200,9 @@ class BacklogController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $backlog->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $backlog->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
         // dump($request);
 
@@ -237,7 +235,7 @@ class BacklogController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -261,7 +259,7 @@ class BacklogController extends Controller
             );
         }
 
-        $perPage = ! empty($validated['perPage']) && is_integer($validated['perPage']) ? $validated['perPage'] : null;
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
         $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
@@ -272,15 +270,15 @@ class BacklogController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -337,10 +335,10 @@ class BacklogController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $backlog->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $backlog->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -362,10 +360,10 @@ class BacklogController extends Controller
     }
 
     /**
-      * Store a newly created API Backlog resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.backlogs.post
-      */
+     * Store a newly created API Backlog resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.backlogs.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|BacklogResource {

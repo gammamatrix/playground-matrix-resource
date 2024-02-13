@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use HTMLPurifier;
@@ -38,29 +37,25 @@ trait StoreContentTrait
 
     /**
      * Get HTMLPurifier
-     *
-     * @return \HTMLPurifier
      */
     public function getHtmlPurifier(array $config = []): HTMLPurifier
     {
-        if (null === $this->purifier) {
+        if ($this->purifier === null) {
             $hpc = \HTMLPurifier_Config::createDefault();
 
             $config = empty($config) ? config('playground-matrix-resource') : $config;
 
-            $safeIframeRegexp = !empty($config['content'])
+            $safeIframeRegexp = ! empty($config['content'])
                 && array_has_key(iframes, $config['content'])
                 && is_string($config['content']['iframes'])
                 ? $config['content']['iframes']
-                : '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%'
-            ;
+                : '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%';
 
-            $serializerPath = !empty($config['cache'])
-                && !empty($config['cache']['purifier'])
+            $serializerPath = ! empty($config['cache'])
+                && ! empty($config['cache']['purifier'])
                 && is_string($config['cache']['purifier'])
                 ? $config['cache']['purifier']
-                : null
-            ;
+                : null;
 
             if ($serializerPath) {
                 $hpc->set('Cache.SerializerPath', $serializerPath);

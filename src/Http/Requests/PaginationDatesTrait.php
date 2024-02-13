@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Support\Carbon;
@@ -38,7 +37,7 @@ trait PaginationDatesTrait
     public function rules_filters_dates(array &$rules): void
     {
         foreach ($this->getPaginationDates() as $column => $meta) {
-            if (empty($column) || !is_string($column)) {
+            if (empty($column) || ! is_string($column)) {
                 continue;
             }
 
@@ -62,7 +61,7 @@ trait PaginationDatesTrait
         $dates = $this->getPaginationDates();
 
         $filter = $this->get('filter');
-        if (empty($filter) || !is_array($filter)) {
+        if (empty($filter) || ! is_array($filter)) {
             return null;
         }
         // dump([
@@ -87,7 +86,7 @@ trait PaginationDatesTrait
                     $unset = false;
 
                     if (array_key_exists('parse', $filter[$column])) {
-                        $options['parse'] = !empty($filter[$column]['parse']);
+                        $options['parse'] = ! empty($filter[$column]['parse']);
                     }
 
                     $filter_operators = $this->getPaginationOperators();
@@ -107,7 +106,7 @@ trait PaginationDatesTrait
                     }
 
                     if (array_key_exists('value', $filter[$column])) {
-                        if ($filter_expects_array && !is_array($filter[$column]['value'])) {
+                        if ($filter_expects_array && ! is_array($filter[$column]['value'])) {
                             $unset = true;
                         } elseif (is_string($filter[$column]['value'])) {
                             if ($options['parse']) {
@@ -117,15 +116,15 @@ trait PaginationDatesTrait
                             }
                         }
                     }
-                    if (!$unset) {
+                    if (! $unset) {
                         $filter[$column] = $options;
                     }
-                // dump([
-                //     '__METHOD__' => __METHOD__,
-                //     '__LINE__' => __LINE__,
-                //     '$column' => $column,
-                //     '$filter[$column]' => $filter[$column],
-                // ]);
+                    // dump([
+                    //     '__METHOD__' => __METHOD__,
+                    //     '__LINE__' => __LINE__,
+                    //     '$column' => $column,
+                    //     '$filter[$column]' => $filter[$column],
+                    // ]);
                 } elseif (is_string($filter[$column])) {
                     // dump([
                     //     '__METHOD__' => __METHOD__,

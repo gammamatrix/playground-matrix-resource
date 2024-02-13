@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Policies;
 
 use Playground\Policies\ModelPolicy;
@@ -15,7 +14,7 @@ class BoardPolicy extends ModelPolicy
     protected string $package = 'playground-matrix-resource';
 
     /**
-     * @var array<int, string> $rolesToView The roles allowed to view the MVC.
+     * @var array<int, string> The roles allowed to view the MVC.
      */
     protected $rolesToView = [
         'user',
@@ -23,16 +22,16 @@ class BoardPolicy extends ModelPolicy
         'publisher',
         'manager',
         'admin',
-        'root'
+        'root',
     ];
 
     /**
-     * @var array<int, string> $rolesForAction The roles allowed for actions in the MVC.
+     * @var array<int, string> The roles allowed for actions in the MVC.
      */
     protected $rolesForAction = [
         'publisher',
         'manager',
         'admin',
-        'root'
+        'root',
     ];
 }

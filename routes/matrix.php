@@ -16,7 +16,7 @@ Route::group([
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource',
+        'as' => 'playground.matrix.resource',
         'uses' => 'IndexController@index',
     ]);
 });

@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
 use Playground\Test\Feature\Http\Controllers\Resource;
@@ -10,13 +9,12 @@ use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SprintRouteTest
- *
  */
 class SprintRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
@@ -29,19 +27,19 @@ class SprintRouteTest extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Sprint',
-        'model_label_plural'  => 'Sprints',
-        'model_route'         => 'playground.matrix.resource.sprints',
-        'model_slug'          => 'sprint',
-        'model_slug_plural'   => 'sprints',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Sprint',
+        'model_label_plural' => 'Sprints',
+        'model_route' => 'playground.matrix.resource.sprints',
+        'model_slug' => 'sprint',
+        'model_slug_plural' => 'sprints',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:sprint',
-        'table'               => 'matrix_sprints',
-        'view'                => 'playground-matrix-resource::sprint',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:sprint',
+        'table' => 'matrix_sprints',
+        'view' => 'playground-matrix-resource::sprint',
     ];
 
     /**

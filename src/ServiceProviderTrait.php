@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource;
 
 use Illuminate\Support\Facades\Gate;
@@ -24,7 +23,7 @@ trait ServiceProviderTrait
     {
         // $pattern = '/(?:\\{1,2}\w+|\w+\\{1,2})(?:\w+\\{0,2}\w+)/';
 
-        if (!empty($config['policy_namespace'])
+        if (! empty($config['policy_namespace'])
             && is_string($config['policy_namespace'])
             // TODO Should we enforce a regex with a Log message?
             // && preg_match($pattern, $config['policy_namespace'])
@@ -39,7 +38,7 @@ trait ServiceProviderTrait
     {
         $register = $policy;
 
-        if (!empty($this->policy_namespace)) {
+        if (! empty($this->policy_namespace)) {
             // TODO test slashes with policies in App\Policies or another namespace.
             $register = str_replace(
                 'Playground\\Matrix\\Resource',

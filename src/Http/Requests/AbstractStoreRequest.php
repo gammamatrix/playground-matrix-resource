@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
@@ -11,8 +10,8 @@ namespace Playground\Matrix\Resource\Http\Requests;
 abstract class AbstractStoreRequest extends FormRequest
 {
     use StoreContentTrait;
-    use StoreSlugTrait;
     use StoreFilterTrait;
+    use StoreSlugTrait;
 
     /**
      * @return array<string, string>

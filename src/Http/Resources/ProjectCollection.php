@@ -1,5 +1,4 @@
 <?php
-
 namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;
@@ -33,7 +32,7 @@ class ProjectCollection extends ResourceCollection
                 'ids' => $request->getPaginationIds(),
                 'rules' => $request->rules(),
                 'session_user_id' => $request->user()->id,
-                'sortable'  => $request->getSortable(),
+                'sortable' => $request->getSortable(),
                 'timestamp' => Carbon::now()->toJson(),
                 'validated' => $request->validated(),
             ],

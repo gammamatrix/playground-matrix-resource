@@ -1,9 +1,7 @@
 <?php
 /**
  * Playground
- *
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use Carbon\Carbon;
@@ -18,13 +16,12 @@ trait StoreFilterTrait
 
     /**
      * Filter an array.
-     *
      */
     public function filterArray(mixed $value): array
     {
         if (is_array($value)) {
             return $value;
-        } elseif (!empty($value) && is_string($value)) {
+        } elseif (! empty($value) && is_string($value)) {
             return (array) $value;
         }
 
@@ -35,7 +32,6 @@ trait StoreFilterTrait
      * Filter a value and encode it to json.
      *
      * NOTE: This may not be necessary if the field has been cast in the model.
-     *
      */
     public function filterArrayToJson(mixed $value): string
     {
@@ -51,16 +47,15 @@ trait StoreFilterTrait
     /**
      * Filter a bit value
      *
-     * @param integer $value The value to filter.
-     * @param integer $exponent The maximum power of the exponent to sum.
-     *
+     * @param int $value The value to filter.
+     * @param int $exponent The maximum power of the exponent to sum.
      */
     public function filterBits(int $value, int $exponent = 0): int
     {
         $exponent = intval(abs($exponent));
 
         /**
-         * @var integer $pBits The allowed permission bits: rwx
+         * @var int $pBits The allowed permission bits: rwx
          */
         $pBits = 0;
         // $pBits = 4 + 2 + 1;
@@ -77,8 +72,8 @@ trait StoreFilterTrait
      */
     public function filterBoolean(mixed $value): bool
     {
-        if (is_string($value) && !is_numeric($value)) {
-            return 'true' === strtolower($value);
+        if (is_string($value) && ! is_numeric($value)) {
+            return strtolower($value) === 'true';
         } elseif (is_numeric($value)) {
             return $value > 0;
         } else {
@@ -92,9 +87,8 @@ trait StoreFilterTrait
     public function filterDate(mixed $value): ?string
     {
         return is_string($value)
-            && !empty($value)
-            ? gmdate($this->date_format, strtotime($value)) : null
-        ;
+            && ! empty($value)
+            ? gmdate($this->date_format, strtotime($value)) : null;
     }
 
     /**
@@ -120,13 +114,12 @@ trait StoreFilterTrait
      *
      * @param string $value The value to filter.
      * @param string $locale i18n
-     *
      */
     public function filterFloat(
         mixed $value,
         string $locale = 'en-US'
     ): ?float {
-        if ('' === $value || null === $value) {
+        if ($value === '' || $value === null) {
             return null;
         }
 
@@ -137,25 +130,22 @@ trait StoreFilterTrait
      * Filter HTML from content.
      *
      * FILTER_FLAG_NO_ENCODE_QUOTES - do not encode quotes.
-     *
      */
     public function filterHtml(mixed $content): string
     {
         return is_string($content)
             ? filter_var($content, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)
-            : ''
-        ;
+            : '';
     }
 
     /**
      * Filter an integer value
-     *
      */
     public function filterInteger(
         mixed $value,
         string $locale = 'en-US'
     ): int {
-        if ('' === $value || null === $value) {
+        if ($value === '' || $value === null) {
             return 0;
         }
 
@@ -187,12 +177,11 @@ trait StoreFilterTrait
      *
      * @param string $value The value to filter.
      * @param string $locale i18n
-     *
      * @return float
      */
     public function filterPercent(mixed $value, $locale = 'en-US')
     {
-        if ('' === $value || null === $value || is_numeric($value)) {
+        if ($value === '' || $value === null || is_numeric($value)) {
             return null;
         }
 
@@ -214,8 +203,7 @@ trait StoreFilterTrait
 
         return is_string($value)
             ? filter_var(str_replace(['-', '.', '+'], '', $value), FILTER_SANITIZE_NUMBER_INT)
-            : ''
-        ;
+            : '';
     }
 
     // /**

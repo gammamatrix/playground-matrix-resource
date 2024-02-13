@@ -1,5 +1,4 @@
 <?php
-
 namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;

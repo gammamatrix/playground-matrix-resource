@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -45,7 +44,7 @@ abstract class FormRequest extends BaseFormRequest
     public function userHasAdminPrivileges(Authenticatable $user = null): bool
     {
         $admin = false;
-        if (!empty($user)) {
+        if (! empty($user)) {
             if (method_exists($user, 'isAdmin')) {
                 $admin = $user->isAdmin();
             } else {
@@ -53,6 +52,7 @@ abstract class FormRequest extends BaseFormRequest
                 $admin = true;
             }
         }
+
         return $admin;
     }
 }

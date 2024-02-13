@@ -2,7 +2,6 @@
 /**
  * Playground
  */
-
 namespace Playground\Matrix\Resource\Http\Requests;
 
 /**
@@ -28,9 +27,9 @@ trait PaginationSortableTrait
     {
         $sortable = $this->getSortable();
 
-        if (!empty($sortable)) {
+        if (! empty($sortable)) {
             $rules['sort.*'] = [
-                'string'
+                'string',
             ];
             $rules['sort.*'][] = sprintf('in:%1$s', sprintf(
                 '%1$s,-%2$s',
@@ -46,7 +45,7 @@ trait PaginationSortableTrait
 
         $sort = $this->input('sort');
 
-        if (!empty($sort)) {
+        if (! empty($sort)) {
             if (is_string($sort)) {
                 // Convert sort to array
                 $sortable = explode(',', $sort);
