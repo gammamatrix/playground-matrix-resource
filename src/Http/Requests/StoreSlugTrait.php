@@ -13,6 +13,9 @@ trait StoreSlugTrait
 {
     protected string $slug_table = '';
 
+    /**
+     * @param array<string, string|array<string, mixed>> $rules
+     */
     public function rules_store_slug_create(array &$rules): void
     {
         $rules['slug'] = [
@@ -25,6 +28,9 @@ trait StoreSlugTrait
         }
     }
 
+    /**
+     * @param array<string, string|array<string, mixed>> $rules
+     */
     public function rules_store_slug_update(array &$rules): void
     {
         $rules['slug'] = [
@@ -33,10 +39,17 @@ trait StoreSlugTrait
         ];
 
         if ($this->slug_table) {
-            $rules['slug'][] = sprintf('unique:%1$s,id,%2$s', $this->slug_table, $this->id);
+            /**
+             * @var int|string $id
+             */
+            $id = $this->id;
+            $rules['slug'][] = sprintf('unique:%1$s,id,%2$s', $this->slug_table, $id);
         }
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function prepareForValidationForSlug(): array
     {
         $slug = $this->get('slug');
@@ -46,14 +59,14 @@ trait StoreSlugTrait
         $merge = false;
 
         if (empty($slug) && (! empty($label) || ! empty($title))) {
-            if (! empty($title)) {
+            if (! empty($title) && is_string($title)) {
                 $merge = true;
                 $slug = Str::of($title)->slug('-')->toString();
-            } elseif (! empty($label)) {
+            } elseif (! empty($label) && is_string($label)) {
                 $merge = true;
                 $slug = Str::of($label)->slug('-')->toString();
             }
-        } elseif (! empty($slug)) {
+        } elseif (! empty($slug) && is_string($slug)) {
             $merge = true;
             $slug = Str::of($slug)->slug('-')->toString();
         }
@@ -75,9 +88,9 @@ trait StoreSlugTrait
         }
 
         return [
-            'slug' => $slug,
-            'label' => $label,
-            'title' => $title,
+            'slug' => is_string($slug) ? $slug : '',
+            'label' => is_string($label) ? $label : '',
+            'title' => is_string($title) ? $title : '',
         ];
     }
 }

@@ -12,7 +12,7 @@ use Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
 class StoreRequest extends AbstractStoreRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         'owned_by_id' => ['nullable', 'uuid'],

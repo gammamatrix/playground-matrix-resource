@@ -2,24 +2,33 @@
 /**
  * Playground
  */
-namespace Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests\Concerns;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\PaginationFlagsTrait
+ * \Playground\Matrix\Resource\Http\Requests\Concerns\PaginationFlags
  */
-trait PaginationFlagsTrait
+trait PaginationFlags
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationFlags = [
         'active' => ['label' => 'Active'],
         'flagged' => ['label' => 'Flagged'],
         'locked' => ['label' => 'Locked'],
     ];
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPaginationFlags(): array
     {
         return $this->paginationFlags;
     }
 
+    /**
+     * @param array<string, mixed> $rules
+     */
     public function rules_filters_flags(array &$rules): void
     {
         foreach ($this->getPaginationFlags() as $column => $meta) {

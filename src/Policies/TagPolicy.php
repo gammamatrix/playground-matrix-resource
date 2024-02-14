@@ -4,7 +4,7 @@
  */
 namespace Playground\Matrix\Resource\Policies;
 
-use Playground\Policies\ModelPolicy;
+use Playground\Auth\Policies\ModelPolicy;
 
 /**
  * \Playground\Matrix\Resource\Policies\TagPolicy

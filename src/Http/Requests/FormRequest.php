@@ -12,6 +12,9 @@ use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
  */
 abstract class FormRequest extends BaseFormRequest
 {
+    /**
+     * @var array<string, string|array<mixed>>
+     */
     public const RULES = [];
 
     /**
@@ -32,7 +35,7 @@ abstract class FormRequest extends BaseFormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {

@@ -13,30 +13,34 @@ trait StoreContentTrait
 {
     protected ?HTMLPurifier $purifier = null;
 
+    protected ?string $safeIframeRegexp = '%^(https?:)?(\/\/www\.youtube(?:-nocookie)?\.com\/embed\/|\/\/player\.vimeo\.com\/)%';
+
     /**
      * Exorcise all html from the string.
      *
      * @uses \htmlspecialchars()
      * @uses \strip_tags()
      */
-    public static function exorcise(string $content): string
+    public static function exorcise(mixed $content): string
     {
-        return htmlspecialchars(
+        return is_string($content) ? htmlspecialchars(
             strip_tags($content),
             ENT_HTML5
-        );
+        ) : '';
     }
 
     /**
      * Purify a string with HTMLPurifier.
      */
-    public function purify(string $content): string
+    public function purify(mixed $content): string
     {
-        return $this->getHtmlPurifier()->purify($content);
+        return is_string($content) ? $this->getHtmlPurifier()->purify($content) : '';
     }
 
     /**
      * Get HTMLPurifier
+     *
+     * @param array<string, mixed> $config
      */
     public function getHtmlPurifier(array $config = []): HTMLPurifier
     {
@@ -44,6 +48,8 @@ trait StoreContentTrait
             $hpc = \HTMLPurifier_Config::createDefault();
 
             $config = empty($config) ? config('playground-matrix-resource') : $config;
+
+            $this->safeIframeRegexp =
 
             $safeIframeRegexp = ! empty($config['content'])
                 && array_has_key(iframes, $config['content'])

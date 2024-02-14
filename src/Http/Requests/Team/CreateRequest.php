@@ -12,7 +12,7 @@ use Playground\Matrix\Resource\Http\Requests\FormRequest;
 class CreateRequest extends FormRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         'owned_by_id' => ['nullable', 'uuid'],

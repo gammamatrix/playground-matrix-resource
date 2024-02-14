@@ -12,12 +12,17 @@ use Playground\Matrix\Resource\Http\Requests\FormRequest;
 class DestroyRequest extends FormRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         '_return_url' => ['nullable', 'url'],
     ];
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         $rules = parent::rules();

@@ -2,15 +2,18 @@
 /**
  * Playground
  */
-namespace Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests\Concerns;
 
 use Illuminate\Support\Carbon;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\PaginationDatesTrait
+ * \Playground\Matrix\Resource\Http\Requests\Concerns\PaginationDates
  */
-trait PaginationDatesTrait
+trait PaginationDates
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationDates = [
         'created_at' => ['label' => 'Created'],
         'updated_at' => ['label' => 'Updated'],
@@ -22,18 +25,14 @@ trait PaginationDatesTrait
     /**
      * @return array<string, mixed>
      */
-    abstract public function getPaginationOperators(): array;
-
-    abstract public function get(string $key, mixed $default = null);
-
-    /**
-     * @return array<string, mixed>
-     */
     public function getPaginationDates(): array
     {
         return $this->paginationDates;
     }
 
+    /**
+     * @param array<string, mixed> $rules
+     */
     public function rules_filters_dates(array &$rules): void
     {
         foreach ($this->getPaginationDates() as $column => $meta) {
@@ -47,6 +46,9 @@ trait PaginationDatesTrait
         }
     }
 
+    /**
+     * @return ?array<string, mixed>
+     */
     public function prepareForValidationForDates(): ?array
     {
         // $params = [

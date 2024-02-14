@@ -12,7 +12,7 @@ use Playground\Matrix\Resource\Http\Requests\FormRequest;
 class RestoreRequest extends FormRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         '_return_url' => ['nullable', 'url'],

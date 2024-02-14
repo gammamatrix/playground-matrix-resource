@@ -6,6 +6,7 @@
 
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy;
 
+use Playground\Matrix\Resource\Policies\BacklogPolicy;
 use Tests\Unit\Playground\Matrix\Resource\TestCase;
 
 /**
@@ -14,14 +15,10 @@ use Tests\Unit\Playground\Matrix\Resource\TestCase;
  */
 class PolicyTest extends TestCase
 {
-    protected string $policyClass = \Playground\Matrix\Resource\Policies\BacklogPolicy::class;
-
     public function test_policy_instance(): void
     {
-        $policyClass = $this->policyClass;
+        $instance = new BacklogPolicy;
 
-        $instance = new $policyClass();
-
-        $this->assertInstanceOf($policyClass, $instance);
+        $this->assertInstanceOf(BacklogPolicy::class, $instance);
     }
 }

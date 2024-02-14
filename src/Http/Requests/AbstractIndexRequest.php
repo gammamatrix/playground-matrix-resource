@@ -7,11 +7,11 @@ namespace Playground\Matrix\Resource\Http\Requests;
 /**
  * \Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest
  */
-abstract class AbstractIndexRequest extends FormRequest
+abstract class AbstractIndexRequest extends FormRequest implements Contracts\PaginationColumns, Contracts\PaginationDates, Contracts\PaginationFlags
 {
-    use PaginationColumnsTrait;
-    use PaginationDatesTrait;
-    use PaginationFlagsTrait;
+    use Concerns\PaginationColumns;
+    use Concerns\PaginationDates;
+    use Concerns\PaginationFlags;
     use PaginationIdsTrait;
     use PaginationSortableTrait;
 
@@ -29,6 +29,9 @@ abstract class AbstractIndexRequest extends FormRequest
      */
     protected $perPageMax = 100;
 
+    /**
+     * @var array<string, string|array<mixed>>
+     */
     public const RULES = [
         'perPage' => [
             'nullable',
@@ -76,6 +79,11 @@ abstract class AbstractIndexRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         $rules = parent::rules();

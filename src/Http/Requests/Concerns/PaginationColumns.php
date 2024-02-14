@@ -2,13 +2,16 @@
 /**
  * Playground
  */
-namespace Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests\Concerns;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\PaginationColumnsTrait
+ * \Playground\Matrix\Resource\Http\Requests\Concerns\PaginationColumns
  */
-trait PaginationColumnsTrait
+trait PaginationColumns
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationColumns = [
         'label' => ['label' => 'Label', 'type' => 'string'],
         // 'slug' => ['label' => 'Slug', 'type' => 'string'],
@@ -21,17 +24,25 @@ trait PaginationColumnsTrait
         // 'rank' => ['label' => 'Rank', 'type' => 'integer'],
     ];
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPaginationColumns(): array
     {
         return $this->paginationColumns;
     }
 
+    /**
+     * @param array<string, mixed> $rules
+     */
     public function rules_filters_columns(array &$rules): void
     {
         foreach ($this->getPaginationColumns() as $column => $meta) {
             if (empty($column) || ! is_string($column)) {
                 continue;
             }
+
+            $meta = empty($meta) || ! is_array($meta) ? [] : $meta;
 
             $rule_key = sprintf('filter.%1$s', $column);
 

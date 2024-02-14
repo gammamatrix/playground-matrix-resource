@@ -65,8 +65,11 @@ class ServiceProvider extends AuthServiceProvider
                 $this->registerPolicies();
             }
 
-            if (! empty($config['load']['routes'])) {
-                $this->routes($config);
+            if (! empty($config['load']['routes'])
+                && ! empty($config['routes'])
+                && is_array($config['routes'])
+            ) {
+                $this->routes($config['routes']);
             }
 
             if (! empty($config['load']['views'])) {
@@ -108,52 +111,52 @@ class ServiceProvider extends AuthServiceProvider
      */
     public function routes(array $config): void
     {
-        if (! empty($config['routes']['matrix'])) {
+        if (! empty($config['matrix'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/matrix.php');
         }
-        if (! empty($config['routes']['backlogs'])) {
+        if (! empty($config['backlogs'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/backlogs.php');
         }
-        if (! empty($config['routes']['boards'])) {
+        if (! empty($config['boards'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/boards.php');
         }
-        if (! empty($config['routes']['epics'])) {
+        if (! empty($config['epics'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/epics.php');
         }
-        if (! empty($config['routes']['flows'])) {
+        if (! empty($config['flows'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/flows.php');
         }
-        if (! empty($config['routes']['milestones'])) {
+        if (! empty($config['milestones'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/milestones.php');
         }
-        if (! empty($config['routes']['notes'])) {
+        if (! empty($config['notes'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/notes.php');
         }
-        if (! empty($config['routes']['projects'])) {
+        if (! empty($config['projects'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/projects.php');
         }
-        if (! empty($config['routes']['releases'])) {
+        if (! empty($config['releases'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/releases.php');
         }
-        if (! empty($config['routes']['roadmaps'])) {
+        if (! empty($config['roadmaps'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/roadmaps.php');
         }
-        if (! empty($config['routes']['sources'])) {
+        if (! empty($config['sources'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/sources.php');
         }
-        if (! empty($config['routes']['sprints'])) {
+        if (! empty($config['sprints'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/sprints.php');
         }
-        if (! empty($config['routes']['tags'])) {
+        if (! empty($config['tags'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/tags.php');
         }
-        if (! empty($config['routes']['teams'])) {
+        if (! empty($config['teams'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/teams.php');
         }
-        if (! empty($config['routes']['tickets'])) {
+        if (! empty($config['tickets'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/tickets.php');
         }
-        if (! empty($config['routes']['versions'])) {
+        if (! empty($config['versions'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/versions.php');
         }
     }

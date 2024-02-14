@@ -23,6 +23,9 @@ class NoteRouteTest extends TestCase
 
     public string $fqdn = \Playground\Matrix\Models\Note::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute' => 'label',
         'model_label' => 'Note',

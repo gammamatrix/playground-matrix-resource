@@ -9,6 +9,12 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * \Playground\Matrix\Resource\Http\Requests\StoreFilterTrait
+ *
+ * Playground filter handler
+ *
+ * It is expected that the data may not have the proper type from forms.
+ * These filters correct those values. Parameters must not be cast.
+ * Allow the method to decide what to return to prevent model cast errors.
  */
 trait StoreFilterTrait
 {
@@ -16,6 +22,9 @@ trait StoreFilterTrait
 
     /**
      * Filter an array.
+     *
+     * @param mixed $value The value to filter.
+     * @return array<mixed> Returns an array.
      */
     public function filterArray(mixed $value): array
     {
@@ -29,11 +38,14 @@ trait StoreFilterTrait
     }
 
     /**
-     * Filter a value and encode it to json.
+     * Filter an array and encode it to json.
      *
      * NOTE: This may not be necessary if the field has been cast in the model.
+     *
+     * @param mixed $value The value to filter.
+     * @return string|false Returns an array converted to JSON.
      */
-    public function filterArrayToJson(mixed $value): string
+    public function filterArrayToJson(mixed $value): string|false
     {
         if (is_array($value)) {
             return json_encode($value);
@@ -50,12 +62,12 @@ trait StoreFilterTrait
      * @param int $value The value to filter.
      * @param int $exponent The maximum power of the exponent to sum.
      */
-    public function filterBits(int $value, int $exponent = 0): int
+    public function filterBits($value, $exponent = 0): int
     {
         $exponent = intval(abs($exponent));
 
         /**
-         * @var int $pBits The allowed permission bits: rwx
+         * @var int $pBits The summed bit power values.
          */
         $pBits = 0;
         // $pBits = 4 + 2 + 1;
@@ -69,6 +81,8 @@ trait StoreFilterTrait
 
     /**
      * Filter a boolean value
+     *
+     * @param mixed $value The value to filter.
      */
     public function filterBoolean(mixed $value): bool
     {
@@ -82,80 +96,117 @@ trait StoreFilterTrait
     }
 
     /**
-     * Filter a date value as a MySQL UTC string.
+     * Filter a date value as an SQL UTC string.
+     *
+     * @param string $value The date to filter.
+     * @param string $locale i18n
      */
-    public function filterDate(mixed $value): ?string
+    public function filterDate(mixed $value, $locale = 'en-US'): ?string
     {
-        return is_string($value)
-            && ! empty($value)
-            ? gmdate($this->date_format, strtotime($value)) : null;
+        if (empty($value) || ! (
+            is_string($value)
+            || $value instanceof \DateTimeInterface
+        )) {
+            return null;
+        }
+
+        $PLAYGROUND_DATE_SQL = config('playground.date.sql');
+        $PLAYGROUND_DATE_SQL = empty($PLAYGROUND_DATE_SQL) || ! is_string($PLAYGROUND_DATE_SQL) ? 'Y-m-d H:i:s' : $PLAYGROUND_DATE_SQL;
+
+        return Carbon::parse($value)->format($PLAYGROUND_DATE_SQL);
+        // return Carbon::parse($value)->format(config('playground.date.sql', 'Y-m-d H:i:s'));
     }
 
     /**
      * Filter a date value as a Carbon date.
+     *
+     * @param string $value The date to filter.
+     * @param string $locale i18n
      */
-    public function filterDateAsCarbon($value): ?Carbon
+    public function filterDateAsCarbon($value, $locale = 'en-US'): ?Carbon
     {
-        return empty($value) ? null : Carbon::parse($value);
+        if (empty($value)) {
+            return null;
+        }
+
+        // return new Carbon($value);
+        return Carbon::parse($value);
     }
 
     /**
      * Filter an email address.
+     *
+     * @param mixed $email The address to filter.
      */
-    public function filterEmail($email): string
+    public function filterEmail(mixed $email): string
     {
-        return is_string($email) ? filter_var($email, FILTER_SANITIZE_EMAIL) : '';
+        $email = is_string($email) ? filter_var($email, FILTER_SANITIZE_EMAIL) : '';
+
+        return is_string($email) ? $email : '';
     }
 
     /**
      * Filter a float value
      *
-     * NOTE: Implement handling for locales.
-     *
-     * @param string $value The value to filter.
+     * @param mixed $value The value to filter.
      * @param string $locale i18n
      */
-    public function filterFloat(
-        mixed $value,
-        string $locale = 'en-US'
-    ): ?float {
+    public function filterFloat(mixed $value, $locale = 'en-US'): ?float
+    {
         if ($value === '' || $value === null) {
             return null;
         }
 
-        return (new \NumberFormatter($locale, \NumberFormatter::DECIMAL))->parse($value);
+        return is_numeric($value) ? floatval($value) : null;
+        // return (new \NumberFormatter(
+        //     $locale,
+        //     \NumberFormatter::DECIMAL
+        // ))->parse($value);
     }
 
     /**
      * Filter HTML from content.
      *
      * FILTER_FLAG_NO_ENCODE_QUOTES - do not encode quotes.
+     *
+     * @param string $content The string to filter.
      */
-    public function filterHtml(mixed $content): string
+    public function filterHtml(string $content): string
     {
-        return is_string($content)
-            ? filter_var($content, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES)
-            : '';
+        $content = filter_var(
+            $content,
+            FILTER_SANITIZE_STRING,
+            FILTER_FLAG_NO_ENCODE_QUOTES
+        );
+
+        return is_string($content) ? $content : '';
     }
 
     /**
      * Filter an integer value
+     *
+     * @param mixed $value The value to filter.
+     * @param string $locale i18n
      */
-    public function filterInteger(
-        mixed $value,
-        string $locale = 'en-US'
-    ): int {
+    public function filterInteger(mixed $value, $locale = 'en-US'): int
+    {
         if ($value === '' || $value === null) {
             return 0;
         }
 
-        $value = (new \NumberFormatter($locale, \NumberFormatter::DECIMAL))->parse($value, \NumberFormatter::TYPE_INT64);
+        // $value = (new \NumberFormatter(
+        //     $locale,
+        //     \NumberFormatter::DECIMAL
+        // ))->parse($value, \NumberFormatter::TYPE_INT64);
 
-        return is_numeric($value) ? $value : 0;
+        return is_numeric($value) ? intval($value) : 0;
+        // return is_int($value) ? $value : 0;
     }
 
     /**
      * Filter an integer value ID.
+     *
+     * @param mixed $value The value to filter.
      */
     public function filterIntegerId(mixed $value): ?int
     {
@@ -163,11 +214,16 @@ trait StoreFilterTrait
     }
 
     /**
-     * Filter a positive integer value or return null.
+     * Filter a positive integer value or return zero.
+     *
+     * @param mixed $value The value to filter.
+     * @param bool $absolute Use `abs()` on the value to convert negative to positive.
      */
-    public function filterIntegerPositive(mixed $value): ?int
+    public function filterIntegerPositive(mixed $value, $absolute = true): int
     {
-        return is_numeric($value) && ($value > 0) ? (int) $value : null;
+        $value = is_scalar($value) ? intval($value) : 0;
+
+        return $absolute && ($value < 0) ? (int) abs($value) : $value;
     }
 
     /**
@@ -175,23 +231,26 @@ trait StoreFilterTrait
      *
      * NOTE: Only removes the percent sign.
      *
-     * @param string $value The value to filter.
+     * @param mixed $value The value to filter.
      * @param string $locale i18n
-     * @return float
      */
-    public function filterPercent(mixed $value, $locale = 'en-US')
+    public function filterPercent(mixed $value, $locale = 'en-US'): ?float
     {
-        if ($value === '' || $value === null || is_numeric($value)) {
+        if ($value === '' || $value === null) {
             return null;
         }
 
-        return $this->filterFloat(str_replace('%', '', $value), $locale);
+        if (is_string($value)) {
+            $value = str_replace('%', '', $value);
+        }
+
+        return $this->filterFloat($value, $locale);
     }
 
     /**
      * Filter a phone number.
      */
-    public function filterPhone($value, string $locale = 'en-US'): string
+    public function filterPhone(mixed $value, string $locale = 'en-US'): string
     {
         if (empty($value)) {
             return '';
@@ -201,39 +260,44 @@ trait StoreFilterTrait
             return strval($value);
         }
 
-        return is_string($value)
-            ? filter_var(str_replace(['-', '.', '+'], '', $value), FILTER_SANITIZE_NUMBER_INT)
-            : '';
+        if (is_string($value)) {
+            // Allow commas and pluses: +,
+            $value = filter_var(str_replace([
+                '-',
+                '.',
+                '',
+            ], '', $value), FILTER_SANITIZE_NUMBER_INT);
+        }
+
+        return is_string($value) ? $value : '';
     }
 
-    // /**
-    //  * Filter the status
-    //  *
-    //  * TODO Determine if $input should be passed by reference: &$input
-    //  *
-    //  * @param array $input The status input.
-    //  *
-    //  * @return integer|NULL
-    //  */
-    // public function filterStatus(array $input = [])
-    // {
-    //     if (!isset($input['status'])) {
-    //         return $input;
-    //     }
+    /**
+     * Filter the status
+     *
+     * @param array<string, mixed> $input The status input.
+     * @return array<string, mixed>
+     */
+    public function filterStatus(array $input = []): array
+    {
+        if (! isset($input['status'])) {
+            return $input;
+        }
 
-    //     if (is_numeric($input['status'])) {
-    //         $input['status'] = (int) abs($input['status']);
-    //         return $input;
-    //     }
+        if (is_numeric($input['status'])) {
+            $input['status'] = (int) abs($input['status']);
 
-    //     if (is_array($input['status'])) {
-    //         foreach ($input['status'] as $key => $value) {
-    //             $input['status'][$key] = (bool) $value;
-    //         }
-    //     }
+            return $input;
+        }
 
-    //     return $input;
-    // }
+        if (is_array($input['status'])) {
+            foreach ($input['status'] as $key => $value) {
+                $input['status'][$key] = (bool) $value;
+            }
+        }
+
+        return $input;
+    }
 
     // /**
     //  * Filter common fields
@@ -252,54 +316,55 @@ trait StoreFilterTrait
     //     return $input;
     // }
 
-    // /**
-    //  * Filter system fields
-    //  *
-    //  * @param array $input The system fields input.
-    //  *
-    //  * @return integer|NULL
-    //  */
-    // public function filterSystemFields(array $input = [])
-    // {
-    //     // Filter system fields.
-    //     if (isset($input['gids'])) {
-    //         $input['gids'] = (int) abs($input['gids']);
-    //     }
+    /**
+     * Filter system fields
+     *
+     * @param array<string, mixed> $input The system fields input.
+     * @return array<string, mixed>
+     */
+    public function filterSystemFields(array $input = []): array
+    {
+        // Filter system fields.
+        if (isset($input['gids']) && is_numeric($input['gids'])) {
+            $input['gids'] = (int) abs($input['gids']);
+        }
 
-    //     /**
-    //      * @var integer $pBits The allowed permission bits: rwx
-    //      */
-    //     $pBits = 4 + 2 + 1;
+        /**
+         * @var int $pBits The allowed permission bits: rwx
+         */
+        $pBits = 4 + 2 + 1;
 
-    //     if (isset($input['po'])) {
-    //         $input['po'] = intval(abs($input['po'])) & $pBits;
-    //     }
+        if (isset($input['po']) && is_numeric($input['po'])) {
+            $input['po'] = intval(abs($input['po'])) & $pBits;
+        }
 
-    //     if (isset($input['pg'])) {
-    //         $input['pg'] = intval(abs($input['pg'])) & $pBits;
-    //     }
+        if (isset($input['pg']) && is_numeric($input['pg'])) {
+            $input['pg'] = intval(abs($input['pg'])) & $pBits;
+        }
 
-    //     if (isset($input['pw'])) {
-    //         $input['pw'] = intval(abs($input['pw'])) & $pBits;
-    //     }
+        if (isset($input['pw']) && is_numeric($input['pw'])) {
+            $input['pw'] = intval(abs($input['pw'])) & $pBits;
+        }
 
-    //     if (isset($input['rank'])) {
-    //         $input['rank'] = (int) $input['rank'];
-    //     }
+        if (isset($input['rank']) && is_numeric($input['rank'])) {
+            $input['rank'] = (int) $input['rank'];
+        }
 
-    //     if (isset($input['size'])) {
-    //         $input['size'] = (int) $input['size'];
-    //     }
+        if (isset($input['size']) && is_numeric($input['size'])) {
+            $input['size'] = (int) $input['size'];
+        }
 
-    //     return $input;
-    //     return $this->filterStatus($input);
-    // }
+        return $input;
+    }
 
     /**
-     * Filter a UUID.
+     * Filter a UUID
+     *
+     * @param mixed $value The value to filter.
      */
-    public function filterUuid($uuid): ?string
+    public function filterUuid(mixed $value): ?string
     {
-        return Uuid::isValid($uuid) ? $value : null;
+        return is_string($value) && Uuid::isValid($value)
+            ? $value : null;
     }
 }

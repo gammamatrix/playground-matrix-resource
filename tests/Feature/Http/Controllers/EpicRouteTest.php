@@ -23,6 +23,9 @@ class EpicRouteTest extends TestCase
 
     public string $fqdn = \Playground\Matrix\Models\Epic::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
         'model_attribute' => 'label',
         'model_label' => 'Epic',
@@ -39,6 +42,9 @@ class EpicRouteTest extends TestCase
         'view' => 'playground-matrix-resource::epic',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -138,6 +144,9 @@ class EpicRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data
