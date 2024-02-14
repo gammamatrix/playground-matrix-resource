@@ -55,6 +55,7 @@ class BacklogController extends Controller
     public function create(
         CreateRequest $request
     ): JsonResponse|View {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -93,12 +94,8 @@ class BacklogController extends Controller
             session()->flashInput($flash);
         }
 
-        return view($this->getPackageViewPathFromConfig(
-            $this->package_config_matrix_resource,
-            'backlog',
-            'form'
-        ), [
-            'package_config_site_blade' => $this->package_config_matrix_resource,
+        return view($this->getViewPath('backlog', 'form'), [
+            'package_config' => $this->package_config,
         ]);
     }
 

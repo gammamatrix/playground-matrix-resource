@@ -22,31 +22,39 @@ abstract class Controller extends BaseController
     /**
      * @var array<string, mixed>
      */
-    protected array $package_config_matrix_resource;
+    protected ?array $package_config = null;
 
-    public function getPackageViewPathFromConfig(
-        mixed $config,
-        string $controller,
-        string $view
-    ): string {
-        $basePath = '';
-        if (! empty($config)
-            && is_array($config)
-            && ! empty($config['view'])
-            && is_string($config['view'])
-        ) {
-            $basePath = $config['view'];
-        }
-
-        return sprintf('%1$s%2$s/%3$s', $basePath, $controller, $view);
-        // return sprintf('%1$s%2$s.%3$s', $basePath, $controller, $view);
+    public function __construct()
+    {
+        $this->init();
     }
 
     protected function init(Request $request = null): void
     {
-        $package_config_matrix_resource = config('playground-matrix-resource');
-        if (is_array($package_config_matrix_resource)) {
-            $this->package_config_matrix_resource = $package_config_matrix_resource;
+        $package_config = config('playground-matrix-resource');
+        if (is_array($package_config)) {
+            $this->package_config = $package_config;
         }
+    }
+
+    public function getViewPath(
+        string $controller = '',
+        string $view = ''
+    ): string {
+
+        $basePath = '';
+        if (! empty($this->package_config['view'])
+            && is_string($this->package_config['view'])
+        ) {
+            $basePath = $this->package_config['view'];
+        }
+
+        return sprintf(
+            '%1$s%2$s%3$s%4$s',
+            $basePath,
+            $controller,
+            $view ? '/' : '',
+            $view
+        );
     }
 }

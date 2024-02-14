@@ -9,7 +9,11 @@ namespace Tests\Unit\Playground\Matrix\Resource;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Playground\ServiceProvider as PlaygroundServiceProvider;
 use Playground\Auth\ServiceProvider as PlaygroundAuthServiceProvider;
+use Playground\Blade\ServiceProvider as PlaygroundBladeServiceProvider;
+use Playground\Http\ServiceProvider as PlaygroundHttpServiceProvider;
 use Playground\Matrix\ServiceProvider as PlaygroundMatrixServiceProvider;
+use Playground\Login\Blade\ServiceProvider as PlaygroundLoginBladeServiceProvider;
+use Playground\Site\Blade\ServiceProvider as PlaygroundSiteBladeServiceProvider;
 use Playground\Matrix\Resource\ServiceProvider;
 use Illuminate\Contracts\Config\Repository;
 
@@ -25,6 +29,10 @@ trait TestTrait
     {
         return [
             PlaygroundAuthServiceProvider::class,
+            PlaygroundBladeServiceProvider::class,
+            PlaygroundHttpServiceProvider::class,
+            PlaygroundLoginBladeServiceProvider::class,
+            PlaygroundSiteBladeServiceProvider::class,
             PlaygroundMatrixServiceProvider::class,
             PlaygroundServiceProvider::class,
             ServiceProvider::class,

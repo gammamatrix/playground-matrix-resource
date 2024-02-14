@@ -6,41 +6,16 @@ namespace Playground\Matrix\Resource;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
-use Playground\Matrix\Models;
+use Illuminate\Support\Facades\Log;
 
 /**
  * \Playground\Matrix\Resource\ServiceProvider
  */
 class ServiceProvider extends AuthServiceProvider
 {
-    use ServiceProviderTrait;
-
     public const VERSION = '73.0.0';
 
     protected string $package = 'playground-matrix-resource';
-
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array<class-string, class-string>
-     */
-    protected $policies = [
-        Models\Backlog::class => Policies\BacklogPolicy::class,
-        Models\Board::class => Policies\BoardPolicy::class,
-        Models\Epic::class => Policies\EpicPolicy::class,
-        Models\Flow::class => Policies\FlowPolicy::class,
-        Models\Milestone::class => Policies\MilestonePolicy::class,
-        Models\Note::class => Policies\NotePolicy::class,
-        Models\Project::class => Policies\ProjectPolicy::class,
-        Models\Release::class => Policies\ReleasePolicy::class,
-        Models\Roadmap::class => Policies\RoadmapPolicy::class,
-        Models\Source::class => Policies\SourcePolicy::class,
-        Models\Sprint::class => Policies\SprintPolicy::class,
-        Models\Tag::class => Policies\TagPolicy::class,
-        Models\Team::class => Policies\TeamPolicy::class,
-        Models\Ticket::class => Policies\TicketPolicy::class,
-        Models\Version::class => Policies\VersionPolicy::class,
-    ];
 
     /**
      * Bootstrap any package services.
@@ -60,8 +35,11 @@ class ServiceProvider extends AuthServiceProvider
             //     'playground-matrix-resource'
             // );
 
-            if (! empty($config['load']['policies'])) {
-                $this->setPolicyNamespace($config);
+            if (! empty($config['load']['policies'])
+                && ! empty($config['policies'])
+                && is_array($config['policies'])
+            ) {
+                $this->setPolicies($config['policies']);
                 $this->registerPolicies();
             }
 
@@ -104,6 +82,38 @@ class ServiceProvider extends AuthServiceProvider
             dirname(__DIR__).'/config/playground-matrix-resource.php',
             $this->package
         );
+    }
+
+    /**
+     * Set the application's policies from the configuration.
+     *
+     * @param array<class-string, class-string> $policies
+     */
+    public function setPolicies(array $policies): void
+    {
+        foreach ($policies as $model => $policy) {
+            if (! is_string($model) || ! class_exists($model)) {
+                Log::error(__METHOD__, [
+                    'error' => 'Expecting the model to exist.',
+                    'model' => is_string($model) ? $model : gettype($model),
+                    'policy' => is_string($policy) ? $policy : gettype($policy),
+                    'policies' => $policies,
+                ]);
+
+                continue;
+            }
+            if (! is_string($policy) || ! class_exists($policy)) {
+                Log::error(__METHOD__, [
+                    'error' => 'Expecting the policy to exist.',
+                    'model' => is_string($model) ? $model : gettype($model),
+                    'policy' => is_string($policy) ? $policy : gettype($policy),
+                    'policies' => $policies,
+                ]);
+
+                continue;
+            }
+            $this->policies[$model] = $policy;
+        }
     }
 
     /**
