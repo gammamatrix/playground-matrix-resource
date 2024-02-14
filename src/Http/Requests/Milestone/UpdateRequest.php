@@ -4,12 +4,12 @@
  */
 namespace Playground\Matrix\Resource\Http\Requests\Milestone;
 
-use Playground\Matrix\Resource\Http\Requests\AbstractUpdateRequest;
+use Playground\Http\Requests\UpdateRequest as BaseUpdateRequest;
 
 /**
  * \Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest
  */
-class UpdateRequest extends AbstractUpdateRequest
+class UpdateRequest extends BaseUpdateRequest
 {
     /**
      * @var array<string, string|array<mixed>>

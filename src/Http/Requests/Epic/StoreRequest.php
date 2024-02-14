@@ -4,12 +4,12 @@
  */
 namespace Playground\Matrix\Resource\Http\Requests\Epic;
 
-use Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
+use Playground\Http\Requests\StoreRequest as BaseStoreRequest;
 
 /**
  * \Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest
  */
-class StoreRequest extends AbstractStoreRequest
+class StoreRequest extends BaseStoreRequest
 {
     /**
      * @var array<string, string|array<mixed>>

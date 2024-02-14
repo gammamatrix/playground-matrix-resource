@@ -4,7 +4,7 @@ namespace Playground\Matrix\Resource\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Carbon;
-use Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
+use Playground\Http\Requests\IndexRequest;
 
 class FlowCollection extends ResourceCollection
 {
@@ -21,7 +21,7 @@ class FlowCollection extends ResourceCollection
     /**
      * Get additional data that should be returned with the resource array.
      *
-     * @param Request&AbstractIndexRequest $request
+     * @param Request&IndexRequest $request
      * @return array<string, mixed>
      */
     public function with(Request $request): array

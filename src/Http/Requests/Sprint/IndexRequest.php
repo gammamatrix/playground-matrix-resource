@@ -4,12 +4,12 @@
  */
 namespace Playground\Matrix\Resource\Http\Requests\Sprint;
 
-use Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
+use Playground\Http\Requests\IndexRequest as BaseIndexRequest;
 
 /**
  * \Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest
  */
-class IndexRequest extends AbstractIndexRequest
+class IndexRequest extends BaseIndexRequest
 {
     /**
      * @var array<string, mixed>
