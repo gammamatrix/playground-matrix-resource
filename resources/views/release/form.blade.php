@@ -1,4 +1,4 @@
-@extends($package_config['layout'], [
+@extends('playground::layouts.resource.form', [
     'withFormInfo' => 'playground-matrix-resource::release/form-info',
     'withFormStatus' => 'playground-matrix-resource::release/form-status',
 ])

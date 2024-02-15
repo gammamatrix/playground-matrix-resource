@@ -50,7 +50,7 @@ class BacklogController extends Controller
     /**
      * CREATE the Backlog resource in storage.
      *
-     * @route GET /resource/matrix/backlogs/create playground.matrix.resource.backlogs.create
+     * @route GET /resource/matrix/backl*ogs/create playground.matrix.resource.backlogs.create
      */
     public function create(
         CreateRequest $request
@@ -94,9 +94,7 @@ class BacklogController extends Controller
             session()->flashInput($flash);
         }
 
-        return view($this->getViewPath('backlog', 'form'), [
-            'package_config' => $this->package_config,
-        ]);
+        return view($this->getViewPath('backlog', 'form'), $data);
     }
 
     /**

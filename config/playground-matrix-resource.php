@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'layout' => env('PLAYGROUND_MATRIX_RESOURCE_LAYOUT', 'playground::layouts.resource.layout'),
     'middleware' => [
         'default' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_DEFAULT', 'web'),
         'auth' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_AUTH', ['web', 'auth']),
@@ -53,5 +52,5 @@ return [
         'user' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_USER', true),
         'view' => env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_VIEW', 'playground-matrix-resource::sitemap'),
     ],
-    'view' => env('PLAYGROUND_MATRIX_RESOURCE_VIEW', 'playground-matrix-resource::'),
+    'blade' => env('PLAYGROUND_MATRIX_RESOURCE_BLADE', 'playground-matrix-resource::'),
 ];

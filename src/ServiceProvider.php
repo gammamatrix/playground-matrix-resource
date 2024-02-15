@@ -7,6 +7,7 @@ namespace Playground\Matrix\Resource;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 
 /**
  * \Playground\Matrix\Resource\ServiceProvider
@@ -68,6 +69,10 @@ class ServiceProvider extends AuthServiceProvider
                     dirname(__DIR__).'/routes' => base_path('routes/playground-matrix-resource'),
                 ], 'playground-routes');
             }
+        }
+
+        if (! empty($config['layout']) && is_string($config['layout'])) {
+            View::share('layout', $config['layout']);
         }
 
         $this->about();
