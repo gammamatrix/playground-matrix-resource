@@ -13,26 +13,25 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/releases',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource.releases',
+        'as' => 'playground.matrix.resource.releases',
         'uses' => 'ReleaseController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('index', Playground\Matrix\Models\Release::class);
 
-    # UI
+    // UI
 
     Route::get('/create', [
-        'as'   => 'playground.matrix.resource.releases.create',
+        'as' => 'playground.matrix.resource.releases.create',
         'uses' => 'ReleaseController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('create', Playground\Matrix\Models\Release::class);
 
     Route::get('/edit/{release}', [
-        'as'   => 'playground.matrix.resource.releases.edit',
+        'as' => 'playground.matrix.resource.releases.edit',
         'uses' => 'ReleaseController@edit',
     ])->whereUuid('release')
-        ->can('edit', 'release')
-    ;
+        ->can('edit', 'release');
 
     // Route::get('/go/{id}', [
     //     'as'   => 'playground.matrix.resource.releases.go',
@@ -40,11 +39,10 @@ Route::group([
     // ]);
 
     Route::get('/{release}', [
-        'as'   => 'playground.matrix.resource.releases.show',
+        'as' => 'playground.matrix.resource.releases.show',
         'uses' => 'ReleaseController@show',
     ])->whereUuid('release')
-        ->can('detail', 'release')
-    ;
+        ->can('detail', 'release');
 
     // Route::get('/{slug}', [
     //     'as'   => 'playground.matrix.resource.releases.slug',
@@ -54,49 +52,45 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.releases.store',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    // ])->can('store', \Playground\Matrix\Models\Release::class);
 
-    # API
+    // API
 
     Route::put('/lock/{release}', [
-        'as'   => 'playground.matrix.resource.releases.lock',
+        'as' => 'playground.matrix.resource.releases.lock',
         'uses' => 'ReleaseController@lock',
     ])->whereUuid('release')
-        ->can('lock', 'release')
-    ;
+        ->can('lock', 'release');
 
     Route::delete('/lock/{release}', [
-        'as'   => 'playground.matrix.resource.releases.unlock',
+        'as' => 'playground.matrix.resource.releases.unlock',
         'uses' => 'ReleaseController@unlock',
     ])->whereUuid('release')
-        ->can('unlock', 'release')
-    ;
+        ->can('unlock', 'release');
 
     Route::delete('/{release}', [
-        'as'   => 'playground.matrix.resource.releases.destroy',
+        'as' => 'playground.matrix.resource.releases.destroy',
         'uses' => 'ReleaseController@destroy',
     ])->whereUuid('release')
         ->can('delete', 'release')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::put('/restore/{release}', [
-        'as'   => 'playground.matrix.resource.releases.restore',
+        'as' => 'playground.matrix.resource.releases.restore',
         'uses' => 'ReleaseController@restore',
     ])->whereUuid('release')
         ->can('restore', 'release')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::post('/', [
-        'as'   => 'playground.matrix.resource.releases.post',
+        'as' => 'playground.matrix.resource.releases.post',
         'uses' => 'ReleaseController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    ])->can('store', Playground\Matrix\Models\Release::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.releases.put',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Release::class);
+    // ])->can('store', \Playground\Matrix\Models\Release::class);
     //
     // Route::put('/{release}', [
     //     'as'   => 'playground.matrix.resource.releases.put.id',
@@ -104,7 +98,7 @@ Route::group([
     // ])->whereUuid('release')->can('update', 'release');
 
     Route::patch('/{release}', [
-        'as'   => 'playground.matrix.resource.releases.patch',
+        'as' => 'playground.matrix.resource.releases.patch',
         'uses' => 'ReleaseController@update',
     ])->whereUuid('release')->can('update', 'release');
 });

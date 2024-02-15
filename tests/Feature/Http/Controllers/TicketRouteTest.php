@@ -1,46 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\TicketRouteTest
- *
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketRouteTest
  */
 class TicketRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Ticket::class;
+    public string $fqdn = \Playground\Matrix\Models\Ticket::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Ticket',
-        'model_label_plural'  => 'Tickets',
-        'model_route'         => 'playground.matrix.resource.tickets',
-        'model_slug'          => 'ticket',
-        'model_slug_plural'   => 'tickets',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Ticket',
+        'model_label_plural' => 'Tickets',
+        'model_route' => 'playground.matrix.resource.tickets',
+        'model_slug' => 'ticket',
+        'model_slug_plural' => 'tickets',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:ticket',
-        'table'               => 'matrix_tickets',
-        'view'                => 'playground-matrix-resource::ticket',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:ticket',
+        'table' => 'matrix_tickets',
+        'view' => 'playground-matrix-resource::ticket',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -140,6 +144,9 @@ class TicketRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data

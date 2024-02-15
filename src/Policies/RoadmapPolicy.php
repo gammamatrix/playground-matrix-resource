@@ -1,21 +1,20 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Policies;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Policies;
-
-use GammaMatrix\Playground\Policies\ModelPolicy;
+use Playground\Auth\Policies\ModelPolicy;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Policies\RoadmapPolicy
+ * \Playground\Matrix\Resource\Policies\RoadmapPolicy
  */
 class RoadmapPolicy extends ModelPolicy
 {
     protected string $package = 'playground-matrix-resource';
 
     /**
-     * @var array $rolesToView The roles allowed to view the MVC.
+     * @var array<int, string> The roles allowed to view the MVC.
      */
     protected $rolesToView = [
         'user',
@@ -23,16 +22,16 @@ class RoadmapPolicy extends ModelPolicy
         'publisher',
         'manager',
         'admin',
-        'root'
+        'root',
     ];
 
     /**
-     * @var array $rolesForAction The roles allowed for actions in the MVC.
+     * @var array<int, string> The roles allowed for actions in the MVC.
      */
     protected $rolesForAction = [
         'publisher',
         'manager',
         'admin',
-        'root'
+        'root',
     ];
 }

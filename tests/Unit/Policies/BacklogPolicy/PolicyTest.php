@@ -1,27 +1,24 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy;
+namespace Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy;
 
-use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Matrix\Resource\Policies\BacklogPolicy;
+use Tests\Unit\Playground\Matrix\Resource\TestCase;
 
 /**
- * \ests\Unit\GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy\PolicyTest
+ * \ests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy\PolicyTest
  *
  */
 class PolicyTest extends TestCase
 {
-    protected string $policyClass = \GammaMatrix\Playground\Matrix\Resource\Policies\BacklogPolicy::class;
-
     public function test_policy_instance(): void
     {
-        $policyClass = $this->policyClass;
+        $instance = new BacklogPolicy;
 
-        $instance = new $policyClass();
-
-        $this->assertInstanceOf($policyClass, $instance);
+        $this->assertInstanceOf(BacklogPolicy::class, $instance);
     }
 }

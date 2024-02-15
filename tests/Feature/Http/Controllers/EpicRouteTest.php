@@ -1,46 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\EpicRouteTest
- *
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicRouteTest
  */
 class EpicRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Epic::class;
+    public string $fqdn = \Playground\Matrix\Models\Epic::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Epic',
-        'model_label_plural'  => 'Epics',
-        'model_route'         => 'playground.matrix.resource.epics',
-        'model_slug'          => 'epic',
-        'model_slug_plural'   => 'epics',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Epic',
+        'model_label_plural' => 'Epics',
+        'model_route' => 'playground.matrix.resource.epics',
+        'model_slug' => 'epic',
+        'model_slug_plural' => 'epics',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:epic',
-        'table'               => 'matrix_epics',
-        'view'                => 'playground-matrix-resource::epic',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:epic',
+        'table' => 'matrix_epics',
+        'view' => 'playground-matrix-resource::epic',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -140,6 +144,9 @@ class EpicRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data

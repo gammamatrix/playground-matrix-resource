@@ -1,16 +1,16 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  *
  */
 
-namespace Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests;
 
-use GammaMatrix\Playground\Test\Unit\Http\Requests\RequestCase;
-use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestTrait;
+use Playground\Test\Unit\Http\Requests\RequestCase;
+use Tests\Unit\Playground\Matrix\Resource\TestTrait;
 
 /**
- * \Tests\Unit\GammaMatrix\Playground\Matrix\Resource\Http\Requests\RequestTestCase
+ * \Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase
  *
  */
 class RequestTestCase extends RequestCase

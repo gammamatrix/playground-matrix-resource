@@ -1,46 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteRouteTest
- *
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteRouteTest
  */
 class NoteRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Note::class;
+    public string $fqdn = \Playground\Matrix\Models\Note::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Note',
-        'model_label_plural'  => 'Notes',
-        'model_route'         => 'playground.matrix.resource.notes',
-        'model_slug'          => 'note',
-        'model_slug_plural'   => 'notes',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Note',
+        'model_label_plural' => 'Notes',
+        'model_route' => 'playground.matrix.resource.notes',
+        'model_slug' => 'note',
+        'model_slug_plural' => 'notes',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:note',
-        'table'               => 'matrix_notes',
-        'view'                => 'playground-matrix-resource::note',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:note',
+        'table' => 'matrix_notes',
+        'view' => 'playground-matrix-resource::note',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -140,6 +144,9 @@ class NoteRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data

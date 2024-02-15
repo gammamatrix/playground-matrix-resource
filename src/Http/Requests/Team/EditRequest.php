@@ -1,19 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Team;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Team\EditRequest
+ * \Playground\Matrix\Resource\Http\Requests\Team\EditRequest
  */
 class EditRequest extends FormRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         'owned_by_id' => ['nullable', 'uuid'],

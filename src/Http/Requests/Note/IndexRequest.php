@@ -1,17 +1,19 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Note;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
+use Playground\Http\Requests\IndexRequest as BaseIndexRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest
+ * \Playground\Matrix\Resource\Http\Requests\Note\IndexRequest
  */
-class IndexRequest extends AbstractIndexRequest
+class IndexRequest extends BaseIndexRequest
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationDates = [
         'created_at' => ['column' => 'created_at', 'label' => 'Created At', 'nullable' => false],
         'updated_at' => ['column' => 'updated_at', 'label' => 'Updated At', 'nullable' => false],
@@ -32,6 +34,9 @@ class IndexRequest extends AbstractIndexRequest
         'suspended_at' => ['column' => 'suspended_at', 'label' => 'Suspended At', 'nullable' => true],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationFlags = [
         'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running'],
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'icon' => 'fa-solid fa-ban text-warning'],
@@ -57,6 +62,9 @@ class IndexRequest extends AbstractIndexRequest
         'allow_public' => ['column' => 'allow_public', 'label' => 'Allow Public', 'icon' => 'fa-solid fa-users-line'],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationIds = [
         'id' => ['column' => 'id', 'label' => 'Id', 'type' => 'uuid', 'nullable' => false],
         'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned By Id', 'type' => 'uuid', 'nullable' => false],
@@ -64,6 +72,9 @@ class IndexRequest extends AbstractIndexRequest
         'note_type' => ['column' => 'note_type', 'label' => 'Note Type', 'type' => 'string', 'nullable' => true],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationColumns = [
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string', 'nullable' => false],
         'byline' => ['column' => 'byline', 'label' => 'Byline', 'type' => 'string', 'nullable' => false],

@@ -4,9 +4,7 @@ $filters = [];
 $validated = [];
 // $paginator = null;
 ?>
-@php $playground_matrix_resource = config('playground-matrix-resource'); @endphp
-
-@extends(sprintf('%1$s%2$s', $playground_matrix_resource['view'], 'layouts.resource.index'), [
+@extends('playground::layouts.resource.index')
     // 'withTableColumns' => [
     //     'label' => [
     //         'linkType' => 'id',

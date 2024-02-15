@@ -1,5 +1,3 @@
-@php $playground_matrix_resource = config('playground-matrix-resource'); @endphp
-
 @extends($playground_matrix_resource['layout'])
 
 @section('title', 'Matrix')

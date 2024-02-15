@@ -13,26 +13,25 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/sprints',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource.sprints',
+        'as' => 'playground.matrix.resource.sprints',
         'uses' => 'SprintController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('index', Playground\Matrix\Models\Sprint::class);
 
-    # UI
+    // UI
 
     Route::get('/create', [
-        'as'   => 'playground.matrix.resource.sprints.create',
+        'as' => 'playground.matrix.resource.sprints.create',
         'uses' => 'SprintController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('create', Playground\Matrix\Models\Sprint::class);
 
     Route::get('/edit/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.edit',
+        'as' => 'playground.matrix.resource.sprints.edit',
         'uses' => 'SprintController@edit',
     ])->whereUuid('sprint')
-        ->can('edit', 'sprint')
-    ;
+        ->can('edit', 'sprint');
 
     // Route::get('/go/{id}', [
     //     'as'   => 'playground.matrix.resource.sprints.go',
@@ -40,11 +39,10 @@ Route::group([
     // ]);
 
     Route::get('/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.show',
+        'as' => 'playground.matrix.resource.sprints.show',
         'uses' => 'SprintController@show',
     ])->whereUuid('sprint')
-        ->can('detail', 'sprint')
-    ;
+        ->can('detail', 'sprint');
 
     // Route::get('/{slug}', [
     //     'as'   => 'playground.matrix.resource.sprints.slug',
@@ -54,49 +52,45 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.sprints.store',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
 
-    # API
+    // API
 
     Route::put('/lock/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.lock',
+        'as' => 'playground.matrix.resource.sprints.lock',
         'uses' => 'SprintController@lock',
     ])->whereUuid('sprint')
-        ->can('lock', 'sprint')
-    ;
+        ->can('lock', 'sprint');
 
     Route::delete('/lock/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.unlock',
+        'as' => 'playground.matrix.resource.sprints.unlock',
         'uses' => 'SprintController@unlock',
     ])->whereUuid('sprint')
-        ->can('unlock', 'sprint')
-    ;
+        ->can('unlock', 'sprint');
 
     Route::delete('/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.destroy',
+        'as' => 'playground.matrix.resource.sprints.destroy',
         'uses' => 'SprintController@destroy',
     ])->whereUuid('sprint')
         ->can('delete', 'sprint')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::put('/restore/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.restore',
+        'as' => 'playground.matrix.resource.sprints.restore',
         'uses' => 'SprintController@restore',
     ])->whereUuid('sprint')
         ->can('restore', 'sprint')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::post('/', [
-        'as'   => 'playground.matrix.resource.sprints.post',
+        'as' => 'playground.matrix.resource.sprints.post',
         'uses' => 'SprintController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    ])->can('store', Playground\Matrix\Models\Sprint::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.sprints.put',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
     //
     // Route::put('/{sprint}', [
     //     'as'   => 'playground.matrix.resource.sprints.put.id',
@@ -104,7 +98,7 @@ Route::group([
     // ])->whereUuid('sprint')->can('update', 'sprint');
 
     Route::patch('/{sprint}', [
-        'as'   => 'playground.matrix.resource.sprints.patch',
+        'as' => 'playground.matrix.resource.sprints.patch',
         'uses' => 'SprintController@update',
     ])->whereUuid('sprint')->can('update', 'sprint');
 });

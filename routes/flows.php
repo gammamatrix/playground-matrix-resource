@@ -13,26 +13,25 @@ use Illuminate\Support\Facades\Route;
 Route::group([
     'prefix' => 'resource/matrix/flows',
     'middleware' => config('playground-matrix-resource.middleware'),
-    'namespace' => '\GammaMatrix\Playground\Matrix\Resource\Http\Controllers',
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
-        'as'   => 'playground.matrix.resource.flows',
+        'as' => 'playground.matrix.resource.flows',
         'uses' => 'FlowController@index',
-    ])->can('index', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('index', Playground\Matrix\Models\Flow::class);
 
-    # UI
+    // UI
 
     Route::get('/create', [
-        'as'   => 'playground.matrix.resource.flows.create',
+        'as' => 'playground.matrix.resource.flows.create',
         'uses' => 'FlowController@create',
-    ])->can('create', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('create', Playground\Matrix\Models\Flow::class);
 
     Route::get('/edit/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.edit',
+        'as' => 'playground.matrix.resource.flows.edit',
         'uses' => 'FlowController@edit',
     ])->whereUuid('flow')
-        ->can('edit', 'flow')
-    ;
+        ->can('edit', 'flow');
 
     // Route::get('/go/{id}', [
     //     'as'   => 'playground.matrix.resource.flows.go',
@@ -40,11 +39,10 @@ Route::group([
     // ]);
 
     Route::get('/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.show',
+        'as' => 'playground.matrix.resource.flows.show',
         'uses' => 'FlowController@show',
     ])->whereUuid('flow')
-        ->can('detail', 'flow')
-    ;
+        ->can('detail', 'flow');
 
     // Route::get('/{slug}', [
     //     'as'   => 'playground.matrix.resource.flows.slug',
@@ -54,49 +52,45 @@ Route::group([
     // Route::post('/store', [
     //     'as'   => 'playground.matrix.resource.flows.store',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    // ])->can('store', \Playground\Matrix\Models\Flow::class);
 
-    # API
+    // API
 
     Route::put('/lock/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.lock',
+        'as' => 'playground.matrix.resource.flows.lock',
         'uses' => 'FlowController@lock',
     ])->whereUuid('flow')
-        ->can('lock', 'flow')
-    ;
+        ->can('lock', 'flow');
 
     Route::delete('/lock/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.unlock',
+        'as' => 'playground.matrix.resource.flows.unlock',
         'uses' => 'FlowController@unlock',
     ])->whereUuid('flow')
-        ->can('unlock', 'flow')
-    ;
+        ->can('unlock', 'flow');
 
     Route::delete('/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.destroy',
+        'as' => 'playground.matrix.resource.flows.destroy',
         'uses' => 'FlowController@destroy',
     ])->whereUuid('flow')
         ->can('delete', 'flow')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::put('/restore/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.restore',
+        'as' => 'playground.matrix.resource.flows.restore',
         'uses' => 'FlowController@restore',
     ])->whereUuid('flow')
         ->can('restore', 'flow')
-        ->withTrashed()
-    ;
+        ->withTrashed();
 
     Route::post('/', [
-        'as'   => 'playground.matrix.resource.flows.post',
+        'as' => 'playground.matrix.resource.flows.post',
         'uses' => 'FlowController@store',
-    ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    ])->can('store', Playground\Matrix\Models\Flow::class);
 
     // Route::put('/', [
     //     'as'   => 'playground.matrix.resource.flows.put',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \GammaMatrix\Playground\Matrix\Models\Flow::class);
+    // ])->can('store', \Playground\Matrix\Models\Flow::class);
     //
     // Route::put('/{flow}', [
     //     'as'   => 'playground.matrix.resource.flows.put.id',
@@ -104,7 +98,7 @@ Route::group([
     // ])->whereUuid('flow')->can('update', 'flow');
 
     Route::patch('/{flow}', [
-        'as'   => 'playground.matrix.resource.flows.patch',
+        'as' => 'playground.matrix.resource.flows.patch',
         'uses' => 'FlowController@update',
     ])->whereUuid('flow')->can('update', 'flow');
 });

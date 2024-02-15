@@ -1,14 +1,13 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Epic;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest
+ * \Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest
  */
 class ShowRequest extends FormRequest
 {

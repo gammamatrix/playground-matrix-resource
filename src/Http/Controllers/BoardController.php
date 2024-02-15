@@ -1,51 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Board;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Board as BoardResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\BoardCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Playground\Matrix\Models\Board;
+use Playground\Matrix\Resource\Http\Requests\Board\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Board as BoardResource;
+use Playground\Matrix\Resource\Http\Resources\BoardCollection;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\BoardController
+ * \Playground\Matrix\Resource\Http\Controllers\BoardController
  */
 class BoardController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Board',
-        'model_label_plural'  => 'Boards',
-        'model_route'         => 'playground.matrix.resource.boards',
-        'model_slug'          => 'board',
-        'model_slug_plural'   => 'boards',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Board',
+        'model_label_plural' => 'Boards',
+        'model_route' => 'playground.matrix.resource.boards',
+        'model_slug' => 'board',
+        'model_slug_plural' => 'boards',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:board',
-        'table'               => 'matrix_boards',
-        'view'                => 'playground-matrix-resource::board',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:board',
+        'table' => 'matrix_boards',
+        'view' => 'playground-matrix-resource::board',
     ];
 
     /**
@@ -64,10 +63,10 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -85,12 +84,12 @@ class BoardController extends Controller
 
         $flash = $board->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -115,10 +114,10 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $board->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $board->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -136,7 +135,7 @@ class BoardController extends Controller
 
         $flash = $board->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -172,7 +171,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,15 +191,15 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        $board->locked = true;
+        $board->setAttribute('locked', true);
 
         $board->save();
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $board->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $board->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -209,7 +208,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -232,7 +231,7 @@ class BoardController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -256,7 +255,8 @@ class BoardController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -266,15 +266,15 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -309,7 +309,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -331,10 +331,10 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $board->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $board->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -356,10 +356,10 @@ class BoardController extends Controller
     }
 
     /**
-      * Store a newly created API Board resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.boards.post
-      */
+     * Store a newly created API Board resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.boards.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|BoardResource {
@@ -377,7 +377,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +397,7 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        $board->locked = false;
+        $board->setAttribute('locked', false);
 
         $board->save();
 
@@ -407,7 +407,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +435,7 @@ class BoardController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

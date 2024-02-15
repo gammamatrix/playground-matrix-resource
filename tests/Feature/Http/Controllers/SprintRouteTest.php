@@ -1,46 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase;
+use Playground\Test\Feature\Http\Controllers\Resource;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\Http\Controllers\SprintRouteTest
- *
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SprintRouteTest
  */
 class SprintRouteTest extends TestCase
 {
     use Resource\CreateTrait;
-    use Resource\EditTrait;
     use Resource\DestroyTrait;
+    use Resource\EditTrait;
     use Resource\IndexTrait;
     use Resource\LockTrait;
     use Resource\RestoreTrait;
     use Resource\ShowTrait;
     use Resource\UnlockTrait;
 
-    public string $fqdn = \GammaMatrix\Playground\Matrix\Models\Sprint::class;
+    public string $fqdn = \Playground\Matrix\Models\Sprint::class;
 
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Sprint',
-        'model_label_plural'  => 'Sprints',
-        'model_route'         => 'playground.matrix.resource.sprints',
-        'model_slug'          => 'sprint',
-        'model_slug_plural'   => 'sprints',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Sprint',
+        'model_label_plural' => 'Sprints',
+        'model_route' => 'playground.matrix.resource.sprints',
+        'model_slug' => 'sprint',
+        'model_slug_plural' => 'sprints',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:sprint',
-        'table'               => 'matrix_sprints',
-        'view'                => 'playground-matrix-resource::sprint',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:sprint',
+        'table' => 'matrix_sprints',
+        'view' => 'playground-matrix-resource::sprint',
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_data = [
         'data' => [
             'id',
@@ -140,6 +144,9 @@ class SprintRouteTest extends TestCase
         ],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected $structure_index = [
         'data' => [
             // This can be overriden with $structure_data

@@ -1,19 +1,19 @@
 <?php
-
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Resources;
+namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Carbon;
+use Playground\Http\Requests\IndexRequest;
 
 class RoadmapCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
      *
-     * @return array<int|string, mixed>
+     * @return array<string, mixed>|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
-    public function toArray(Request $request): array
+    public function toArray(Request $request)
     {
         return parent::toArray($request);
     }
@@ -21,6 +21,7 @@ class RoadmapCollection extends ResourceCollection
     /**
      * Get additional data that should be returned with the resource array.
      *
+     * @param Request&IndexRequest $request
      * @return array<string, mixed>
      */
     public function with(Request $request): array
@@ -32,8 +33,8 @@ class RoadmapCollection extends ResourceCollection
                 'flags' => $request->getPaginationFlags(),
                 'ids' => $request->getPaginationIds(),
                 'rules' => $request->rules(),
-                'session_user_id' => $request->user()->id,
-                'sortable'  => $request->getSortable(),
+                'session_user_id' => $request->user()?->id,
+                'sortable' => $request->getSortable(),
                 'timestamp' => Carbon::now()->toJson(),
                 'validated' => $request->validated(),
             ],

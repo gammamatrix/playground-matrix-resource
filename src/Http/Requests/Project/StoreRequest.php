@@ -1,19 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Project;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractStoreRequest;
+use Playground\Http\Requests\StoreRequest as BaseStoreRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest
+ * \Playground\Matrix\Resource\Http\Requests\Project\StoreRequest
  */
-class StoreRequest extends AbstractStoreRequest
+class StoreRequest extends BaseStoreRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         'owned_by_id' => ['nullable', 'uuid'],
@@ -126,7 +125,7 @@ class StoreRequest extends AbstractStoreRequest
             $input['introduction'] = '';
         }
 
-        if (!empty($input)) {
+        if (! empty($input)) {
             $this->merge($input);
         }
     }

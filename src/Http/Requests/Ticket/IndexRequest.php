@@ -1,17 +1,19 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Ticket;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractIndexRequest;
+use Playground\Http\Requests\IndexRequest as BaseIndexRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest
+ * \Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest
  */
-class IndexRequest extends AbstractIndexRequest
+class IndexRequest extends BaseIndexRequest
 {
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationDates = [
         'created_at' => ['column' => 'created_at', 'label' => 'Created At', 'nullable' => true],
         'updated_at' => ['column' => 'updated_at', 'label' => 'Updated At', 'nullable' => true],
@@ -32,6 +34,9 @@ class IndexRequest extends AbstractIndexRequest
         'suspended_at' => ['column' => 'suspended_at', 'label' => 'Suspended At', 'nullable' => true],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationFlags = [
         'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running'],
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'icon' => 'fa-solid fa-ban text-warning'],
@@ -53,6 +58,9 @@ class IndexRequest extends AbstractIndexRequest
         'unknown' => ['column' => 'unknown', 'label' => 'Unknown', 'icon' => 'fa-solid fa-question text-warning'],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationIds = [
         'id' => ['column' => 'id', 'label' => 'Id', 'type' => 'uuid', 'nullable' => false],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created By Id', 'type' => 'uuid', 'nullable' => true],
@@ -80,6 +88,9 @@ class IndexRequest extends AbstractIndexRequest
         'version_fixed_id' => ['column' => 'version_fixed_id', 'label' => 'Version Fixed Id', 'type' => 'uuid', 'nullable' => true],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $paginationColumns = [
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string', 'nullable' => false],
         'title' => ['column' => 'title', 'label' => 'Title', 'type' => 'string', 'nullable' => false],
@@ -106,6 +117,9 @@ class IndexRequest extends AbstractIndexRequest
         'reproducibility' => ['column' => 'reproducibility', 'label' => 'Reproducibility', 'type' => 'decimal', 'nullable' => true],
     ];
 
+    /**
+     * @var array<string, mixed>
+     */
     protected array $sortable = [
         'id' => ['column' => 'id', 'label' => 'Id', 'type' => 'string'],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created By Id', 'type' => 'string'],

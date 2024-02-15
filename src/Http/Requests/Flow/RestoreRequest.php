@@ -1,19 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Flow;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest
+ * \Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest
  */
 class RestoreRequest extends FormRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         '_return_url' => ['nullable', 'url'],

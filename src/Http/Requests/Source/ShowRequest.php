@@ -1,14 +1,13 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Source;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Source\ShowRequest
+ * \Playground\Matrix\Resource\Http\Requests\Source\ShowRequest
  */
 class ShowRequest extends FormRequest
 {

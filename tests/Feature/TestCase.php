@@ -1,18 +1,15 @@
 <?php
 /**
- * GammaMatrix
- *
+ * Playground
  */
+namespace Tests\Feature\Playground\Matrix\Resource;
 
-namespace Tests\Feature\GammaMatrix\Playground\Matrix\Resource;
-
-use GammaMatrix\Playground\Test\OrchestraTestCase;
-use Tests\Unit\GammaMatrix\Playground\Matrix\Resource\TestTrait;
 use Illuminate\Support\Carbon;
+use Playground\Test\OrchestraTestCase;
+use Tests\Unit\Playground\Matrix\Resource\TestTrait;
 
 /**
- * \Tests\Feature\GammaMatrix\Playground\Matrix\Resource\TestCase
- *
+ * \Tests\Feature\Playground\Matrix\Resource\TestCase
  */
 class TestCase extends OrchestraTestCase
 {
@@ -31,10 +28,10 @@ class TestCase extends OrchestraTestCase
         //     '__METHOD__' => __METHOD__,
         //     'path' => dirname(dirname(__DIR__)) . '/database/migrations',
         // ]);
-        if (!empty(env('TEST_DB_MIGRATIONS'))) {
+        if (! empty(env('TEST_DB_MIGRATIONS'))) {
             // $this->loadLaravelMigrations();
-            $this->loadMigrationsFrom(dirname(dirname(__DIR__)) . '/database/migrations-laravel');
-            $this->loadMigrationsFrom(dirname(dirname(__DIR__)) . '/database/migrations-matrix-uuid');
+            $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-laravel');
+            $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-matrix-uuid');
         }
     }
 }

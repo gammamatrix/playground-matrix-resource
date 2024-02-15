@@ -1,51 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Flow;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\FlowCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Playground\Matrix\Models\Flow;
+use Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
+use Playground\Matrix\Resource\Http\Resources\FlowCollection;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\FlowController
+ * \Playground\Matrix\Resource\Http\Controllers\FlowController
  */
 class FlowController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Flow',
-        'model_label_plural'  => 'Flows',
-        'model_route'         => 'playground.matrix.resource.flows',
-        'model_slug'          => 'flow',
-        'model_slug_plural'   => 'flows',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Flow',
+        'model_label_plural' => 'Flows',
+        'model_route' => 'playground.matrix.resource.flows',
+        'model_slug' => 'flow',
+        'model_slug_plural' => 'flows',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:flow',
-        'table'               => 'matrix_flows',
-        'view'                => 'playground-matrix-resource::flow',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:flow',
+        'table' => 'matrix_flows',
+        'view' => 'playground-matrix-resource::flow',
     ];
 
     /**
@@ -64,10 +63,10 @@ class FlowController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -85,12 +84,12 @@ class FlowController extends Controller
 
         $flash = $flow->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -115,10 +114,10 @@ class FlowController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $flow->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $flow->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -136,7 +135,7 @@ class FlowController extends Controller
 
         $flash = $flow->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -172,7 +171,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,15 +191,15 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        $flow->locked = true;
+        $flow->setAttribute('locked', true);
 
         $flow->save();
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $flow->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $flow->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -209,7 +208,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -232,7 +231,7 @@ class FlowController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -256,7 +255,8 @@ class FlowController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -266,15 +266,15 @@ class FlowController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -309,7 +309,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -331,10 +331,10 @@ class FlowController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $flow->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $flow->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -356,10 +356,10 @@ class FlowController extends Controller
     }
 
     /**
-      * Store a newly created API Flow resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.flows.post
-      */
+     * Store a newly created API Flow resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.flows.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|FlowResource {
@@ -377,7 +377,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +397,7 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        $flow->locked = false;
+        $flow->setAttribute('locked', false);
 
         $flow->save();
 
@@ -407,7 +407,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +435,7 @@ class FlowController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 

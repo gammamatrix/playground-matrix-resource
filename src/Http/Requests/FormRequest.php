@@ -1,18 +1,20 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
-
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests;
+namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\FormRequest
+ * \Playground\Matrix\Resource\Http\Requests\FormRequest
  */
 abstract class FormRequest extends BaseFormRequest
 {
+    /**
+     * @var array<string, string|array<mixed>>
+     */
     public const RULES = [];
 
     /**
@@ -33,7 +35,7 @@ abstract class FormRequest extends BaseFormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -45,7 +47,7 @@ abstract class FormRequest extends BaseFormRequest
     public function userHasAdminPrivileges(Authenticatable $user = null): bool
     {
         $admin = false;
-        if (!empty($user)) {
+        if (! empty($user)) {
             if (method_exists($user, 'isAdmin')) {
                 $admin = $user->isAdmin();
             } else {
@@ -53,6 +55,7 @@ abstract class FormRequest extends BaseFormRequest
                 $admin = true;
             }
         }
+
         return $admin;
     }
 }

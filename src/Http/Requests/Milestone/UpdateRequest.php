@@ -1,19 +1,18 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Requests\Milestone;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone;
-
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\AbstractUpdateRequest;
+use Playground\Http\Requests\UpdateRequest as BaseUpdateRequest;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest
+ * \Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest
  */
-class UpdateRequest extends AbstractUpdateRequest
+class UpdateRequest extends BaseUpdateRequest
 {
     /**
-     * @var array RULES The validation rules.
+     * @var array<string, string|array<mixed>>
      */
     public const RULES = [
         'owned_by_id' => ['nullable', 'uuid'],
@@ -126,7 +125,7 @@ class UpdateRequest extends AbstractUpdateRequest
             $input['introduction'] = '';
         }
 
-        if (!empty($input)) {
+        if (! empty($input)) {
             $this->merge($input);
         }
     }

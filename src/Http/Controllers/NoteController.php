@@ -1,51 +1,50 @@
 <?php
 /**
- * GammaMatrix
+ * Playground
  */
+namespace Playground\Matrix\Resource\Http\Controllers;
 
-namespace GammaMatrix\Playground\Matrix\Resource\Http\Controllers;
-
-use GammaMatrix\Playground\Http\Controllers\Controller;
-use GammaMatrix\Playground\Matrix\Models\Note;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\CreateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\EditRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\IndexRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\LockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
-use GammaMatrix\Playground\Matrix\Resource\Http\Resources\NoteCollection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Playground\Matrix\Models\Note;
+use Playground\Matrix\Resource\Http\Requests\Note\CreateRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\EditRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\IndexRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\LockRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
+use Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
+use Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
+use Playground\Matrix\Resource\Http\Resources\NoteCollection;
 
 /**
- * \GammaMatrix\Playground\Matrix\Resource\Http\Controllers\NoteController
+ * \Playground\Matrix\Resource\Http\Controllers\NoteController
  */
 class NoteController extends Controller
 {
+    /**
+     * @var array<string, string>
+     */
     public array $packageInfo = [
-        'model_attribute'     => 'label',
-        'model_label'         => 'Note',
-        'model_label_plural'  => 'Notes',
-        'model_route'         => 'playground.matrix.resource.notes',
-        'model_slug'          => 'note',
-        'model_slug_plural'   => 'notes',
-        'module_label'        => 'Matrix',
+        'model_attribute' => 'label',
+        'model_label' => 'Note',
+        'model_label_plural' => 'Notes',
+        'model_route' => 'playground.matrix.resource.notes',
+        'model_slug' => 'note',
+        'model_slug_plural' => 'notes',
+        'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
-        'module_route'        => 'playground.matrix.resource',
-        'module_slug'         => 'matrix',
-        'privilege'           => 'playground-matrix-resource:note',
-        'table'               => 'matrix_notes',
-        'view'                => 'playground-matrix-resource::note',
+        'module_route' => 'playground.matrix.resource',
+        'module_slug' => 'matrix',
+        'privilege' => 'playground-matrix-resource:note',
+        'table' => 'matrix_notes',
+        'view' => 'playground-matrix-resource::note',
     ];
 
     /**
@@ -64,10 +63,10 @@ class NoteController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => null,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => null,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -85,12 +84,12 @@ class NoteController extends Controller
 
         $flash = $note->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
 
-        if (!$request->session()->has('errors')) {
+        if (! $request->session()->has('errors')) {
             session()->flashInput($flash);
         }
 
@@ -115,10 +114,10 @@ class NoteController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $note->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $note->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $meta['input'] = $request->input();
@@ -136,7 +135,7 @@ class NoteController extends Controller
 
         $flash = $note->toArray();
 
-        if (!empty($validated['_return_url'])) {
+        if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
             $data['_return_url'] = $validated['_return_url'];
         }
@@ -172,7 +171,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -192,15 +191,15 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        $note->locked = true;
+        $note->setAttribute('locked', true);
 
         $note->save();
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $note->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'info'            => $this->packageInfo,
+            'id' => $note->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -209,7 +208,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -232,7 +231,7 @@ class NoteController extends Controller
 
         $query->sort($validated['sort'] ?? null);
 
-        if (!empty($validated['filter']) && is_array($validated['filter'])) {
+        if (! empty($validated['filter']) && is_array($validated['filter'])) {
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -256,7 +255,8 @@ class NoteController extends Controller
             );
         }
 
-        $paginator = $query->paginate($validated['perPage'] ?? null);
+        $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
+        $paginator = $query->paginate( $perPage);
 
         $paginator->appends($validated);
 
@@ -266,15 +266,15 @@ class NoteController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'columns'         => $request->getPaginationColumns(),
-            'dates'           => $request->getPaginationDates(),
-            'flags'           => $request->getPaginationFlags(),
-            'ids'             => $request->getPaginationIds(),
-            'rules'           => $request->rules(),
-            'sortable'        => $request->getSortable(),
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'columns' => $request->getPaginationColumns(),
+            'dates' => $request->getPaginationDates(),
+            'flags' => $request->getPaginationFlags(),
+            'ids' => $request->getPaginationIds(),
+            'rules' => $request->rules(),
+            'sortable' => $request->getSortable(),
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         $data = [
@@ -309,7 +309,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -331,10 +331,10 @@ class NoteController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id'              => $note->id,
-            'timestamp'       => Carbon::now()->toJson(),
-            'validated'       => $validated,
-            'info'            => $this->packageInfo,
+            'id' => $note->id,
+            'timestamp' => Carbon::now()->toJson(),
+            'validated' => $validated,
+            'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
@@ -356,10 +356,10 @@ class NoteController extends Controller
     }
 
     /**
-      * Store a newly created API Note resource in storage.
-      *
-      * @route POST /resource/matrix playground.matrix.resource.notes.post
-      */
+     * Store a newly created API Note resource in storage.
+     *
+     * @route POST /resource/matrix playground.matrix.resource.notes.post
+     */
     public function store(
         StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|NoteResource {
@@ -377,7 +377,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -397,7 +397,7 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        $note->locked = false;
+        $note->setAttribute('locked', false);
 
         $note->save();
 
@@ -407,7 +407,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
@@ -435,7 +435,7 @@ class NoteController extends Controller
 
         $returnUrl = $validated['_return_url'] ?? '';
 
-        if ($returnUrl) {
+        if ($returnUrl && is_string($returnUrl)) {
             return redirect($returnUrl);
         }
 
