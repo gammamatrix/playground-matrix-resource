@@ -4,42 +4,35 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase
  */
-class TicketRouteTest extends TestCase
+class BacklogTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
+    // protected bool $load_migrations_playground = true;
+    // protected bool $load_migrations_matrix = true;
 
-    public string $fqdn = \Playground\Matrix\Models\Ticket::class;
+    public string $fqdn = \Playground\Matrix\Models\Backlog::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Ticket',
-        'model_label_plural' => 'Tickets',
-        'model_route' => 'playground.matrix.resource.tickets',
-        'model_slug' => 'ticket',
-        'model_slug_plural' => 'tickets',
+        'model_label' => 'Backlog',
+        'model_label_plural' => 'Backlogs',
+        'model_route' => 'playground.matrix.resource.backlogs',
+        'model_slug' => 'backlog',
+        'model_slug_plural' => 'backlogs',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:ticket',
-        'table' => 'matrix_tickets',
-        'view' => 'playground-matrix-resource::ticket',
+        'privilege' => 'playground-matrix-resource:backlog',
+        'table' => 'matrix_backlogs',
+        'view' => 'playground-matrix-resource::backlog',
     ];
 
     /**
@@ -52,8 +45,7 @@ class TicketRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'ticket_type',
-            'backlog_id',
+            'backlog_type',
             'board_id',
             'epic_id',
             'flow_id',
@@ -66,6 +58,7 @@ class TicketRouteTest extends TestCase
             'sprint_id',
             'tag_id',
             'team_id',
+            'ticket_id',
             'version_id',
             'created_at',
             'deleted_at',

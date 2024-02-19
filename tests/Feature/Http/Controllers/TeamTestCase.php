@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamTestCase
  */
-class VersionRouteTest extends TestCase
+class TeamTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Version::class;
+    public string $fqdn = \Playground\Matrix\Models\Team::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Version',
-        'model_label_plural' => 'Versions',
-        'model_route' => 'playground.matrix.resource.versions',
-        'model_slug' => 'version',
-        'model_slug_plural' => 'versions',
+        'model_label' => 'Team',
+        'model_label_plural' => 'Teams',
+        'model_route' => 'playground.matrix.resource.teams',
+        'model_slug' => 'team',
+        'model_slug_plural' => 'teams',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:version',
-        'table' => 'matrix_versions',
-        'view' => 'playground-matrix-resource::version',
+        'privilege' => 'playground-matrix-resource:team',
+        'table' => 'matrix_teams',
+        'view' => 'playground-matrix-resource::team',
     ];
 
     /**
@@ -52,7 +42,7 @@ class VersionRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'version_type',
+            'team_type',
             'backlog_id',
             'board_id',
             'epic_id',
@@ -65,8 +55,8 @@ class VersionRouteTest extends TestCase
             'source_id',
             'sprint_id',
             'tag_id',
-            'team_id',
             'ticket_id',
+            'version_id',
             'created_at',
             'deleted_at',
             'updated_at',

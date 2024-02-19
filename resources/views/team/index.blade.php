@@ -4,7 +4,7 @@ $filters = [];
 $validated = [];
 // $paginator = null;
 ?>
-@extends('playground::layouts.resource.index')
+@extends('playground::layouts.resource.index', [
     // 'withTableColumns' => [
     //     'label' => [
     //         'linkType' => 'id',

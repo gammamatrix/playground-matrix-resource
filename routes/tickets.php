@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'resource/matrix/tickets',
-    'middleware' => config('playground-matrix-resource.middleware'),
+    'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
     Route::get('/', [
