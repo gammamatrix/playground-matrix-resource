@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SprintTestCase
  */
-class EpicRouteTest extends TestCase
+class SprintTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Epic::class;
+    public string $fqdn = \Playground\Matrix\Models\Sprint::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Epic',
-        'model_label_plural' => 'Epics',
-        'model_route' => 'playground.matrix.resource.epics',
-        'model_slug' => 'epic',
-        'model_slug_plural' => 'epics',
+        'model_label' => 'Sprint',
+        'model_label_plural' => 'Sprints',
+        'model_route' => 'playground.matrix.resource.sprints',
+        'model_slug' => 'sprint',
+        'model_slug_plural' => 'sprints',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:epic',
-        'table' => 'matrix_epics',
-        'view' => 'playground-matrix-resource::epic',
+        'privilege' => 'playground-matrix-resource:sprint',
+        'table' => 'matrix_sprints',
+        'view' => 'playground-matrix-resource::sprint',
     ];
 
     /**
@@ -52,9 +42,10 @@ class EpicRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'epic_type',
-            'board_id',
+            'sprint_type',
             'backlog_id',
+            'board_id',
+            'epic_id',
             'flow_id',
             'milestone_id',
             'note_id',
@@ -62,7 +53,6 @@ class EpicRouteTest extends TestCase
             'release_id',
             'roadmap_id',
             'source_id',
-            'sprint_id',
             'tag_id',
             'team_id',
             'ticket_id',
@@ -137,9 +127,9 @@ class EpicRouteTest extends TestCase
         ],
         'meta' => [
             'id',
-            'rules',
             'session_user_id',
             'timestamp',
+            'rules',
             'validated',
         ],
     ];

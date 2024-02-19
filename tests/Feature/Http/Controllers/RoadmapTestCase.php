@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SourceRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapTestCase
  */
-class SourceRouteTest extends TestCase
+class RoadmapTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Source::class;
+    public string $fqdn = \Playground\Matrix\Models\Roadmap::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Source',
-        'model_label_plural' => 'Sources',
-        'model_route' => 'playground.matrix.resource.sources',
-        'model_slug' => 'source',
-        'model_slug_plural' => 'sources',
+        'model_label' => 'Roadmap',
+        'model_label_plural' => 'Roadmaps',
+        'model_route' => 'playground.matrix.resource.roadmaps',
+        'model_slug' => 'roadmap',
+        'model_slug_plural' => 'roadmaps',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:source',
-        'table' => 'matrix_sources',
-        'view' => 'playground-matrix-resource::source',
+        'privilege' => 'playground-matrix-resource:roadmap',
+        'table' => 'matrix_roadmaps',
+        'view' => 'playground-matrix-resource::roadmap',
     ];
 
     /**
@@ -52,7 +42,7 @@ class SourceRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'source_type',
+            'roadmap_type',
             'backlog_id',
             'board_id',
             'epic_id',
@@ -61,7 +51,7 @@ class SourceRouteTest extends TestCase
             'note_id',
             'project_id',
             'release_id',
-            'roadmap_id',
+            'source_id',
             'sprint_id',
             'tag_id',
             'team_id',

@@ -6,6 +6,7 @@
 
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy;
 
+// use Illuminate\Support\Facades\Artisan;
 use Playground\Matrix\Resource\Policies\BacklogPolicy;
 use Tests\Unit\Playground\Matrix\Resource\TestCase;
 
@@ -21,4 +22,11 @@ class PolicyTest extends TestCase
 
         $this->assertInstanceOf(BacklogPolicy::class, $instance);
     }
+
+    // public function test_dump_console_about(): void
+    // {
+    //     $result = $this->withoutMockingConsoleOutput()->artisan('about');
+    //     dump(Artisan::output());
+    // }
 }
+

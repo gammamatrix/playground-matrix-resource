@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ReleaseRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionTestCase
  */
-class ReleaseRouteTest extends TestCase
+class VersionTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Release::class;
+    public string $fqdn = \Playground\Matrix\Models\Version::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Release',
-        'model_label_plural' => 'Releases',
-        'model_route' => 'playground.matrix.resource.releases',
-        'model_slug' => 'release',
-        'model_slug_plural' => 'releases',
+        'model_label' => 'Version',
+        'model_label_plural' => 'Versions',
+        'model_route' => 'playground.matrix.resource.versions',
+        'model_slug' => 'version',
+        'model_slug_plural' => 'versions',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:release',
-        'table' => 'matrix_releases',
-        'view' => 'playground-matrix-resource::release',
+        'privilege' => 'playground-matrix-resource:version',
+        'table' => 'matrix_versions',
+        'view' => 'playground-matrix-resource::version',
     ];
 
     /**
@@ -52,7 +42,7 @@ class ReleaseRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'release_type',
+            'version_type',
             'backlog_id',
             'board_id',
             'epic_id',
@@ -60,13 +50,13 @@ class ReleaseRouteTest extends TestCase
             'milestone_id',
             'note_id',
             'project_id',
+            'release_id',
             'roadmap_id',
             'source_id',
             'sprint_id',
             'tag_id',
             'team_id',
             'ticket_id',
-            'version_id',
             'created_at',
             'deleted_at',
             'updated_at',

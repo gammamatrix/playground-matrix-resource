@@ -4,23 +4,13 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\FlowRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\FlowTestCase
  */
-class FlowRouteTest extends TestCase
+class FlowTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
     public string $fqdn = \Playground\Matrix\Models\Flow::class;
 
     /**

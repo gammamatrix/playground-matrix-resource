@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase
  */
-class TeamRouteTest extends TestCase
+class EpicTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Team::class;
+    public string $fqdn = \Playground\Matrix\Models\Epic::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Team',
-        'model_label_plural' => 'Teams',
-        'model_route' => 'playground.matrix.resource.teams',
-        'model_slug' => 'team',
-        'model_slug_plural' => 'teams',
+        'model_label' => 'Epic',
+        'model_label_plural' => 'Epics',
+        'model_route' => 'playground.matrix.resource.epics',
+        'model_slug' => 'epic',
+        'model_slug_plural' => 'epics',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:team',
-        'table' => 'matrix_teams',
-        'view' => 'playground-matrix-resource::team',
+        'privilege' => 'playground-matrix-resource:epic',
+        'table' => 'matrix_epics',
+        'view' => 'playground-matrix-resource::epic',
     ];
 
     /**
@@ -52,10 +42,9 @@ class TeamRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'team_type',
-            'backlog_id',
+            'epic_type',
             'board_id',
-            'epic_id',
+            'backlog_id',
             'flow_id',
             'milestone_id',
             'note_id',
@@ -65,6 +54,7 @@ class TeamRouteTest extends TestCase
             'source_id',
             'sprint_id',
             'tag_id',
+            'team_id',
             'ticket_id',
             'version_id',
             'created_at',
@@ -137,9 +127,9 @@ class TeamRouteTest extends TestCase
         ],
         'meta' => [
             'id',
+            'rules',
             'session_user_id',
             'timestamp',
-            'rules',
             'validated',
         ],
     ];

@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TagTestCase
  */
-class RoadmapRouteTest extends TestCase
+class TagTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Roadmap::class;
+    public string $fqdn = \Playground\Matrix\Models\Tag::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Roadmap',
-        'model_label_plural' => 'Roadmaps',
-        'model_route' => 'playground.matrix.resource.roadmaps',
-        'model_slug' => 'roadmap',
-        'model_slug_plural' => 'roadmaps',
+        'model_label' => 'Tag',
+        'model_label_plural' => 'Tags',
+        'model_route' => 'playground.matrix.resource.tags',
+        'model_slug' => 'tag',
+        'model_slug_plural' => 'tags',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:roadmap',
-        'table' => 'matrix_roadmaps',
-        'view' => 'playground-matrix-resource::roadmap',
+        'privilege' => 'playground-matrix-resource:tag',
+        'table' => 'matrix_tags',
+        'view' => 'playground-matrix-resource::tag',
     ];
 
     /**
@@ -52,7 +42,7 @@ class RoadmapRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'roadmap_type',
+            'tag_type',
             'backlog_id',
             'board_id',
             'epic_id',
@@ -61,9 +51,9 @@ class RoadmapRouteTest extends TestCase
             'note_id',
             'project_id',
             'release_id',
+            'roadmap_id',
             'source_id',
             'sprint_id',
-            'tag_id',
             'team_id',
             'ticket_id',
             'version_id',

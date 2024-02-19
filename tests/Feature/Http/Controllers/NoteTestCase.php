@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteTestCase
  */
-class BacklogRouteTest extends TestCase
+class NoteTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Backlog::class;
+    public string $fqdn = \Playground\Matrix\Models\Note::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Backlog',
-        'model_label_plural' => 'Backlogs',
-        'model_route' => 'playground.matrix.resource.backlogs',
-        'model_slug' => 'backlog',
-        'model_slug_plural' => 'backlogs',
+        'model_label' => 'Note',
+        'model_label_plural' => 'Notes',
+        'model_route' => 'playground.matrix.resource.notes',
+        'model_slug' => 'note',
+        'model_slug_plural' => 'notes',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:backlog',
-        'table' => 'matrix_backlogs',
-        'view' => 'playground-matrix-resource::backlog',
+        'privilege' => 'playground-matrix-resource:note',
+        'table' => 'matrix_notes',
+        'view' => 'playground-matrix-resource::note',
     ];
 
     /**
@@ -52,21 +42,21 @@ class BacklogRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'backlog_type',
-            'board_id',
-            'epic_id',
-            'flow_id',
-            'milestone_id',
-            'note_id',
-            'project_id',
-            'release_id',
-            'roadmap_id',
-            'source_id',
-            'sprint_id',
-            'tag_id',
-            'team_id',
-            'ticket_id',
-            'version_id',
+            'note_type',
+            // 'backlog_id',
+            // 'board_id',
+            // 'epic_id',
+            // 'flow_id',
+            // 'milestone_id',
+            // 'project_id',
+            // 'release_id',
+            // 'roadmap_id',
+            // 'source_id',
+            // 'sprint_id',
+            // 'tag_id',
+            // 'team_id',
+            // 'ticket_id',
+            // 'version_id',
             'created_at',
             'deleted_at',
             'updated_at',
@@ -137,9 +127,9 @@ class BacklogRouteTest extends TestCase
         ],
         'meta' => [
             'id',
+            'rules',
             'session_user_id',
             'timestamp',
-            'rules',
             'validated',
         ],
     ];

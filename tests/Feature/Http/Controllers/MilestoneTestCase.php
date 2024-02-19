@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BoardRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase
  */
-class BoardRouteTest extends TestCase
+class MilestoneTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Board::class;
+    public string $fqdn = \Playground\Matrix\Models\Milestone::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Board',
-        'model_label_plural' => 'Boards',
-        'model_route' => 'playground.matrix.resource.boards',
-        'model_slug' => 'board',
-        'model_slug_plural' => 'boards',
+        'model_label' => 'Milestone',
+        'model_label_plural' => 'Milestones',
+        'model_route' => 'playground.matrix.resource.milestones',
+        'model_slug' => 'milestone',
+        'model_slug_plural' => 'milestones',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:board',
-        'table' => 'matrix_boards',
-        'view' => 'playground-matrix-resource::board',
+        'privilege' => 'playground-matrix-resource:milestone',
+        'table' => 'matrix_milestones',
+        'view' => 'playground-matrix-resource::milestone',
     ];
 
     /**
@@ -52,11 +42,11 @@ class BoardRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'board_type',
+            'milestone_type',
             'backlog_id',
+            'board_id',
             'epic_id',
             'flow_id',
-            'milestone_id',
             'note_id',
             'project_id',
             'release_id',

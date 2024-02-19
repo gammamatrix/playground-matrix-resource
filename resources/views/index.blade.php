@@ -1,4 +1,4 @@
-@extends($playground_matrix_resource['layout'])
+@extends('playground::layouts.resource.layout')
 
 @section('title', 'Matrix')
 

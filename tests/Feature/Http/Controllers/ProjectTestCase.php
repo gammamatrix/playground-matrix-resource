@@ -4,42 +4,32 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
- * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TagRouteTest
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ProjectTestCase
  */
-class TagRouteTest extends TestCase
+class ProjectTestCase extends TestCase
 {
-    use Resource\CreateTrait;
-    use Resource\DestroyTrait;
-    use Resource\EditTrait;
-    use Resource\IndexTrait;
-    use Resource\LockTrait;
-    use Resource\RestoreTrait;
-    use Resource\ShowTrait;
-    use Resource\UnlockTrait;
-
-    public string $fqdn = \Playground\Matrix\Models\Tag::class;
+    public string $fqdn = \Playground\Matrix\Models\Project::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Tag',
-        'model_label_plural' => 'Tags',
-        'model_route' => 'playground.matrix.resource.tags',
-        'model_slug' => 'tag',
-        'model_slug_plural' => 'tags',
+        'model_label' => 'Project',
+        'model_label_plural' => 'Projects',
+        'model_route' => 'playground.matrix.resource.projects',
+        'model_slug' => 'project',
+        'model_slug_plural' => 'projects',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:tag',
-        'table' => 'matrix_tags',
-        'view' => 'playground-matrix-resource::tag',
+        'privilege' => 'playground-matrix-resource:project',
+        'table' => 'matrix_projects',
+        'view' => 'playground-matrix-resource::project',
     ];
 
     /**
@@ -52,18 +42,18 @@ class TagRouteTest extends TestCase
             'modified_by_id',
             'owned_by_id',
             'parent_id',
-            'tag_type',
+            'project_type',
             'backlog_id',
             'board_id',
             'epic_id',
             'flow_id',
             'milestone_id',
             'note_id',
-            'project_id',
             'release_id',
             'roadmap_id',
             'source_id',
             'sprint_id',
+            'tag_id',
             'team_id',
             'ticket_id',
             'version_id',
