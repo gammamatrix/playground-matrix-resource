@@ -44,9 +44,11 @@ return new class() extends Migration
             $table->dateTime('canceled_at')->nullable();
             $table->dateTime('closed_at')->nullable()->index();
             $table->dateTime('embargo_at')->nullable();
+            $table->dateTime('fixed_at')->nullable();
             $table->dateTime('postponed_at')->nullable();
             $table->dateTime('published_at')->nullable();
             $table->dateTime('released_at')->nullable();
+            $table->dateTime('resolved_at')->nullable();
             $table->dateTime('resumed_at')->nullable();
             $table->dateTime('suspended_at')->nullable();
 

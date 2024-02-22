@@ -191,7 +191,7 @@ class ServiceProvider extends AuthServiceProvider
 
         $version = $this->version();
 
-        AboutCommand::add('Playground Matrix Resource', fn () => [
+        AboutCommand::add('Playground: Matrix Resource', fn () => [
             '<fg=yellow;options=bold>Load</> Policies' => ! empty($load['policies']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
