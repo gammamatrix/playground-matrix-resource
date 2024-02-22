@@ -16,7 +16,7 @@ trait TestTrait
      */
     protected function getEnvironmentSetUp($app)
     {
-        $app['config']->set('auth.providers.users.model', '\\Playground\\Test\\Models\\PlaygroundUser');
+        $app['config']->set('auth.providers.users.model', '\\Playground\\Models\\Playground');
 
         $app['config']->set('playground-matrix.load.migrations', true);
 
@@ -58,6 +58,5 @@ trait TestTrait
         // $app['config']->set('playground-matrix-resource.sitemap.enable', true);
         // $app['config']->set('playground-matrix-resource.sitemap.guest', true);
         // $app['config']->set('playground-matrix-resource.sitemap.user', true);
-
     }
 }

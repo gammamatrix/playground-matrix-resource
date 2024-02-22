@@ -4,22 +4,13 @@
  */
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground;
 
-use Playground\Test\Feature\Http\Controllers\Resource;
-use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase;
+use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\EpicRouteTest
  */
-class EpicRouteTest extends BacklogTestCase
+class EpicRouteTest extends EpicTestCase
 {
-    use Resource\Playground\CreateTrait;
-    use Resource\Playground\DestroyTrait;
-    use Resource\Playground\EditTrait;
-    use Resource\Playground\IndexTrait;
-    use Resource\Playground\LockTrait;
-    use Resource\Playground\RestoreTrait;
-    use Resource\Playground\ShowTrait;
-    use Resource\Playground\UnlockTrait;
     use TestTrait;
 
     protected bool $load_migrations_playground = true;
