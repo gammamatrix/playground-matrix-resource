@@ -15,6 +15,8 @@ This application provides Swagger documentation: [swagger.json](swagger.json).
 - The endpoint models support locks, trash with force delete, restoring and more.
 - Index endpoints support advanced query filtering.
 
+Read more on using Playground Matrix Resource [at the Read the Docs for Playground.](https://gammamatrix-playground.readthedocs.io/)
+
 ## Installation
 
 You can install the package via composer:

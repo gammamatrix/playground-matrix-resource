@@ -1,6 +1,6 @@
 {
     "name": "gammamatrix/playground-matrix-resource",
-    "description": "Playground: Provide the Matrix UI for a Laravel application.",
+    "description": "Playground: Provides an API and a Blade UI for interacting with Playground Matrix, a Project Management System for Laravel applications.",
     "keywords": [
         "matrix",
         "agile",
@@ -11,7 +11,7 @@
         "laravel",
         "playground"
     ],
-    "homepage": "https://github.com/gammamatrix/playground-matrix-resource",
+    "homepage": "https://gammamatrix-playground.readthedocs.io/",
     "license": "MIT",
     "authors": [
         {
@@ -20,26 +20,17 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/gammamatrix/playground-http.git"
-        }
-    ],
     "require": {
-        "php": "^8.1",
-        "gammamatrix/playground-auth": "dev-develop|dev-master|dev-feature/*|^73.0",
-        "gammamatrix/playground-blade": "dev-develop|dev-master|dev-feature/*|^73.0",
-        "gammamatrix/playground-http": "dev-develop|dev-master|dev-feature/*|^73.0",
-        "gammamatrix/playground-login-blade": "dev-develop|dev-master|dev-feature/*|^73.0",
-        "gammamatrix/playground-site-blade": "dev-develop|dev-master|dev-feature/*|^73.0",
-        "gammamatrix/playground-matrix": "dev-develop|dev-master|dev-feature/*|^73.0"
+        "php": "^8.2",
+        "gammamatrix/playground-auth": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
+        "gammamatrix/playground-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
+        "gammamatrix/playground-http": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
+        "gammamatrix/playground-matrix": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0"
     },
     "require-dev": {
-        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^73.0"
-    },
-    "suggest": {
-        "gammamatrix/playground-matrix": "Provides the models used by the Resource API in this package."
+        "gammamatrix/playground-login-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
+        "gammamatrix/playground-site-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
+        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

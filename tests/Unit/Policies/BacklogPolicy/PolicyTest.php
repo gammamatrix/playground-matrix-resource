@@ -1,9 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
- *
  */
-
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy;
 
 // use Illuminate\Support\Facades\Artisan;
@@ -12,7 +12,6 @@ use Tests\Unit\Playground\Matrix\Resource\TestCase;
 
 /**
  * \ests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy\PolicyTest
- *
  */
 class PolicyTest extends TestCase
 {
@@ -29,4 +28,3 @@ class PolicyTest extends TestCase
     //     dump(Artisan::output());
     // }
 }
-

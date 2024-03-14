@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Playground
  */
@@ -24,6 +26,8 @@ trait TestTrait
         $app['config']->set('playground-auth.debug', true);
 
         $app['config']->set('playground-auth.verify', 'roles');
+        $app['config']->set('auth.testing.password', 'password');
+        $app['config']->set('auth.testing.hashed', false);
         // $app['config']->set('playground-auth.verify', 'privileges');
         $app['config']->set('playground-auth.sanctum', false);
         $app['config']->set('playground-auth.hasPrivilege', true);

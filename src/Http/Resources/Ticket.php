@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;
