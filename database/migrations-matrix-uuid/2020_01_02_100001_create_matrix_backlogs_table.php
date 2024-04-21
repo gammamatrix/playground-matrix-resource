@@ -32,6 +32,7 @@ return new class() extends Migration
             $table->uuid('board_id')->nullable()->index();
             $table->uuid('epic_id')->nullable()->index();
             $table->uuid('flow_id')->nullable()->index();
+            $table->uuid('matrix_id')->nullable()->index();
             $table->uuid('milestone_id')->nullable()->index();
             $table->uuid('note_id')->nullable()->index();
             $table->uuid('project_id')->nullable()->index();
@@ -84,7 +85,7 @@ return new class() extends Migration
 
             // Matrix
 
-            $table->string('matrix')->default('');
+            $table->json('matrix')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->bigInteger('x')->nullable();
             $table->bigInteger('y')->nullable();
             $table->bigInteger('z')->nullable();
@@ -109,11 +110,13 @@ return new class() extends Migration
             $table->boolean('locked')->default(0);
             $table->boolean('pending')->default(0);
             $table->boolean('planned')->default(0);
+            $table->boolean('prioritized')->default(0);
             $table->boolean('problem')->default(0);
             $table->boolean('published')->default(0);
             $table->boolean('released')->default(0);
             $table->boolean('retired')->default(0);
             $table->boolean('resolved')->default(0);
+            $table->boolean('special')->default(0);
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 
