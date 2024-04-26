@@ -1,15 +1,18 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Playground\Matrix\Models\Ticket
+ */
 return new class() extends Migration
 {
     /**
@@ -18,6 +21,7 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('matrix_tickets', function (Blueprint $table) {
+
             // Primary key
 
             $table->uuid('id')->primary();
@@ -34,7 +38,9 @@ return new class() extends Migration
             $table->uuid('board_id')->nullable()->index();
             $table->uuid('completed_by_id')->nullable()->index();
             $table->uuid('epic_id')->nullable()->index();
+            $table->uuid('fixed_by_id')->nullable()->index();
             $table->uuid('flow_id')->nullable()->index();
+            $table->uuid('matrix_id')->nullable()->index();
             $table->uuid('milestone_id')->nullable()->index();
             $table->uuid('note_id')->nullable()->index();
             $table->uuid('project_id')->nullable()->index();
@@ -88,7 +94,7 @@ return new class() extends Migration
 
             // Matrix
 
-            $table->string('matrix')->default('');
+            $table->json('matrix')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->bigInteger('x')->nullable();
             $table->bigInteger('y')->nullable();
             $table->bigInteger('z')->nullable();
@@ -106,6 +112,7 @@ return new class() extends Migration
             $table->boolean('canceled')->default(0);
             $table->boolean('closed')->default(0);
             $table->boolean('completed')->default(0);
+            $table->boolean('cron')->default(0)->index();
             $table->boolean('duplicate')->default(0);
             $table->boolean('fixed')->default(0);
             $table->boolean('flagged')->default(0);
@@ -113,15 +120,17 @@ return new class() extends Migration
             $table->boolean('locked')->default(0);
             $table->boolean('pending')->default(0);
             $table->boolean('planned')->default(0);
+            $table->boolean('prioritized')->default(0);
             $table->boolean('problem')->default(0);
             $table->boolean('published')->default(0);
             $table->boolean('released')->default(0);
             $table->boolean('retired')->default(0);
             $table->boolean('resolved')->default(0);
+            $table->boolean('special')->default(0);
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 
-            // Strings
+            // Columns
 
             $table->string('label')->default('');
             $table->string('title')->default('');
@@ -143,11 +152,14 @@ return new class() extends Migration
             $table->string('state')->default('');
             $table->string('workflow_type')->default('');
             $table->tinyInteger('points')->default(0)->unsigned();
+            $table->mediumText('actual')->nullable();
+            $table->mediumText('expected')->nullable();
             $table->mediumText('story')->nullable();
+            $table->mediumText('steps')->nullable();
             $table->mediumText('criteria')->nullable();
             $table->decimal('reproducibility', 8, 2)->nullable()->default(null);
 
-            // UI
+            // Ui
 
             $table->string('icon')->default('');
             $table->string('image')->default('');

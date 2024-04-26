@@ -1,15 +1,18 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Backlog
+ */
 return new class() extends Migration
 {
     /**
@@ -18,6 +21,7 @@ return new class() extends Migration
     public function up(): void
     {
         Schema::create('matrix_backlogs', function (Blueprint $table) {
+
             // Primary key
 
             $table->uuid('id')->primary();
@@ -103,6 +107,7 @@ return new class() extends Migration
             $table->boolean('canceled')->default(0);
             $table->boolean('closed')->default(0);
             $table->boolean('completed')->default(0);
+            $table->boolean('cron')->default(0)->index();
             $table->boolean('duplicate')->default(0);
             $table->boolean('fixed')->default(0);
             $table->boolean('flagged')->default(0);
@@ -120,7 +125,7 @@ return new class() extends Migration
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 
-            // Strings
+            // Columns
 
             $table->string('label')->default('');
             $table->string('title')->default('');
@@ -132,7 +137,7 @@ return new class() extends Migration
             $table->mediumText('content')->nullable();
             $table->mediumText('summary')->nullable();
 
-            // UI
+            // Ui
 
             $table->string('icon')->default('');
             $table->string('image')->default('');
