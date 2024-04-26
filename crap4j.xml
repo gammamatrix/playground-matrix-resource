@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-03-17 07:18:02</timestamp>
+  <timestamp>2024-04-26 20:23:56</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>266</methodCount>
     <crapMethodCount>31</crapMethodCount>
     <crapLoad>253</crapLoad>
-    <totalCrap>3468.15</totalCrap>
+    <totalCrap>3484.15</totalCrap>
     <crapMethodPercent>11.65</crapMethodPercent>
   </stats>
   <methods>
@@ -237,9 +237,9 @@
       <methodName>getViewPath</methodName>
       <methodSignature>getViewPath(string $controller, string $view): string</methodSignature>
       <fullMethod>getViewPath(string $controller, string $view): string</fullMethod>
-      <crap>4</crap>
+      <crap>20</crap>
       <complexity>4</complexity>
-      <coverage>100</coverage>
+      <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
