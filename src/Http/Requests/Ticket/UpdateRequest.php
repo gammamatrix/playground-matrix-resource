@@ -133,38 +133,33 @@ class UpdateRequest extends BaseUpdateRequest
 
         $input = [];
 
-        if ($this->filled('content')) {
-            $input['content'] = $this->purify($this->input('content'));
+        $this->filterContentFields($input);
+        $this->filterCommonFields($input);
+        $this->filterStatus($input);
+        $this->filterSystemFields($input);
+
+        if ($this->filled('actual')) {
+            $input['actual'] = $this->purify($this->input('actual'));
         }
 
-        if ($this->filled('summary')) {
-            $input['summary'] = $this->purify($this->input('summary'));
+        if ($this->filled('expected')) {
+            $input['expected'] = $this->purify($this->input('expected'));
         }
 
-        if ($this->filled('description')) {
-            $input['description'] = $this->exorcise($this->input('description'));
-        } elseif ($this->has('description')) {
-            $input['description'] = '';
+        if ($this->filled('steps')) {
+            $input['steps'] = $this->purify($this->input('steps'));
         }
 
-        if ($this->filled('introduction')) {
-            $input['introduction'] = $this->exorcise($this->input('introduction'));
-        } elseif ($this->has('introduction')) {
-            $input['introduction'] = '';
+        if ($this->filled('story')) {
+            $input['story'] = $this->purify($this->input('story'));
+        }
+
+        if ($this->filled('criteria')) {
+            $input['criteria'] = $this->purify($this->input('criteria'));
         }
 
         if (! empty($input)) {
             $this->merge($input);
         }
     }
-
-    //    /**
-    //      * Handle a passed validation attempt.
-    //      *
-    //      * @return void
-    //      */
-    //     protected function passedValidation()
-    //     {
-    //
-    //     }
 }

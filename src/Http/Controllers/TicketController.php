@@ -371,6 +371,10 @@ class TicketController extends Controller
 
         $ticket = new Ticket($validated);
 
+        $ticket->created_by_id = $user?->id;
+
+        $this->handleTicketCode($ticket);
+
         $ticket->save();
 
         if ($request->expectsJson()) {
@@ -442,5 +446,41 @@ class TicketController extends Controller
         }
 
         return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+    }
+
+    protected function getProjectKey(Ticket $ticket): string
+    {
+        $key = config('playground-matrix-resource.default_key');
+        $key = is_string($key) ? $key : '';
+
+        $project = $ticket->project_id ? $ticket->project() : null;
+
+        if (! empty($project->key) && is_string($project->key)) {
+            $key = $project->key;
+        }
+
+        return $key;
+    }
+
+    protected function handleTicketCode(Ticket $ticket): void
+    {
+        if (empty($ticket->project_id)) {
+            return;
+        }
+
+        $ticket->key = $this->getProjectKey($ticket);
+
+        $code = Ticket::where('key', 'LIKE', $ticket->key)->max('code');
+        $next = $code > 0 ? ++$code : 1;
+        $slug = sprintf(
+            '%1$s%2$s%3$d',
+            $ticket->key,
+            $ticket->key ? '-' : '',
+            $next
+        );
+
+        $ticket->code = $next;
+        $ticket->slug = $slug;
+        $ticket->key_code_hash = md5($slug);
     }
 }

@@ -77,7 +77,9 @@ class ServiceProvider extends AuthServiceProvider
             View::share('layout', $config['layout']);
         }
 
-        $this->about();
+        if (! empty($config['about'])) {
+            $this->about();
+        }
     }
 
     /**
