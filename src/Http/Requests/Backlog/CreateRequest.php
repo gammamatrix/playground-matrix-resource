@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
@@ -23,6 +23,7 @@ class CreateRequest extends FormRequest
         'board_id' => ['nullable', 'uuid'],
         'epic_id' => ['nullable', 'uuid'],
         'flow_id' => ['nullable', 'uuid'],
+        'matrix_id' => ['nullable', 'uuid'],
         'milestone_id' => ['nullable', 'uuid'],
         'note_id' => ['nullable', 'uuid'],
         'project_id' => ['nullable', 'uuid'],
@@ -59,10 +60,22 @@ class CreateRequest extends FormRequest
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
+        'matrix' => ['array'],
+        'x' => ['integer'],
+        'y' => ['integer'],
+        'z' => ['integer'],
+        'r' => ['float'],
+        'theta' => ['float'],
+        'rho' => ['float'],
+        'phi' => ['float'],
+        'elevation' => ['float'],
+        'latitude' => ['float'],
+        'longitude' => ['float'],
         'active' => ['boolean'],
         'canceled' => ['boolean'],
         'closed' => ['boolean'],
         'completed' => ['boolean'],
+        'cron' => ['boolean'],
         'duplicate' => ['boolean'],
         'fixed' => ['boolean'],
         'flagged' => ['boolean'],
