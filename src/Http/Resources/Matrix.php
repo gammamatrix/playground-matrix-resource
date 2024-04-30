@@ -9,10 +9,10 @@ namespace Playground\Matrix\Resource\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Carbon;
-use Playground\Matrix\Models\Board as BoardModel;
+use Playground\Matrix\Models\Matrix as MatrixModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
-class Board extends JsonResource
+class Matrix extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -33,13 +33,13 @@ class Board extends JsonResource
     public function with(Request $request): array
     {
         /**
-         * @var ?BoardModel $board
+         * @var ?MatrixModel $matrix
          */
-        $board = $request->route('board');
+        $matrix = $request->route('matrix');
 
         return [
             'meta' => [
-                'id' => $board?->id,
+                'id' => $matrix?->id,
                 'rules' => $request->rules(),
                 'session_user_id' => $request->user()?->id,
                 'timestamp' => Carbon::now()->toJson(),

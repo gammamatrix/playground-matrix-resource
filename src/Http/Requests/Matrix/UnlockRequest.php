@@ -4,12 +4,12 @@
  */
 
 declare(strict_types=1);
-namespace Playground\Matrix\Resource\Http\Requests\Epic;
+namespace Playground\Matrix\Resource\Http\Requests\Matrix;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest
+ * \Playground\Matrix\Resource\Http\Requests\Matrix\UnlockRequest
  */
 class UnlockRequest extends FormRequest
 {

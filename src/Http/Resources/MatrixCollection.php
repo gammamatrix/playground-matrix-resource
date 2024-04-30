@@ -7,15 +7,14 @@ declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Resources;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Carbon;
-use Playground\Matrix\Models\Board as BoardModel;
-use Playground\Matrix\Resource\Http\Requests\FormRequest;
+use Playground\Http\Requests\IndexRequest;
 
-class Board extends JsonResource
+class MatrixCollection extends ResourceCollection
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @return array<string, mixed>|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
@@ -27,21 +26,20 @@ class Board extends JsonResource
     /**
      * Get additional data that should be returned with the resource array.
      *
-     * @param Request&FormRequest $request
+     * @param Request&IndexRequest $request
      * @return array<string, mixed>
      */
     public function with(Request $request): array
     {
-        /**
-         * @var ?BoardModel $board
-         */
-        $board = $request->route('board');
-
         return [
             'meta' => [
-                'id' => $board?->id,
+                'columns' => $request->getPaginationColumns(),
+                'dates' => $request->getPaginationDates(),
+                'flags' => $request->getPaginationFlags(),
+                'ids' => $request->getPaginationIds(),
                 'rules' => $request->rules(),
                 'session_user_id' => $request->user()?->id,
+                'sortable' => $request->getSortable(),
                 'timestamp' => Carbon::now()->toJson(),
                 'validated' => $request->validated(),
             ],

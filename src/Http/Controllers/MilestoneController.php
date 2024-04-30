@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Milestone;
-use Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Milestone as MilestoneResource;
-use Playground\Matrix\Resource\Http\Resources\MilestoneCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\MilestoneController
@@ -55,8 +45,9 @@ class MilestoneController extends Controller
      * @route GET /resource/matrix/milestones/create playground.matrix.resource.milestones.create
      */
     public function create(
-        CreateRequest $request
+        Requests\Milestone\CreateRequest $request
     ): JsonResponse|View {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -95,10 +86,7 @@ class MilestoneController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::milestone/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,8 +96,9 @@ class MilestoneController extends Controller
      */
     public function edit(
         Milestone $milestone,
-        EditRequest $request
+        Requests\Milestone\EditRequest $request
     ): JsonResponse|View {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -144,10 +133,7 @@ class MilestoneController extends Controller
 
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::milestone/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +143,9 @@ class MilestoneController extends Controller
      */
     public function destroy(
         Milestone $milestone,
-        DestroyRequest $request
+        Requests\Milestone\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +164,7 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +174,14 @@ class MilestoneController extends Controller
      */
     public function lock(
         Milestone $milestone,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|MilestoneResource {
+        Requests\Milestone\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $milestone->setAttribute('locked', true);
+        $milestone->locked = true;
 
         $milestone->save();
 
@@ -205,7 +193,7 @@ class MilestoneController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +202,10 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones.show', ['milestone' => $milestone->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['milestone' => $milestone->id]));
     }
 
     /**
@@ -223,8 +214,9 @@ class MilestoneController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.milestones
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|MilestoneCollection {
+        Requests\Milestone\IndexRequest $request
+    ): JsonResponse|View|Resources\MilestoneCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +226,7 @@ class MilestoneController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +251,12 @@ class MilestoneController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new MilestoneCollection($paginator))->response($request);
+            return (new Resources\MilestoneCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +277,7 @@ class MilestoneController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::milestone/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +287,9 @@ class MilestoneController extends Controller
      */
     public function restore(
         Milestone $milestone,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|MilestoneResource {
+        Requests\Milestone\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +297,7 @@ class MilestoneController extends Controller
         $milestone->restore();
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +306,10 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones.show', ['milestone' => $milestone->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['milestone' => $milestone->id]));
     }
 
     /**
@@ -325,8 +319,9 @@ class MilestoneController extends Controller
      */
     public function show(
         Milestone $milestone,
-        ShowRequest $request
-    ): JsonResponse|View|MilestoneResource {
+        Requests\Milestone\ShowRequest $request
+    ): JsonResponse|View|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +335,7 @@ class MilestoneController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +346,7 @@ class MilestoneController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::milestone/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +355,9 @@ class MilestoneController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.milestones.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|MilestoneResource {
+        Requests\Milestone\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +367,7 @@ class MilestoneController extends Controller
         $milestone->save();
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +376,10 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones.show', ['milestone' => $milestone->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['milestone' => $milestone->id]));
     }
 
     /**
@@ -393,18 +389,19 @@ class MilestoneController extends Controller
      */
     public function unlock(
         Milestone $milestone,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|MilestoneResource {
+        Requests\Milestone\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $milestone->setAttribute('locked', false);
+        $milestone->locked = false;
 
         $milestone->save();
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +410,10 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones.show', ['milestone' => $milestone->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['milestone' => $milestone->id]));
     }
 
     /**
@@ -423,8 +423,9 @@ class MilestoneController extends Controller
      */
     public function update(
         Milestone $milestone,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|MilestoneResource {
+        Requests\Milestone\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Milestone {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +433,7 @@ class MilestoneController extends Controller
         $milestone->update($validated);
 
         if ($request->expectsJson()) {
-            return (new MilestoneResource($milestone))->response($request);
+            return (new Resources\Milestone($milestone))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +442,9 @@ class MilestoneController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.milestones.show', ['milestone' => $milestone->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['milestone' => $milestone->id]));
     }
 }

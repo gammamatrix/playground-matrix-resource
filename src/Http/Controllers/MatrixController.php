@@ -11,48 +11,48 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
-use Playground\Matrix\Models\Board;
+use Playground\Matrix\Models\Matrix;
 use Playground\Matrix\Resource\Http\Requests;
 use Playground\Matrix\Resource\Http\Resources;
 
 /**
- * \Playground\Matrix\Resource\Http\Controllers\BoardController
+ * \Playground\Matrix\Resource\Http\Controllers\MatrixController
  */
-class BoardController extends Controller
+class MatrixController extends Controller
 {
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
         'model_attribute' => 'label',
-        'model_label' => 'Board',
-        'model_label_plural' => 'Boards',
-        'model_route' => 'playground.matrix.resource.boards',
-        'model_slug' => 'board',
-        'model_slug_plural' => 'boards',
+        'model_label' => 'Matrix',
+        'model_label_plural' => 'Matrices',
+        'model_route' => 'playground.matrix.resource.matrices',
+        'model_slug' => 'matrix',
+        'model_slug_plural' => 'matrices',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => 'playground-matrix-resource:board',
-        'table' => 'matrix_boards',
-        'view' => 'playground-matrix-resource::board',
+        'privilege' => 'playground-matrix-resource:matrix',
+        'table' => 'matrix_matrices',
+        'view' => 'playground-matrix-resource::matrix',
     ];
 
     /**
-     * CREATE the Board resource in storage.
+     * CREATE the Matrix resource in storage.
      *
-     * @route GET /resource/matrix/boards/create playground.matrix.resource.boards.create
+     * @route GET /resource/matrix/matrices/create playground.matrix.resource.matrices.create
      */
     public function create(
-        Requests\Board\CreateRequest $request
+        Requests\Matrix\CreateRequest $request
     ): JsonResponse|View {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board = new Board($validated);
+        $matrix = new Matrix($validated);
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -66,7 +66,7 @@ class BoardController extends Controller
         $meta['validated'] = $request->validated();
 
         $data = [
-            'data' => $board,
+            'data' => $matrix,
             'meta' => $meta,
             '_method' => 'post',
         ];
@@ -75,7 +75,7 @@ class BoardController extends Controller
             return response()->json($data);
         }
 
-        $flash = $board->toArray();
+        $flash = $matrix->toArray();
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
@@ -90,13 +90,13 @@ class BoardController extends Controller
     }
 
     /**
-     * Edit the Board resource in storage.
+     * Edit the Matrix resource in storage.
      *
-     * @route GET /resource/matrix/boards/edit playground.matrix.resource.boards.edit
+     * @route GET /resource/matrix/matrices/edit playground.matrix.resource.matrices.edit
      */
     public function edit(
-        Board $board,
-        Requests\Board\EditRequest $request
+        Matrix $matrix,
+        Requests\Matrix\EditRequest $request
     ): JsonResponse|View {
 
         $validated = $request->validated();
@@ -105,7 +105,7 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id' => $board->id,
+            'id' => $matrix->id,
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
             'info' => $this->packageInfo,
@@ -115,7 +115,7 @@ class BoardController extends Controller
         $meta['validated'] = $request->validated();
 
         $data = [
-            'data' => $board,
+            'data' => $matrix,
             'meta' => $meta,
             '_method' => 'patch',
         ];
@@ -124,7 +124,7 @@ class BoardController extends Controller
             return response()->json($data);
         }
 
-        $flash = $board->toArray();
+        $flash = $matrix->toArray();
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
@@ -137,21 +137,21 @@ class BoardController extends Controller
     }
 
     /**
-     * Remove the Board resource from storage.
+     * Remove the Matrix resource from storage.
      *
-     * @route DELETE /resource/matrix/{board} playground.matrix.resource.boards.destroy
+     * @route DELETE /resource/matrix/{matrix} playground.matrix.resource.matrices.destroy
      */
     public function destroy(
-        Board $board,
-        Requests\Board\DestroyRequest $request
+        Matrix $matrix,
+        Requests\Matrix\DestroyRequest $request
     ): Response|RedirectResponse {
 
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
-            $board->delete();
+            $matrix->delete();
         } else {
-            $board->forceDelete();
+            $matrix->forceDelete();
         }
 
         if ($request->expectsJson()) {
@@ -168,32 +168,32 @@ class BoardController extends Controller
     }
 
     /**
-     * Lock the Board resource in storage.
+     * Lock the Matrix resource in storage.
      *
-     * @route PUT /resource/matrix/{board} playground.matrix.resource.boards.lock
+     * @route PUT /resource/matrix/{matrix} playground.matrix.resource.matrices.lock
      */
     public function lock(
-        Board $board,
-        Requests\Board\LockRequest $request
-    ): JsonResponse|RedirectResponse|Resources\Board {
+        Matrix $matrix,
+        Requests\Matrix\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board->locked = true;
+        $matrix->locked = true;
 
-        $board->save();
+        $matrix->save();
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id' => $board->id,
+            'id' => $matrix->id,
             'timestamp' => Carbon::now()->toJson(),
             'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -205,23 +205,23 @@ class BoardController extends Controller
         return redirect(route(sprintf(
             '%1$s.show',
             $this->packageInfo['model_route']
-        ), ['board' => $board->id]));
+        ), ['matrix' => $matrix->id]));
     }
 
     /**
-     * Display a listing of Board resources.
+     * Display a listing of Matrix resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.boards
+     * @route GET /resource/matrix playground.matrix.resource.matrices
      */
     public function index(
-        Requests\Board\IndexRequest $request
-    ): JsonResponse|View|Resources\BoardCollection {
+        Requests\Matrix\IndexRequest $request
+    ): JsonResponse|View|Resources\MatrixCollection {
 
         $user = $request->user();
 
         $validated = $request->validated();
 
-        $query = Board::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Matrix::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -256,7 +256,7 @@ class BoardController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\BoardCollection($paginator))->response($request);
+            return (new Resources\MatrixCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -281,23 +281,23 @@ class BoardController extends Controller
     }
 
     /**
-     * Restore the Board resource from the trash.
+     * Restore the Matrix resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{board} playground.matrix.resource.boards.restore
+     * @route PUT /resource/matrix/restore/{matrix} playground.matrix.resource.matrices.restore
      */
     public function restore(
-        Board $board,
-        Requests\Board\RestoreRequest $request
-    ): JsonResponse|RedirectResponse|Resources\Board {
+        Matrix $matrix,
+        Requests\Matrix\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board->restore();
+        $matrix->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -309,18 +309,18 @@ class BoardController extends Controller
         return redirect(route(sprintf(
             '%1$s.show',
             $this->packageInfo['model_route']
-        ), ['board' => $board->id]));
+        ), ['matrix' => $matrix->id]));
     }
 
     /**
-     * Display the Board resource.
+     * Display the Matrix resource.
      *
-     * @route GET /resource/matrix/{board} playground.matrix.resource.boards.show
+     * @route GET /resource/matrix/{matrix} playground.matrix.resource.matrices.show
      */
     public function show(
-        Board $board,
-        Requests\Board\ShowRequest $request
-    ): JsonResponse|View|Resources\Board {
+        Matrix $matrix,
+        Requests\Matrix\ShowRequest $request
+    ): JsonResponse|View|Resources\Matrix {
 
         $validated = $request->validated();
 
@@ -328,21 +328,21 @@ class BoardController extends Controller
 
         $meta = [
             'session_user_id' => $user?->id,
-            'id' => $board->id,
+            'id' => $matrix->id,
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
             'info' => $this->packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $meta['input'] = $request->input();
         $meta['validated'] = $request->validated();
 
         $data = [
-            'data' => $board,
+            'data' => $matrix,
             'meta' => $meta,
         ];
 
@@ -350,24 +350,24 @@ class BoardController extends Controller
     }
 
     /**
-     * Store a newly created API Board resource in storage.
+     * Store a newly created API Matrix resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.boards.post
+     * @route POST /resource/matrix playground.matrix.resource.matrices.post
      */
     public function store(
-        Requests\Board\StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|Resources\Board {
+        Requests\Matrix\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board = new Board($validated);
+        $matrix = new Matrix($validated);
 
-        $board->save();
+        $matrix->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -379,29 +379,29 @@ class BoardController extends Controller
         return redirect(route(sprintf(
             '%1$s.show',
             $this->packageInfo['model_route']
-        ), ['board' => $board->id]));
+        ), ['matrix' => $matrix->id]));
     }
 
     /**
-     * Unlock the Board resource in storage.
+     * Unlock the Matrix resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{board} playground.matrix.resource.boards.unlock
+     * @route DELETE /resource/matrix/lock/{matrix} playground.matrix.resource.matrices.unlock
      */
     public function unlock(
-        Board $board,
-        Requests\Board\UnlockRequest $request
-    ): JsonResponse|RedirectResponse|Resources\Board {
+        Matrix $matrix,
+        Requests\Matrix\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board->locked = false;
+        $matrix->locked = false;
 
-        $board->save();
+        $matrix->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,27 +413,27 @@ class BoardController extends Controller
         return redirect(route(sprintf(
             '%1$s.show',
             $this->packageInfo['model_route']
-        ), ['board' => $board->id]));
+        ), ['matrix' => $matrix->id]));
     }
 
     /**
-     * Update the Board resource in storage.
+     * Update the Matrix resource in storage.
      *
-     * @route PATCH /resource/matrix/{board} playground.matrix.resource.boards.patch
+     * @route PATCH /resource/matrix/{matrix} playground.matrix.resource.matrices.patch
      */
     public function update(
-        Board $board,
-        Requests\Board\UpdateRequest $request
-    ): JsonResponse|RedirectResponse|Resources\Board {
+        Matrix $matrix,
+        Requests\Matrix\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $board->update($validated);
+        $matrix->update($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->response($request);
+            return (new Resources\Matrix($matrix))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -445,6 +445,6 @@ class BoardController extends Controller
         return redirect(route(sprintf(
             '%1$s.show',
             $this->packageInfo['model_route']
-        ), ['board' => $board->id]));
+        ), ['matrix' => $matrix->id]));
     }
 }

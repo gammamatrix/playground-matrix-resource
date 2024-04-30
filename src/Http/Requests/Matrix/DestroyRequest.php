@@ -4,12 +4,12 @@
  */
 
 declare(strict_types=1);
-namespace Playground\Matrix\Resource\Http\Requests\Milestone;
+namespace Playground\Matrix\Resource\Http\Requests\Matrix;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 /**
- * \Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest
+ * \Playground\Matrix\Resource\Http\Requests\Matrix\DestroyRequest
  */
 class DestroyRequest extends FormRequest
 {
