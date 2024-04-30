@@ -107,7 +107,6 @@ return new class() extends Migration
             $table->boolean('closed')->default(0);
             $table->boolean('completed')->default(0);
             $table->boolean('cron')->default(0)->index();
-            $table->boolean('duplicate')->default(0);
             $table->boolean('fixed')->default(0);
             $table->boolean('flagged')->default(0);
             $table->boolean('internal')->default(0);
