@@ -46,6 +46,7 @@ class MilestoneTestCase extends TestCase
         'board_id',
         'epic_id',
         'flow_id',
+        'matrix_id',
         'note_id',
         'project_id',
         'release_id',

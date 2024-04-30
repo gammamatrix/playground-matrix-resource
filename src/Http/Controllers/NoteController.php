@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Note;
-use Playground\Matrix\Resource\Http\Requests\Note\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Note as NoteResource;
-use Playground\Matrix\Resource\Http\Resources\NoteCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\NoteController
@@ -55,8 +45,9 @@ class NoteController extends Controller
      * @route GET /resource/matrix/notes/create playground.matrix.resource.notes.create
      */
     public function create(
-        CreateRequest $request
+        Requests\Note\CreateRequest $request
     ): JsonResponse|View {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -95,10 +86,7 @@ class NoteController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::note/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,8 +96,9 @@ class NoteController extends Controller
      */
     public function edit(
         Note $note,
-        EditRequest $request
+        Requests\Note\EditRequest $request
     ): JsonResponse|View {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -144,10 +133,7 @@ class NoteController extends Controller
 
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::note/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +143,9 @@ class NoteController extends Controller
      */
     public function destroy(
         Note $note,
-        DestroyRequest $request
+        Requests\Note\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +164,7 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +174,14 @@ class NoteController extends Controller
      */
     public function lock(
         Note $note,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|NoteResource {
+        Requests\Note\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $note->setAttribute('locked', true);
+        $note->locked = true;
 
         $note->save();
 
@@ -205,7 +193,7 @@ class NoteController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +202,10 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes.show', ['note' => $note->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['note' => $note->id]));
     }
 
     /**
@@ -223,8 +214,9 @@ class NoteController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.notes
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|NoteCollection {
+        Requests\Note\IndexRequest $request
+    ): JsonResponse|View|Resources\NoteCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +226,7 @@ class NoteController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +251,12 @@ class NoteController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new NoteCollection($paginator))->response($request);
+            return (new Resources\NoteCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +277,7 @@ class NoteController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::note/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +287,9 @@ class NoteController extends Controller
      */
     public function restore(
         Note $note,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|NoteResource {
+        Requests\Note\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +297,7 @@ class NoteController extends Controller
         $note->restore();
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +306,10 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes.show', ['note' => $note->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['note' => $note->id]));
     }
 
     /**
@@ -325,8 +319,9 @@ class NoteController extends Controller
      */
     public function show(
         Note $note,
-        ShowRequest $request
-    ): JsonResponse|View|NoteResource {
+        Requests\Note\ShowRequest $request
+    ): JsonResponse|View|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +335,7 @@ class NoteController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +346,7 @@ class NoteController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::note/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +355,9 @@ class NoteController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.notes.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|NoteResource {
+        Requests\Note\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +367,7 @@ class NoteController extends Controller
         $note->save();
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +376,10 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes.show', ['note' => $note->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['note' => $note->id]));
     }
 
     /**
@@ -393,18 +389,19 @@ class NoteController extends Controller
      */
     public function unlock(
         Note $note,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|NoteResource {
+        Requests\Note\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $note->setAttribute('locked', false);
+        $note->locked = false;
 
         $note->save();
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +410,10 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes.show', ['note' => $note->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['note' => $note->id]));
     }
 
     /**
@@ -423,8 +423,9 @@ class NoteController extends Controller
      */
     public function update(
         Note $note,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|NoteResource {
+        Requests\Note\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Note {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +433,7 @@ class NoteController extends Controller
         $note->update($validated);
 
         if ($request->expectsJson()) {
-            return (new NoteResource($note))->response($request);
+            return (new Resources\Note($note))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +442,9 @@ class NoteController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.notes.show', ['note' => $note->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['note' => $note->id]));
     }
 }

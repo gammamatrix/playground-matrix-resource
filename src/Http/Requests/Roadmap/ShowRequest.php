@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Roadmap;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
@@ -13,4 +13,5 @@ use Playground\Matrix\Resource\Http\Requests\FormRequest;
  */
 class ShowRequest extends FormRequest
 {
+
 }

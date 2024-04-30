@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Ticket;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
@@ -20,12 +20,14 @@ class EditRequest extends FormRequest
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
         'ticket_type' => ['nullable', 'string'],
-        'duplicate_id' => ['nullable', 'uuid'],
         'backlog_id' => ['nullable', 'uuid'],
         'board_id' => ['nullable', 'uuid'],
         'completed_by_id' => ['nullable', 'uuid'],
+        'duplicate_id' => ['nullable', 'uuid'],
         'epic_id' => ['nullable', 'uuid'],
+        'fixed_by_id' => ['nullable', 'uuid'],
         'flow_id' => ['nullable', 'uuid'],
+        'matrix_id' => ['nullable', 'uuid'],
         'milestone_id' => ['nullable', 'uuid'],
         'note_id' => ['nullable', 'uuid'],
         'project_id' => ['nullable', 'uuid'],
@@ -36,8 +38,8 @@ class EditRequest extends FormRequest
         'sprint_id' => ['nullable', 'uuid'],
         'tag_id' => ['nullable', 'uuid'],
         'team_id' => ['nullable', 'uuid'],
-        'version_id' => ['nullable', 'uuid'],
         'version_fixed_id' => ['nullable', 'uuid'],
+        'version_id' => ['nullable', 'uuid'],
         'start_at' => ['nullable', 'string'],
         'planned_start_at' => ['nullable', 'string'],
         'end_at' => ['nullable', 'string'],
@@ -63,10 +65,22 @@ class EditRequest extends FormRequest
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
+        'matrix' => ['array'],
+        'x' => ['integer'],
+        'y' => ['integer'],
+        'z' => ['integer'],
+        'r' => ['float'],
+        'theta' => ['float'],
+        'rho' => ['float'],
+        'phi' => ['float'],
+        'elevation' => ['float'],
+        'latitude' => ['float'],
+        'longitude' => ['float'],
         'active' => ['boolean'],
         'canceled' => ['boolean'],
         'closed' => ['boolean'],
         'completed' => ['boolean'],
+        'cron' => ['boolean'],
         'duplicate' => ['boolean'],
         'fixed' => ['boolean'],
         'flagged' => ['boolean'],
@@ -90,10 +104,7 @@ class EditRequest extends FormRequest
         'introduction' => ['string'],
         'content' => ['nullable', 'string'],
         'summary' => ['nullable', 'string'],
-        'key' => ['string'],
         'handler' => ['string'],
-        'code' => ['integer'],
-        'key_code_hash' => ['string'],
         'priority' => ['string'],
         'severity' => ['string'],
         'resolution' => ['string'],
@@ -101,7 +112,10 @@ class EditRequest extends FormRequest
         'state' => ['string'],
         'workflow_type' => ['string'],
         'points' => ['integer'],
+        'actual' => ['nullable', 'string'],
+        'expected' => ['nullable', 'string'],
         'story' => ['nullable', 'string'],
+        'steps' => ['nullable', 'string'],
         'criteria' => ['nullable', 'string'],
         'reproducibility' => ['nullable', 'decimal'],
         'icon' => ['string'],
