@@ -62,9 +62,11 @@ return new class() extends Migration
             $table->dateTime('canceled_at')->nullable();
             $table->dateTime('closed_at')->nullable()->index();
             $table->dateTime('embargo_at')->nullable();
+            $table->dateTime('fixed_at')->nullable();
             $table->dateTime('postponed_at')->nullable();
             $table->dateTime('published_at')->nullable();
             $table->dateTime('released_at')->nullable();
+            $table->dateTime('resolved_at')->nullable();
             $table->dateTime('resumed_at')->nullable();
             $table->dateTime('suspended_at')->nullable();
 
@@ -106,6 +108,7 @@ return new class() extends Migration
             $table->boolean('closed')->default(0);
             $table->boolean('completed')->default(0);
             $table->boolean('cron')->default(0)->index();
+            $table->boolean('fixed')->default(0);
             $table->boolean('flagged')->default(0);
             $table->boolean('internal')->default(0);
             $table->boolean('locked')->default(0);
@@ -114,6 +117,8 @@ return new class() extends Migration
             $table->boolean('problem')->default(0);
             $table->boolean('published')->default(0);
             $table->boolean('released')->default(0);
+            $table->boolean('retired')->default(0);
+            $table->boolean('resolved')->default(0);
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 

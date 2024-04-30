@@ -13,5 +13,4 @@ use Playground\Matrix\Resource\Http\Requests\FormRequest;
  */
 class ShowRequest extends FormRequest
 {
-
 }

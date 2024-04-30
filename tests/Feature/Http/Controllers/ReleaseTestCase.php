@@ -88,7 +88,7 @@ class ReleaseTestCase extends TestCase
         'canceled',
         'closed',
         'completed',
-        'duplicate',
+        'cron',
         'fixed',
         'flagged',
         'internal',

@@ -118,8 +118,8 @@ return new class() extends Migration
             $table->boolean('problem')->default(0);
             $table->boolean('published')->default(0);
             $table->boolean('released')->default(0);
-            $table->boolean('retired')->default(0);
             $table->boolean('resolved')->default(0);
+            $table->boolean('retired')->default(0);
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 
