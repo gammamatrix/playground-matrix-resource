@@ -150,6 +150,34 @@ class UpdateRequest extends BaseUpdateRequest
         $this->filterStatus($input);
         $this->filterSystemFields($input);
 
+        if ($this->exists('handler')) {
+            $input['handler'] = $this->filterHtml($this->input('handler'));
+        }
+
+        if ($this->exists('priority')) {
+            $input['priority'] = $this->filterHtml($this->input('priority'));
+        }
+
+        if ($this->exists('resolution')) {
+            $input['resolution'] = $this->filterHtml($this->input('resolution'));
+        }
+
+        if ($this->exists('severity')) {
+            $input['severity'] = $this->filterHtml($this->input('severity'));
+        }
+
+        if ($this->exists('step')) {
+            $input['step'] = $this->filterHtml($this->input('step'));
+        }
+
+        if ($this->exists('state')) {
+            $input['state'] = $this->filterHtml($this->input('state'));
+        }
+
+        if ($this->exists('workflow_type')) {
+            $input['workflow_type'] = $this->filterHtml($this->input('workflow_type'));
+        }
+
         if ($this->filled('actual')) {
             $input['actual'] = $this->purify($this->input('actual'));
         }
