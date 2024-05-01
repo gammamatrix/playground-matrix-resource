@@ -18,7 +18,7 @@ class IndexRouteTest extends TestCase
 
     protected bool $load_migrations_matrix = true;
 
-    public function test_guest_cannot_render_index_view()
+    public function test_guest_cannot_render_index_view(): void
     {
         $url = route('playground.matrix.resource');
 
@@ -27,8 +27,11 @@ class IndexRouteTest extends TestCase
         $response->assertStatus(403);
     }
 
-    public function test_admin_can_render_index_view()
+    public function test_admin_can_render_index_view(): void
     {
+        /**
+         * @var User $user
+         */
         $user = User::factory()->admin()->create();
 
         $url = route('playground.matrix.resource');
