@@ -56,7 +56,7 @@ class StoreRequest extends BaseStoreRequest
         'problem' => ['boolean'],
         'unknown' => ['boolean'],
         'label' => ['string'],
-        'title' => ['string'],
+        'title' => ['string', 'required'],
         'byline' => ['string'],
         'slug' => ['nullable', 'string'],
         'url' => ['string'],

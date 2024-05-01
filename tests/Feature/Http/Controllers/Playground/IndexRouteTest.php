@@ -1,0 +1,42 @@
+<?php
+
+declare(strict_types=1);
+/**
+ * Playground
+ */
+namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground;
+
+use Playground\Test\Models\PlaygroundUser as User;
+use Tests\Feature\Playground\Matrix\Resource\TestCase;
+
+/**
+ * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\IndexRouteTest
+ */
+class IndexRouteTest extends TestCase
+{
+    protected bool $load_migrations_playground = true;
+
+    protected bool $load_migrations_matrix = true;
+
+    public function test_guest_cannot_render_index_view()
+    {
+        $url = route('playground.matrix.resource');
+
+        $response = $this->get($url);
+
+        $response->assertStatus(403);
+    }
+
+    public function test_admin_can_render_index_view()
+    {
+        $user = User::factory()->admin()->create();
+
+        $url = route('playground.matrix.resource');
+
+        $response = $this->actingAs($user)->get($url);
+
+        $response->assertStatus(200);
+
+        $this->assertAuthenticated();
+    }
+}

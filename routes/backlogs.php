@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'backlog');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.backlogs.go',
+    //     'as' => 'playground.matrix.resource.backlogs.go',
     //     'uses' => 'BacklogController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'backlog');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.backlogs.slug',
+    //     'as' => 'playground.matrix.resource.backlogs.slug',
     //     'uses' => 'BacklogController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.backlogs.store',
+    //     'as' => 'playground.matrix.resource.backlogs.store',
     //     'uses' => 'BacklogController@store',
-    // ])->can('store', \Playground\Matrix\Models\Backlog::class);
+    // ])->can('store', Playground\Matrix\Models\Backlog::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Backlog::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.backlogs.put',
+    //     'as' => 'playground.matrix.resource.backlogs.put',
     //     'uses' => 'BacklogController@store',
-    // ])->can('store', \Playground\Matrix\Models\Backlog::class);
+    // ])->can('store', Playground\Matrix\Models\Backlog::class);
     //
     // Route::put('/{backlog}', [
-    //     'as'   => 'playground.matrix.resource.backlogs.put.id',
+    //     'as' => 'playground.matrix.resource.backlogs.put.id',
     //     'uses' => 'BacklogController@store',
     // ])->whereUuid('backlog')->can('update', 'backlog');
 

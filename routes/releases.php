@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'release');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.releases.go',
+    //     'as' => 'playground.matrix.resource.releases.go',
     //     'uses' => 'ReleaseController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'release');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.releases.slug',
+    //     'as' => 'playground.matrix.resource.releases.slug',
     //     'uses' => 'ReleaseController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.releases.store',
+    //     'as' => 'playground.matrix.resource.releases.store',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \Playground\Matrix\Models\Release::class);
+    // ])->can('store', Playground\Matrix\Models\Release::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Release::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.releases.put',
+    //     'as' => 'playground.matrix.resource.releases.put',
     //     'uses' => 'ReleaseController@store',
-    // ])->can('store', \Playground\Matrix\Models\Release::class);
+    // ])->can('store', Playground\Matrix\Models\Release::class);
     //
     // Route::put('/{release}', [
-    //     'as'   => 'playground.matrix.resource.releases.put.id',
+    //     'as' => 'playground.matrix.resource.releases.put.id',
     //     'uses' => 'ReleaseController@store',
     // ])->whereUuid('release')->can('update', 'release');
 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'roadmap');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.roadmaps.go',
+    //     'as' => 'playground.matrix.resource.roadmaps.go',
     //     'uses' => 'RoadmapController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'roadmap');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.roadmaps.slug',
+    //     'as' => 'playground.matrix.resource.roadmaps.slug',
     //     'uses' => 'RoadmapController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.roadmaps.store',
+    //     'as' => 'playground.matrix.resource.roadmaps.store',
     //     'uses' => 'RoadmapController@store',
-    // ])->can('store', \Playground\Matrix\Models\Roadmap::class);
+    // ])->can('store', Playground\Matrix\Models\Roadmap::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Roadmap::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.roadmaps.put',
+    //     'as' => 'playground.matrix.resource.roadmaps.put',
     //     'uses' => 'RoadmapController@store',
-    // ])->can('store', \Playground\Matrix\Models\Roadmap::class);
+    // ])->can('store', Playground\Matrix\Models\Roadmap::class);
     //
     // Route::put('/{roadmap}', [
-    //     'as'   => 'playground.matrix.resource.roadmaps.put.id',
+    //     'as' => 'playground.matrix.resource.roadmaps.put.id',
     //     'uses' => 'RoadmapController@store',
     // ])->whereUuid('roadmap')->can('update', 'roadmap');
 

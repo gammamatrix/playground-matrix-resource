@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'board');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.boards.go',
+    //     'as' => 'playground.matrix.resource.boards.go',
     //     'uses' => 'BoardController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'board');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.boards.slug',
+    //     'as' => 'playground.matrix.resource.boards.slug',
     //     'uses' => 'BoardController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.boards.store',
+    //     'as' => 'playground.matrix.resource.boards.store',
     //     'uses' => 'BoardController@store',
-    // ])->can('store', \Playground\Matrix\Models\Board::class);
+    // ])->can('store', Playground\Matrix\Models\Board::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Board::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.boards.put',
+    //     'as' => 'playground.matrix.resource.boards.put',
     //     'uses' => 'BoardController@store',
-    // ])->can('store', \Playground\Matrix\Models\Board::class);
+    // ])->can('store', Playground\Matrix\Models\Board::class);
     //
     // Route::put('/{board}', [
-    //     'as'   => 'playground.matrix.resource.boards.put.id',
+    //     'as' => 'playground.matrix.resource.boards.put.id',
     //     'uses' => 'BoardController@store',
     // ])->whereUuid('board')->can('update', 'board');
 
