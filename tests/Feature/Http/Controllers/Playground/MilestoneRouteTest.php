@@ -13,9 +13,9 @@ use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase;
  */
 class MilestoneRouteTest extends MilestoneTestCase
 {
-    use TestTrait;
+    protected bool $load_migrations_package = true;
 
     protected bool $load_migrations_playground = true;
 
-    protected bool $load_migrations_matrix = true;
+    protected bool $setUpUserForPlayground = true;
 }

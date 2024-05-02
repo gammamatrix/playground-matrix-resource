@@ -453,7 +453,7 @@ class TicketController extends Controller
         $key = config('playground-matrix-resource.default_key');
         $key = is_string($key) ? $key : '';
 
-        $project = $ticket->project_id ? $ticket->project() : null;
+        $project = $ticket->project_id ? $ticket->project()->first() : null;
 
         if (! empty($project->key) && is_string($project->key)) {
             $key = $project->key;

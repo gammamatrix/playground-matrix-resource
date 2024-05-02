@@ -14,9 +14,11 @@ use Tests\Feature\Playground\Matrix\Resource\TestCase;
  */
 class IndexRouteTest extends TestCase
 {
+    protected bool $load_migrations_package = true;
+
     protected bool $load_migrations_playground = true;
 
-    protected bool $load_migrations_matrix = true;
+    protected bool $setUpUserForPlayground = true;
 
     public function test_guest_cannot_render_index_view(): void
     {
