@@ -1066,6 +1066,8 @@ Ticket Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playgrou
  [x] Json destroy as admin and succeed and ignore redirect
  [x] Destroy as user and get denied and no force delete allowed
  [x] Json destroy as user and get denied and no force delete allowed
+ [x] Admin can create ticket with project
+ [x] Admin can update ticket with project
 
 Version Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\VersionRoute)
  [x] Guest cannot render index view

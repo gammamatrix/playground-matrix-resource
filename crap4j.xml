@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-01 07:48:21</timestamp>
+  <timestamp>2024-05-02 06:34:41</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>285</methodCount>
+    <methodCount>284</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>1161.68</totalCrap>
+    <totalCrap>1105.1</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -229,17 +229,6 @@
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Controllers</package>
-      <className>Playground\Matrix\Resource\Http\Controllers\Controller</className>
-      <methodName>getViewPath</methodName>
-      <methodSignature>getViewPath(string $controller, string $view): string</methodSignature>
-      <fullMethod>getViewPath(string $controller, string $view): string</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
-      <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1689,9 +1678,9 @@
       <methodName>getProjectKey</methodName>
       <methodSignature>getProjectKey(Playground\Matrix\Models\Ticket $ticket): string</methodSignature>
       <fullMethod>getProjectKey(Playground\Matrix\Models\Ticket $ticket): string</fullMethod>
-      <crap>30</crap>
+      <crap>5</crap>
       <complexity>5</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -1700,9 +1689,9 @@
       <methodName>handleTicketCode</methodName>
       <methodSignature>handleTicketCode(Playground\Matrix\Models\Ticket $ticket): void</methodSignature>
       <fullMethod>handleTicketCode(Playground\Matrix\Models\Ticket $ticket): void</fullMethod>
-      <crap>14.08</crap>
+      <crap>4</crap>
       <complexity>4</complexity>
-      <coverage>14.29</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2327,9 +2316,9 @@
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>14.75</crap>
+      <crap>14</crap>
       <complexity>14</complexity>
-      <coverage>84.38</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -2338,9 +2327,9 @@
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>14.75</crap>
+      <crap>14</crap>
       <complexity>14</complexity>
-      <coverage>84.38</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
