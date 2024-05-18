@@ -11,7 +11,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * \Playground\Matrix\Models\Ticket
+ * \Playground\Matrix\Models\Sprint
  */
 return new class() extends Migration
 {
@@ -20,7 +20,7 @@ return new class() extends Migration
      */
     public function up(): void
     {
-        Schema::create('matrix_tickets', function (Blueprint $table) {
+        Schema::create('matrix_sprints', function (Blueprint $table) {
 
             // Primary key
 
@@ -32,27 +32,22 @@ return new class() extends Migration
             $table->uuid('modified_by_id')->nullable()->index();
             $table->uuid('owned_by_id')->nullable()->index();
             $table->uuid('parent_id')->nullable()->index();
-            $table->string('ticket_type')->nullable()->index();
-            $table->uuid('duplicate_id')->nullable()->index();
+            $table->string('sprint_type')->nullable()->index();
             $table->uuid('backlog_id')->nullable()->index();
             $table->uuid('board_id')->nullable()->index();
-            $table->uuid('completed_by_id')->nullable()->index();
             $table->uuid('epic_id')->nullable()->index();
-            $table->uuid('fixed_by_id')->nullable()->index();
             $table->uuid('flow_id')->nullable()->index();
             $table->uuid('matrix_id')->nullable()->index();
             $table->uuid('milestone_id')->nullable()->index();
             $table->uuid('note_id')->nullable()->index();
             $table->uuid('project_id')->nullable()->index();
             $table->uuid('release_id')->nullable()->index();
-            $table->uuid('reported_by_id')->nullable()->index();
             $table->uuid('roadmap_id')->nullable()->index();
             $table->uuid('source_id')->nullable()->index();
-            $table->uuid('sprint_id')->nullable()->index();
             $table->uuid('tag_id')->nullable()->index();
             $table->uuid('team_id')->nullable()->index();
+            $table->uuid('ticket_id')->nullable()->index();
             $table->uuid('version_id')->nullable()->index();
-            $table->uuid('version_fixed_id')->nullable()->index();
 
             // Dates
 
@@ -120,13 +115,11 @@ return new class() extends Migration
             $table->boolean('locked')->default(0);
             $table->boolean('pending')->default(0);
             $table->boolean('planned')->default(0);
-            $table->boolean('prioritized')->default(0);
             $table->boolean('problem')->default(0);
             $table->boolean('published')->default(0);
             $table->boolean('released')->default(0);
-            $table->boolean('resolved')->default(0);
             $table->boolean('retired')->default(0);
-            $table->boolean('special')->default(0);
+            $table->boolean('resolved')->default(0);
             $table->boolean('suspended')->default(0);
             $table->boolean('unknown')->default(0);
 
@@ -141,23 +134,6 @@ return new class() extends Migration
             $table->string('introduction', 512)->default('');
             $table->mediumText('content')->nullable();
             $table->mediumText('summary')->nullable();
-            $table->string('handler')->default('');
-            $table->string('key', 32)->nullable()->index();
-            $table->bigInteger('code')->nullable()->unsigned()->index();
-            $table->string('key_code_hash')->nullable();
-            $table->string('priority')->default('');
-            $table->string('severity')->default('');
-            $table->string('resolution')->default('');
-            $table->string('step')->default('');
-            $table->string('state')->default('');
-            $table->string('workflow_type')->default('');
-            $table->tinyInteger('points')->default(0)->unsigned();
-            $table->mediumText('actual')->nullable();
-            $table->mediumText('expected')->nullable();
-            $table->mediumText('story')->nullable();
-            $table->mediumText('steps')->nullable();
-            $table->mediumText('criteria')->nullable();
-            $table->decimal('reproducibility', 8, 2)->nullable();
 
             // Ui
 
@@ -172,7 +148,6 @@ return new class() extends Migration
             $table->json('backlog')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->json('board')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->json('flow')->nullable()->default(new Expression('(JSON_OBJECT())'));
-            $table->json('history')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->json('meta')->nullable()->default(new Expression('(JSON_OBJECT())'));
             $table->json('notes')->nullable()->default(new Expression('(JSON_ARRAY())'))->comment('Array of note objects');
             $table->json('options')->nullable()->default(new Expression('(JSON_OBJECT())'));
@@ -186,6 +161,6 @@ return new class() extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('matrix_tickets');
+        Schema::dropIfExists('matrix_sprints');
     }
 };
