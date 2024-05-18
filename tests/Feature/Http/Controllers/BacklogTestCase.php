@@ -11,7 +11,6 @@ use Playground\Matrix\Resource\Http\Controllers\BacklogController;
 use Playground\Matrix\Resource\Http\Requests;
 use Playground\Matrix\Resource\Http\Resources;
 use Playground\Matrix\Resource\Policies\BacklogPolicy;
-use Tests\Feature\Playground\Matrix\Resource\TestCase;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase
