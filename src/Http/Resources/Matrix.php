@@ -12,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Matrix as MatrixModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Matrix
+ */
 class Matrix extends JsonResource
 {
     /**

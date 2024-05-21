@@ -152,6 +152,12 @@ class SprintController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $sprint->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $sprint->delete();
         } else {
@@ -184,6 +190,10 @@ class SprintController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $sprint->modified_by_id = $user->id;
+        }
 
         $sprint->locked = true;
 
@@ -298,6 +308,10 @@ class SprintController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $sprint->modified_by_id = $user->id;
+        }
+
         $sprint->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class SprintController extends Controller
 
         $sprint = new Sprint($validated);
 
+        if ($user?->id) {
+            $sprint->created_by_id = $user->id;
+        }
+
         $sprint->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class SprintController extends Controller
 
         $sprint->locked = false;
 
+        if ($user?->id) {
+            $sprint->modified_by_id = $user->id;
+        }
+
         $sprint->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class SprintController extends Controller
         $user = $request->user();
 
         $sprint->update($validated);
+
+        if ($user?->id) {
+            $sprint->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Sprint($sprint))->response($request);

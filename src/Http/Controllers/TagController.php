@@ -152,6 +152,12 @@ class TagController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $tag->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $tag->delete();
         } else {
@@ -184,6 +190,10 @@ class TagController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $tag->modified_by_id = $user->id;
+        }
 
         $tag->locked = true;
 
@@ -298,6 +308,10 @@ class TagController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $tag->modified_by_id = $user->id;
+        }
+
         $tag->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class TagController extends Controller
 
         $tag = new Tag($validated);
 
+        if ($user?->id) {
+            $tag->created_by_id = $user->id;
+        }
+
         $tag->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class TagController extends Controller
 
         $tag->locked = false;
 
+        if ($user?->id) {
+            $tag->modified_by_id = $user->id;
+        }
+
         $tag->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class TagController extends Controller
         $user = $request->user();
 
         $tag->update($validated);
+
+        if ($user?->id) {
+            $tag->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Tag($tag))->response($request);

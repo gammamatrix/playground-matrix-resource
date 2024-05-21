@@ -12,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Note as NoteModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Note
+ */
 class Note extends JsonResource
 {
     /**

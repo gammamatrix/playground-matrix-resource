@@ -152,6 +152,12 @@ class ProjectController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $project->delete();
         } else {
@@ -184,6 +190,10 @@ class ProjectController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
 
         $project->locked = true;
 
@@ -298,6 +308,10 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
         $project->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class ProjectController extends Controller
 
         $project = new Project($validated);
 
+        if ($user?->id) {
+            $project->created_by_id = $user->id;
+        }
+
         $project->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class ProjectController extends Controller
 
         $project->locked = false;
 
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
         $project->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class ProjectController extends Controller
         $user = $request->user();
 
         $project->update($validated);
+
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Project($project))->response($request);

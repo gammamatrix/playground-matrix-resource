@@ -152,6 +152,12 @@ class SourceController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $source->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $source->delete();
         } else {
@@ -184,6 +190,10 @@ class SourceController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $source->modified_by_id = $user->id;
+        }
 
         $source->locked = true;
 
@@ -298,6 +308,10 @@ class SourceController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $source->modified_by_id = $user->id;
+        }
+
         $source->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class SourceController extends Controller
 
         $source = new Source($validated);
 
+        if ($user?->id) {
+            $source->created_by_id = $user->id;
+        }
+
         $source->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class SourceController extends Controller
 
         $source->locked = false;
 
+        if ($user?->id) {
+            $source->modified_by_id = $user->id;
+        }
+
         $source->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class SourceController extends Controller
         $user = $request->user();
 
         $source->update($validated);
+
+        if ($user?->id) {
+            $source->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Source($source))->response($request);

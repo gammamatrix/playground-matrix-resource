@@ -12,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Source as SourceModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Source
+ */
 class Source extends JsonResource
 {
     /**

@@ -12,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Version as VersionModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Version
+ */
 class Version extends JsonResource
 {
     /**

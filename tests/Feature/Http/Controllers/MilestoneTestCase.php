@@ -10,25 +10,25 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Matrix\Resource\Http\Controllers\MilestoneController;
 use Playground\Matrix\Resource\Http\Requests;
 use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\BacklogPolicy;
+use Playground\Matrix\Resource\Policies\MilestonePolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase
  */
 #[CoversClass(MilestoneController::class)]
-#[CoversClass(Requests\Backlog\CreateRequest::class)]
-#[CoversClass(Requests\Backlog\DestroyRequest::class)]
-#[CoversClass(Requests\Backlog\EditRequest::class)]
-#[CoversClass(Requests\Backlog\IndexRequest::class)]
-#[CoversClass(Requests\Backlog\LockRequest::class)]
-#[CoversClass(Requests\Backlog\RestoreRequest::class)]
-#[CoversClass(Requests\Backlog\ShowRequest::class)]
-#[CoversClass(Requests\Backlog\StoreRequest::class)]
-#[CoversClass(Requests\Backlog\UnlockRequest::class)]
-#[CoversClass(Requests\Backlog\UpdateRequest::class)]
-#[CoversClass(Resources\Backlog::class)]
-#[CoversClass(Resources\BacklogCollection::class)]
-#[CoversClass(BacklogPolicy::class)]
+#[CoversClass(MilestonePolicy::class)]
+#[CoversClass(Requests\Milestone\CreateRequest::class)]
+#[CoversClass(Requests\Milestone\DestroyRequest::class)]
+#[CoversClass(Requests\Milestone\EditRequest::class)]
+#[CoversClass(Requests\Milestone\IndexRequest::class)]
+#[CoversClass(Requests\Milestone\LockRequest::class)]
+#[CoversClass(Requests\Milestone\RestoreRequest::class)]
+#[CoversClass(Requests\Milestone\ShowRequest::class)]
+#[CoversClass(Requests\Milestone\StoreRequest::class)]
+#[CoversClass(Requests\Milestone\UnlockRequest::class)]
+#[CoversClass(Requests\Milestone\UpdateRequest::class)]
+#[CoversClass(Resources\Milestone::class)]
+#[CoversClass(Resources\MilestoneCollection::class)]
 class MilestoneTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Milestone::class;

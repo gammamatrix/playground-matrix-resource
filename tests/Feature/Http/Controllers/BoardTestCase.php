@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\BoardController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\BoardPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BoardTestCase
  */
+#[CoversClass(BoardController::class)]
+#[CoversClass(BoardPolicy::class)]
+#[CoversClass(Requests\Board\CreateRequest::class)]
+#[CoversClass(Requests\Board\DestroyRequest::class)]
+#[CoversClass(Requests\Board\EditRequest::class)]
+#[CoversClass(Requests\Board\IndexRequest::class)]
+#[CoversClass(Requests\Board\LockRequest::class)]
+#[CoversClass(Requests\Board\RestoreRequest::class)]
+#[CoversClass(Requests\Board\ShowRequest::class)]
+#[CoversClass(Requests\Board\StoreRequest::class)]
+#[CoversClass(Requests\Board\UnlockRequest::class)]
+#[CoversClass(Requests\Board\UpdateRequest::class)]
+#[CoversClass(Resources\Board::class)]
+#[CoversClass(Resources\BoardCollection::class)]
 class BoardTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Board::class;
@@ -17,7 +37,7 @@ class BoardTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Board',
         'model_label_plural' => 'Boards',
         'model_route' => 'playground.matrix.resource.boards',
@@ -29,7 +49,7 @@ class BoardTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:board',
         'table' => 'matrix_boards',
-        'view' => 'playground-matrix-resource::board',
+        'view' => 'playground.matrix.resource::board',
     ];
 
     /**
@@ -45,6 +65,7 @@ class BoardTestCase extends TestCase
         'backlog_id',
         'epic_id',
         'flow_id',
+        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -57,8 +78,8 @@ class BoardTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -84,10 +105,22 @@ class BoardTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
+        'cron',
         'duplicate',
         'fixed',
         'flagged',
@@ -120,6 +153,7 @@ class BoardTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

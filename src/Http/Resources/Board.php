@@ -12,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Board as BoardModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Board
+ */
 class Board extends JsonResource
 {
     /**

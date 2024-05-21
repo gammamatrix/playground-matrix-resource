@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\VersionController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\VersionPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionTestCase
  */
+#[CoversClass(VersionController::class)]
+#[CoversClass(VersionPolicy::class)]
+#[CoversClass(Requests\Version\CreateRequest::class)]
+#[CoversClass(Requests\Version\DestroyRequest::class)]
+#[CoversClass(Requests\Version\EditRequest::class)]
+#[CoversClass(Requests\Version\IndexRequest::class)]
+#[CoversClass(Requests\Version\LockRequest::class)]
+#[CoversClass(Requests\Version\RestoreRequest::class)]
+#[CoversClass(Requests\Version\ShowRequest::class)]
+#[CoversClass(Requests\Version\StoreRequest::class)]
+#[CoversClass(Requests\Version\UnlockRequest::class)]
+#[CoversClass(Requests\Version\UpdateRequest::class)]
+#[CoversClass(Resources\Version::class)]
+#[CoversClass(Resources\VersionCollection::class)]
 class VersionTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Version::class;
@@ -17,7 +37,7 @@ class VersionTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Version',
         'model_label_plural' => 'Versions',
         'model_route' => 'playground.matrix.resource.versions',
@@ -29,7 +49,7 @@ class VersionTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:version',
         'table' => 'matrix_versions',
-        'view' => 'playground-matrix-resource::version',
+        'view' => 'playground.matrix.resource::version',
     ];
 
     /**
@@ -43,29 +63,9 @@ class VersionTestCase extends TestCase
         'parent_id',
         'version_type',
         'matrix_id',
-        'project_id',
-        'roadmap_id',
-        'source_id',
-        'tag_id',
-        'team_id',
-        'ticket_id',
         'created_at',
-        'deleted_at',
         'updated_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
-        'canceled_at',
-        'closed_at',
-        'embargo_at',
-        'fixed_at',
-        'postponed_at',
-        'published_at',
-        'released_at',
-        'resumed_at',
-        'resolved_at',
-        'suspended_at',
+        'deleted_at',
         'gids',
         'po',
         'pg',
@@ -77,22 +77,22 @@ class VersionTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
-        'canceled',
-        'closed',
-        'completed',
-        'fixed',
         'flagged',
         'internal',
         'locked',
-        'pending',
-        'planned',
-        'problem',
-        'published',
-        'released',
         'retired',
-        'resolved',
-        'suspended',
         'unknown',
         'label',
         'title',
@@ -109,6 +109,7 @@ class VersionTestCase extends TestCase
         'ui',
         'assets',
         'meta',
+        'notes',
         'options',
         'sources',
     ];

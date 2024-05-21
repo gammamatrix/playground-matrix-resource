@@ -152,6 +152,12 @@ class ReleaseController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $release->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $release->delete();
         } else {
@@ -184,6 +190,10 @@ class ReleaseController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $release->modified_by_id = $user->id;
+        }
 
         $release->locked = true;
 
@@ -298,6 +308,10 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $release->modified_by_id = $user->id;
+        }
+
         $release->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class ReleaseController extends Controller
 
         $release = new Release($validated);
 
+        if ($user?->id) {
+            $release->created_by_id = $user->id;
+        }
+
         $release->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class ReleaseController extends Controller
 
         $release->locked = false;
 
+        if ($user?->id) {
+            $release->modified_by_id = $user->id;
+        }
+
         $release->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class ReleaseController extends Controller
         $user = $request->user();
 
         $release->update($validated);
+
+        if ($user?->id) {
+            $release->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Release($release))->response($request);

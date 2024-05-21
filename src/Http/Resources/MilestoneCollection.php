@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Resources;
@@ -8,6 +11,9 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Carbon;
 use Playground\Http\Requests\IndexRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\MilestoneCollection
+ */
 class MilestoneCollection extends ResourceCollection
 {
     /**

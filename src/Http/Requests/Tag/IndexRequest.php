@@ -40,10 +40,9 @@ class IndexRequest extends BaseIndexRequest
     protected array $paginationIds = [
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created by id', 'type' => 'uuid', 'nullable' => true],
         'modified_by_id' => ['column' => 'modified_by_id', 'label' => 'Modified by id', 'type' => 'uuid', 'nullable' => true],
-        'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'uuid', 'nullable' => true],
+        'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'uuid', 'nullable' => true],
         'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'uuid', 'nullable' => true],
         'tag_type' => ['column' => 'tag_type', 'label' => 'Tag type', 'type' => 'string', 'nullable' => true],
-        'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'uuid', 'nullable' => true],
     ];
 
     /**

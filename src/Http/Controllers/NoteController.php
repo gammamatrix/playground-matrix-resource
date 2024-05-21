@@ -152,6 +152,12 @@ class NoteController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $note->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $note->delete();
         } else {
@@ -184,6 +190,10 @@ class NoteController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $note->modified_by_id = $user->id;
+        }
 
         $note->locked = true;
 
@@ -298,6 +308,10 @@ class NoteController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $note->modified_by_id = $user->id;
+        }
+
         $note->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class NoteController extends Controller
 
         $note = new Note($validated);
 
+        if ($user?->id) {
+            $note->created_by_id = $user->id;
+        }
+
         $note->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class NoteController extends Controller
 
         $note->locked = false;
 
+        if ($user?->id) {
+            $note->modified_by_id = $user->id;
+        }
+
         $note->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class NoteController extends Controller
         $user = $request->user();
 
         $note->update($validated);
+
+        if ($user?->id) {
+            $note->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Note($note))->response($request);

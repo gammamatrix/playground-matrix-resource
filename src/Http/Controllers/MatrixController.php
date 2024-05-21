@@ -152,6 +152,12 @@ class MatrixController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $matrix->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $matrix->delete();
         } else {
@@ -184,6 +190,10 @@ class MatrixController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $matrix->modified_by_id = $user->id;
+        }
 
         $matrix->locked = true;
 
@@ -298,6 +308,10 @@ class MatrixController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $matrix->modified_by_id = $user->id;
+        }
+
         $matrix->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class MatrixController extends Controller
 
         $matrix = new Matrix($validated);
 
+        if ($user?->id) {
+            $matrix->created_by_id = $user->id;
+        }
+
         $matrix->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class MatrixController extends Controller
 
         $matrix->locked = false;
 
+        if ($user?->id) {
+            $matrix->modified_by_id = $user->id;
+        }
+
         $matrix->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class MatrixController extends Controller
         $user = $request->user();
 
         $matrix->update($validated);
+
+        if ($user?->id) {
+            $matrix->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Matrix($matrix))->response($request);

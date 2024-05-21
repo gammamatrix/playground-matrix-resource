@@ -152,6 +152,12 @@ class FlowController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $flow->delete();
         } else {
@@ -184,6 +190,10 @@ class FlowController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
 
         $flow->locked = true;
 
@@ -298,6 +308,10 @@ class FlowController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
         $flow->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class FlowController extends Controller
 
         $flow = new Flow($validated);
 
+        if ($user?->id) {
+            $flow->created_by_id = $user->id;
+        }
+
         $flow->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class FlowController extends Controller
 
         $flow->locked = false;
 
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
         $flow->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class FlowController extends Controller
         $user = $request->user();
 
         $flow->update($validated);
+
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Flow($flow))->response($request);

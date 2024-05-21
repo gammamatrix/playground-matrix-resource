@@ -17,7 +17,7 @@ class ServiceProvider extends AuthServiceProvider
 {
     public const VERSION = '73.0.0';
 
-    protected string $package = 'playground-matrix-resource';
+    public string $package = 'playground-matrix-resource';
 
     /**
      * Bootstrap any package services.
@@ -32,10 +32,12 @@ class ServiceProvider extends AuthServiceProvider
 
         if (! empty($config['load']) && is_array($config['load'])) {
 
-            // $this->loadTranslationsFrom(
-            //     dirname(__DIR__).'/resources/lang',
-            //     'playground-matrix-resource'
-            // );
+            if (! empty($config['load']['translations'])) {
+                $this->loadTranslationsFrom(
+                    dirname(__DIR__).'/lang',
+                    $this->package
+                );
+            }
 
             if (! empty($config['load']['policies'])
                 && ! empty($config['policies'])
@@ -58,18 +60,18 @@ class ServiceProvider extends AuthServiceProvider
                     $this->package
                 );
             }
+        }
 
-            if ($this->app->runningInConsole()) {
-                // Publish configuration
-                $this->publishes([
-                    sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package) => config_path(sprintf('%1$s.php', $this->package)),
-                ], 'playground-config');
+        if ($this->app->runningInConsole()) {
+            // Publish configuration
+            $this->publishes([
+                sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package) => config_path(sprintf('%1$s.php', $this->package)),
+            ], 'playground-config');
 
-                // Publish routes
-                $this->publishes([
-                    dirname(__DIR__).'/routes' => base_path('routes/playground-matrix-resource'),
-                ], 'playground-routes');
-            }
+            // Publish routes
+            $this->publishes([
+                dirname(__DIR__).'/routes' => base_path('routes/playground-matrix-resource'),
+            ], 'playground-routes');
         }
 
         if (! empty($config['about'])) {
@@ -194,6 +196,7 @@ class ServiceProvider extends AuthServiceProvider
         $version = $this->version();
 
         AboutCommand::add('Playground: Matrix Resource', fn () => [
+
             '<fg=yellow;options=bold>Load</> Policies' => ! empty($load['policies']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
@@ -214,6 +217,7 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=red;options=bold>Route</> boards' => ! empty($routes['boards']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> epics' => ! empty($routes['epics']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> flows' => ! empty($routes['flows']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> matrices' => ! empty($routes['matrices']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> milestones' => ! empty($routes['milestones']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> notes' => ! empty($routes['notes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> projects' => ! empty($routes['projects']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',

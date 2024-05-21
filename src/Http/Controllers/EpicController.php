@@ -152,6 +152,12 @@ class EpicController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $epic->delete();
         } else {
@@ -184,6 +190,10 @@ class EpicController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
 
         $epic->locked = true;
 
@@ -298,6 +308,10 @@ class EpicController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
         $epic->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class EpicController extends Controller
 
         $epic = new Epic($validated);
 
+        if ($user?->id) {
+            $epic->created_by_id = $user->id;
+        }
+
         $epic->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class EpicController extends Controller
 
         $epic->locked = false;
 
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
         $epic->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class EpicController extends Controller
         $user = $request->user();
 
         $epic->update($validated);
+
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Epic($epic))->response($request);

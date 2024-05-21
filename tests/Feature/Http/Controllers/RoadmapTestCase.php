@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\RoadmapController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\RoadmapPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapTestCase
  */
+#[CoversClass(RoadmapController::class)]
+#[CoversClass(RoadmapPolicy::class)]
+#[CoversClass(Requests\Roadmap\CreateRequest::class)]
+#[CoversClass(Requests\Roadmap\DestroyRequest::class)]
+#[CoversClass(Requests\Roadmap\EditRequest::class)]
+#[CoversClass(Requests\Roadmap\IndexRequest::class)]
+#[CoversClass(Requests\Roadmap\LockRequest::class)]
+#[CoversClass(Requests\Roadmap\RestoreRequest::class)]
+#[CoversClass(Requests\Roadmap\ShowRequest::class)]
+#[CoversClass(Requests\Roadmap\StoreRequest::class)]
+#[CoversClass(Requests\Roadmap\UnlockRequest::class)]
+#[CoversClass(Requests\Roadmap\UpdateRequest::class)]
+#[CoversClass(Resources\Roadmap::class)]
+#[CoversClass(Resources\RoadmapCollection::class)]
 class RoadmapTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Roadmap::class;
@@ -17,7 +37,7 @@ class RoadmapTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Roadmap',
         'model_label_plural' => 'Roadmaps',
         'model_route' => 'playground.matrix.resource.roadmaps',
@@ -29,7 +49,7 @@ class RoadmapTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:roadmap',
         'table' => 'matrix_roadmaps',
-        'view' => 'playground-matrix-resource::roadmap',
+        'view' => 'playground.matrix.resource::roadmap',
     ];
 
     /**
@@ -46,6 +66,7 @@ class RoadmapTestCase extends TestCase
         'board_id',
         'epic_id',
         'flow_id',
+        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -57,8 +78,8 @@ class RoadmapTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -82,6 +103,17 @@ class RoadmapTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
@@ -115,6 +147,7 @@ class RoadmapTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

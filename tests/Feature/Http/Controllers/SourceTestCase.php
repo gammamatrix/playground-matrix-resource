@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\SourceController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\SourcePolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SourceTestCase
  */
+#[CoversClass(SourceController::class)]
+#[CoversClass(SourcePolicy::class)]
+#[CoversClass(Requests\Source\CreateRequest::class)]
+#[CoversClass(Requests\Source\DestroyRequest::class)]
+#[CoversClass(Requests\Source\EditRequest::class)]
+#[CoversClass(Requests\Source\IndexRequest::class)]
+#[CoversClass(Requests\Source\LockRequest::class)]
+#[CoversClass(Requests\Source\RestoreRequest::class)]
+#[CoversClass(Requests\Source\ShowRequest::class)]
+#[CoversClass(Requests\Source\StoreRequest::class)]
+#[CoversClass(Requests\Source\UnlockRequest::class)]
+#[CoversClass(Requests\Source\UpdateRequest::class)]
+#[CoversClass(Resources\Source::class)]
+#[CoversClass(Resources\SourceCollection::class)]
 class SourceTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Source::class;
@@ -17,7 +37,7 @@ class SourceTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Source',
         'model_label_plural' => 'Sources',
         'model_route' => 'playground.matrix.resource.sources',
@@ -29,7 +49,7 @@ class SourceTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:source',
         'table' => 'matrix_sources',
-        'view' => 'playground-matrix-resource::source',
+        'view' => 'playground.matrix.resource::source',
     ];
 
     /**
@@ -46,8 +66,8 @@ class SourceTestCase extends TestCase
         'tag_id',
         'team_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -55,12 +75,10 @@ class SourceTestCase extends TestCase
         'canceled_at',
         'closed_at',
         'embargo_at',
-        'fixed_at',
         'postponed_at',
         'published_at',
         'released_at',
         'resumed_at',
-        'resolved_at',
         'suspended_at',
         'gids',
         'po',
@@ -73,12 +91,22 @@ class SourceTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
-        'duplicate',
-        'fixed',
+        'cron',
         'flagged',
         'internal',
         'locked',
@@ -87,8 +115,6 @@ class SourceTestCase extends TestCase
         'problem',
         'published',
         'released',
-        'retired',
-        'resolved',
         'suspended',
         'unknown',
         'label',
@@ -106,6 +132,7 @@ class SourceTestCase extends TestCase
         'ui',
         'assets',
         'meta',
+        'notes',
         'options',
         'sources',
     ];

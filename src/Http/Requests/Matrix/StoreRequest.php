@@ -42,7 +42,7 @@ class StoreRequest extends BaseStoreRequest
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
-        'matrix' => ['array'],
+        'matrix' => ['nullable', 'array'],
         'x' => ['nullable', 'integer'],
         'y' => ['nullable', 'integer'],
         'z' => ['nullable', 'integer'],

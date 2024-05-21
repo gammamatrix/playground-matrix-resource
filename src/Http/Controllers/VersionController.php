@@ -152,6 +152,12 @@ class VersionController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $version->delete();
         } else {
@@ -184,6 +190,10 @@ class VersionController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
 
         $version->locked = true;
 
@@ -298,6 +308,10 @@ class VersionController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
         $version->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class VersionController extends Controller
 
         $version = new Version($validated);
 
+        if ($user?->id) {
+            $version->created_by_id = $user->id;
+        }
+
         $version->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class VersionController extends Controller
 
         $version->locked = false;
 
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
         $version->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class VersionController extends Controller
         $user = $request->user();
 
         $version->update($validated);
+
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Version($version))->response($request);

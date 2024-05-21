@@ -9,9 +9,9 @@ namespace Playground\Matrix\Resource\Policies;
 use Playground\Auth\Policies\ModelPolicy;
 
 /**
- * \Playground\Matrix\Resource\Policies\TeamPolicy
+ * \Playground\Matrix\Resource\Policies\MatrixPolicy
  */
-class TeamPolicy extends ModelPolicy
+class MatrixPolicy extends ModelPolicy
 {
     protected string $package = 'playground-matrix-resource';
 

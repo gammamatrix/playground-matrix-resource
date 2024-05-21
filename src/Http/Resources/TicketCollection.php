@@ -11,6 +11,9 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Carbon;
 use Playground\Http\Requests\IndexRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\TicketCollection
+ */
 class TicketCollection extends ResourceCollection
 {
     /**

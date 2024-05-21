@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\ProjectController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\ProjectPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ProjectTestCase
  */
+#[CoversClass(ProjectController::class)]
+#[CoversClass(ProjectPolicy::class)]
+#[CoversClass(Requests\Project\CreateRequest::class)]
+#[CoversClass(Requests\Project\DestroyRequest::class)]
+#[CoversClass(Requests\Project\EditRequest::class)]
+#[CoversClass(Requests\Project\IndexRequest::class)]
+#[CoversClass(Requests\Project\LockRequest::class)]
+#[CoversClass(Requests\Project\RestoreRequest::class)]
+#[CoversClass(Requests\Project\ShowRequest::class)]
+#[CoversClass(Requests\Project\StoreRequest::class)]
+#[CoversClass(Requests\Project\UnlockRequest::class)]
+#[CoversClass(Requests\Project\UpdateRequest::class)]
+#[CoversClass(Resources\Project::class)]
+#[CoversClass(Resources\ProjectCollection::class)]
 class ProjectTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Project::class;
@@ -17,7 +37,7 @@ class ProjectTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Project',
         'model_label_plural' => 'Projects',
         'model_route' => 'playground.matrix.resource.projects',
@@ -29,7 +49,7 @@ class ProjectTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:project',
         'table' => 'matrix_projects',
-        'view' => 'playground-matrix-resource::project',
+        'view' => 'playground.matrix.resource::project',
     ];
 
     /**
@@ -58,8 +78,8 @@ class ProjectTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -71,7 +91,6 @@ class ProjectTestCase extends TestCase
         'published_at',
         'released_at',
         'resumed_at',
-        'resolved_at',
         'suspended_at',
         'gids',
         'po',
@@ -84,22 +103,29 @@ class ProjectTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
         'cron',
-        'fixed',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
         'problem',
-        'published',
         'released',
-        'retired',
-        'resolved',
         'suspended',
         'unknown',
         'label',
@@ -111,6 +137,8 @@ class ProjectTestCase extends TestCase
         'introduction',
         'content',
         'summary',
+        'key',
+        'code_name',
         'icon',
         'image',
         'avatar',
@@ -119,7 +147,9 @@ class ProjectTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

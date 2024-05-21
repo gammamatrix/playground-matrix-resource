@@ -152,6 +152,12 @@ class RoadmapController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $roadmap->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $roadmap->delete();
         } else {
@@ -184,6 +190,10 @@ class RoadmapController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $roadmap->modified_by_id = $user->id;
+        }
 
         $roadmap->locked = true;
 
@@ -298,6 +308,10 @@ class RoadmapController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $roadmap->modified_by_id = $user->id;
+        }
+
         $roadmap->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class RoadmapController extends Controller
 
         $roadmap = new Roadmap($validated);
 
+        if ($user?->id) {
+            $roadmap->created_by_id = $user->id;
+        }
+
         $roadmap->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class RoadmapController extends Controller
 
         $roadmap->locked = false;
 
+        if ($user?->id) {
+            $roadmap->modified_by_id = $user->id;
+        }
+
         $roadmap->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class RoadmapController extends Controller
         $user = $request->user();
 
         $roadmap->update($validated);
+
+        if ($user?->id) {
+            $roadmap->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Roadmap($roadmap))->response($request);

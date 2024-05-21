@@ -50,7 +50,8 @@
         "preferred-install": {
             "gammamatrix/*": "source",
             "*": "dist"
-        }
+        },
+        "process-timeout": 0
     },
     "extra": {
         "branch-alias": {
@@ -64,7 +65,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "vendor/bin/testbench package:test",
         "format": "vendor/bin/php-cs-fixer fix",
         "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max"
     }

@@ -155,6 +155,12 @@ class TicketController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $ticket->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $ticket->delete();
         } else {
@@ -187,6 +193,10 @@ class TicketController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $ticket->modified_by_id = $user->id;
+        }
 
         $ticket->locked = true;
 
@@ -301,6 +311,10 @@ class TicketController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $ticket->modified_by_id = $user->id;
+        }
+
         $ticket->restore();
 
         if ($request->expectsJson()) {
@@ -371,7 +385,9 @@ class TicketController extends Controller
 
         $ticket = new Ticket($validated);
 
-        $ticket->created_by_id = $user?->id;
+        if ($user?->id) {
+            $ticket->created_by_id = $user->id;
+        }
 
         $this->handleTicketCode($ticket);
 
@@ -409,6 +425,10 @@ class TicketController extends Controller
 
         $ticket->locked = false;
 
+        if ($user?->id) {
+            $ticket->modified_by_id = $user->id;
+        }
+
         $ticket->save();
 
         if ($request->expectsJson()) {
@@ -441,9 +461,11 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        $ticket->modified_by_id = $user?->id;
-
         $ticket->update($validated);
+
+        if ($user?->id) {
+            $ticket->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Ticket($ticket))->response($request);
@@ -455,6 +477,9 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['ticket' => $ticket->id]));
     }
 }

@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\FlowController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\FlowPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\FlowTestCase
  */
+#[CoversClass(FlowController::class)]
+#[CoversClass(FlowPolicy::class)]
+#[CoversClass(Requests\Flow\CreateRequest::class)]
+#[CoversClass(Requests\Flow\DestroyRequest::class)]
+#[CoversClass(Requests\Flow\EditRequest::class)]
+#[CoversClass(Requests\Flow\IndexRequest::class)]
+#[CoversClass(Requests\Flow\LockRequest::class)]
+#[CoversClass(Requests\Flow\RestoreRequest::class)]
+#[CoversClass(Requests\Flow\ShowRequest::class)]
+#[CoversClass(Requests\Flow\StoreRequest::class)]
+#[CoversClass(Requests\Flow\UnlockRequest::class)]
+#[CoversClass(Requests\Flow\UpdateRequest::class)]
+#[CoversClass(Resources\Flow::class)]
+#[CoversClass(Resources\FlowCollection::class)]
 class FlowTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Flow::class;
@@ -17,7 +37,7 @@ class FlowTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Flow',
         'model_label_plural' => 'Flows',
         'model_route' => 'playground.matrix.resource.flows',
@@ -29,7 +49,7 @@ class FlowTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:flow',
         'table' => 'matrix_flows',
-        'view' => 'playground-matrix-resource::flow',
+        'view' => 'playground.matrix.resource::flow',
     ];
 
     /**
@@ -42,36 +62,20 @@ class FlowTestCase extends TestCase
         'owned_by_id',
         'parent_id',
         'flow_type',
-        // 'backlog_id',
-        // 'board_id',
-        // 'epic_id',
-        // 'milestone_id',
+        'matrix_id',
         'note_id',
-        // 'project_id',
-        // 'release_id',
-        // 'roadmap_id',
-        // 'source_id',
-        // 'sprint_id',
         'tag_id',
         'team_id',
-        // 'ticket_id',
-        // 'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
         'planned_end_at',
-        // 'canceled_at',
-        // 'closed_at',
         'embargo_at',
-        // 'fixed_at',
         'postponed_at',
-        // 'published_at',
-        // 'released_at',
         'resumed_at',
-        // 'resolved_at',
         'suspended_at',
         'gids',
         'po',
@@ -84,6 +88,17 @@ class FlowTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'cron',
         'flagged',
@@ -109,11 +124,13 @@ class FlowTestCase extends TestCase
         'avatar',
         'ui',
         'assets',
+        'backlog',
+        'board',
         'flow',
-        // 'board',
         'meta',
+        'notes',
         'options',
-        // 'roadmap',
-        // 'sources',
+        'roadmap',
+        'sources',
     ];
 }

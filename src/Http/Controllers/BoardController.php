@@ -152,6 +152,12 @@ class BoardController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $board->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $board->delete();
         } else {
@@ -184,6 +190,10 @@ class BoardController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $board->modified_by_id = $user->id;
+        }
 
         $board->locked = true;
 
@@ -298,6 +308,10 @@ class BoardController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $board->modified_by_id = $user->id;
+        }
+
         $board->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class BoardController extends Controller
 
         $board = new Board($validated);
 
+        if ($user?->id) {
+            $board->created_by_id = $user->id;
+        }
+
         $board->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class BoardController extends Controller
 
         $board->locked = false;
 
+        if ($user?->id) {
+            $board->modified_by_id = $user->id;
+        }
+
         $board->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class BoardController extends Controller
         $user = $request->user();
 
         $board->update($validated);
+
+        if ($user?->id) {
+            $board->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Board($board))->response($request);

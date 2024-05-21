@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Resources;
@@ -9,6 +12,9 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Milestone as MilestoneModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Milestone
+ */
 class Milestone extends JsonResource
 {
     /**

@@ -152,6 +152,12 @@ class TeamController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $team->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $team->delete();
         } else {
@@ -184,6 +190,10 @@ class TeamController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $team->modified_by_id = $user->id;
+        }
 
         $team->locked = true;
 
@@ -298,6 +308,10 @@ class TeamController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $team->modified_by_id = $user->id;
+        }
+
         $team->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class TeamController extends Controller
 
         $team = new Team($validated);
 
+        if ($user?->id) {
+            $team->created_by_id = $user->id;
+        }
+
         $team->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class TeamController extends Controller
 
         $team->locked = false;
 
+        if ($user?->id) {
+            $team->modified_by_id = $user->id;
+        }
+
         $team->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class TeamController extends Controller
         $user = $request->user();
 
         $team->update($validated);
+
+        if ($user?->id) {
+            $team->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Team($team))->response($request);

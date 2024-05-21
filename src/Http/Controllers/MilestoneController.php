@@ -152,6 +152,12 @@ class MilestoneController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $milestone->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $milestone->delete();
         } else {
@@ -184,6 +190,10 @@ class MilestoneController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $milestone->modified_by_id = $user->id;
+        }
 
         $milestone->locked = true;
 
@@ -298,6 +308,10 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $milestone->modified_by_id = $user->id;
+        }
+
         $milestone->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class MilestoneController extends Controller
 
         $milestone = new Milestone($validated);
 
+        if ($user?->id) {
+            $milestone->created_by_id = $user->id;
+        }
+
         $milestone->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class MilestoneController extends Controller
 
         $milestone->locked = false;
 
+        if ($user?->id) {
+            $milestone->modified_by_id = $user->id;
+        }
+
         $milestone->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class MilestoneController extends Controller
         $user = $request->user();
 
         $milestone->update($validated);
+
+        if ($user?->id) {
+            $milestone->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Milestone($milestone))->response($request);

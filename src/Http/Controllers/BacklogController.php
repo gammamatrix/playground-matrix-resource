@@ -152,6 +152,12 @@ class BacklogController extends Controller
 
         $validated = $request->validated();
 
+        $user = $request->user();
+
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
         if (empty($validated['force'])) {
             $backlog->delete();
         } else {
@@ -184,6 +190,10 @@ class BacklogController extends Controller
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
 
         $backlog->locked = true;
 
@@ -298,6 +308,10 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
         $backlog->restore();
 
         if ($request->expectsJson()) {
@@ -368,6 +382,10 @@ class BacklogController extends Controller
 
         $backlog = new Backlog($validated);
 
+        if ($user?->id) {
+            $backlog->created_by_id = $user->id;
+        }
+
         $backlog->save();
 
         if ($request->expectsJson()) {
@@ -402,6 +420,10 @@ class BacklogController extends Controller
 
         $backlog->locked = false;
 
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
         $backlog->save();
 
         if ($request->expectsJson()) {
@@ -435,6 +457,10 @@ class BacklogController extends Controller
         $user = $request->user();
 
         $backlog->update($validated);
+
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
 
         if ($request->expectsJson()) {
             return (new Resources\Backlog($backlog))->response($request);

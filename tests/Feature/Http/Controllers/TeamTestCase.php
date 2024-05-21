@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\TeamController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\TeamPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamTestCase
  */
+#[CoversClass(TeamController::class)]
+#[CoversClass(TeamPolicy::class)]
+#[CoversClass(Requests\Team\CreateRequest::class)]
+#[CoversClass(Requests\Team\DestroyRequest::class)]
+#[CoversClass(Requests\Team\EditRequest::class)]
+#[CoversClass(Requests\Team\IndexRequest::class)]
+#[CoversClass(Requests\Team\LockRequest::class)]
+#[CoversClass(Requests\Team\RestoreRequest::class)]
+#[CoversClass(Requests\Team\ShowRequest::class)]
+#[CoversClass(Requests\Team\StoreRequest::class)]
+#[CoversClass(Requests\Team\UnlockRequest::class)]
+#[CoversClass(Requests\Team\UpdateRequest::class)]
+#[CoversClass(Resources\Team::class)]
+#[CoversClass(Resources\TeamCollection::class)]
 class TeamTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Team::class;
@@ -17,7 +37,7 @@ class TeamTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Team',
         'model_label_plural' => 'Teams',
         'model_route' => 'playground.matrix.resource.teams',
@@ -29,7 +49,7 @@ class TeamTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:team',
         'table' => 'matrix_teams',
-        'view' => 'playground-matrix-resource::team',
+        'view' => 'playground.matrix.resource::team',
     ];
 
     /**
@@ -58,8 +78,8 @@ class TeamTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -81,6 +101,17 @@ class TeamTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
@@ -113,6 +144,7 @@ class TeamTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',
