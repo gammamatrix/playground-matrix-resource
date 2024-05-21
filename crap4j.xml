@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-05-18 20:17:45</timestamp>
+  <timestamp>2024-05-21 05:39:10</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>284</methodCount>
+    <methodCount>250</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>1105.1</totalCrap>
+    <totalCrap>1216.5</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -15,8 +15,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -26,8 +26,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -39,8 +39,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -50,8 +50,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -72,8 +72,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -94,8 +94,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -105,8 +105,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -116,8 +116,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Backlog $backlog, Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Backlog</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -125,8 +125,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Board\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Board\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Board\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Board\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -136,8 +136,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\BoardController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -149,8 +149,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -160,8 +160,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -182,8 +182,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -204,8 +204,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Board\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -215,8 +215,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -226,8 +226,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Board $board, Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Board</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -235,8 +235,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -246,8 +246,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\EpicController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -259,8 +259,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -270,8 +270,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -292,8 +292,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -314,8 +314,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -325,8 +325,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -336,8 +336,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Epic $epic, Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Epic</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -345,8 +345,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -356,8 +356,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\FlowController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -369,8 +369,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -380,8 +380,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -402,8 +402,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -424,8 +424,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -435,8 +435,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -446,8 +446,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Flow $flow, Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Flow</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -466,8 +466,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\MatrixController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Matrix\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Matrix\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Matrix\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Matrix\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
       <crap>20</crap>
       <complexity>4</complexity>
       <coverage>0</coverage>
@@ -477,8 +477,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\MatrixController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
       <crap>12</crap>
       <complexity>3</complexity>
       <coverage>0</coverage>
@@ -490,8 +490,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>30</crap>
-      <complexity>5</complexity>
+      <crap>42</crap>
+      <complexity>6</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -501,8 +501,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -523,8 +523,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -545,8 +545,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Matrix\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Matrix\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -556,8 +556,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -567,8 +567,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Matrix $matrix, Playground\Matrix\Resource\Http\Requests\Matrix\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Matrix</fullMethod>
-      <crap>20</crap>
-      <complexity>4</complexity>
+      <crap>30</crap>
+      <complexity>5</complexity>
       <coverage>0</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -576,8 +576,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Milestone\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -587,8 +587,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\MilestoneController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -600,8 +600,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -611,8 +611,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -633,8 +633,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -655,8 +655,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -666,8 +666,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -677,8 +677,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Milestone $milestone, Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Milestone</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -686,8 +686,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Note\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Note\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Note\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Note\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -697,8 +697,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\NoteController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -710,8 +710,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -721,8 +721,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -743,8 +743,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -765,8 +765,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Note\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -776,8 +776,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -787,8 +787,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Note $note, Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Note</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -796,8 +796,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Project\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Project\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Project\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Project\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -807,8 +807,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\ProjectController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -820,8 +820,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -831,8 +831,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -853,8 +853,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -875,8 +875,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Project\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -886,8 +886,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -897,8 +897,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Project $project, Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Project</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -906,8 +906,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Release\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Release\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Release\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Release\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -917,8 +917,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\ReleaseController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -930,8 +930,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -941,8 +941,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -963,8 +963,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -985,8 +985,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Release\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -996,8 +996,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1007,8 +1007,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Release $release, Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Release</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1016,8 +1016,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1027,8 +1027,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\RoadmapController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1040,8 +1040,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1051,8 +1051,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1073,8 +1073,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1095,8 +1095,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1106,8 +1106,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1117,8 +1117,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Roadmap $roadmap, Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Roadmap</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1126,8 +1126,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Source\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Source\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Source\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Source\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1137,8 +1137,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\SourceController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1150,8 +1150,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1161,8 +1161,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1183,8 +1183,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1205,8 +1205,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Source\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1216,8 +1216,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1227,8 +1227,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Source $source, Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Source</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1236,8 +1236,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1247,8 +1247,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\SprintController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1260,8 +1260,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1271,8 +1271,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1293,8 +1293,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1315,8 +1315,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1326,8 +1326,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1337,8 +1337,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Sprint $sprint, Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Sprint</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1346,8 +1346,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Tag\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1357,8 +1357,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TagController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1370,8 +1370,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1381,8 +1381,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1403,8 +1403,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1425,8 +1425,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1436,8 +1436,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1447,8 +1447,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Tag $tag, Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Tag</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1456,8 +1456,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Team\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Team\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Team\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Team\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1467,8 +1467,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1480,8 +1480,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1491,8 +1491,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1513,8 +1513,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1535,8 +1535,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Team\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1546,8 +1546,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1557,8 +1557,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Team $team, Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Team</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1566,8 +1566,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1577,8 +1577,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TicketController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1590,8 +1590,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1601,8 +1601,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1623,8 +1623,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1645,8 +1645,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1656,8 +1656,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1667,17 +1667,6 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Ticket $ticket, Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Ticket</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Controllers</package>
-      <className>Playground\Matrix\Resource\Http\Controllers\TicketController</className>
-      <methodName>getProjectKey</methodName>
-      <methodSignature>getProjectKey(Playground\Matrix\Models\Ticket $ticket): string</methodSignature>
-      <fullMethod>getProjectKey(Playground\Matrix\Models\Ticket $ticket): string</fullMethod>
       <crap>5</crap>
       <complexity>5</complexity>
       <coverage>100</coverage>
@@ -1685,21 +1674,10 @@
     </method>
     <method>
       <package>Playground\Matrix\Resource\Http\Controllers</package>
-      <className>Playground\Matrix\Resource\Http\Controllers\TicketController</className>
-      <methodName>handleTicketCode</methodName>
-      <methodSignature>handleTicketCode(Playground\Matrix\Models\Ticket $ticket): void</methodSignature>
-      <fullMethod>handleTicketCode(Playground\Matrix\Models\Ticket $ticket): void</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>create</methodName>
-      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Version\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Version\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>create(Playground\Matrix\Resource\Http\Requests\Version\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>create(Playground\Matrix\Resource\Http\Requests\Version\CreateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>4</crap>
       <complexity>4</complexity>
       <coverage>100</coverage>
@@ -1709,8 +1687,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>edit</methodName>
-      <methodSignature>edit(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>edit(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>edit(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
+      <fullMethod>edit(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\EditRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
       <crap>3</crap>
       <complexity>3</complexity>
       <coverage>100</coverage>
@@ -1722,8 +1700,8 @@
       <methodName>destroy</methodName>
       <methodSignature>destroy(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</methodSignature>
       <fullMethod>destroy(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\DestroyRequest $request): \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse</fullMethod>
-      <crap>5</crap>
-      <complexity>5</complexity>
+      <crap>6</crap>
+      <complexity>6</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1733,8 +1711,8 @@
       <methodName>lock</methodName>
       <methodSignature>lock(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>lock(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\LockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1742,8 +1720,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\VersionController</className>
       <methodName>index</methodName>
-      <methodSignature>index(Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</methodSignature>
-      <fullMethod>index(Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View</fullMethod>
+      <methodSignature>index(Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\VersionCollection</methodSignature>
+      <fullMethod>index(Playground\Matrix\Resource\Http\Requests\Version\IndexRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Playground\Matrix\Resource\Http\Resources\VersionCollection</fullMethod>
       <crap>6</crap>
       <complexity>6</complexity>
       <coverage>100</coverage>
@@ -1755,8 +1733,8 @@
       <methodName>restore</methodName>
       <methodSignature>restore(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>restore(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1777,8 +1755,8 @@
       <methodName>store</methodName>
       <methodSignature>store(Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>store(Playground\Matrix\Resource\Http\Requests\Version\StoreRequest $request): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1788,8 +1766,8 @@
       <methodName>unlock</methodName>
       <methodSignature>unlock(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>unlock(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -1799,8 +1777,8 @@
       <methodName>update</methodName>
       <methodSignature>update(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</methodSignature>
       <fullMethod>update(Playground\Matrix\Models\Version $version, Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest $request): \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Playground\Matrix\Resource\Http\Resources\Version</fullMethod>
-      <crap>4</crap>
-      <complexity>4</complexity>
+      <crap>5</crap>
+      <complexity>5</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -2368,31 +2346,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Backlog</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Backlog</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\BacklogCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2412,31 +2368,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Board</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Board</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\BoardCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2456,31 +2390,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Epic</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Epic</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\EpicCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2500,31 +2412,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Flow</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Flow</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\FlowCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2544,31 +2434,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Matrix</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Matrix</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>2</crap>
-      <complexity>1</complexity>
-      <coverage>0</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\MatrixCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>2</crap>
       <complexity>1</complexity>
       <coverage>0</coverage>
@@ -2588,31 +2456,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Milestone</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Milestone</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\MilestoneCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2632,31 +2478,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Note</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Note</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\NoteCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2676,31 +2500,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Project</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Project</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\ProjectCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2720,31 +2522,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Release</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Release</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\ReleaseCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2764,31 +2544,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Roadmap</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Roadmap</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\RoadmapCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2808,31 +2566,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Source</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Source</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\SourceCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2852,31 +2588,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Sprint</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Sprint</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\SprintCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2896,31 +2610,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Tag</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Tag</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\TagCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2940,31 +2632,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Team</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Team</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\TeamCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -2984,31 +2654,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Ticket</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Ticket</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\TicketCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -3028,31 +2676,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Version</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\Version</className>
       <methodName>with</methodName>
       <methodSignature>with(Illuminate\Http\Request $request): array</methodSignature>
       <fullMethod>with(Illuminate\Http\Request $request): array</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Resources</package>
-      <className>Playground\Matrix\Resource\Http\Resources\VersionCollection</className>
-      <methodName>toArray</methodName>
-      <methodSignature>toArray(Illuminate\Http\Request $request)</methodSignature>
-      <fullMethod>toArray(Illuminate\Http\Request $request)</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -3075,9 +2701,9 @@
       <methodName>boot</methodName>
       <methodSignature>boot(): void</methodSignature>
       <fullMethod>boot(): void</fullMethod>
-      <crap>12</crap>
-      <complexity>12</complexity>
-      <coverage>100</coverage>
+      <crap>13.4</crap>
+      <complexity>13</complexity>
+      <coverage>86.67</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -3119,8 +2745,8 @@
       <methodName>about</methodName>
       <methodSignature>about(): void</methodSignature>
       <fullMethod>about(): void</fullMethod>
-      <crap>36</crap>
-      <complexity>36</complexity>
+      <crap>37</crap>
+      <complexity>37</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
