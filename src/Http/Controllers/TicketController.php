@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -11,30 +11,23 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
+use Playground\Matrix\Concerns\Creating;
 use Playground\Matrix\Models\Ticket;
-use Playground\Matrix\Resource\Http\Requests\Ticket\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Ticket as TicketResource;
-use Playground\Matrix\Resource\Http\Resources\TicketCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\TicketController
  */
 class TicketController extends Controller
 {
+    use Creating;
+
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Ticket',
         'model_label_plural' => 'Tickets',
         'model_route' => 'playground.matrix.resource.tickets',
@@ -50,18 +43,25 @@ class TicketController extends Controller
     ];
 
     /**
-     * CREATE the Ticket resource in storage.
+     * Create the Ticket resource in storage.
      *
      * @route GET /resource/matrix/tickets/create playground.matrix.resource.tickets.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Ticket\CreateRequest $request
+    ): JsonResponse|View|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $ticket = new Ticket($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +80,6 @@ class TicketController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $ticket->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +91,7 @@ class TicketController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::ticket/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +101,25 @@ class TicketController extends Controller
      */
     public function edit(
         Ticket $ticket,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Ticket\EditRequest $request
+    ): JsonResponse|View|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $ticket->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +138,9 @@ class TicketController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $ticket->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::ticket/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +150,9 @@ class TicketController extends Controller
      */
     public function destroy(
         Ticket $ticket,
-        DestroyRequest $request
+        Requests\Ticket\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +171,7 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +181,14 @@ class TicketController extends Controller
      */
     public function lock(
         Ticket $ticket,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|TicketResource {
+        Requests\Ticket\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $ticket->setAttribute('locked', true);
+        $ticket->locked = true;
 
         $ticket->save();
 
@@ -205,7 +200,7 @@ class TicketController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +209,10 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['ticket' => $ticket->id]));
     }
 
     /**
@@ -223,8 +221,9 @@ class TicketController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.tickets
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|TicketCollection {
+        Requests\Ticket\IndexRequest $request
+    ): JsonResponse|View|Resources\TicketCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +233,7 @@ class TicketController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +258,12 @@ class TicketController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new TicketCollection($paginator))->response($request);
+            return (new Resources\TicketCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +284,7 @@ class TicketController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::ticket/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +294,9 @@ class TicketController extends Controller
      */
     public function restore(
         Ticket $ticket,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|TicketResource {
+        Requests\Ticket\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +304,7 @@ class TicketController extends Controller
         $ticket->restore();
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +313,10 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['ticket' => $ticket->id]));
     }
 
     /**
@@ -325,8 +326,9 @@ class TicketController extends Controller
      */
     public function show(
         Ticket $ticket,
-        ShowRequest $request
-    ): JsonResponse|View|TicketResource {
+        Requests\Ticket\ShowRequest $request
+    ): JsonResponse|View|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +342,7 @@ class TicketController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +353,7 @@ class TicketController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::ticket/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +362,9 @@ class TicketController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.tickets.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|TicketResource {
+        Requests\Ticket\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -378,7 +378,7 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -387,7 +387,10 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['ticket' => $ticket->id]));
     }
 
     /**
@@ -397,18 +400,19 @@ class TicketController extends Controller
      */
     public function unlock(
         Ticket $ticket,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|TicketResource {
+        Requests\Ticket\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $ticket->setAttribute('locked', false);
+        $ticket->locked = false;
 
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -417,7 +421,10 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['ticket' => $ticket->id]));
     }
 
     /**
@@ -427,16 +434,19 @@ class TicketController extends Controller
      */
     public function update(
         Ticket $ticket,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|TicketResource {
+        Requests\Ticket\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Ticket {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        $ticket->modified_by_id = $user?->id;
+
         $ticket->update($validated);
 
         if ($request->expectsJson()) {
-            return (new TicketResource($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -446,41 +456,5 @@ class TicketController extends Controller
         }
 
         return redirect(route('playground.matrix.resource.tickets.show', ['ticket' => $ticket->id]));
-    }
-
-    protected function getProjectKey(Ticket $ticket): string
-    {
-        $key = config('playground-matrix-resource.default_key');
-        $key = is_string($key) ? $key : '';
-
-        $project = $ticket->project_id ? $ticket->project()->first() : null;
-
-        if (! empty($project->key) && is_string($project->key)) {
-            $key = $project->key;
-        }
-
-        return $key;
-    }
-
-    protected function handleTicketCode(Ticket $ticket): void
-    {
-        if (empty($ticket->project_id)) {
-            return;
-        }
-
-        $ticket->key = $this->getProjectKey($ticket);
-
-        $code = Ticket::where('key', 'LIKE', $ticket->key)->max('code');
-        $next = $code > 0 ? ++$code : 1;
-        $slug = sprintf(
-            '%1$s%2$s%3$d',
-            $ticket->key,
-            $ticket->key ? '-' : '',
-            $next
-        );
-
-        $ticket->code = $next;
-        $ticket->slug = $slug;
-        $ticket->key_code_hash = md5($slug);
     }
 }

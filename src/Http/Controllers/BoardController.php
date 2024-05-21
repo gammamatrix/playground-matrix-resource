@@ -24,7 +24,7 @@ class BoardController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Board',
         'model_label_plural' => 'Boards',
         'model_route' => 'playground.matrix.resource.boards',
@@ -40,19 +40,25 @@ class BoardController extends Controller
     ];
 
     /**
-     * CREATE the Board resource in storage.
+     * Create the Board resource in storage.
      *
      * @route GET /resource/matrix/boards/create playground.matrix.resource.boards.create
      */
     public function create(
         Requests\Board\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Board {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $board = new Board($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Board($board))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class BoardController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $board->toArray();
 
@@ -97,11 +99,24 @@ class BoardController extends Controller
     public function edit(
         Board $board,
         Requests\Board\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Board {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Board($board))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $board->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class BoardController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $board->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 

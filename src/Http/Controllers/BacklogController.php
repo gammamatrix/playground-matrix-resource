@@ -24,7 +24,7 @@ class BacklogController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Backlog',
         'model_label_plural' => 'Backlogs',
         'model_route' => 'playground.matrix.resource.backlogs',
@@ -40,19 +40,25 @@ class BacklogController extends Controller
     ];
 
     /**
-     * CREATE the Backlog resource in storage.
+     * Create the Backlog resource in storage.
      *
      * @route GET /resource/matrix/backlogs/create playground.matrix.resource.backlogs.create
      */
     public function create(
         Requests\Backlog\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Backlog {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $backlog = new Backlog($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class BacklogController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $backlog->toArray();
 
@@ -97,11 +99,24 @@ class BacklogController extends Controller
     public function edit(
         Backlog $backlog,
         Requests\Backlog\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Backlog {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $backlog->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class BacklogController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $backlog->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 

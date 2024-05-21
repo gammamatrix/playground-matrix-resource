@@ -24,7 +24,7 @@ class MatrixController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Matrix',
         'model_label_plural' => 'Matrices',
         'model_route' => 'playground.matrix.resource.matrices',
@@ -40,19 +40,25 @@ class MatrixController extends Controller
     ];
 
     /**
-     * CREATE the Matrix resource in storage.
+     * Create the Matrix resource in storage.
      *
      * @route GET /resource/matrix/matrices/create playground.matrix.resource.matrices.create
      */
     public function create(
         Requests\Matrix\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $matrix = new Matrix($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Matrix($matrix))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class MatrixController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $matrix->toArray();
 
@@ -97,11 +99,24 @@ class MatrixController extends Controller
     public function edit(
         Matrix $matrix,
         Requests\Matrix\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Matrix {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Matrix($matrix))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $matrix->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class MatrixController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $matrix->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 

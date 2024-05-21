@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Sprint;
-use Playground\Matrix\Resource\Http\Requests\Sprint\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Sprint as SprintResource;
-use Playground\Matrix\Resource\Http\Resources\SprintCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\SprintController
@@ -34,7 +24,7 @@ class SprintController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Sprint',
         'model_label_plural' => 'Sprints',
         'model_route' => 'playground.matrix.resource.sprints',
@@ -50,18 +40,25 @@ class SprintController extends Controller
     ];
 
     /**
-     * CREATE the Sprint resource in storage.
+     * Create the Sprint resource in storage.
      *
      * @route GET /resource/matrix/sprints/create playground.matrix.resource.sprints.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Sprint\CreateRequest $request
+    ): JsonResponse|View|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $sprint = new Sprint($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Sprint($sprint))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class SprintController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $sprint->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class SprintController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::sprint/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class SprintController extends Controller
      */
     public function edit(
         Sprint $sprint,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Sprint\EditRequest $request
+    ): JsonResponse|View|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Sprint($sprint))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $sprint->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class SprintController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $sprint->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::sprint/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +147,9 @@ class SprintController extends Controller
      */
     public function destroy(
         Sprint $sprint,
-        DestroyRequest $request
+        Requests\Sprint\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +168,7 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +178,14 @@ class SprintController extends Controller
      */
     public function lock(
         Sprint $sprint,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|SprintResource {
+        Requests\Sprint\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $sprint->setAttribute('locked', true);
+        $sprint->locked = true;
 
         $sprint->save();
 
@@ -205,7 +197,7 @@ class SprintController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +206,10 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints.show', ['sprint' => $sprint->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['sprint' => $sprint->id]));
     }
 
     /**
@@ -223,8 +218,9 @@ class SprintController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.sprints
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|SprintCollection {
+        Requests\Sprint\IndexRequest $request
+    ): JsonResponse|View|Resources\SprintCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +230,7 @@ class SprintController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +255,12 @@ class SprintController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new SprintCollection($paginator))->response($request);
+            return (new Resources\SprintCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +281,7 @@ class SprintController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::sprint/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +291,9 @@ class SprintController extends Controller
      */
     public function restore(
         Sprint $sprint,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|SprintResource {
+        Requests\Sprint\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +301,7 @@ class SprintController extends Controller
         $sprint->restore();
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +310,10 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints.show', ['sprint' => $sprint->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['sprint' => $sprint->id]));
     }
 
     /**
@@ -325,8 +323,9 @@ class SprintController extends Controller
      */
     public function show(
         Sprint $sprint,
-        ShowRequest $request
-    ): JsonResponse|View|SprintResource {
+        Requests\Sprint\ShowRequest $request
+    ): JsonResponse|View|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +339,7 @@ class SprintController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +350,7 @@ class SprintController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::sprint/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +359,9 @@ class SprintController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.sprints.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|SprintResource {
+        Requests\Sprint\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +371,7 @@ class SprintController extends Controller
         $sprint->save();
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +380,10 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints.show', ['sprint' => $sprint->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['sprint' => $sprint->id]));
     }
 
     /**
@@ -393,18 +393,19 @@ class SprintController extends Controller
      */
     public function unlock(
         Sprint $sprint,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|SprintResource {
+        Requests\Sprint\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $sprint->setAttribute('locked', false);
+        $sprint->locked = false;
 
         $sprint->save();
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +414,10 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints.show', ['sprint' => $sprint->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['sprint' => $sprint->id]));
     }
 
     /**
@@ -423,8 +427,9 @@ class SprintController extends Controller
      */
     public function update(
         Sprint $sprint,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|SprintResource {
+        Requests\Sprint\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Sprint {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +437,7 @@ class SprintController extends Controller
         $sprint->update($validated);
 
         if ($request->expectsJson()) {
-            return (new SprintResource($sprint))->response($request);
+            return (new Resources\Sprint($sprint))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +446,9 @@ class SprintController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.sprints.show', ['sprint' => $sprint->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['sprint' => $sprint->id]));
     }
 }

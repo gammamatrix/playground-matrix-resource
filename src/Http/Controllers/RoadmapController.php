@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Roadmap;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Roadmap as RoadmapResource;
-use Playground\Matrix\Resource\Http\Resources\RoadmapCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\RoadmapController
@@ -34,7 +24,7 @@ class RoadmapController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Roadmap',
         'model_label_plural' => 'Roadmaps',
         'model_route' => 'playground.matrix.resource.roadmaps',
@@ -50,18 +40,25 @@ class RoadmapController extends Controller
     ];
 
     /**
-     * CREATE the Roadmap resource in storage.
+     * Create the Roadmap resource in storage.
      *
      * @route GET /resource/matrix/roadmaps/create playground.matrix.resource.roadmaps.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Roadmap\CreateRequest $request
+    ): JsonResponse|View|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $roadmap = new Roadmap($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Roadmap($roadmap))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class RoadmapController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $roadmap->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class RoadmapController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::roadmap/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class RoadmapController extends Controller
      */
     public function edit(
         Roadmap $roadmap,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Roadmap\EditRequest $request
+    ): JsonResponse|View|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Roadmap($roadmap))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $roadmap->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class RoadmapController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $roadmap->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::roadmap/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +147,9 @@ class RoadmapController extends Controller
      */
     public function destroy(
         Roadmap $roadmap,
-        DestroyRequest $request
+        Requests\Roadmap\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +168,7 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +178,14 @@ class RoadmapController extends Controller
      */
     public function lock(
         Roadmap $roadmap,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|RoadmapResource {
+        Requests\Roadmap\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $roadmap->setAttribute('locked', true);
+        $roadmap->locked = true;
 
         $roadmap->save();
 
@@ -205,7 +197,7 @@ class RoadmapController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +206,10 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps.show', ['roadmap' => $roadmap->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['roadmap' => $roadmap->id]));
     }
 
     /**
@@ -223,8 +218,9 @@ class RoadmapController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.roadmaps
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|RoadmapCollection {
+        Requests\Roadmap\IndexRequest $request
+    ): JsonResponse|View|Resources\RoadmapCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +230,7 @@ class RoadmapController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +255,12 @@ class RoadmapController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new RoadmapCollection($paginator))->response($request);
+            return (new Resources\RoadmapCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +281,7 @@ class RoadmapController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::roadmap/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +291,9 @@ class RoadmapController extends Controller
      */
     public function restore(
         Roadmap $roadmap,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|RoadmapResource {
+        Requests\Roadmap\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +301,7 @@ class RoadmapController extends Controller
         $roadmap->restore();
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +310,10 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps.show', ['roadmap' => $roadmap->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['roadmap' => $roadmap->id]));
     }
 
     /**
@@ -325,8 +323,9 @@ class RoadmapController extends Controller
      */
     public function show(
         Roadmap $roadmap,
-        ShowRequest $request
-    ): JsonResponse|View|RoadmapResource {
+        Requests\Roadmap\ShowRequest $request
+    ): JsonResponse|View|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +339,7 @@ class RoadmapController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +350,7 @@ class RoadmapController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::roadmap/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +359,9 @@ class RoadmapController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.roadmaps.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|RoadmapResource {
+        Requests\Roadmap\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +371,7 @@ class RoadmapController extends Controller
         $roadmap->save();
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +380,10 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps.show', ['roadmap' => $roadmap->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['roadmap' => $roadmap->id]));
     }
 
     /**
@@ -393,18 +393,19 @@ class RoadmapController extends Controller
      */
     public function unlock(
         Roadmap $roadmap,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|RoadmapResource {
+        Requests\Roadmap\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $roadmap->setAttribute('locked', false);
+        $roadmap->locked = false;
 
         $roadmap->save();
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +414,10 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps.show', ['roadmap' => $roadmap->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['roadmap' => $roadmap->id]));
     }
 
     /**
@@ -423,8 +427,9 @@ class RoadmapController extends Controller
      */
     public function update(
         Roadmap $roadmap,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|RoadmapResource {
+        Requests\Roadmap\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Roadmap {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +437,7 @@ class RoadmapController extends Controller
         $roadmap->update($validated);
 
         if ($request->expectsJson()) {
-            return (new RoadmapResource($roadmap))->response($request);
+            return (new Resources\Roadmap($roadmap))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +446,9 @@ class RoadmapController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.roadmaps.show', ['roadmap' => $roadmap->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['roadmap' => $roadmap->id]));
     }
 }

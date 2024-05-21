@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 return [
     'about' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ABOUT', true),
-    'default_key' => env('PLAYGROUND_MATRIX_RESOURCE_DEFAULT_KEY', ''),
     'middleware' => [
         'default' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_DEFAULT', ['web']),
         'auth' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_AUTH', ['web', 'auth']),

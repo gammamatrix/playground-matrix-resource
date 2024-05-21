@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Release;
-use Playground\Matrix\Resource\Http\Requests\Release\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Release as ReleaseResource;
-use Playground\Matrix\Resource\Http\Resources\ReleaseCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\ReleaseController
@@ -34,7 +24,7 @@ class ReleaseController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Release',
         'model_label_plural' => 'Releases',
         'model_route' => 'playground.matrix.resource.releases',
@@ -50,18 +40,25 @@ class ReleaseController extends Controller
     ];
 
     /**
-     * CREATE the Release resource in storage.
+     * Create the Release resource in storage.
      *
      * @route GET /resource/matrix/releases/create playground.matrix.resource.releases.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Release\CreateRequest $request
+    ): JsonResponse|View|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $release = new Release($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Release($release))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class ReleaseController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $release->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class ReleaseController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::release/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class ReleaseController extends Controller
      */
     public function edit(
         Release $release,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Release\EditRequest $request
+    ): JsonResponse|View|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Release($release))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $release->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class ReleaseController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $release->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::release/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +147,9 @@ class ReleaseController extends Controller
      */
     public function destroy(
         Release $release,
-        DestroyRequest $request
+        Requests\Release\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +168,7 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +178,14 @@ class ReleaseController extends Controller
      */
     public function lock(
         Release $release,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|ReleaseResource {
+        Requests\Release\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $release->setAttribute('locked', true);
+        $release->locked = true;
 
         $release->save();
 
@@ -205,7 +197,7 @@ class ReleaseController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +206,10 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases.show', ['release' => $release->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['release' => $release->id]));
     }
 
     /**
@@ -223,8 +218,9 @@ class ReleaseController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.releases
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|ReleaseCollection {
+        Requests\Release\IndexRequest $request
+    ): JsonResponse|View|Resources\ReleaseCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +230,7 @@ class ReleaseController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +255,12 @@ class ReleaseController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new ReleaseCollection($paginator))->response($request);
+            return (new Resources\ReleaseCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +281,7 @@ class ReleaseController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::release/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +291,9 @@ class ReleaseController extends Controller
      */
     public function restore(
         Release $release,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|ReleaseResource {
+        Requests\Release\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +301,7 @@ class ReleaseController extends Controller
         $release->restore();
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +310,10 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases.show', ['release' => $release->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['release' => $release->id]));
     }
 
     /**
@@ -325,8 +323,9 @@ class ReleaseController extends Controller
      */
     public function show(
         Release $release,
-        ShowRequest $request
-    ): JsonResponse|View|ReleaseResource {
+        Requests\Release\ShowRequest $request
+    ): JsonResponse|View|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +339,7 @@ class ReleaseController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +350,7 @@ class ReleaseController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::release/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +359,9 @@ class ReleaseController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.releases.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|ReleaseResource {
+        Requests\Release\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +371,7 @@ class ReleaseController extends Controller
         $release->save();
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +380,10 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases.show', ['release' => $release->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['release' => $release->id]));
     }
 
     /**
@@ -393,18 +393,19 @@ class ReleaseController extends Controller
      */
     public function unlock(
         Release $release,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|ReleaseResource {
+        Requests\Release\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $release->setAttribute('locked', false);
+        $release->locked = false;
 
         $release->save();
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +414,10 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases.show', ['release' => $release->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['release' => $release->id]));
     }
 
     /**
@@ -423,8 +427,9 @@ class ReleaseController extends Controller
      */
     public function update(
         Release $release,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|ReleaseResource {
+        Requests\Release\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Release {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +437,7 @@ class ReleaseController extends Controller
         $release->update($validated);
 
         if ($request->expectsJson()) {
-            return (new ReleaseResource($release))->response($request);
+            return (new Resources\Release($release))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +446,9 @@ class ReleaseController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.releases.show', ['release' => $release->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['release' => $release->id]));
     }
 }

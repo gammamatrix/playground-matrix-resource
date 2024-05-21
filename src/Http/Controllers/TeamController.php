@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Team;
-use Playground\Matrix\Resource\Http\Requests\Team\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Team as TeamResource;
-use Playground\Matrix\Resource\Http\Resources\TeamCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\TeamController
@@ -34,7 +24,7 @@ class TeamController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Team',
         'model_label_plural' => 'Teams',
         'model_route' => 'playground.matrix.resource.teams',
@@ -50,18 +40,25 @@ class TeamController extends Controller
     ];
 
     /**
-     * CREATE the Team resource in storage.
+     * Create the Team resource in storage.
      *
      * @route GET /resource/matrix/teams/create playground.matrix.resource.teams.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Team\CreateRequest $request
+    ): JsonResponse|View|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $team = new Team($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class TeamController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $team->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class TeamController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::team/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class TeamController extends Controller
      */
     public function edit(
         Team $team,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Team\EditRequest $request
+    ): JsonResponse|View|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $team->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class TeamController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $team->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::team/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,8 +147,9 @@ class TeamController extends Controller
      */
     public function destroy(
         Team $team,
-        DestroyRequest $request
+        Requests\Team\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
 
         if (empty($validated['force'])) {
@@ -177,7 +168,7 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +178,14 @@ class TeamController extends Controller
      */
     public function lock(
         Team $team,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|TeamResource {
+        Requests\Team\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $team->setAttribute('locked', true);
+        $team->locked = true;
 
         $team->save();
 
@@ -205,7 +197,7 @@ class TeamController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +206,10 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams.show', ['team' => $team->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['team' => $team->id]));
     }
 
     /**
@@ -223,8 +218,9 @@ class TeamController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.teams
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|TeamCollection {
+        Requests\Team\IndexRequest $request
+    ): JsonResponse|View|Resources\TeamCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +230,7 @@ class TeamController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +255,12 @@ class TeamController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new TeamCollection($paginator))->response($request);
+            return (new Resources\TeamCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +281,7 @@ class TeamController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::team/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,8 +291,9 @@ class TeamController extends Controller
      */
     public function restore(
         Team $team,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|TeamResource {
+        Requests\Team\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -306,7 +301,7 @@ class TeamController extends Controller
         $team->restore();
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +310,10 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams.show', ['team' => $team->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['team' => $team->id]));
     }
 
     /**
@@ -325,8 +323,9 @@ class TeamController extends Controller
      */
     public function show(
         Team $team,
-        ShowRequest $request
-    ): JsonResponse|View|TeamResource {
+        Requests\Team\ShowRequest $request
+    ): JsonResponse|View|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +339,7 @@ class TeamController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +350,7 @@ class TeamController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::team/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,8 +359,9 @@ class TeamController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.teams.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|TeamResource {
+        Requests\Team\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -374,7 +371,7 @@ class TeamController extends Controller
         $team->save();
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +380,10 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams.show', ['team' => $team->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['team' => $team->id]));
     }
 
     /**
@@ -393,18 +393,19 @@ class TeamController extends Controller
      */
     public function unlock(
         Team $team,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|TeamResource {
+        Requests\Team\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $team->setAttribute('locked', false);
+        $team->locked = false;
 
         $team->save();
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +414,10 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams.show', ['team' => $team->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['team' => $team->id]));
     }
 
     /**
@@ -423,8 +427,9 @@ class TeamController extends Controller
      */
     public function update(
         Team $team,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|TeamResource {
+        Requests\Team\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Team {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -432,7 +437,7 @@ class TeamController extends Controller
         $team->update($validated);
 
         if ($request->expectsJson()) {
-            return (new TeamResource($team))->response($request);
+            return (new Resources\Team($team))->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +446,9 @@ class TeamController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.teams.show', ['team' => $team->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['team' => $team->id]));
     }
 }

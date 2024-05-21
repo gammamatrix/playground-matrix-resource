@@ -24,7 +24,7 @@ class MilestoneController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Milestone',
         'model_label_plural' => 'Milestones',
         'model_route' => 'playground.matrix.resource.milestones',
@@ -40,19 +40,25 @@ class MilestoneController extends Controller
     ];
 
     /**
-     * CREATE the Milestone resource in storage.
+     * Create the Milestone resource in storage.
      *
      * @route GET /resource/matrix/milestones/create playground.matrix.resource.milestones.create
      */
     public function create(
         Requests\Milestone\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Milestone {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $milestone = new Milestone($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Milestone($milestone))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class MilestoneController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $milestone->toArray();
 
@@ -97,11 +99,24 @@ class MilestoneController extends Controller
     public function edit(
         Milestone $milestone,
         Requests\Milestone\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Milestone {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Milestone($milestone))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $milestone->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class MilestoneController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $milestone->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 

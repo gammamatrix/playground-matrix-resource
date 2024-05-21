@@ -24,7 +24,7 @@ class NoteController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Note',
         'model_label_plural' => 'Notes',
         'model_route' => 'playground.matrix.resource.notes',
@@ -40,19 +40,25 @@ class NoteController extends Controller
     ];
 
     /**
-     * CREATE the Note resource in storage.
+     * Create the Note resource in storage.
      *
      * @route GET /resource/matrix/notes/create playground.matrix.resource.notes.create
      */
     public function create(
         Requests\Note\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Note {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $note = new Note($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class NoteController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $note->toArray();
 
@@ -97,11 +99,24 @@ class NoteController extends Controller
     public function edit(
         Note $note,
         Requests\Note\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Note {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $note->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class NoteController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $note->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 

@@ -17,16 +17,6 @@ use Playground\Http\Requests\IndexRequest;
 class BacklogCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
-     *
-     * @return array<string, mixed>|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray(Request $request)
-    {
-        return parent::toArray($request);
-    }
-
-    /**
      * Get additional data that should be returned with the resource array.
      *
      * @param Request&IndexRequest $request

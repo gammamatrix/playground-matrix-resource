@@ -24,7 +24,7 @@ class FlowController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Flow',
         'model_label_plural' => 'Flows',
         'model_route' => 'playground.matrix.resource.flows',
@@ -40,19 +40,25 @@ class FlowController extends Controller
     ];
 
     /**
-     * CREATE the Flow resource in storage.
+     * Create the Flow resource in storage.
      *
      * @route GET /resource/matrix/flows/create playground.matrix.resource.flows.create
      */
     public function create(
         Requests\Flow\CreateRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Flow {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $flow = new Flow($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -70,10 +76,6 @@ class FlowController extends Controller
             'meta' => $meta,
             '_method' => 'post',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
 
         $flash = $flow->toArray();
 
@@ -97,11 +99,24 @@ class FlowController extends Controller
     public function edit(
         Flow $flow,
         Requests\Flow\EditRequest $request
-    ): JsonResponse|View {
+    ): JsonResponse|View|Resources\Flow {
 
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $flow->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -119,17 +134,6 @@ class FlowController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
-
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $flow->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
 
         session()->flashInput($flash);
 
