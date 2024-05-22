@@ -210,7 +210,9 @@ class TicketController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -318,7 +320,9 @@ class TicketController extends Controller
         $ticket->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -356,7 +360,9 @@ class TicketController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -394,7 +400,9 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -432,7 +440,9 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -468,7 +478,9 @@ class TicketController extends Controller
         }
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->response($request);
+            return (new Resources\Ticket($ticket))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';

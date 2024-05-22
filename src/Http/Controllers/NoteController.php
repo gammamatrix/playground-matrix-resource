@@ -207,7 +207,9 @@ class NoteController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +317,9 @@ class NoteController extends Controller
         $note->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -353,7 +357,9 @@ class NoteController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -389,7 +395,9 @@ class NoteController extends Controller
         $note->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -427,7 +435,9 @@ class NoteController extends Controller
         $note->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -463,7 +473,9 @@ class NoteController extends Controller
         }
 
         if ($request->expectsJson()) {
-            return (new Resources\Note($note))->response($request);
+            return (new Resources\Note($note))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';

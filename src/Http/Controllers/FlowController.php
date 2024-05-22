@@ -207,7 +207,9 @@ class FlowController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +317,9 @@ class FlowController extends Controller
         $flow->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -353,7 +357,9 @@ class FlowController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -389,7 +395,9 @@ class FlowController extends Controller
         $flow->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -427,7 +435,9 @@ class FlowController extends Controller
         $flow->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -463,7 +473,9 @@ class FlowController extends Controller
         }
 
         if ($request->expectsJson()) {
-            return (new Resources\Flow($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';

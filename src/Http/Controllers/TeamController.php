@@ -207,7 +207,9 @@ class TeamController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +317,9 @@ class TeamController extends Controller
         $team->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -353,7 +357,9 @@ class TeamController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -389,7 +395,9 @@ class TeamController extends Controller
         $team->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -427,7 +435,9 @@ class TeamController extends Controller
         $team->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -463,7 +473,9 @@ class TeamController extends Controller
         }
 
         if ($request->expectsJson()) {
-            return (new Resources\Team($team))->response($request);
+            return (new Resources\Team($team))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';

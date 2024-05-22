@@ -207,7 +207,9 @@ class TagController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +317,9 @@ class TagController extends Controller
         $tag->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -353,7 +357,9 @@ class TagController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -389,7 +395,9 @@ class TagController extends Controller
         $tag->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -427,7 +435,9 @@ class TagController extends Controller
         $tag->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -463,7 +473,9 @@ class TagController extends Controller
         }
 
         if ($request->expectsJson()) {
-            return (new Resources\Tag($tag))->response($request);
+            return (new Resources\Tag($tag))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
