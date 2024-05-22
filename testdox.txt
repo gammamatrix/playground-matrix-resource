@@ -467,6 +467,51 @@ Note Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground
 Policy (Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy\Policy)
  [x] Policy instance
 
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\BoardPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\EpicPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\FlowPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\MatrixPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\MilestonePolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\NotePolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\ProjectPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\ReleasePolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\RoadmapPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\SourcePolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\SprintPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\TagPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\TeamPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\TicketPolicy\Policy)
+ [x] Policy instance
+
+Policy (Tests\Unit\Playground\Matrix\Resource\Policies\VersionPolicy\Policy)
+ [x] Policy instance
+
 Project Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\ProjectRoute)
  [x] Guest cannot render index view
  [x] Json guest cannot see info
