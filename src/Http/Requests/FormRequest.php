@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests;
 
 use Illuminate\Contracts\Auth\Authenticatable;
@@ -12,7 +12,7 @@ use Illuminate\Foundation\Http\FormRequest as BaseFormRequest;
 /**
  * \Playground\Matrix\Resource\Http\Requests\FormRequest
  */
-abstract class FormRequest extends BaseFormRequest
+class FormRequest extends BaseFormRequest
 {
     /**
      * @var array<string, string|array<mixed>>
