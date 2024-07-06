@@ -1,15 +1,14 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource;
 
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\View;
 
 /**
  * \Playground\Matrix\Resource\ServiceProvider
@@ -18,7 +17,7 @@ class ServiceProvider extends AuthServiceProvider
 {
     public const VERSION = '73.0.0';
 
-    protected string $package = 'playground-matrix-resource';
+    public string $package = 'playground-matrix-resource';
 
     /**
      * Bootstrap any package services.
@@ -33,10 +32,12 @@ class ServiceProvider extends AuthServiceProvider
 
         if (! empty($config['load']) && is_array($config['load'])) {
 
-            // $this->loadTranslationsFrom(
-            //     dirname(__DIR__).'/resources/lang',
-            //     'playground-matrix-resource'
-            // );
+            if (! empty($config['load']['translations'])) {
+                $this->loadTranslationsFrom(
+                    dirname(__DIR__).'/lang',
+                    $this->package
+                );
+            }
 
             if (! empty($config['load']['policies'])
                 && ! empty($config['policies'])
@@ -59,25 +60,23 @@ class ServiceProvider extends AuthServiceProvider
                     $this->package
                 );
             }
-
-            if ($this->app->runningInConsole()) {
-                // Publish configuration
-                $this->publishes([
-                    sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package) => config_path(sprintf('%1$s.php', $this->package)),
-                ], 'playground-config');
-
-                // Publish routes
-                $this->publishes([
-                    dirname(__DIR__).'/routes' => base_path('routes/playground-matrix-resource'),
-                ], 'playground-routes');
-            }
         }
 
-        if (! empty($config['layout']) && is_string($config['layout'])) {
-            View::share('layout', $config['layout']);
+        if ($this->app->runningInConsole()) {
+            // Publish configuration
+            $this->publishes([
+                sprintf('%1$s/config/%2$s.php', dirname(__DIR__), $this->package) => config_path(sprintf('%1$s.php', $this->package)),
+            ], 'playground-config');
+
+            // Publish routes
+            $this->publishes([
+                dirname(__DIR__).'/routes' => base_path('routes/playground-matrix-resource'),
+            ], 'playground-routes');
         }
 
-        $this->about();
+        if (! empty($config['about'])) {
+            $this->about();
+        }
     }
 
     /**
@@ -100,8 +99,8 @@ class ServiceProvider extends AuthServiceProvider
     {
         foreach ($policies as $model => $policy) {
             if (! is_string($model) || ! class_exists($model)) {
-                Log::error(__METHOD__, [
-                    'error' => 'Expecting the model to exist.',
+                Log::error('Expecting the model to exist for the policy.', [
+                    '__METHOD__' => __METHOD__,
                     'model' => is_string($model) ? $model : gettype($model),
                     'policy' => is_string($policy) ? $policy : gettype($policy),
                     'policies' => $policies,
@@ -110,8 +109,8 @@ class ServiceProvider extends AuthServiceProvider
                 continue;
             }
             if (! is_string($policy) || ! class_exists($policy)) {
-                Log::error(__METHOD__, [
-                    'error' => 'Expecting the policy to exist.',
+                Log::error('Expecting the policy to exist for the model.', [
+                    '__METHOD__' => __METHOD__,
                     'model' => is_string($model) ? $model : gettype($model),
                     'policy' => is_string($policy) ? $policy : gettype($policy),
                     'policies' => $policies,
@@ -142,6 +141,9 @@ class ServiceProvider extends AuthServiceProvider
         }
         if (! empty($config['flows'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/flows.php');
+        }
+        if (! empty($config['matrices'])) {
+            $this->loadRoutesFrom(dirname(__DIR__).'/routes/matrices.php');
         }
         if (! empty($config['milestones'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/milestones.php');
@@ -194,6 +196,7 @@ class ServiceProvider extends AuthServiceProvider
         $version = $this->version();
 
         AboutCommand::add('Playground: Matrix Resource', fn () => [
+
             '<fg=yellow;options=bold>Load</> Policies' => ! empty($load['policies']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Routes' => ! empty($load['routes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=yellow;options=bold>Load</> Views' => ! empty($load['views']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
@@ -214,6 +217,7 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=red;options=bold>Route</> boards' => ! empty($routes['boards']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> epics' => ! empty($routes['epics']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> flows' => ! empty($routes['flows']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> matrices' => ! empty($routes['matrices']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> milestones' => ! empty($routes['milestones']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> notes' => ! empty($routes['notes']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> projects' => ! empty($routes['projects']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',

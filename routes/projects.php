@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'project');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.projects.go',
+    //     'as' => 'playground.matrix.resource.projects.go',
     //     'uses' => 'ProjectController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'project');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.projects.slug',
+    //     'as' => 'playground.matrix.resource.projects.slug',
     //     'uses' => 'ProjectController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.projects.store',
+    //     'as' => 'playground.matrix.resource.projects.store',
     //     'uses' => 'ProjectController@store',
-    // ])->can('store', \Playground\Matrix\Models\Project::class);
+    // ])->can('store', Playground\Matrix\Models\Project::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Project::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.projects.put',
+    //     'as' => 'playground.matrix.resource.projects.put',
     //     'uses' => 'ProjectController@store',
-    // ])->can('store', \Playground\Matrix\Models\Project::class);
+    // ])->can('store', Playground\Matrix\Models\Project::class);
     //
     // Route::put('/{project}', [
-    //     'as'   => 'playground.matrix.resource.projects.put.id',
+    //     'as' => 'playground.matrix.resource.projects.put.id',
     //     'uses' => 'ProjectController@store',
     // ])->whereUuid('project')->can('update', 'project');
 

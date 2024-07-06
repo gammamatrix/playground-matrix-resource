@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'tag');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.tags.go',
+    //     'as' => 'playground.matrix.resource.tags.go',
     //     'uses' => 'TagController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'tag');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.tags.slug',
+    //     'as' => 'playground.matrix.resource.tags.slug',
     //     'uses' => 'TagController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.tags.store',
+    //     'as' => 'playground.matrix.resource.tags.store',
     //     'uses' => 'TagController@store',
-    // ])->can('store', \Playground\Matrix\Models\Tag::class);
+    // ])->can('store', Playground\Matrix\Models\Tag::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Tag::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.tags.put',
+    //     'as' => 'playground.matrix.resource.tags.put',
     //     'uses' => 'TagController@store',
-    // ])->can('store', \Playground\Matrix\Models\Tag::class);
+    // ])->can('store', Playground\Matrix\Models\Tag::class);
     //
     // Route::put('/{tag}', [
-    //     'as'   => 'playground.matrix.resource.tags.put.id',
+    //     'as' => 'playground.matrix.resource.tags.put.id',
     //     'uses' => 'TagController@store',
     // ])->whereUuid('tag')->can('update', 'tag');
 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'ticket');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.tickets.go',
+    //     'as' => 'playground.matrix.resource.tickets.go',
     //     'uses' => 'TicketController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'ticket');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.tickets.slug',
+    //     'as' => 'playground.matrix.resource.tickets.slug',
     //     'uses' => 'TicketController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.tickets.store',
+    //     'as' => 'playground.matrix.resource.tickets.store',
     //     'uses' => 'TicketController@store',
-    // ])->can('store', \Playground\Matrix\Models\Ticket::class);
+    // ])->can('store', Playground\Matrix\Models\Ticket::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Ticket::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.tickets.put',
+    //     'as' => 'playground.matrix.resource.tickets.put',
     //     'uses' => 'TicketController@store',
-    // ])->can('store', \Playground\Matrix\Models\Ticket::class);
+    // ])->can('store', Playground\Matrix\Models\Ticket::class);
     //
     // Route::put('/{ticket}', [
-    //     'as'   => 'playground.matrix.resource.tickets.put.id',
+    //     'as' => 'playground.matrix.resource.tickets.put.id',
     //     'uses' => 'TicketController@store',
     // ])->whereUuid('ticket')->can('update', 'ticket');
 

@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Backlog;
-use Playground\Matrix\Resource\Http\Requests\Backlog\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Backlog as BacklogResource;
-use Playground\Matrix\Resource\Http\Resources\BacklogCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\BacklogController
@@ -34,7 +24,7 @@ class BacklogController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Backlog',
         'model_label_plural' => 'Backlogs',
         'model_route' => 'playground.matrix.resource.backlogs',
@@ -50,19 +40,25 @@ class BacklogController extends Controller
     ];
 
     /**
-     * CREATE the Backlog resource in storage.
+     * Create the Backlog resource in storage.
      *
-     * @route GET /resource/matrix/backl*ogs/create playground.matrix.resource.backlogs.create
+     * @route GET /resource/matrix/backlogs/create playground.matrix.resource.backlogs.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Backlog\CreateRequest $request
+    ): JsonResponse|View|Resources\Backlog {
 
         $validated = $request->validated();
 
         $user = $request->user();
 
         $backlog = new Backlog($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -81,10 +77,6 @@ class BacklogController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $backlog->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -96,7 +88,7 @@ class BacklogController extends Controller
             session()->flashInput($flash);
         }
 
-        return view($this->getViewPath('backlog', 'form'), $data);
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -106,11 +98,25 @@ class BacklogController extends Controller
      */
     public function edit(
         Backlog $backlog,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Backlog\EditRequest $request
+    ): JsonResponse|View|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $backlog->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -129,23 +135,9 @@ class BacklogController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $backlog->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::backlog/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -155,9 +147,16 @@ class BacklogController extends Controller
      */
     public function destroy(
         Backlog $backlog,
-        DestroyRequest $request
+        Requests\Backlog\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             $backlog->delete();
@@ -175,7 +174,7 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -185,13 +184,18 @@ class BacklogController extends Controller
      */
     public function lock(
         Backlog $backlog,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|BacklogResource {
+        Requests\Backlog\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $backlog->setAttribute('locked', true);
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
+        $backlog->locked = true;
 
         $backlog->save();
 
@@ -201,10 +205,11 @@ class BacklogController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $this->packageInfo,
         ];
-        // dump($request);
 
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -213,7 +218,10 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs.show', ['backlog' => $backlog->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['backlog' => $backlog->id]));
     }
 
     /**
@@ -222,8 +230,9 @@ class BacklogController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.backlogs
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|BacklogCollection {
+        Requests\Backlog\IndexRequest $request
+    ): JsonResponse|View|Resources\BacklogCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -233,6 +242,7 @@ class BacklogController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -257,12 +267,12 @@ class BacklogController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new BacklogCollection($paginator))->response($request);
+            return (new Resources\BacklogCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -283,10 +293,7 @@ class BacklogController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::backlog/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -296,16 +303,23 @@ class BacklogController extends Controller
      */
     public function restore(
         Backlog $backlog,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|BacklogResource {
+        Requests\Backlog\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
         $backlog->restore();
 
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -314,7 +328,10 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs.show', ['backlog' => $backlog->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['backlog' => $backlog->id]));
     }
 
     /**
@@ -324,8 +341,9 @@ class BacklogController extends Controller
      */
     public function show(
         Backlog $backlog,
-        ShowRequest $request
-    ): JsonResponse|View|BacklogResource {
+        Requests\Backlog\ShowRequest $request
+    ): JsonResponse|View|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -339,7 +357,9 @@ class BacklogController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -350,10 +370,7 @@ class BacklogController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::backlog/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -362,18 +379,25 @@ class BacklogController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.backlogs.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|BacklogResource {
+        Requests\Backlog\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $backlog = new Backlog($validated);
 
+        if ($user?->id) {
+            $backlog->created_by_id = $user->id;
+        }
+
         $backlog->save();
 
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -382,7 +406,10 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs.show', ['backlog' => $backlog->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['backlog' => $backlog->id]));
     }
 
     /**
@@ -392,18 +419,25 @@ class BacklogController extends Controller
      */
     public function unlock(
         Backlog $backlog,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|BacklogResource {
+        Requests\Backlog\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $backlog->setAttribute('locked', false);
+        $backlog->locked = false;
+
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
 
         $backlog->save();
 
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -412,7 +446,10 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs.show', ['backlog' => $backlog->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['backlog' => $backlog->id]));
     }
 
     /**
@@ -422,16 +459,23 @@ class BacklogController extends Controller
      */
     public function update(
         Backlog $backlog,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|BacklogResource {
+        Requests\Backlog\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Backlog {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $backlog->update($validated);
 
+        if ($user?->id) {
+            $backlog->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new BacklogResource($backlog))->response($request);
+            return (new Resources\Backlog($backlog))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -440,6 +484,9 @@ class BacklogController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.backlogs.show', ['backlog' => $backlog->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['backlog' => $backlog->id]));
     }
 }

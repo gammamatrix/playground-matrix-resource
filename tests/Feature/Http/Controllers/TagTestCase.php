@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\TagController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\TagPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TagTestCase
  */
+#[CoversClass(TagController::class)]
+#[CoversClass(TagPolicy::class)]
+#[CoversClass(Requests\Tag\CreateRequest::class)]
+#[CoversClass(Requests\Tag\DestroyRequest::class)]
+#[CoversClass(Requests\Tag\EditRequest::class)]
+#[CoversClass(Requests\Tag\IndexRequest::class)]
+#[CoversClass(Requests\Tag\LockRequest::class)]
+#[CoversClass(Requests\Tag\RestoreRequest::class)]
+#[CoversClass(Requests\Tag\ShowRequest::class)]
+#[CoversClass(Requests\Tag\StoreRequest::class)]
+#[CoversClass(Requests\Tag\UnlockRequest::class)]
+#[CoversClass(Requests\Tag\UpdateRequest::class)]
+#[CoversClass(Resources\Tag::class)]
+#[CoversClass(Resources\TagCollection::class)]
 class TagTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Tag::class;
@@ -17,7 +37,7 @@ class TagTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Tag',
         'model_label_plural' => 'Tags',
         'model_route' => 'playground.matrix.resource.tags',
@@ -29,7 +49,7 @@ class TagTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:tag',
         'table' => 'matrix_tags',
-        'view' => 'playground-matrix-resource::tag',
+        'view' => 'playground.matrix.resource::tag',
     ];
 
     /**
@@ -42,37 +62,10 @@ class TagTestCase extends TestCase
         'owned_by_id',
         'parent_id',
         'tag_type',
-        'backlog_id',
-        'board_id',
-        'epic_id',
-        'flow_id',
-        'milestone_id',
-        'note_id',
-        'project_id',
-        'release_id',
-        'roadmap_id',
-        'source_id',
-        'sprint_id',
-        'team_id',
-        'ticket_id',
-        'version_id',
+        'matrix_id',
         'created_at',
-        'deleted_at',
         'updated_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
-        'canceled_at',
-        'closed_at',
-        'embargo_at',
-        'fixed_at',
-        'postponed_at',
-        'published_at',
-        'released_at',
-        'resumed_at',
-        'resolved_at',
-        'suspended_at',
+        'deleted_at',
         'gids',
         'po',
         'pg',
@@ -84,23 +77,22 @@ class TagTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
-        'canceled',
-        'closed',
-        'completed',
-        'duplicate',
-        'fixed',
         'flagged',
         'internal',
         'locked',
-        'pending',
-        'planned',
-        'problem',
-        'published',
-        'released',
         'retired',
-        'resolved',
-        'suspended',
         'unknown',
         'label',
         'title',
@@ -116,12 +108,9 @@ class TagTestCase extends TestCase
         'avatar',
         'ui',
         'assets',
-        'backlog',
-        'board',
-        'flow',
         'meta',
+        'notes',
         'options',
-        'roadmap',
         'sources',
     ];
 }

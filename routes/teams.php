@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'team');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.teams.go',
+    //     'as' => 'playground.matrix.resource.teams.go',
     //     'uses' => 'TeamController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'team');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.teams.slug',
+    //     'as' => 'playground.matrix.resource.teams.slug',
     //     'uses' => 'TeamController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.teams.store',
+    //     'as' => 'playground.matrix.resource.teams.store',
     //     'uses' => 'TeamController@store',
-    // ])->can('store', \Playground\Matrix\Models\Team::class);
+    // ])->can('store', Playground\Matrix\Models\Team::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Team::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.teams.put',
+    //     'as' => 'playground.matrix.resource.teams.put',
     //     'uses' => 'TeamController@store',
-    // ])->can('store', \Playground\Matrix\Models\Team::class);
+    // ])->can('store', Playground\Matrix\Models\Team::class);
     //
     // Route::put('/{team}', [
-    //     'as'   => 'playground.matrix.resource.teams.put.id',
+    //     'as' => 'playground.matrix.resource.teams.put.id',
     //     'uses' => 'TeamController@store',
     // ])->whereUuid('team')->can('update', 'team');
 

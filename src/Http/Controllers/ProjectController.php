@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Project;
-use Playground\Matrix\Resource\Http\Requests\Project\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Project as ProjectResource;
-use Playground\Matrix\Resource\Http\Resources\ProjectCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\ProjectController
@@ -34,7 +24,7 @@ class ProjectController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Project',
         'model_label_plural' => 'Projects',
         'model_route' => 'playground.matrix.resource.projects',
@@ -50,18 +40,25 @@ class ProjectController extends Controller
     ];
 
     /**
-     * CREATE the Project resource in storage.
+     * Create the Project resource in storage.
      *
      * @route GET /resource/matrix/projects/create playground.matrix.resource.projects.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Project\CreateRequest $request
+    ): JsonResponse|View|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $project = new Project($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class ProjectController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $project->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class ProjectController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::project/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class ProjectController extends Controller
      */
     public function edit(
         Project $project,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Project\EditRequest $request
+    ): JsonResponse|View|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $project->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class ProjectController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $project->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::project/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,9 +147,16 @@ class ProjectController extends Controller
      */
     public function destroy(
         Project $project,
-        DestroyRequest $request
+        Requests\Project\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             $project->delete();
@@ -177,7 +174,7 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +184,18 @@ class ProjectController extends Controller
      */
     public function lock(
         Project $project,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|ProjectResource {
+        Requests\Project\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $project->setAttribute('locked', true);
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
+        $project->locked = true;
 
         $project->save();
 
@@ -205,7 +207,9 @@ class ProjectController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +218,10 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects.show', ['project' => $project->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['project' => $project->id]));
     }
 
     /**
@@ -223,8 +230,9 @@ class ProjectController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.projects
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|ProjectCollection {
+        Requests\Project\IndexRequest $request
+    ): JsonResponse|View|Resources\ProjectCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +242,7 @@ class ProjectController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +267,12 @@ class ProjectController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new ProjectCollection($paginator))->response($request);
+            return (new Resources\ProjectCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +293,7 @@ class ProjectController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::project/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,16 +303,23 @@ class ProjectController extends Controller
      */
     public function restore(
         Project $project,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|ProjectResource {
+        Requests\Project\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
         $project->restore();
 
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +328,10 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects.show', ['project' => $project->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['project' => $project->id]));
     }
 
     /**
@@ -325,8 +341,9 @@ class ProjectController extends Controller
      */
     public function show(
         Project $project,
-        ShowRequest $request
-    ): JsonResponse|View|ProjectResource {
+        Requests\Project\ShowRequest $request
+    ): JsonResponse|View|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +357,9 @@ class ProjectController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +370,7 @@ class ProjectController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::project/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,18 +379,25 @@ class ProjectController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.projects.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|ProjectResource {
+        Requests\Project\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $project = new Project($validated);
 
+        if ($user?->id) {
+            $project->created_by_id = $user->id;
+        }
+
         $project->save();
 
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +406,10 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects.show', ['project' => $project->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['project' => $project->id]));
     }
 
     /**
@@ -393,18 +419,25 @@ class ProjectController extends Controller
      */
     public function unlock(
         Project $project,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|ProjectResource {
+        Requests\Project\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $project->setAttribute('locked', false);
+        $project->locked = false;
+
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
 
         $project->save();
 
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +446,10 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects.show', ['project' => $project->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['project' => $project->id]));
     }
 
     /**
@@ -423,16 +459,23 @@ class ProjectController extends Controller
      */
     public function update(
         Project $project,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|ProjectResource {
+        Requests\Project\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Project {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $project->update($validated);
 
+        if ($user?->id) {
+            $project->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new ProjectResource($project))->response($request);
+            return (new Resources\Project($project))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +484,9 @@ class ProjectController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.projects.show', ['project' => $project->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['project' => $project->id]));
     }
 }

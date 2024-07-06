@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\NoteController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\NotePolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteTestCase
  */
+#[CoversClass(NoteController::class)]
+#[CoversClass(NotePolicy::class)]
+#[CoversClass(Requests\Note\CreateRequest::class)]
+#[CoversClass(Requests\Note\DestroyRequest::class)]
+#[CoversClass(Requests\Note\EditRequest::class)]
+#[CoversClass(Requests\Note\IndexRequest::class)]
+#[CoversClass(Requests\Note\LockRequest::class)]
+#[CoversClass(Requests\Note\RestoreRequest::class)]
+#[CoversClass(Requests\Note\ShowRequest::class)]
+#[CoversClass(Requests\Note\StoreRequest::class)]
+#[CoversClass(Requests\Note\UnlockRequest::class)]
+#[CoversClass(Requests\Note\UpdateRequest::class)]
+#[CoversClass(Resources\Note::class)]
+#[CoversClass(Resources\NoteCollection::class)]
 class NoteTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Note::class;
@@ -17,7 +37,7 @@ class NoteTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Note',
         'model_label_plural' => 'Notes',
         'model_route' => 'playground.matrix.resource.notes',
@@ -29,7 +49,7 @@ class NoteTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:note',
         'table' => 'matrix_notes',
-        'view' => 'playground-matrix-resource::note',
+        'view' => 'playground.matrix.resource::note',
     ];
 
     /**
@@ -42,37 +62,11 @@ class NoteTestCase extends TestCase
         'owned_by_id',
         'parent_id',
         'note_type',
-        // 'backlog_id',
-        // 'board_id',
-        // 'epic_id',
-        // 'flow_id',
-        // 'milestone_id',
-        // 'project_id',
-        // 'release_id',
-        // 'roadmap_id',
-        // 'source_id',
-        // 'sprint_id',
-        // 'tag_id',
-        // 'team_id',
-        // 'ticket_id',
-        // 'version_id',
+        'matrix_id',
+        'tag_id',
         'created_at',
-        'deleted_at',
         'updated_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
-        'canceled_at',
-        'closed_at',
-        'embargo_at',
-        'fixed_at',
-        'postponed_at',
-        'published_at',
-        'released_at',
-        'resumed_at',
-        'resolved_at',
-        'suspended_at',
+        'deleted_at',
         'gids',
         'po',
         'pg',
@@ -84,23 +78,27 @@ class NoteTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
-        'duplicate',
-        'fixed',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
         'problem',
-        'published',
-        'released',
-        'retired',
-        'resolved',
-        'suspended',
         'unknown',
         'label',
         'title',
@@ -116,12 +114,9 @@ class NoteTestCase extends TestCase
         'avatar',
         'ui',
         'assets',
-        'backlog',
-        'board',
-        'flow',
         'meta',
+        'notes',
         'options',
-        'roadmap',
         'sources',
     ];
 }

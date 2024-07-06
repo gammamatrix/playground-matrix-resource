@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'sprint');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.sprints.go',
+    //     'as' => 'playground.matrix.resource.sprints.go',
     //     'uses' => 'SprintController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'sprint');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.sprints.slug',
+    //     'as' => 'playground.matrix.resource.sprints.slug',
     //     'uses' => 'SprintController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.sprints.store',
+    //     'as' => 'playground.matrix.resource.sprints.store',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', Playground\Matrix\Models\Sprint::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Sprint::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.sprints.put',
+    //     'as' => 'playground.matrix.resource.sprints.put',
     //     'uses' => 'SprintController@store',
-    // ])->can('store', \Playground\Matrix\Models\Sprint::class);
+    // ])->can('store', Playground\Matrix\Models\Sprint::class);
     //
     // Route::put('/{sprint}', [
-    //     'as'   => 'playground.matrix.resource.sprints.put.id',
+    //     'as' => 'playground.matrix.resource.sprints.put.id',
     //     'uses' => 'SprintController@store',
     // ])->whereUuid('sprint')->can('update', 'sprint');
 

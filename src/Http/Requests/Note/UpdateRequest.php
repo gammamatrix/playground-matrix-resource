@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Note;
 
 use Playground\Http\Requests\UpdateRequest as BaseUpdateRequest;
@@ -20,67 +20,60 @@ class UpdateRequest extends BaseUpdateRequest
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
         'note_type' => ['nullable', 'string'],
+        'matrix_id' => ['nullable', 'uuid'],
+        'tag_id' => ['nullable', 'uuid'],
         'gids' => ['integer'],
         'po' => ['integer'],
         'pg' => ['integer'],
         'pw' => ['integer'],
+        'only_admin' => ['boolean'],
+        'only_user' => ['boolean'],
+        'only_guest' => ['boolean'],
+        'allow_public' => ['boolean'],
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
-        'label' => ['string'],
-        'byline' => ['string'],
-        'slug' => ['nullable', 'string'],
-        'content' => ['nullable', 'string'],
-        'description' => ['string'],
-        'introduction' => ['string'],
-        'summary' => ['nullable', 'string'],
-        'url' => ['string'],
+        'matrix' => ['nullable', 'array'],
+        'x' => ['nullable', 'integer'],
+        'y' => ['nullable', 'integer'],
+        'z' => ['nullable', 'integer'],
+        'r' => ['nullable', 'numeric'],
+        'theta' => ['nullable', 'numeric'],
+        'rho' => ['nullable', 'numeric'],
+        'phi' => ['nullable', 'numeric'],
+        'elevation' => ['nullable', 'numeric'],
+        'latitude' => ['nullable', 'numeric'],
+        'longitude' => ['nullable', 'numeric'],
         'active' => ['boolean'],
+        'canceled' => ['boolean'],
+        'closed' => ['boolean'],
+        'completed' => ['boolean'],
         'flagged' => ['boolean'],
         'internal' => ['boolean'],
         'locked' => ['boolean'],
         'pending' => ['boolean'],
         'planned' => ['boolean'],
         'problem' => ['boolean'],
-        'published' => ['boolean'],
-        'retired' => ['boolean'],
-        'suspended' => ['boolean'],
         'unknown' => ['boolean'],
-        'only_admin' => ['boolean'],
-        'only_user' => ['boolean'],
-        'only_guest' => ['boolean'],
-        'allow_public' => ['boolean'],
-        'ui' => ['nullable', 'array'],
+        'label' => ['string'],
+        'title' => ['string', 'required'],
+        'byline' => ['string'],
+        'slug' => ['nullable', 'string'],
+        'url' => ['string'],
+        'description' => ['string'],
+        'introduction' => ['string'],
+        'content' => ['nullable', 'string'],
+        'summary' => ['nullable', 'string'],
         'icon' => ['string'],
         'image' => ['string'],
         'avatar' => ['string'],
-        'start_at' => ['nullable', 'string'],
-        'planned_start_at' => ['nullable', 'string'],
-        'end_at' => ['nullable', 'string'],
-        'planned_end_at' => ['nullable', 'string'],
-        'canceled_at' => ['nullable', 'string'],
-        'closed_at' => ['nullable', 'string'],
-        'embargo_at' => ['nullable', 'string'],
-        'fixed_at' => ['nullable', 'string'],
-        'postponed_at' => ['nullable', 'string'],
-        'published_at' => ['nullable', 'string'],
-        'released_at' => ['nullable', 'string'],
-        'resolved_at' => ['nullable', 'string'],
-        'resumed_at' => ['nullable', 'string'],
-        'suspended_at' => ['nullable', 'string'],
+        'ui' => ['nullable', 'array'],
         'assets' => ['nullable', 'array'],
-        'backlog' => ['nullable', 'string'],
-        'board' => ['nullable', 'string'],
-        'flow' => ['nullable', 'string'],
         'meta' => ['nullable', 'array'],
-        'notes' => ['nullable', 'array'],
         'options' => ['nullable', 'array'],
-        'roadmap' => ['nullable', 'array'],
         'sources' => ['nullable', 'array'],
         '_return_url' => ['nullable', 'url'],
     ];
-
-    protected string $slug_table = 'matrix_notes';
 
     /**
      * Prepare the data for validation.
@@ -93,38 +86,13 @@ class UpdateRequest extends BaseUpdateRequest
 
         $input = [];
 
-        if ($this->filled('content')) {
-            $input['content'] = $this->purify($this->input('content'));
-        }
-
-        if ($this->filled('summary')) {
-            $input['summary'] = $this->purify($this->input('summary'));
-        }
-
-        if ($this->filled('description')) {
-            $input['description'] = $this->exorcise($this->input('description'));
-        } elseif ($this->has('description')) {
-            $input['description'] = '';
-        }
-
-        if ($this->filled('introduction')) {
-            $input['introduction'] = $this->exorcise($this->input('introduction'));
-        } elseif ($this->has('introduction')) {
-            $input['introduction'] = '';
-        }
+        $this->filterContentFields($input);
+        $this->filterCommonFields($input);
+        $this->filterStatus($input);
+        $this->filterSystemFields($input);
 
         if (! empty($input)) {
             $this->merge($input);
         }
     }
-
-    //    /**
-    //      * Handle a passed validation attempt.
-    //      *
-    //      * @return void
-    //      */
-    //     protected function passedValidation()
-    //     {
-    //
-    //     }
 }

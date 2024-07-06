@@ -1,18 +1,72 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
+/**
+ * Playground: Matrix Resource Configuration and Environment Variables
+ */
 return [
+
+    /*
+    |---------------------------------------------------------------------------
+    | About Information
+    |---------------------------------------------------------------------------
+    |
+    | By default, information will be displayed about this package when using:
+    |
+    | `artisan about`
+    |
+    */
+
+    'about' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ABOUT', true),
+
+    /*
+    |---------------------------------------------------------------------------
+    | Loading
+    |---------------------------------------------------------------------------
+    |
+    | By default, translations and views are loaded.
+    |
+    */
+
+    'load' => [
+        'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
+        'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
+        'translations' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_TRANSLATIONS', false),
+        'views' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_VIEWS', true),
+    ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Middleware
+    |---------------------------------------------------------------------------
+    |
+    |
+    */
+
     'middleware' => [
         'default' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_DEFAULT', ['web']),
         'auth' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_AUTH', ['web', 'auth']),
         'guest' => env('PLAYGROUND_MATRIX_RESOURCE_MIDDLEWARE_GUEST', ['web']),
     ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Policies
+    |---------------------------------------------------------------------------
+    |
+    |
+    */
+
     'policies' => [
         Playground\Matrix\Models\Backlog::class => Playground\Matrix\Resource\Policies\BacklogPolicy::class,
         Playground\Matrix\Models\Board::class => Playground\Matrix\Resource\Policies\BoardPolicy::class,
         Playground\Matrix\Models\Epic::class => Playground\Matrix\Resource\Policies\EpicPolicy::class,
         Playground\Matrix\Models\Flow::class => Playground\Matrix\Resource\Policies\FlowPolicy::class,
+        Playground\Matrix\Models\Matrix::class => Playground\Matrix\Resource\Policies\MatrixPolicy::class,
         Playground\Matrix\Models\Milestone::class => Playground\Matrix\Resource\Policies\MilestonePolicy::class,
         Playground\Matrix\Models\Note::class => Playground\Matrix\Resource\Policies\NotePolicy::class,
         Playground\Matrix\Models\Project::class => Playground\Matrix\Resource\Policies\ProjectPolicy::class,
@@ -25,17 +79,22 @@ return [
         Playground\Matrix\Models\Ticket::class => Playground\Matrix\Resource\Policies\TicketPolicy::class,
         Playground\Matrix\Models\Version::class => Playground\Matrix\Resource\Policies\VersionPolicy::class,
     ],
-    'load' => [
-        'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
-        'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
-        'views' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_VIEWS', true),
-    ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Routes
+    |---------------------------------------------------------------------------
+    |
+    |
+    */
+
     'routes' => [
         'matrix' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_MATRIX', true),
         'backlogs' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_BACKLOGS', true),
         'boards' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_BOARDS', true),
         'epics' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_EPICS', true),
         'flows' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_FLOWS', true),
+        'matrices' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_MATRICES', true),
         'milestones' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_MILESTONES', true),
         'notes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_NOTES', true),
         'projects' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_PROJECTS', true),
@@ -48,13 +107,39 @@ return [
         'tickets' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_TICKETS', true),
         'versions' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_VERSIONS', true),
     ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Sitemap
+    |---------------------------------------------------------------------------
+    |
+    |
+    */
+
     'sitemap' => [
         'enable' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_ENABLE', true),
         'guest' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_GUEST', true),
         'user' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_USER', true),
         'view' => env('PLAYGROUND_MATRIX_RESOURCE_SITEMAP_VIEW', 'playground-matrix-resource::sitemap'),
     ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Templates
+    |---------------------------------------------------------------------------
+    |
+    |
+    */
+
     'blade' => env('PLAYGROUND_MATRIX_RESOURCE_BLADE', 'playground-matrix-resource::'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Abilities
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
 
     'abilities' => [
         'admin' => [
@@ -65,6 +150,7 @@ return [
             'playground-matrix-resource:board:*',
             'playground-matrix-resource:epic:*',
             'playground-matrix-resource:flow:*',
+            'playground-matrix-resource:matrix:*',
             'playground-matrix-resource:milestone:*',
             'playground-matrix-resource:note:*',
             'playground-matrix-resource:project:*',
@@ -86,6 +172,8 @@ return [
             'playground-matrix-resource:epic:viewAny',
             'playground-matrix-resource:flow:view',
             'playground-matrix-resource:flow:viewAny',
+            'playground-matrix-resource:matrix:view',
+            'playground-matrix-resource:matrix:viewAny',
             'playground-matrix-resource:milestone:view',
             'playground-matrix-resource:milestone:viewAny',
             'playground-matrix-resource:note:view',
@@ -132,6 +220,8 @@ return [
         //     'playground-matrix-resource:epic:viewAny',
         //     'playground-matrix-resource:flow:view',
         //     'playground-matrix-resource:flow:viewAny',
+        //     'playground-matrix-resource:matrix:view',
+        //     'playground-matrix-resource:matrix:viewAny',
         //     'playground-matrix-resource:milestone:view',
         //     'playground-matrix-resource:milestone:viewAny',
         //     'playground-matrix-resource:note:view',

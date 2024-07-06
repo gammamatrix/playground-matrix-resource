@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'milestone');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.milestones.go',
+    //     'as' => 'playground.matrix.resource.milestones.go',
     //     'uses' => 'MilestoneController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'milestone');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.milestones.slug',
+    //     'as' => 'playground.matrix.resource.milestones.slug',
     //     'uses' => 'MilestoneController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.milestones.store',
+    //     'as' => 'playground.matrix.resource.milestones.store',
     //     'uses' => 'MilestoneController@store',
-    // ])->can('store', \Playground\Matrix\Models\Milestone::class);
+    // ])->can('store', Playground\Matrix\Models\Milestone::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Milestone::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.milestones.put',
+    //     'as' => 'playground.matrix.resource.milestones.put',
     //     'uses' => 'MilestoneController@store',
-    // ])->can('store', \Playground\Matrix\Models\Milestone::class);
+    // ])->can('store', Playground\Matrix\Models\Milestone::class);
     //
     // Route::put('/{milestone}', [
-    //     'as'   => 'playground.matrix.resource.milestones.put.id',
+    //     'as' => 'playground.matrix.resource.milestones.put.id',
     //     'uses' => 'MilestoneController@store',
     // ])->whereUuid('milestone')->can('update', 'milestone');
 

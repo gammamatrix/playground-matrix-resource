@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Flow;
-use Playground\Matrix\Resource\Http\Requests\Flow\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Flow as FlowResource;
-use Playground\Matrix\Resource\Http\Resources\FlowCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\FlowController
@@ -34,7 +24,7 @@ class FlowController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Flow',
         'model_label_plural' => 'Flows',
         'model_route' => 'playground.matrix.resource.flows',
@@ -50,18 +40,25 @@ class FlowController extends Controller
     ];
 
     /**
-     * CREATE the Flow resource in storage.
+     * Create the Flow resource in storage.
      *
      * @route GET /resource/matrix/flows/create playground.matrix.resource.flows.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Flow\CreateRequest $request
+    ): JsonResponse|View|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $flow = new Flow($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class FlowController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $flow->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class FlowController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::flow/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class FlowController extends Controller
      */
     public function edit(
         Flow $flow,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Flow\EditRequest $request
+    ): JsonResponse|View|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $flow->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class FlowController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $flow->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::flow/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,9 +147,16 @@ class FlowController extends Controller
      */
     public function destroy(
         Flow $flow,
-        DestroyRequest $request
+        Requests\Flow\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             $flow->delete();
@@ -177,7 +174,7 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +184,18 @@ class FlowController extends Controller
      */
     public function lock(
         Flow $flow,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|FlowResource {
+        Requests\Flow\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $flow->setAttribute('locked', true);
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
+        $flow->locked = true;
 
         $flow->save();
 
@@ -205,7 +207,9 @@ class FlowController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +218,10 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows.show', ['flow' => $flow->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['flow' => $flow->id]));
     }
 
     /**
@@ -223,8 +230,9 @@ class FlowController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.flows
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|FlowCollection {
+        Requests\Flow\IndexRequest $request
+    ): JsonResponse|View|Resources\FlowCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +242,7 @@ class FlowController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +267,12 @@ class FlowController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new FlowCollection($paginator))->response($request);
+            return (new Resources\FlowCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +293,7 @@ class FlowController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::flow/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,16 +303,23 @@ class FlowController extends Controller
      */
     public function restore(
         Flow $flow,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|FlowResource {
+        Requests\Flow\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
         $flow->restore();
 
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +328,10 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows.show', ['flow' => $flow->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['flow' => $flow->id]));
     }
 
     /**
@@ -325,8 +341,9 @@ class FlowController extends Controller
      */
     public function show(
         Flow $flow,
-        ShowRequest $request
-    ): JsonResponse|View|FlowResource {
+        Requests\Flow\ShowRequest $request
+    ): JsonResponse|View|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +357,9 @@ class FlowController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +370,7 @@ class FlowController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::flow/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,18 +379,25 @@ class FlowController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.flows.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|FlowResource {
+        Requests\Flow\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $flow = new Flow($validated);
 
+        if ($user?->id) {
+            $flow->created_by_id = $user->id;
+        }
+
         $flow->save();
 
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +406,10 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows.show', ['flow' => $flow->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['flow' => $flow->id]));
     }
 
     /**
@@ -393,18 +419,25 @@ class FlowController extends Controller
      */
     public function unlock(
         Flow $flow,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|FlowResource {
+        Requests\Flow\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $flow->setAttribute('locked', false);
+        $flow->locked = false;
+
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
 
         $flow->save();
 
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +446,10 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows.show', ['flow' => $flow->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['flow' => $flow->id]));
     }
 
     /**
@@ -423,16 +459,23 @@ class FlowController extends Controller
      */
     public function update(
         Flow $flow,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|FlowResource {
+        Requests\Flow\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Flow {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $flow->update($validated);
 
+        if ($user?->id) {
+            $flow->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new FlowResource($flow))->response($request);
+            return (new Resources\Flow($flow))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +484,9 @@ class FlowController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.flows.show', ['flow' => $flow->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['flow' => $flow->id]));
     }
 }

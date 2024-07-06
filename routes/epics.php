@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'epic');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.epics.go',
+    //     'as' => 'playground.matrix.resource.epics.go',
     //     'uses' => 'EpicController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'epic');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.epics.slug',
+    //     'as' => 'playground.matrix.resource.epics.slug',
     //     'uses' => 'EpicController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.epics.store',
+    //     'as' => 'playground.matrix.resource.epics.store',
     //     'uses' => 'EpicController@store',
-    // ])->can('store', \Playground\Matrix\Models\Epic::class);
+    // ])->can('store', Playground\Matrix\Models\Epic::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Epic::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.epics.put',
+    //     'as' => 'playground.matrix.resource.epics.put',
     //     'uses' => 'EpicController@store',
-    // ])->can('store', \Playground\Matrix\Models\Epic::class);
+    // ])->can('store', Playground\Matrix\Models\Epic::class);
     //
     // Route::put('/{epic}', [
-    //     'as'   => 'playground.matrix.resource.epics.put.id',
+    //     'as' => 'playground.matrix.resource.epics.put.id',
     //     'uses' => 'EpicController@store',
     // ])->whereUuid('epic')->can('update', 'epic');
 

@@ -1,18 +1,19 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy;
 
-// use Illuminate\Support\Facades\Artisan;
+use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Matrix\Resource\Policies\BacklogPolicy;
 use Tests\Unit\Playground\Matrix\Resource\TestCase;
 
 /**
- * \ests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy\PolicyTest
+ * \Tests\Unit\Playground\Matrix\Resource\Policies\BacklogPolicy\PolicyTest
  */
+#[CoversClass(BacklogPolicy::class)]
 class PolicyTest extends TestCase
 {
     public function test_policy_instance(): void
@@ -21,10 +22,4 @@ class PolicyTest extends TestCase
 
         $this->assertInstanceOf(BacklogPolicy::class, $instance);
     }
-
-    // public function test_dump_console_about(): void
-    // {
-    //     $result = $this->withoutMockingConsoleOutput()->artisan('about');
-    //     dump(Artisan::output());
-    // }
 }

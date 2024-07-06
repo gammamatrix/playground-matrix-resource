@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'version');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.versions.go',
+    //     'as' => 'playground.matrix.resource.versions.go',
     //     'uses' => 'VersionController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'version');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.versions.slug',
+    //     'as' => 'playground.matrix.resource.versions.slug',
     //     'uses' => 'VersionController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.versions.store',
+    //     'as' => 'playground.matrix.resource.versions.store',
     //     'uses' => 'VersionController@store',
-    // ])->can('store', \Playground\Matrix\Models\Version::class);
+    // ])->can('store', Playground\Matrix\Models\Version::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Version::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.versions.put',
+    //     'as' => 'playground.matrix.resource.versions.put',
     //     'uses' => 'VersionController@store',
-    // ])->can('store', \Playground\Matrix\Models\Version::class);
+    // ])->can('store', Playground\Matrix\Models\Version::class);
     //
     // Route::put('/{version}', [
-    //     'as'   => 'playground.matrix.resource.versions.put.id',
+    //     'as' => 'playground.matrix.resource.versions.put.id',
     //     'uses' => 'VersionController@store',
     // ])->whereUuid('version')->can('update', 'version');
 

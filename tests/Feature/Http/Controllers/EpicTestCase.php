@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\EpicController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\EpicPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase
  */
+#[CoversClass(EpicController::class)]
+#[CoversClass(EpicPolicy::class)]
+#[CoversClass(Requests\Epic\CreateRequest::class)]
+#[CoversClass(Requests\Epic\DestroyRequest::class)]
+#[CoversClass(Requests\Epic\EditRequest::class)]
+#[CoversClass(Requests\Epic\IndexRequest::class)]
+#[CoversClass(Requests\Epic\LockRequest::class)]
+#[CoversClass(Requests\Epic\RestoreRequest::class)]
+#[CoversClass(Requests\Epic\ShowRequest::class)]
+#[CoversClass(Requests\Epic\StoreRequest::class)]
+#[CoversClass(Requests\Epic\UnlockRequest::class)]
+#[CoversClass(Requests\Epic\UpdateRequest::class)]
+#[CoversClass(Resources\Epic::class)]
+#[CoversClass(Resources\EpicCollection::class)]
 class EpicTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Epic::class;
@@ -17,7 +37,7 @@ class EpicTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Epic',
         'model_label_plural' => 'Epics',
         'model_route' => 'playground.matrix.resource.epics',
@@ -29,7 +49,7 @@ class EpicTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:epic',
         'table' => 'matrix_epics',
-        'view' => 'playground-matrix-resource::epic',
+        'view' => 'playground.matrix.resource::epic',
     ];
 
     /**
@@ -42,9 +62,10 @@ class EpicTestCase extends TestCase
         'owned_by_id',
         'parent_id',
         'epic_type',
-        'board_id',
         'backlog_id',
+        'board_id',
         'flow_id',
+        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -57,8 +78,8 @@ class EpicTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -84,10 +105,22 @@ class EpicTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
+        'cron',
         'duplicate',
         'fixed',
         'flagged',
@@ -120,6 +153,7 @@ class EpicTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

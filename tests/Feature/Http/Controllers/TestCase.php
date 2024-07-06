@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
@@ -29,14 +29,18 @@ class TestCase extends BaseTestCase
     use Resource\Playground\RestoreTrait;
     use Resource\Playground\ShowJsonTrait;
     use Resource\Playground\ShowTrait;
+    use Resource\Playground\StoreJsonTrait;
+    use Resource\Playground\StoreTrait;
     use Resource\Playground\UnlockJsonTrait;
     use Resource\Playground\UnlockTrait;
+    use Resource\Playground\UpdateJsonTrait;
+    use Resource\Playground\UpdateTrait;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => '',
         'model_label_plural' => '',
         'model_route' => '',
@@ -46,9 +50,9 @@ class TestCase extends BaseTestCase
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
-        'privilege' => '',
+        'privilege' => 'playground-matrix-resource:',
         'table' => '',
-        'view' => '',
+        'view' => 'playground.matrix.resource::',
     ];
 
     /**

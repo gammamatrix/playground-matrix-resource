@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Resources;
@@ -9,18 +12,11 @@ use Illuminate\Support\Carbon;
 use Playground\Matrix\Models\Epic as EpicModel;
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
 
+/**
+ * \Playground\Matrix\Resource\Http\Resources\Epic
+ */
 class Epic extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray(Request $request)
-    {
-        return parent::toArray($request);
-    }
-
     /**
      * Get additional data that should be returned with the resource array.
      *

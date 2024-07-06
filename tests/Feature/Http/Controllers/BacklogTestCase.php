@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\BacklogController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\BacklogPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase
  */
+#[CoversClass(BacklogController::class)]
+#[CoversClass(BacklogPolicy::class)]
+#[CoversClass(Requests\Backlog\CreateRequest::class)]
+#[CoversClass(Requests\Backlog\DestroyRequest::class)]
+#[CoversClass(Requests\Backlog\EditRequest::class)]
+#[CoversClass(Requests\Backlog\IndexRequest::class)]
+#[CoversClass(Requests\Backlog\LockRequest::class)]
+#[CoversClass(Requests\Backlog\RestoreRequest::class)]
+#[CoversClass(Requests\Backlog\ShowRequest::class)]
+#[CoversClass(Requests\Backlog\StoreRequest::class)]
+#[CoversClass(Requests\Backlog\UnlockRequest::class)]
+#[CoversClass(Requests\Backlog\UpdateRequest::class)]
+#[CoversClass(Resources\Backlog::class)]
+#[CoversClass(Resources\BacklogCollection::class)]
 class BacklogTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Backlog::class;
@@ -17,7 +37,7 @@ class BacklogTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Backlog',
         'model_label_plural' => 'Backlogs',
         'model_route' => 'playground.matrix.resource.backlogs',
@@ -29,7 +49,7 @@ class BacklogTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:backlog',
         'table' => 'matrix_backlogs',
-        'view' => 'playground-matrix-resource::backlog',
+        'view' => 'playground.matrix.resource::backlog',
     ];
 
     /**
@@ -45,6 +65,7 @@ class BacklogTestCase extends TestCase
         'board_id',
         'epic_id',
         'flow_id',
+        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -57,8 +78,8 @@ class BacklogTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -84,10 +105,22 @@ class BacklogTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
+        'cron',
         'duplicate',
         'fixed',
         'flagged',
@@ -120,6 +153,7 @@ class BacklogTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;
@@ -23,6 +23,7 @@ class EditRequest extends FormRequest
         'board_id' => ['nullable', 'uuid'],
         'epic_id' => ['nullable', 'uuid'],
         'flow_id' => ['nullable', 'uuid'],
+        'matrix_id' => ['nullable', 'uuid'],
         'milestone_id' => ['nullable', 'uuid'],
         'note_id' => ['nullable', 'uuid'],
         'project_id' => ['nullable', 'uuid'],
@@ -59,10 +60,22 @@ class EditRequest extends FormRequest
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
+        'matrix' => ['nullable', 'array'],
+        'x' => ['nullable', 'integer'],
+        'y' => ['nullable', 'integer'],
+        'z' => ['nullable', 'integer'],
+        'r' => ['nullable', 'numeric'],
+        'theta' => ['nullable', 'numeric'],
+        'rho' => ['nullable', 'numeric'],
+        'phi' => ['nullable', 'numeric'],
+        'elevation' => ['nullable', 'numeric'],
+        'latitude' => ['nullable', 'numeric'],
+        'longitude' => ['nullable', 'numeric'],
         'active' => ['boolean'],
         'canceled' => ['boolean'],
         'closed' => ['boolean'],
         'completed' => ['boolean'],
+        'cron' => ['boolean'],
         'duplicate' => ['boolean'],
         'fixed' => ['boolean'],
         'flagged' => ['boolean'],

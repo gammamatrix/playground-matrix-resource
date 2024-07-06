@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'flow');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.flows.go',
+    //     'as' => 'playground.matrix.resource.flows.go',
     //     'uses' => 'FlowController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'flow');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.flows.slug',
+    //     'as' => 'playground.matrix.resource.flows.slug',
     //     'uses' => 'FlowController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.flows.store',
+    //     'as' => 'playground.matrix.resource.flows.store',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \Playground\Matrix\Models\Flow::class);
+    // ])->can('store', Playground\Matrix\Models\Flow::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Flow::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.flows.put',
+    //     'as' => 'playground.matrix.resource.flows.put',
     //     'uses' => 'FlowController@store',
-    // ])->can('store', \Playground\Matrix\Models\Flow::class);
+    // ])->can('store', Playground\Matrix\Models\Flow::class);
     //
     // Route::put('/{flow}', [
-    //     'as'   => 'playground.matrix.resource.flows.put.id',
+    //     'as' => 'playground.matrix.resource.flows.put.id',
     //     'uses' => 'FlowController@store',
     // ])->whereUuid('flow')->can('update', 'flow');
 

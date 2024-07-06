@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Http\Requests\IndexRequest as BaseIndexRequest;
@@ -14,7 +14,7 @@ use Playground\Http\Requests\IndexRequest as BaseIndexRequest;
 class IndexRequest extends BaseIndexRequest
 {
     /**
-     * @var array<string, mixed>
+     * @var array<string, array<string, mixed>>
      */
     protected array $paginationDates = [
         'created_at' => ['column' => 'created_at', 'label' => 'Created At', 'nullable' => true],
@@ -37,13 +37,14 @@ class IndexRequest extends BaseIndexRequest
     ];
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, array<string, mixed>>
      */
     protected array $paginationFlags = [
         'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running'],
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'icon' => 'fa-solid fa-ban text-warning'],
         'closed' => ['column' => 'closed', 'label' => 'Closed', 'icon' => 'fa-solid fa-xmark'],
         'completed' => ['column' => 'completed', 'label' => 'Completed', 'icon' => 'fa-solid fa-check'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'icon' => 'fa-regular fa-clock'],
         'duplicate' => ['column' => 'duplicate', 'label' => 'Duplicate', 'icon' => 'fa-solid fa-clone'],
         'fixed' => ['column' => 'fixed', 'label' => 'Fixed', 'icon' => 'fa-solid fa-wrench'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'icon' => 'fa-solid fa-flag'],
@@ -61,7 +62,7 @@ class IndexRequest extends BaseIndexRequest
     ];
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, array<string, mixed>>
      */
     protected array $paginationIds = [
         'id' => ['column' => 'id', 'label' => 'Id', 'type' => 'uuid', 'nullable' => false],
@@ -73,6 +74,7 @@ class IndexRequest extends BaseIndexRequest
         'board_id' => ['column' => 'board_id', 'label' => 'Board Id', 'type' => 'uuid', 'nullable' => true],
         'epic_id' => ['column' => 'epic_id', 'label' => 'Epic Id', 'type' => 'uuid', 'nullable' => true],
         'flow_id' => ['column' => 'flow_id', 'label' => 'Flow Id', 'type' => 'uuid', 'nullable' => true],
+        'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'uuid', 'nullable' => true],
         'milestone_id' => ['column' => 'milestone_id', 'label' => 'Milestone Id', 'type' => 'uuid', 'nullable' => true],
         'note_id' => ['column' => 'note_id', 'label' => 'Note Id', 'type' => 'uuid', 'nullable' => true],
         'project_id' => ['column' => 'project_id', 'label' => 'Project Id', 'type' => 'uuid', 'nullable' => true],
@@ -87,7 +89,7 @@ class IndexRequest extends BaseIndexRequest
     ];
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, array<string, mixed>>
      */
     protected array $paginationColumns = [
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string', 'nullable' => false],
@@ -102,7 +104,7 @@ class IndexRequest extends BaseIndexRequest
     ];
 
     /**
-     * @var array<string, mixed>
+     * @var array<string, array<string, mixed>>
      */
     protected array $sortable = [
         'id' => ['column' => 'id', 'label' => 'Id', 'type' => 'string'],
@@ -114,6 +116,7 @@ class IndexRequest extends BaseIndexRequest
         'board_id' => ['column' => 'board_id', 'label' => 'Board Id', 'type' => 'string'],
         'epic_id' => ['column' => 'epic_id', 'label' => 'Epic Id', 'type' => 'string'],
         'flow_id' => ['column' => 'flow_id', 'label' => 'Flow Id', 'type' => 'string'],
+        'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'string'],
         'milestone_id' => ['column' => 'milestone_id', 'label' => 'Milestone Id', 'type' => 'string'],
         'note_id' => ['column' => 'note_id', 'label' => 'Note Id', 'type' => 'string'],
         'project_id' => ['column' => 'project_id', 'label' => 'Project Id', 'type' => 'string'],
@@ -153,10 +156,22 @@ class IndexRequest extends BaseIndexRequest
         'status' => ['column' => 'status', 'label' => 'Status', 'type' => 'integer'],
         'rank' => ['column' => 'rank', 'label' => 'Rank', 'type' => 'integer'],
         'size' => ['column' => 'size', 'label' => 'Size', 'type' => 'integer'],
+        'matrix' => ['column' => 'matrix', 'label' => 'Matrix', 'type' => 'JSON_OBJECT'],
+        'x' => ['column' => 'x', 'label' => 'X', 'type' => 'integer'],
+        'y' => ['column' => 'y', 'label' => 'Y', 'type' => 'integer'],
+        'z' => ['column' => 'z', 'label' => 'Z', 'type' => 'integer'],
+        'r' => ['column' => 'r', 'label' => 'R', 'type' => 'float'],
+        'theta' => ['column' => 'theta', 'label' => 'Theta', 'type' => 'float'],
+        'rho' => ['column' => 'rho', 'label' => 'Rho', 'type' => 'float'],
+        'phi' => ['column' => 'phi', 'label' => 'Phi', 'type' => 'float'],
+        'elevation' => ['column' => 'elevation', 'label' => 'Elevation', 'type' => 'float'],
+        'latitude' => ['column' => 'latitude', 'label' => 'Latitude', 'type' => 'float'],
+        'longitude' => ['column' => 'longitude', 'label' => 'Longitude', 'type' => 'float'],
         'active' => ['column' => 'active', 'label' => 'Active', 'type' => 'boolean'],
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'type' => 'boolean'],
         'closed' => ['column' => 'closed', 'label' => 'Closed', 'type' => 'boolean'],
         'completed' => ['column' => 'completed', 'label' => 'Completed', 'type' => 'boolean'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'type' => 'boolean'],
         'duplicate' => ['column' => 'duplicate', 'label' => 'Duplicate', 'type' => 'boolean'],
         'fixed' => ['column' => 'fixed', 'label' => 'Fixed', 'type' => 'boolean'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'type' => 'boolean'],
@@ -183,5 +198,15 @@ class IndexRequest extends BaseIndexRequest
         'icon' => ['column' => 'icon', 'label' => 'Icon', 'type' => 'string'],
         'image' => ['column' => 'image', 'label' => 'Image', 'type' => 'string'],
         'avatar' => ['column' => 'avatar', 'label' => 'Avatar', 'type' => 'string'],
+        'ui' => ['column' => 'ui', 'label' => 'Ui', 'type' => 'JSON_OBJECT'],
+        'assets' => ['column' => 'assets', 'label' => 'Assets', 'type' => 'JSON_OBJECT'],
+        'backlog' => ['column' => 'backlog', 'label' => 'Backlog', 'type' => 'JSON_OBJECT'],
+        'board' => ['column' => 'board', 'label' => 'Board', 'type' => 'JSON_OBJECT'],
+        'flow' => ['column' => 'flow', 'label' => 'Flow', 'type' => 'JSON_OBJECT'],
+        'meta' => ['column' => 'meta', 'label' => 'Meta', 'type' => 'JSON_OBJECT'],
+        'notes' => ['column' => 'notes', 'label' => 'Notes', 'type' => 'JSON_ARRAY'],
+        'options' => ['column' => 'options', 'label' => 'Options', 'type' => 'JSON_OBJECT'],
+        'roadmap' => ['column' => 'roadmap', 'label' => 'Roadmap', 'type' => 'JSON_OBJECT'],
+        'sources' => ['column' => 'sources', 'label' => 'Sources', 'type' => 'JSON_OBJECT'],
     ];
 }

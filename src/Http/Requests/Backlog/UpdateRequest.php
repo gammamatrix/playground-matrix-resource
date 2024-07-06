@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Http\Requests\UpdateRequest as BaseUpdateRequest;
@@ -23,6 +23,7 @@ class UpdateRequest extends BaseUpdateRequest
         'board_id' => ['nullable', 'uuid'],
         'epic_id' => ['nullable', 'uuid'],
         'flow_id' => ['nullable', 'uuid'],
+        'matrix_id' => ['nullable', 'uuid'],
         'milestone_id' => ['nullable', 'uuid'],
         'note_id' => ['nullable', 'uuid'],
         'project_id' => ['nullable', 'uuid'],
@@ -59,10 +60,22 @@ class UpdateRequest extends BaseUpdateRequest
         'status' => ['integer'],
         'rank' => ['integer'],
         'size' => ['integer'],
+        'matrix' => ['nullable', 'array'],
+        'x' => ['nullable', 'integer'],
+        'y' => ['nullable', 'integer'],
+        'z' => ['nullable', 'integer'],
+        'r' => ['nullable', 'numeric'],
+        'theta' => ['nullable', 'numeric'],
+        'rho' => ['nullable', 'numeric'],
+        'phi' => ['nullable', 'numeric'],
+        'elevation' => ['nullable', 'numeric'],
+        'latitude' => ['nullable', 'numeric'],
+        'longitude' => ['nullable', 'numeric'],
         'active' => ['boolean'],
         'canceled' => ['boolean'],
         'closed' => ['boolean'],
         'completed' => ['boolean'],
+        'cron' => ['boolean'],
         'duplicate' => ['boolean'],
         'fixed' => ['boolean'],
         'flagged' => ['boolean'],
@@ -78,7 +91,7 @@ class UpdateRequest extends BaseUpdateRequest
         'suspended' => ['boolean'],
         'unknown' => ['boolean'],
         'label' => ['string'],
-        'title' => ['string'],
+        'title' => ['string', 'required'],
         'byline' => ['string'],
         'slug' => ['nullable', 'string'],
         'url' => ['string'],
@@ -101,8 +114,6 @@ class UpdateRequest extends BaseUpdateRequest
         '_return_url' => ['nullable', 'url'],
     ];
 
-    protected string $slug_table = 'matrix_backlogs';
-
     /**
      * Prepare the data for validation.
      *
@@ -114,38 +125,13 @@ class UpdateRequest extends BaseUpdateRequest
 
         $input = [];
 
-        if ($this->filled('content')) {
-            $input['content'] = $this->purify($this->input('content'));
-        }
-
-        if ($this->filled('summary')) {
-            $input['summary'] = $this->purify($this->input('summary'));
-        }
-
-        if ($this->filled('description')) {
-            $input['description'] = $this->exorcise($this->input('description'));
-        } elseif ($this->has('description')) {
-            $input['description'] = '';
-        }
-
-        if ($this->filled('introduction')) {
-            $input['introduction'] = $this->exorcise($this->input('introduction'));
-        } elseif ($this->has('introduction')) {
-            $input['introduction'] = '';
-        }
+        $this->filterContentFields($input);
+        $this->filterCommonFields($input);
+        $this->filterStatus($input);
+        $this->filterSystemFields($input);
 
         if (! empty($input)) {
             $this->merge($input);
         }
     }
-
-    //    /**
-    //      * Handle a passed validation attempt.
-    //      *
-    //      * @return void
-    //      */
-    //     protected function passedValidation()
-    //     {
-    //
-    //     }
 }

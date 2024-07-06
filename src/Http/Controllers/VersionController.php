@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Version;
-use Playground\Matrix\Resource\Http\Requests\Version\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Version as VersionResource;
-use Playground\Matrix\Resource\Http\Resources\VersionCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\VersionController
@@ -34,7 +24,7 @@ class VersionController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Version',
         'model_label_plural' => 'Versions',
         'model_route' => 'playground.matrix.resource.versions',
@@ -50,18 +40,25 @@ class VersionController extends Controller
     ];
 
     /**
-     * CREATE the Version resource in storage.
+     * Create the Version resource in storage.
      *
      * @route GET /resource/matrix/versions/create playground.matrix.resource.versions.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Version\CreateRequest $request
+    ): JsonResponse|View|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $version = new Version($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class VersionController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $version->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class VersionController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::version/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class VersionController extends Controller
      */
     public function edit(
         Version $version,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Version\EditRequest $request
+    ): JsonResponse|View|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $version->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class VersionController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $version->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::version/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,9 +147,16 @@ class VersionController extends Controller
      */
     public function destroy(
         Version $version,
-        DestroyRequest $request
+        Requests\Version\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             $version->delete();
@@ -177,7 +174,7 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +184,18 @@ class VersionController extends Controller
      */
     public function lock(
         Version $version,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|VersionResource {
+        Requests\Version\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $version->setAttribute('locked', true);
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
+        $version->locked = true;
 
         $version->save();
 
@@ -205,7 +207,9 @@ class VersionController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +218,10 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions.show', ['version' => $version->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['version' => $version->id]));
     }
 
     /**
@@ -223,8 +230,9 @@ class VersionController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.versions
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View {
+        Requests\Version\IndexRequest $request
+    ): JsonResponse|View|Resources\VersionCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +242,7 @@ class VersionController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +267,12 @@ class VersionController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new VersionCollection($paginator))->response($request);
+            return (new Resources\VersionCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +293,7 @@ class VersionController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::version/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,16 +303,23 @@ class VersionController extends Controller
      */
     public function restore(
         Version $version,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|VersionResource {
+        Requests\Version\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
         $version->restore();
 
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +328,10 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions.show', ['version' => $version->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['version' => $version->id]));
     }
 
     /**
@@ -325,8 +341,9 @@ class VersionController extends Controller
      */
     public function show(
         Version $version,
-        ShowRequest $request
-    ): JsonResponse|View|VersionResource {
+        Requests\Version\ShowRequest $request
+    ): JsonResponse|View|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +357,9 @@ class VersionController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +370,7 @@ class VersionController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::version/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,18 +379,25 @@ class VersionController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.versions.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|VersionResource {
+        Requests\Version\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $version = new Version($validated);
 
+        if ($user?->id) {
+            $version->created_by_id = $user->id;
+        }
+
         $version->save();
 
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +406,10 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions.show', ['version' => $version->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['version' => $version->id]));
     }
 
     /**
@@ -393,18 +419,25 @@ class VersionController extends Controller
      */
     public function unlock(
         Version $version,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|VersionResource {
+        Requests\Version\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $version->setAttribute('locked', false);
+        $version->locked = false;
+
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
 
         $version->save();
 
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +446,10 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions.show', ['version' => $version->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['version' => $version->id]));
     }
 
     /**
@@ -423,16 +459,23 @@ class VersionController extends Controller
      */
     public function update(
         Version $version,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|VersionResource {
+        Requests\Version\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Version {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $version->update($validated);
 
+        if ($user?->id) {
+            $version->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new VersionResource($version))->response($request);
+            return (new Resources\Version($version))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +484,9 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.versions.show', ['version' => $version->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['version' => $version->id]));
     }
 }

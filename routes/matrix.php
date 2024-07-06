@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -6,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| CMS API Routes
+| Matrix Routes
 |--------------------------------------------------------------------------
 |
 |
@@ -17,8 +20,10 @@ Route::group([
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
+
     Route::get('/', [
         'as' => 'playground.matrix.resource',
         'uses' => 'IndexController@index',
     ])->can('view', Playground\Matrix\Models\Ticket::class);
+
 });

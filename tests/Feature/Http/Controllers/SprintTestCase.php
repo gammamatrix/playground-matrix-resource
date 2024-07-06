@@ -1,14 +1,34 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
+
+use PHPUnit\Framework\Attributes\CoversClass;
+use Playground\Matrix\Resource\Http\Controllers\SprintController;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
+use Playground\Matrix\Resource\Policies\SprintPolicy;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SprintTestCase
  */
+#[CoversClass(SprintController::class)]
+#[CoversClass(SprintPolicy::class)]
+#[CoversClass(Requests\Sprint\CreateRequest::class)]
+#[CoversClass(Requests\Sprint\DestroyRequest::class)]
+#[CoversClass(Requests\Sprint\EditRequest::class)]
+#[CoversClass(Requests\Sprint\IndexRequest::class)]
+#[CoversClass(Requests\Sprint\LockRequest::class)]
+#[CoversClass(Requests\Sprint\RestoreRequest::class)]
+#[CoversClass(Requests\Sprint\ShowRequest::class)]
+#[CoversClass(Requests\Sprint\StoreRequest::class)]
+#[CoversClass(Requests\Sprint\UnlockRequest::class)]
+#[CoversClass(Requests\Sprint\UpdateRequest::class)]
+#[CoversClass(Resources\Sprint::class)]
+#[CoversClass(Resources\SprintCollection::class)]
 class SprintTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Sprint::class;
@@ -17,7 +37,7 @@ class SprintTestCase extends TestCase
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Sprint',
         'model_label_plural' => 'Sprints',
         'model_route' => 'playground.matrix.resource.sprints',
@@ -29,7 +49,7 @@ class SprintTestCase extends TestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:sprint',
         'table' => 'matrix_sprints',
-        'view' => 'playground-matrix-resource::sprint',
+        'view' => 'playground.matrix.resource::sprint',
     ];
 
     /**
@@ -46,6 +66,7 @@ class SprintTestCase extends TestCase
         'board_id',
         'epic_id',
         'flow_id',
+        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -57,8 +78,8 @@ class SprintTestCase extends TestCase
         'ticket_id',
         'version_id',
         'created_at',
-        'deleted_at',
         'updated_at',
+        'deleted_at',
         'start_at',
         'planned_start_at',
         'end_at',
@@ -84,10 +105,22 @@ class SprintTestCase extends TestCase
         'status',
         'rank',
         'size',
+        'matrix',
+        'x',
+        'y',
+        'z',
+        'r',
+        'theta',
+        'rho',
+        'phi',
+        'elevation',
+        'latitude',
+        'longitude',
         'active',
         'canceled',
         'closed',
         'completed',
+        'cron',
         'duplicate',
         'fixed',
         'flagged',
@@ -120,6 +153,7 @@ class SprintTestCase extends TestCase
         'board',
         'flow',
         'meta',
+        'notes',
         'options',
         'roadmap',
         'sources',

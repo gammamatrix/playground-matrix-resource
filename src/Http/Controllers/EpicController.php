@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -12,18 +12,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\View\View;
 use Playground\Matrix\Models\Epic;
-use Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\DestroyRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\EditRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\IndexRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\LockRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\RestoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\ShowRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\UnlockRequest;
-use Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest;
-use Playground\Matrix\Resource\Http\Resources\Epic as EpicResource;
-use Playground\Matrix\Resource\Http\Resources\EpicCollection;
+use Playground\Matrix\Resource\Http\Requests;
+use Playground\Matrix\Resource\Http\Resources;
 
 /**
  * \Playground\Matrix\Resource\Http\Controllers\EpicController
@@ -34,7 +24,7 @@ class EpicController extends Controller
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'label',
+        'model_attribute' => 'title',
         'model_label' => 'Epic',
         'model_label_plural' => 'Epics',
         'model_route' => 'playground.matrix.resource.epics',
@@ -50,18 +40,25 @@ class EpicController extends Controller
     ];
 
     /**
-     * CREATE the Epic resource in storage.
+     * Create the Epic resource in storage.
      *
      * @route GET /resource/matrix/epics/create playground.matrix.resource.epics.create
      */
     public function create(
-        CreateRequest $request
-    ): JsonResponse|View {
+        Requests\Epic\CreateRequest $request
+    ): JsonResponse|View|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $epic = new Epic($validated);
+
+        if ($request->expectsJson()) {
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -80,10 +77,6 @@ class EpicController extends Controller
             '_method' => 'post',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
         $flash = $epic->toArray();
 
         if (! empty($validated['_return_url'])) {
@@ -95,10 +88,7 @@ class EpicController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(
-            'playground-matrix-resource::epic/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -108,11 +98,25 @@ class EpicController extends Controller
      */
     public function edit(
         Epic $epic,
-        EditRequest $request
-    ): JsonResponse|View {
+        Requests\Epic\EditRequest $request
+    ): JsonResponse|View|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
+
+        if ($request->expectsJson()) {
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
+        }
+
+        $flash = $epic->toArray();
+
+        if (! empty($validated['_return_url'])) {
+            $flash['_return_url'] = $validated['_return_url'];
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -131,23 +135,9 @@ class EpicController extends Controller
             '_method' => 'patch',
         ];
 
-        if ($request->expectsJson()) {
-            return response()->json($data);
-        }
-
-        $flash = $epic->toArray();
-
-        if (! empty($validated['_return_url'])) {
-            $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
-        }
-
         session()->flashInput($flash);
 
-        return view(
-            'playground-matrix-resource::epic/form',
-            $data
-        );
+        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -157,9 +147,16 @@ class EpicController extends Controller
      */
     public function destroy(
         Epic $epic,
-        DestroyRequest $request
+        Requests\Epic\DestroyRequest $request
     ): Response|RedirectResponse {
+
         $validated = $request->validated();
+
+        $user = $request->user();
+
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
 
         if (empty($validated['force'])) {
             $epic->delete();
@@ -177,7 +174,7 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics'));
+        return redirect(route($this->packageInfo['model_route']));
     }
 
     /**
@@ -187,13 +184,18 @@ class EpicController extends Controller
      */
     public function lock(
         Epic $epic,
-        LockRequest $request
-    ): JsonResponse|RedirectResponse|EpicResource {
+        Requests\Epic\LockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $epic->setAttribute('locked', true);
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
+        $epic->locked = true;
 
         $epic->save();
 
@@ -205,7 +207,9 @@ class EpicController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -214,7 +218,10 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics.show', ['epic' => $epic->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['epic' => $epic->id]));
     }
 
     /**
@@ -223,8 +230,9 @@ class EpicController extends Controller
      * @route GET /resource/matrix playground.matrix.resource.epics
      */
     public function index(
-        IndexRequest $request
-    ): JsonResponse|View|EpicCollection {
+        Requests\Epic\IndexRequest $request
+    ): JsonResponse|View|Resources\EpicCollection {
+
         $user = $request->user();
 
         $validated = $request->validated();
@@ -234,6 +242,7 @@ class EpicController extends Controller
         $query->sort($validated['sort'] ?? null);
 
         if (! empty($validated['filter']) && is_array($validated['filter'])) {
+
             $query->filterTrash($validated['filter']['trash'] ?? null);
 
             $query->filterIds(
@@ -258,12 +267,12 @@ class EpicController extends Controller
         }
 
         $perPage = ! empty($validated['perPage']) && is_int($validated['perPage']) ? $validated['perPage'] : null;
-        $paginator = $query->paginate( $perPage);
+        $paginator = $query->paginate($perPage);
 
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new EpicCollection($paginator))->response($request);
+            return (new Resources\EpicCollection($paginator))->response($request);
         }
 
         $meta = [
@@ -284,10 +293,7 @@ class EpicController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::epic/index',
-            $data
-        );
+        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -297,16 +303,23 @@ class EpicController extends Controller
      */
     public function restore(
         Epic $epic,
-        RestoreRequest $request
-    ): JsonResponse|RedirectResponse|EpicResource {
+        Requests\Epic\RestoreRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
         $epic->restore();
 
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -315,7 +328,10 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics.show', ['epic' => $epic->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['epic' => $epic->id]));
     }
 
     /**
@@ -325,8 +341,9 @@ class EpicController extends Controller
      */
     public function show(
         Epic $epic,
-        ShowRequest $request
-    ): JsonResponse|View|EpicResource {
+        Requests\Epic\ShowRequest $request
+    ): JsonResponse|View|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -340,7 +357,9 @@ class EpicController extends Controller
         ];
 
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $meta['input'] = $request->input();
@@ -351,10 +370,7 @@ class EpicController extends Controller
             'meta' => $meta,
         ];
 
-        return view(
-            'playground-matrix-resource::epic/detail',
-            $data
-        );
+        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
     }
 
     /**
@@ -363,18 +379,25 @@ class EpicController extends Controller
      * @route POST /resource/matrix playground.matrix.resource.epics.post
      */
     public function store(
-        StoreRequest $request
-    ): Response|JsonResponse|RedirectResponse|EpicResource {
+        Requests\Epic\StoreRequest $request
+    ): Response|JsonResponse|RedirectResponse|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $epic = new Epic($validated);
 
+        if ($user?->id) {
+            $epic->created_by_id = $user->id;
+        }
+
         $epic->save();
 
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -383,7 +406,10 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics.show', ['epic' => $epic->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['epic' => $epic->id]));
     }
 
     /**
@@ -393,18 +419,25 @@ class EpicController extends Controller
      */
     public function unlock(
         Epic $epic,
-        UnlockRequest $request
-    ): JsonResponse|RedirectResponse|EpicResource {
+        Requests\Epic\UnlockRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
-        $epic->setAttribute('locked', false);
+        $epic->locked = false;
+
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
 
         $epic->save();
 
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -413,7 +446,10 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics.show', ['epic' => $epic->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['epic' => $epic->id]));
     }
 
     /**
@@ -423,16 +459,23 @@ class EpicController extends Controller
      */
     public function update(
         Epic $epic,
-        UpdateRequest $request
-    ): JsonResponse|RedirectResponse|EpicResource {
+        Requests\Epic\UpdateRequest $request
+    ): JsonResponse|RedirectResponse|Resources\Epic {
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         $epic->update($validated);
 
+        if ($user?->id) {
+            $epic->modified_by_id = $user->id;
+        }
+
         if ($request->expectsJson()) {
-            return (new EpicResource($epic))->response($request);
+            return (new Resources\Epic($epic))->additional(['meta' => [
+                'info' => $this->packageInfo,
+            ]])->response($request);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -441,6 +484,9 @@ class EpicController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route('playground.matrix.resource.epics.show', ['epic' => $epic->id]));
+        return redirect(route(sprintf(
+            '%1$s.show',
+            $this->packageInfo['model_route']
+        ), ['epic' => $epic->id]));
     }
 }

@@ -1,15 +1,14 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource;
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Carbon;
 use Playground\Test\OrchestraTestCase;
-use Tests\Unit\Playground\Matrix\Resource\TestTrait;
+use Tests\Unit\Playground\Matrix\Resource\PackageProviders;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\TestCase
@@ -17,44 +16,43 @@ use Tests\Unit\Playground\Matrix\Resource\TestTrait;
 class TestCase extends OrchestraTestCase
 {
     use DatabaseTransactions;
-    use TestTrait;
+    use PackageProviders;
 
-    protected bool $load_migrations_playground = false;
+    protected bool $load_migrations_laravel = false;
 
-    protected bool $load_migrations_matrix = false;
+    protected bool $load_migrations_package = true;
+
+    protected bool $load_migrations_playground = true;
 
     /**
-     * Setup the test environment.
+     * Define database migrations.
+     *
+     * @api
+     *
+     * @return void
      */
-    protected function setUp(): void
+    protected function defineDatabaseMigrations()
     {
-        parent::setUp();
-
-        Carbon::setTestNow(Carbon::now());
-
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     'env(TEST_DB_MIGRATIONS)' => env('TEST_DB_MIGRATIONS'),
+        //     '$this->load_migrations_laravel' => $this->load_migrations_laravel,
+        //     '$this->load_migrations_package' => $this->load_migrations_package,
+        //     '$this->load_migrations_laravel' => $this->load_migrations_playground,
+        //     'database/migrations-laravel' => dirname(dirname(__DIR__)).'/database/migrations-laravel',
+        //     'database/migrations-package' => dirname(dirname(__DIR__)).'/database/migrations-package',
+        //     'database/migrations-playground' => dirname(dirname(__DIR__)).'/database/migrations-playground',
+        // ]);
         if (! empty(env('TEST_DB_MIGRATIONS'))) {
-            // $this->loadLaravelMigrations();
+            if ($this->load_migrations_laravel) {
+                $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-laravel');
+            }
+            if ($this->load_migrations_package) {
+                $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-package');
+            }
             if ($this->load_migrations_playground) {
                 $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-playground');
             }
-            if ($this->load_migrations_matrix) {
-                $this->loadMigrationsFrom(dirname(dirname(__DIR__)).'/database/migrations-matrix-uuid');
-            }
         }
-    }
-
-    /**
-     * Set up the environment.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('auth.providers.users.model', 'Playground\\Test\\Models\\User');
-        $app['config']->set('playground-auth.verify', 'user');
-        $app['config']->set('auth.testing.password', 'password');
-        $app['config']->set('auth.testing.hashed', false);
-
-        $app['config']->set('playground-cms.load.migrations', true);
     }
 }

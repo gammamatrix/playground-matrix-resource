@@ -1,4 +1,7 @@
 <?php
+/**
+ * Playground
+ */
 
 declare(strict_types=1);
 
@@ -36,7 +39,7 @@ Route::group([
         ->can('edit', 'note');
 
     // Route::get('/go/{id}', [
-    //     'as'   => 'playground.matrix.resource.notes.go',
+    //     'as' => 'playground.matrix.resource.notes.go',
     //     'uses' => 'NoteController@go',
     // ]);
 
@@ -47,14 +50,14 @@ Route::group([
         ->can('detail', 'note');
 
     // Route::get('/{slug}', [
-    //     'as'   => 'playground.matrix.resource.notes.slug',
+    //     'as' => 'playground.matrix.resource.notes.slug',
     //     'uses' => 'NoteController@slug',
     // ])->where('slug', '[a-zA-Z0-9\-]+');
 
     // Route::post('/store', [
-    //     'as'   => 'playground.matrix.resource.notes.store',
+    //     'as' => 'playground.matrix.resource.notes.store',
     //     'uses' => 'NoteController@store',
-    // ])->can('store', \Playground\Matrix\Models\Note::class);
+    // ])->can('store', Playground\Matrix\Models\Note::class);
 
     // API
 
@@ -90,12 +93,12 @@ Route::group([
     ])->can('store', Playground\Matrix\Models\Note::class);
 
     // Route::put('/', [
-    //     'as'   => 'playground.matrix.resource.notes.put',
+    //     'as' => 'playground.matrix.resource.notes.put',
     //     'uses' => 'NoteController@store',
-    // ])->can('store', \Playground\Matrix\Models\Note::class);
+    // ])->can('store', Playground\Matrix\Models\Note::class);
     //
     // Route::put('/{note}', [
-    //     'as'   => 'playground.matrix.resource.notes.put.id',
+    //     'as' => 'playground.matrix.resource.notes.put.id',
     //     'uses' => 'NoteController@store',
     // ])->whereUuid('note')->can('update', 'note');
 
