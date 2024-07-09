@@ -8,7 +8,7 @@ namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground;
 
 use Playground\Matrix\Models\Project;
 use Playground\Matrix\Models\Ticket;
-use Playground\Test\Models\PlaygroundUser as User;
+use Playground\Models\User;
 use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketTestCase;
 
 /**

@@ -36,6 +36,8 @@ class TestCase extends BaseTestCase
     use Resource\Playground\UpdateJsonTrait;
     use Resource\Playground\UpdateTrait;
 
+    protected bool $setUpUserForPlayground = true;
+
     /**
      * @var array<string, string>
      */

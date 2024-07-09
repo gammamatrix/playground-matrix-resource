@@ -22,15 +22,15 @@
     ],
     "require": {
         "php": "^8.2",
-        "gammamatrix/playground-auth": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
-        "gammamatrix/playground-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
-        "gammamatrix/playground-http": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
-        "gammamatrix/playground-matrix": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0"
+        "gammamatrix/playground-auth": "*",
+        "gammamatrix/playground-blade": "*",
+        "gammamatrix/playground-http": "*",
+        "gammamatrix/playground-matrix": "*"
     },
     "require-dev": {
-        "gammamatrix/playground-login-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
-        "gammamatrix/playground-site-blade": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0",
-        "gammamatrix/playground-test": "dev-develop|dev-master|dev-feature/*|^73.0@dev|^73.0"
+        "gammamatrix/playground-login-blade": "*",
+        "gammamatrix/playground-site-blade": "*",
+        "gammamatrix/playground-test": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -65,8 +65,9 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/testbench package:test",
+        "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max",
+        "cloc": "cloc --exclude-dir=node_modules,output,vendor .",
         "format": "vendor/bin/php-cs-fixer fix",
-        "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max"
+        "test": "vendor/bin/phpunit"
     }
 }

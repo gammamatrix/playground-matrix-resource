@@ -8,7 +8,7 @@ parameters:
 
     paths:
         - config
-        - database
+        - routes
         - src
         - tests
 
