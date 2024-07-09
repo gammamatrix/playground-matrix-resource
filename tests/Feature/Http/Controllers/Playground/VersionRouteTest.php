@@ -13,8 +13,6 @@ use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionTestCase;
  */
 class VersionRouteTest extends VersionTestCase
 {
-    protected bool $load_migrations_package = true;
-
     protected bool $load_migrations_playground = true;
 
     protected bool $setUpUserForPlayground = true;

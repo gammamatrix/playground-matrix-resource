@@ -70,23 +70,23 @@ composer cloc
 ```
 ➜  playground-matrix-resource git:(develop) ✗ composer cloc
 > cloc --exclude-dir=node_modules,output,vendor .
-     517 text files.
+     747 text files.
      441 unique files.
-      78 files ignored.
+     308 files ignored.
 
-github.com/AlDanial/cloc v 1.98  T=0.56 s (792.2 files/s, 121336.2 lines/s)
+github.com/AlDanial/cloc v 1.98  T=0.73 s (604.6 files/s, 92585.9 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 JSON                             3              0              0          23774
-PHP                            304           3394           4899          20150
+PHP                            304           3379           4899          20135
 YAML                            92              5              0          13943
 Blade                           36            159              7            865
-XML                              3              0              4            224
-Markdown                         2             37              0             67
+XML                              3              0              5            223
+Markdown                         2             37              0             86
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                           441           3598           4910          59035
+SUM:                           441           3583           4911          59038
 -------------------------------------------------------------------------------
 ```
 

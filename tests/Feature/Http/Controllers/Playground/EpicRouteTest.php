@@ -13,8 +13,6 @@ use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase;
  */
 class EpicRouteTest extends EpicTestCase
 {
-    protected bool $load_migrations_package = true;
-
     protected bool $load_migrations_playground = true;
 
     protected bool $setUpUserForPlayground = true;

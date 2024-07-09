@@ -16,8 +16,6 @@ use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketTestCase;
  */
 class TicketRouteTest extends TicketTestCase
 {
-    protected bool $load_migrations_package = true;
-
     protected bool $load_migrations_playground = true;
 
     protected bool $setUpUserForPlayground = true;
