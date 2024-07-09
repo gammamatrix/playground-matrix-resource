@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-07-06 16:52:11</timestamp>
+  <timestamp>2024-07-09 02:02:10</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>250</methodCount>
+    <methodCount>249</methodCount>
     <crapMethodCount>0</crapMethodCount>
     <crapLoad>0</crapLoad>
-    <totalCrap>1216.5</totalCrap>
+    <totalCrap>1215.5</totalCrap>
     <crapMethodPercent>0</crapMethodPercent>
   </stats>
   <methods>
@@ -2747,17 +2747,6 @@
       <fullMethod>about(): void</fullMethod>
       <crap>37</crap>
       <complexity>37</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource</package>
-      <className>Playground\Matrix\Resource\ServiceProvider</className>
-      <methodName>version</methodName>
-      <methodSignature>version(): string</methodSignature>
-      <fullMethod>version(): string</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
