@@ -17,20 +17,21 @@ class StoreRequest extends BaseStoreRequest
      * @var array<string, string|array<mixed>>
      */
     public const RULES = [
+        'matrix_type' => ['nullable', 'string'],
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
-        'matrix_type' => ['nullable', 'string'],
-        'matrix_id' => ['nullable', 'uuid'],
-        'start_at' => ['nullable', 'string'],
-        'planned_start_at' => ['nullable', 'string'],
-        'end_at' => ['nullable', 'string'],
-        'planned_end_at' => ['nullable', 'string'],
         'canceled_at' => ['nullable', 'string'],
         'closed_at' => ['nullable', 'string'],
         'embargo_at' => ['nullable', 'string'],
+        'planned_end_at' => ['nullable', 'string'],
+        'planned_start_at' => ['nullable', 'string'],
         'postponed_at' => ['nullable', 'string'],
+        'published_at' => ['nullable', 'string'],
+        'resolved_at' => ['nullable', 'string'],
         'resumed_at' => ['nullable', 'string'],
         'suspended_at' => ['nullable', 'string'],
+        'timer_end_at' => ['nullable', 'string'],
+        'timer_start_at' => ['nullable', 'string'],
         'gids' => ['integer'],
         'po' => ['integer'],
         'pg' => ['integer'],
@@ -58,15 +59,21 @@ class StoreRequest extends BaseStoreRequest
         'closed' => ['boolean'],
         'completed' => ['boolean'],
         'cron' => ['boolean'],
+        'featured' => ['boolean'],
         'flagged' => ['boolean'],
         'internal' => ['boolean'],
         'locked' => ['boolean'],
         'pending' => ['boolean'],
         'planned' => ['boolean'],
+        'prioritized' => ['boolean'],
         'problem' => ['boolean'],
+        'published' => ['boolean'],
+        'released' => ['boolean'],
         'retired' => ['boolean'],
+        'special' => ['boolean'],
         'suspended' => ['boolean'],
         'unknown' => ['boolean'],
+        'locale' => ['string'],
         'label' => ['string'],
         'title' => ['string', 'required'],
         'byline' => ['string'],
@@ -86,6 +93,29 @@ class StoreRequest extends BaseStoreRequest
         'sources' => ['nullable', 'array'],
         '_return_url' => ['nullable', 'url'],
     ];
+
+    protected string $slug_table = 'matrix_matrices';
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        $rules = parent::rules();
+
+        /**
+         * @var array<string, bool> $revisions
+         */
+        $revisions = config('playground-matrix-resource.revisions');
+
+        if (! empty($revisions['optional'])) {
+            $rules['revision'] = 'bool';
+        }
+
+        return $rules;
+    }
 
     /**
      * Prepare the data for validation.

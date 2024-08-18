@@ -54,7 +54,7 @@ class TestCase extends BaseTestCase
         'module_slug' => 'matrix',
         'privilege' => 'playground-matrix-resource:',
         'table' => '',
-        'view' => 'playground.matrix.resource::',
+        'view' => 'playground-matrix-resource::',
     ];
 
     /**

@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\BoardController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\BoardPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BoardTestCase
  */
-#[CoversClass(BoardController::class)]
-#[CoversClass(BoardPolicy::class)]
-#[CoversClass(Requests\Board\CreateRequest::class)]
-#[CoversClass(Requests\Board\DestroyRequest::class)]
-#[CoversClass(Requests\Board\EditRequest::class)]
-#[CoversClass(Requests\Board\IndexRequest::class)]
-#[CoversClass(Requests\Board\LockRequest::class)]
-#[CoversClass(Requests\Board\RestoreRequest::class)]
-#[CoversClass(Requests\Board\ShowRequest::class)]
-#[CoversClass(Requests\Board\StoreRequest::class)]
-#[CoversClass(Requests\Board\UnlockRequest::class)]
-#[CoversClass(Requests\Board\UpdateRequest::class)]
-#[CoversClass(Resources\Board::class)]
-#[CoversClass(Resources\BoardCollection::class)]
 class BoardTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Board::class;
@@ -57,11 +37,11 @@ class BoardTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'board_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'board_type',
         'backlog_id',
         'epic_id',
         'flow_id',
@@ -80,20 +60,18 @@ class BoardTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
-        'fixed_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
-        'resumed_at',
         'resolved_at',
+        'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -121,20 +99,21 @@ class BoardTestCase extends TestCase
         'closed',
         'completed',
         'cron',
-        'duplicate',
-        'fixed',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
         'published',
         'released',
         'retired',
-        'resolved',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -152,6 +131,7 @@ class BoardTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

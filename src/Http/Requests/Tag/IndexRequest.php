@@ -18,8 +18,8 @@ class IndexRequest extends BaseIndexRequest
      */
     protected array $paginationDates = [
         'created_at' => ['column' => 'created_at', 'label' => 'Created at', 'nullable' => true],
-        'deleted_at' => ['column' => 'deleted_at', 'label' => 'Deleted at', 'nullable' => true],
         'updated_at' => ['column' => 'updated_at', 'label' => 'Updated at', 'nullable' => true],
+        'deleted_at' => ['column' => 'deleted_at', 'label' => 'Deleted at', 'nullable' => true],
     ];
 
     /**
@@ -27,10 +27,13 @@ class IndexRequest extends BaseIndexRequest
      */
     protected array $paginationFlags = [
         'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'icon' => 'fa-regular fa-clock'],
+        'featured' => ['column' => 'featured', 'label' => 'Featured', 'icon' => 'fa-solid fa-star text-warning'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'icon' => 'fa-solid fa-flag'],
         'internal' => ['column' => 'internal', 'label' => 'Internal', 'icon' => 'fa-solid fa-server'],
         'locked' => ['column' => 'locked', 'label' => 'Locked', 'icon' => 'fa-solid fa-lock text-warning'],
         'retired' => ['column' => 'retired', 'label' => 'Retired', 'icon' => 'fa-solid fa-chair text-success'],
+        'special' => ['column' => 'special', 'label' => 'Special', 'icon' => 'fa-solid fa-star text-success'],
         'unknown' => ['column' => 'unknown', 'label' => 'Unknown', 'icon' => 'fa-solid fa-question text-warning'],
     ];
 
@@ -38,17 +41,20 @@ class IndexRequest extends BaseIndexRequest
      * @var array<string, array<string, mixed>>
      */
     protected array $paginationIds = [
+        'id' => ['column' => 'id', 'label' => 'ID', 'type' => 'string', 'nullable' => true],
+        'tag_type' => ['column' => 'tag_type', 'label' => 'Tag Type', 'type' => 'string', 'nullable' => true],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created by id', 'type' => 'uuid', 'nullable' => true],
         'modified_by_id' => ['column' => 'modified_by_id', 'label' => 'Modified by id', 'type' => 'uuid', 'nullable' => true],
         'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'uuid', 'nullable' => true],
+        'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'uuid', 'nullable' => true],
         'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'uuid', 'nullable' => true],
-        'tag_type' => ['column' => 'tag_type', 'label' => 'Tag type', 'type' => 'string', 'nullable' => true],
     ];
 
     /**
      * @var array<string, array<string, mixed>>
      */
     protected array $paginationColumns = [
+        'locale' => ['column' => 'locale', 'label' => 'Locale', 'type' => 'string', 'nullable' => true],
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string', 'nullable' => true],
         'title' => ['column' => 'title', 'label' => 'Title', 'type' => 'string', 'nullable' => true],
         'byline' => ['column' => 'byline', 'label' => 'Byline', 'type' => 'string', 'nullable' => true],
@@ -64,11 +70,12 @@ class IndexRequest extends BaseIndexRequest
      * @var array<string, array<string, mixed>>
      */
     protected array $sortable = [
+        'id' => ['column' => 'id', 'label' => 'ID', 'type' => 'string'],
+        'tag_type' => ['column' => 'tag_type', 'label' => 'Tag Type', 'type' => 'string'],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created by id', 'type' => 'string'],
         'modified_by_id' => ['column' => 'modified_by_id', 'label' => 'Modified by id', 'type' => 'string'],
         'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'string'],
         'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'string'],
-        'tag_type' => ['column' => 'tag_type', 'label' => 'Tag type', 'type' => 'string'],
         'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'string'],
         'created_at' => ['column' => 'created_at', 'label' => 'Created At', 'type' => 'string'],
         'updated_at' => ['column' => 'updated_at', 'label' => 'Updated At', 'type' => 'string'],
@@ -96,11 +103,15 @@ class IndexRequest extends BaseIndexRequest
         'latitude' => ['column' => 'latitude', 'label' => 'Latitude', 'type' => 'float'],
         'longitude' => ['column' => 'longitude', 'label' => 'Longitude', 'type' => 'float'],
         'active' => ['column' => 'active', 'label' => 'Active', 'type' => 'boolean'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'type' => 'boolean'],
+        'featured' => ['column' => 'featured', 'label' => 'Featured', 'type' => 'boolean'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'type' => 'boolean'],
         'internal' => ['column' => 'internal', 'label' => 'Internal', 'type' => 'boolean'],
         'locked' => ['column' => 'locked', 'label' => 'Locked', 'type' => 'boolean'],
         'retired' => ['column' => 'retired', 'label' => 'Retired', 'type' => 'boolean'],
+        'special' => ['column' => 'special', 'label' => 'Special', 'type' => 'boolean'],
         'unknown' => ['column' => 'unknown', 'label' => 'Unknown', 'type' => 'boolean'],
+        'locale' => ['column' => 'locale', 'label' => 'Locale', 'type' => 'string'],
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string'],
         'title' => ['column' => 'title', 'label' => 'Title', 'type' => 'string'],
         'byline' => ['column' => 'byline', 'label' => 'Byline', 'type' => 'string'],

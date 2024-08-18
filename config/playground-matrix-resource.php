@@ -11,9 +11,9 @@ declare(strict_types=1);
 return [
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | About Information
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     | By default, information will be displayed about this package when using:
     |
@@ -24,9 +24,9 @@ return [
     'about' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ABOUT', true),
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Loading
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     | By default, translations and views are loaded.
     |
@@ -35,14 +35,14 @@ return [
     'load' => [
         'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
         'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
-        'translations' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_TRANSLATIONS', false),
+        'translations' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_TRANSLATIONS', true),
         'views' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_VIEWS', true),
     ],
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Middleware
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     |
     */
@@ -54,9 +54,9 @@ return [
     ],
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Policies
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     |
     */
@@ -81,9 +81,9 @@ return [
     ],
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Routes
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     |
     */
@@ -109,9 +109,9 @@ return [
     ],
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Sitemap
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     |
     */
@@ -124,9 +124,9 @@ return [
     ],
 
     /*
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     | Templates
-    |---------------------------------------------------------------------------
+    |--------------------------------------------------------------------------
     |
     |
     */
@@ -194,56 +194,8 @@ return [
             'playground-matrix-resource:team:viewAny',
             'playground-matrix-resource:ticket:view',
             'playground-matrix-resource:ticket:viewAny',
-            'playground-matrix-resource:ticket:create',
-            'playground-matrix-resource:ticket:edit',
-            'playground-matrix-resource:ticket:store',
-            'playground-matrix-resource:ticket:update',
             'playground-matrix-resource:version:view',
             'playground-matrix-resource:version:viewAny',
         ],
-        // 'guest' => [
-        //     'deny',
-        // ],
-        // 'guest' => [
-        //     'app:view',
-
-        //     'playground:view',
-
-        //     'playground-auth:logout',
-        //     'playground-auth:reset-password',
-
-        //     'playground-matrix-resource:backlog:view',
-        //     'playground-matrix-resource:backlog:viewAny',
-        //     'playground-matrix-resource:board:view',
-        //     'playground-matrix-resource:board:viewAny',
-        //     'playground-matrix-resource:epic:view',
-        //     'playground-matrix-resource:epic:viewAny',
-        //     'playground-matrix-resource:flow:view',
-        //     'playground-matrix-resource:flow:viewAny',
-        //     'playground-matrix-resource:matrix:view',
-        //     'playground-matrix-resource:matrix:viewAny',
-        //     'playground-matrix-resource:milestone:view',
-        //     'playground-matrix-resource:milestone:viewAny',
-        //     'playground-matrix-resource:note:view',
-        //     'playground-matrix-resource:note:viewAny',
-        //     'playground-matrix-resource:project:view',
-        //     'playground-matrix-resource:project:viewAny',
-        //     'playground-matrix-resource:release:view',
-        //     'playground-matrix-resource:release:viewAny',
-        //     'playground-matrix-resource:roadmap:view',
-        //     'playground-matrix-resource:roadmap:viewAny',
-        //     'playground-matrix-resource:source:view',
-        //     'playground-matrix-resource:source:viewAny',
-        //     'playground-matrix-resource:sprint:view',
-        //     'playground-matrix-resource:sprint:viewAny',
-        //     'playground-matrix-resource:tag:view',
-        //     'playground-matrix-resource:tag:viewAny',
-        //     'playground-matrix-resource:team:view',
-        //     'playground-matrix-resource:team:viewAny',
-        //     'playground-matrix-resource:ticket:view',
-        //     'playground-matrix-resource:ticket:viewAny',
-        //     'playground-matrix-resource:version:view',
-        //     'playground-matrix-resource:version:viewAny',
-        // ],
     ],
 ];

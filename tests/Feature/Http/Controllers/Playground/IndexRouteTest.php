@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground;
 
 use Playground\Models\User;
@@ -14,8 +14,6 @@ use Tests\Feature\Playground\Matrix\Resource\TestCase;
  */
 class IndexRouteTest extends TestCase
 {
-    protected bool $load_migrations_playground = true;
-
     protected bool $setUpUserForPlayground = true;
 
     public function test_guest_cannot_render_index_view(): void

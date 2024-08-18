@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\RoadmapController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\RoadmapPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapTestCase
  */
-#[CoversClass(RoadmapController::class)]
-#[CoversClass(RoadmapPolicy::class)]
-#[CoversClass(Requests\Roadmap\CreateRequest::class)]
-#[CoversClass(Requests\Roadmap\DestroyRequest::class)]
-#[CoversClass(Requests\Roadmap\EditRequest::class)]
-#[CoversClass(Requests\Roadmap\IndexRequest::class)]
-#[CoversClass(Requests\Roadmap\LockRequest::class)]
-#[CoversClass(Requests\Roadmap\RestoreRequest::class)]
-#[CoversClass(Requests\Roadmap\ShowRequest::class)]
-#[CoversClass(Requests\Roadmap\StoreRequest::class)]
-#[CoversClass(Requests\Roadmap\UnlockRequest::class)]
-#[CoversClass(Requests\Roadmap\UpdateRequest::class)]
-#[CoversClass(Resources\Roadmap::class)]
-#[CoversClass(Resources\RoadmapCollection::class)]
 class RoadmapTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Roadmap::class;
@@ -57,11 +37,11 @@ class RoadmapTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'roadmap_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'roadmap_type',
         'backlog_id',
         'board_id',
         'epic_id',
@@ -80,18 +60,18 @@ class RoadmapTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
+        'resolved_at',
         'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -119,16 +99,21 @@ class RoadmapTestCase extends TestCase
         'closed',
         'completed',
         'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
         'published',
         'released',
+        'retired',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -146,6 +131,7 @@ class RoadmapTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

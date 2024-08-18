@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\EpicController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\EpicPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase
  */
-#[CoversClass(EpicController::class)]
-#[CoversClass(EpicPolicy::class)]
-#[CoversClass(Requests\Epic\CreateRequest::class)]
-#[CoversClass(Requests\Epic\DestroyRequest::class)]
-#[CoversClass(Requests\Epic\EditRequest::class)]
-#[CoversClass(Requests\Epic\IndexRequest::class)]
-#[CoversClass(Requests\Epic\LockRequest::class)]
-#[CoversClass(Requests\Epic\RestoreRequest::class)]
-#[CoversClass(Requests\Epic\ShowRequest::class)]
-#[CoversClass(Requests\Epic\StoreRequest::class)]
-#[CoversClass(Requests\Epic\UnlockRequest::class)]
-#[CoversClass(Requests\Epic\UpdateRequest::class)]
-#[CoversClass(Resources\Epic::class)]
-#[CoversClass(Resources\EpicCollection::class)]
 class EpicTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Epic::class;
@@ -57,11 +37,11 @@ class EpicTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'epic_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'epic_type',
         'backlog_id',
         'board_id',
         'flow_id',
@@ -80,20 +60,18 @@ class EpicTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
-        'fixed_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
-        'resumed_at',
         'resolved_at',
+        'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -121,20 +99,21 @@ class EpicTestCase extends TestCase
         'closed',
         'completed',
         'cron',
-        'duplicate',
-        'fixed',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
         'published',
         'released',
         'retired',
-        'resolved',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -152,6 +131,7 @@ class EpicTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

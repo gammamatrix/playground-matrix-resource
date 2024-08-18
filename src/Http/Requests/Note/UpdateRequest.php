@@ -17,9 +17,9 @@ class UpdateRequest extends BaseUpdateRequest
      * @var array<string, string|array<mixed>>
      */
     public const RULES = [
+        'note_type' => ['nullable', 'string'],
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
-        'note_type' => ['nullable', 'string'],
         'matrix_id' => ['nullable', 'uuid'],
         'tag_id' => ['nullable', 'uuid'],
         'gids' => ['integer'],
@@ -48,13 +48,22 @@ class UpdateRequest extends BaseUpdateRequest
         'canceled' => ['boolean'],
         'closed' => ['boolean'],
         'completed' => ['boolean'],
+        'cron' => ['boolean'],
+        'featured' => ['boolean'],
         'flagged' => ['boolean'],
         'internal' => ['boolean'],
         'locked' => ['boolean'],
         'pending' => ['boolean'],
         'planned' => ['boolean'],
+        'prioritized' => ['boolean'],
         'problem' => ['boolean'],
+        'published' => ['boolean'],
+        'released' => ['boolean'],
+        'retired' => ['boolean'],
+        'special' => ['boolean'],
+        'suspended' => ['boolean'],
         'unknown' => ['boolean'],
+        'locale' => ['string'],
         'label' => ['string'],
         'title' => ['string', 'required'],
         'byline' => ['string'],
@@ -74,6 +83,29 @@ class UpdateRequest extends BaseUpdateRequest
         'sources' => ['nullable', 'array'],
         '_return_url' => ['nullable', 'url'],
     ];
+
+    protected string $slug_table = 'matrix_notes';
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        $rules = parent::rules();
+
+        /**
+         * @var array<string, bool> $revisions
+         */
+        $revisions = config('playground-matrix-resource.revisions');
+
+        if (! empty($revisions['optional'])) {
+            $rules['revision'] = 'bool';
+        }
+
+        return $rules;
+    }
 
     /**
      * Prepare the data for validation.

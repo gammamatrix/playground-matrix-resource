@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\TagController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\TagPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TagTestCase
  */
-#[CoversClass(TagController::class)]
-#[CoversClass(TagPolicy::class)]
-#[CoversClass(Requests\Tag\CreateRequest::class)]
-#[CoversClass(Requests\Tag\DestroyRequest::class)]
-#[CoversClass(Requests\Tag\EditRequest::class)]
-#[CoversClass(Requests\Tag\IndexRequest::class)]
-#[CoversClass(Requests\Tag\LockRequest::class)]
-#[CoversClass(Requests\Tag\RestoreRequest::class)]
-#[CoversClass(Requests\Tag\ShowRequest::class)]
-#[CoversClass(Requests\Tag\StoreRequest::class)]
-#[CoversClass(Requests\Tag\UnlockRequest::class)]
-#[CoversClass(Requests\Tag\UpdateRequest::class)]
-#[CoversClass(Resources\Tag::class)]
-#[CoversClass(Resources\TagCollection::class)]
 class TagTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Tag::class;
@@ -57,11 +37,11 @@ class TagTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'tag_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'tag_type',
         'matrix_id',
         'created_at',
         'updated_at',
@@ -89,11 +69,15 @@ class TagTestCase extends TestCase
         'latitude',
         'longitude',
         'active',
+        'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'retired',
+        'special',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',

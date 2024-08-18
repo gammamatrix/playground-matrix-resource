@@ -17,9 +17,9 @@ class StoreRequest extends BaseStoreRequest
      * @var array<string, string|array<mixed>>
      */
     public const RULES = [
+        'tag_type' => ['nullable', 'string'],
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
-        'tag_type' => ['nullable', 'string'],
         'matrix_id' => ['nullable', 'uuid'],
         'gids' => ['integer'],
         'po' => ['integer'],
@@ -44,11 +44,15 @@ class StoreRequest extends BaseStoreRequest
         'latitude' => ['nullable', 'numeric'],
         'longitude' => ['nullable', 'numeric'],
         'active' => ['boolean'],
+        'cron' => ['boolean'],
+        'featured' => ['boolean'],
         'flagged' => ['boolean'],
         'internal' => ['boolean'],
         'locked' => ['boolean'],
         'retired' => ['boolean'],
+        'special' => ['boolean'],
         'unknown' => ['boolean'],
+        'locale' => ['string'],
         'label' => ['string'],
         'title' => ['string', 'required'],
         'byline' => ['string'],
@@ -68,6 +72,29 @@ class StoreRequest extends BaseStoreRequest
         'sources' => ['nullable', 'array'],
         '_return_url' => ['nullable', 'url'],
     ];
+
+    protected string $slug_table = 'matrix_tags';
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        $rules = parent::rules();
+
+        /**
+         * @var array<string, bool> $revisions
+         */
+        $revisions = config('playground-matrix-resource.revisions');
+
+        if (! empty($revisions['optional'])) {
+            $rules['revision'] = 'bool';
+        }
+
+        return $rules;
+    }
 
     /**
      * Prepare the data for validation.

@@ -94,7 +94,7 @@ class ProjectController extends Controller
     /**
      * Edit the Project resource in storage.
      *
-     * @route GET /resource/matrix/projects/edit playground.matrix.resource.projects.edit
+     * @route GET /resource/matrix/projects/edit/{project} playground.matrix.resource.projects.edit
      */
     public function edit(
         Project $project,
@@ -143,7 +143,7 @@ class ProjectController extends Controller
     /**
      * Remove the Project resource from storage.
      *
-     * @route DELETE /resource/matrix/{project} playground.matrix.resource.projects.destroy
+     * @route DELETE /resource/matrix/projects/{project} playground.matrix.resource.projects.destroy
      */
     public function destroy(
         Project $project,
@@ -180,7 +180,7 @@ class ProjectController extends Controller
     /**
      * Lock the Project resource in storage.
      *
-     * @route PUT /resource/matrix/{project} playground.matrix.resource.projects.lock
+     * @route PUT /resource/matrix/projects/{project} playground.matrix.resource.projects.lock
      */
     public function lock(
         Project $project,
@@ -227,7 +227,7 @@ class ProjectController extends Controller
     /**
      * Display a listing of Project resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.projects
+     * @route GET /resource/matrix/projects playground.matrix.resource.projects
      */
     public function index(
         Requests\Project\IndexRequest $request
@@ -299,7 +299,7 @@ class ProjectController extends Controller
     /**
      * Restore the Project resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{project} playground.matrix.resource.projects.restore
+     * @route PUT /resource/matrix/projects/restore/{project} playground.matrix.resource.projects.restore
      */
     public function restore(
         Project $project,
@@ -337,7 +337,7 @@ class ProjectController extends Controller
     /**
      * Display the Project resource.
      *
-     * @route GET /resource/matrix/{project} playground.matrix.resource.projects.show
+     * @route GET /resource/matrix/projects/{project} playground.matrix.resource.projects.show
      */
     public function show(
         Project $project,
@@ -376,7 +376,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created API Project resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.projects.post
+     * @route POST /resource/matrix/projects playground.matrix.resource.projects.post
      */
     public function store(
         Requests\Project\StoreRequest $request
@@ -415,7 +415,7 @@ class ProjectController extends Controller
     /**
      * Unlock the Project resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{project} playground.matrix.resource.projects.unlock
+     * @route DELETE /resource/matrix/projects/lock/{project} playground.matrix.resource.projects.unlock
      */
     public function unlock(
         Project $project,
@@ -455,7 +455,7 @@ class ProjectController extends Controller
     /**
      * Update the Project resource in storage.
      *
-     * @route PATCH /resource/matrix/{project} playground.matrix.resource.projects.patch
+     * @route PATCH /resource/matrix/projects/{project} playground.matrix.resource.projects.patch
      */
     public function update(
         Project $project,

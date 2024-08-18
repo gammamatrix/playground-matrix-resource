@@ -94,7 +94,7 @@ class NoteController extends Controller
     /**
      * Edit the Note resource in storage.
      *
-     * @route GET /resource/matrix/notes/edit playground.matrix.resource.notes.edit
+     * @route GET /resource/matrix/notes/edit/{note} playground.matrix.resource.notes.edit
      */
     public function edit(
         Note $note,
@@ -143,7 +143,7 @@ class NoteController extends Controller
     /**
      * Remove the Note resource from storage.
      *
-     * @route DELETE /resource/matrix/{note} playground.matrix.resource.notes.destroy
+     * @route DELETE /resource/matrix/notes/{note} playground.matrix.resource.notes.destroy
      */
     public function destroy(
         Note $note,
@@ -180,7 +180,7 @@ class NoteController extends Controller
     /**
      * Lock the Note resource in storage.
      *
-     * @route PUT /resource/matrix/{note} playground.matrix.resource.notes.lock
+     * @route PUT /resource/matrix/notes/{note} playground.matrix.resource.notes.lock
      */
     public function lock(
         Note $note,
@@ -227,7 +227,7 @@ class NoteController extends Controller
     /**
      * Display a listing of Note resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.notes
+     * @route GET /resource/matrix/notes playground.matrix.resource.notes
      */
     public function index(
         Requests\Note\IndexRequest $request
@@ -299,7 +299,7 @@ class NoteController extends Controller
     /**
      * Restore the Note resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{note} playground.matrix.resource.notes.restore
+     * @route PUT /resource/matrix/notes/restore/{note} playground.matrix.resource.notes.restore
      */
     public function restore(
         Note $note,
@@ -337,7 +337,7 @@ class NoteController extends Controller
     /**
      * Display the Note resource.
      *
-     * @route GET /resource/matrix/{note} playground.matrix.resource.notes.show
+     * @route GET /resource/matrix/notes/{note} playground.matrix.resource.notes.show
      */
     public function show(
         Note $note,
@@ -376,7 +376,7 @@ class NoteController extends Controller
     /**
      * Store a newly created API Note resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.notes.post
+     * @route POST /resource/matrix/notes playground.matrix.resource.notes.post
      */
     public function store(
         Requests\Note\StoreRequest $request
@@ -415,7 +415,7 @@ class NoteController extends Controller
     /**
      * Unlock the Note resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{note} playground.matrix.resource.notes.unlock
+     * @route DELETE /resource/matrix/notes/lock/{note} playground.matrix.resource.notes.unlock
      */
     public function unlock(
         Note $note,
@@ -455,7 +455,7 @@ class NoteController extends Controller
     /**
      * Update the Note resource in storage.
      *
-     * @route PATCH /resource/matrix/{note} playground.matrix.resource.notes.patch
+     * @route PATCH /resource/matrix/notes/{note} playground.matrix.resource.notes.patch
      */
     public function update(
         Note $note,

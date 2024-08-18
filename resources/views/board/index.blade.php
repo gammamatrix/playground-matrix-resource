@@ -1,77 +1,413 @@
 <?php
-$sort = [];
-$filters = [];
-$validated = [];
-// $paginator = null;
+$sort = empty($sort) || ! is_array($sort) ? [] : $sort;
+
+$filters = empty($filters) || ! is_array($filters) ? [] : $filters;
+
+$validated = empty($validated) || ! is_array($validated) ? [] : $validated;
+
+$columnsViewable = [
+    'board_type' => [
+        'hide-sm' => false,
+        'label' => 'Board Type',
+    ],
+    'created_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Created by id',
+    ],
+    'modified_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Modified by id',
+    ],
+    'owned_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Owned by id',
+    ],
+    'parent_id' => [
+        'hide-sm' => true,
+        'label' => 'Parent id',
+    ],
+    'backlog_id' => [
+        'hide-sm' => true,
+        'label' => 'Backlog id',
+    ],
+    'epic_id' => [
+        'hide-sm' => true,
+        'label' => 'Epic id',
+    ],
+    'flow_id' => [
+        'hide-sm' => true,
+        'label' => 'Flow id',
+    ],
+    'matrix_id' => [
+        'hide-sm' => true,
+        'label' => 'Matrix id',
+    ],
+    'milestone_id' => [
+        'hide-sm' => true,
+        'label' => 'Milestone id',
+    ],
+    'note_id' => [
+        'hide-sm' => true,
+        'label' => 'Note id',
+    ],
+    'project_id' => [
+        'hide-sm' => true,
+        'label' => 'Project id',
+    ],
+    'release_id' => [
+        'hide-sm' => true,
+        'label' => 'Release id',
+    ],
+    'roadmap_id' => [
+        'hide-sm' => true,
+        'label' => 'Roadmap id',
+    ],
+    'source_id' => [
+        'hide-sm' => true,
+        'label' => 'Source id',
+    ],
+    'sprint_id' => [
+        'hide-sm' => true,
+        'label' => 'Sprint id',
+    ],
+    'tag_id' => [
+        'hide-sm' => true,
+        'label' => 'Tag id',
+    ],
+    'team_id' => [
+        'hide-sm' => true,
+        'label' => 'Team id',
+    ],
+    'ticket_id' => [
+        'hide-sm' => true,
+        'label' => 'Ticket id',
+    ],
+    'version_id' => [
+        'hide-sm' => true,
+        'label' => 'Version id',
+    ],
+    'locale' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Locale',
+    ],
+    'label' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Label',
+    ],
+    'title' => [
+        'hide-sm' => false,
+        'linkType' => 'id',
+        'linkRoute' => sprintf('%1$s.show', $meta['info']['model_route']),
+        'label' => 'Title',
+    ],
+    'byline' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Byline',
+    ],
+    'slug' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Slug',
+    ],
+    'url' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Url',
+    ],
+    'description' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Description',
+    ],
+    'introduction' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Introduction',
+    ],
+    'icon' => [
+        'hide-sm' => true,
+        'label' => 'Icon',
+    ],
+    'image' => [
+        'hide-sm' => true,
+        'label' => 'Image',
+    ],
+    'avatar' => [
+        'hide-sm' => true,
+        'label' => 'Avatar',
+    ],
+    'active' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Active',
+        'onTrueClass' => 'fa-solid fa-person-running',
+    ],
+    'canceled' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Canceled',
+        'onTrueClass' => 'fa-solid fa-ban text-warning',
+    ],
+    'closed' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Closed',
+        'onTrueClass' => 'fa-solid fa-xmark',
+    ],
+    'completed' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Completed',
+        'onTrueClass' => 'fa-solid fa-check',
+    ],
+    'cron' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Cron',
+        'onTrueClass' => 'fa-regular fa-clock',
+    ],
+    'featured' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Featured',
+        'onTrueClass' => 'fa-solid fa-star text-warning',
+    ],
+    'flagged' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Flagged',
+        'onTrueClass' => 'fa-solid fa-flag',
+    ],
+    'internal' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Internal',
+        'onTrueClass' => 'fa-solid fa-server',
+    ],
+    'locked' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Locked',
+        'onTrueClass' => 'fa-solid fa-lock text-warning',
+    ],
+    'pending' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Pending',
+        'onTrueClass' => 'fa-solid fa-circle-pause text-warning',
+    ],
+    'planned' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Planned',
+        'onTrueClass' => 'fa-solid fa-circle-pause text-success',
+    ],
+    'prioritized' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Prioritized',
+        'onTrueClass' => 'fa-solid fa-triangle-exclamation text-success',
+    ],
+    'problem' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Problem',
+        'onTrueClass' => 'fa-solid fa-triangle-exclamation text-danger',
+    ],
+    'published' => [
+        'hide-sm' => false,
+        'flag' => true,
+        'label' => 'Published',
+        'onTrueClass' => 'fa-solid fa-book',
+    ],
+    'released' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Released',
+        'onTrueClass' => 'fa-solid fa-dove',
+    ],
+    'retired' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Retired',
+        'onTrueClass' => 'fa-solid fa-chair text-success',
+    ],
+    'special' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Special',
+        'onTrueClass' => 'fa-solid fa-star text-success',
+    ],
+    'suspended' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Suspended',
+        'onTrueClass' => 'fa-solid fa-hand text-danger',
+    ],
+    'unknown' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Unknown',
+        'onTrueClass' => 'fa-solid fa-question text-warning',
+    ],
+    'created_at' => [
+        'hide-sm' => true,
+        'label' => 'Created at',
+    ],
+    'updated_at' => [
+        'hide-sm' => true,
+        'label' => 'Updated at',
+    ],
+    'canceled_at' => [
+        'hide-sm' => true,
+        'label' => 'Canceled at',
+    ],
+    'closed_at' => [
+        'hide-sm' => true,
+        'label' => 'Closed at',
+    ],
+    'embargo_at' => [
+        'hide-sm' => true,
+        'label' => 'Embargo at',
+    ],
+    'planned_end_at' => [
+        'hide-sm' => true,
+        'label' => 'Planned end at',
+    ],
+    'planned_start_at' => [
+        'hide-sm' => true,
+        'label' => 'Planned start at',
+    ],
+    'postponed_at' => [
+        'hide-sm' => true,
+        'label' => 'Postponed at',
+    ],
+    'published_at' => [
+        'hide-sm' => true,
+        'label' => 'Published at',
+    ],
+    'resolved_at' => [
+        'hide-sm' => true,
+        'label' => 'Resolved at',
+    ],
+    'resumed_at' => [
+        'hide-sm' => true,
+        'label' => 'Resumed at',
+    ],
+    'suspended_at' => [
+        'hide-sm' => true,
+        'label' => 'Suspended at',
+    ],
+    'timer_end_at' => [
+        'hide-sm' => true,
+        'label' => 'Timer end at',
+    ],
+    'timer_start_at' => [
+        'hide-sm' => true,
+        'label' => 'Timer start at',
+    ],
+    'gids' => [
+        'hide-sm' => true,
+        'label' => 'Gids',
+        'onTrueClass' => '',
+    ],
+    'po' => [
+        'hide-sm' => true,
+        'label' => 'Po',
+        'onTrueClass' => '',
+    ],
+    'pg' => [
+        'hide-sm' => true,
+        'label' => 'Pg',
+        'onTrueClass' => '',
+    ],
+    'pw' => [
+        'hide-sm' => true,
+        'label' => 'Pw',
+        'onTrueClass' => '',
+    ],
+    'only_admin' => [
+        'hide-sm' => true,
+        'label' => 'Only admin',
+        'onTrueClass' => 'fa-solid fa-user-gear',
+    ],
+    'only_user' => [
+        'hide-sm' => true,
+        'label' => 'Only user',
+        'onTrueClass' => 'fa-solid fa-user',
+    ],
+    'only_guest' => [
+        'hide-sm' => true,
+        'label' => 'Only guest',
+        'onTrueClass' => 'fa-solid fa-person-rays',
+    ],
+    'allow_public' => [
+        'hide-sm' => true,
+        'label' => 'Allow public',
+        'onTrueClass' => 'fa-solid fa-users-line',
+    ],
+    'status' => [
+        'hide-sm' => true,
+        'label' => 'Status',
+    ],
+    'rank' => [
+        'hide-sm' => true,
+        'label' => 'Rank',
+    ],
+    'size' => [
+        'hide-sm' => true,
+        'label' => 'Size',
+    ],
+];
+
+$columnsMobile = [
+    'title',
+    'board_type',
+    'slug',
+    'description',
+    'published',
+];
+
+$columnsStandard = [
+    'title',
+    'board_type',
+    'slug',
+    'label',
+    'description',
+    'published',
+    'revision',
+    'created_at',
+    'updated_at',
+];
+
+$viewableColumns = ! empty($validated['columns'])
+    && is_string($validated['columns'])
+    && in_array($validated['columns'], [
+        'all',
+        'standard',
+        'mobile',
+    ]) ? $validated['columns'] : 'standard';
+
+if ($viewableColumns === 'all') {
+    $columns = $columnsViewable;
+} elseif ($viewableColumns === 'mobile') {
+    $columns = Illuminate\Support\Arr::only($columnsViewable, $columnsMobile);
+} else {
+    $columns = Illuminate\Support\Arr::only($columnsViewable, $columnsStandard);
+}
+
 ?>
+
 @extends('playground::layouts.resource.index', [
-    // 'withTableColumns' => [
-    //     'label' => [
-    //         'linkType' => 'id',
-    //         // 'linkRoute' => sprintf('%1$s.id', $apiInfo['model_route']),
-    //         'label' => 'Title',
-    //     ],
-    //     'slug' => [
-    //         'hide-sm' => true,
-    //         // 'linkType' => 'slug',
-    //         // 'linkRoute' => sprintf('%1$s.slug', $apiInfo['model_route']),
-    //         'label' => 'Slug',
-    //     ],
-    //     'active' => [
-    //         'flag' => true,
-    //         'label' => 'Active',
-    //         'onTrueClass' => 'fas fa-check text-success',
-    //     ],
-    //     'locked' => [
-    //         'flag' => true,
-    //         'label' => 'Locked',
-    //         'onTrueClass' => 'fas fa-lock text-success',
-    //     ],
-    //     'published' => [
-    //         'flag' => true,
-    //         'label' => 'Published',
-    //         'onTrueClass' => 'fas fa-upload text-primary',
-    //     ],
-    //     'flagged' => [
-    //         'flag' => true,
-    //         'label' => 'Flagged',
-    //         'onTrueClass' => 'fas fa-flag text-warning',
-    //     ],
-    //     'allow_public' => [
-    //         'flag' => true,
-    //         'label' => 'Public',
-    //         // 'onFalseClass' => 'fas fa-user text-danger',
-    //         'onTrueClass' => 'fas fa-users text-success',
-    //     ],
-    //     'only_admin' => [
-    //         'flag' => true,
-    //         'label' => 'Admin Only',
-    //         // 'onFalseClass' => 'fas fa-user text-danger',
-    //         'onTrueClass' => 'fas fa-user-shield text-danger',
-    //     ],
-    //     'only_user' => [
-    //         'flag' => true,
-    //         'label' => 'User Only',
-    //         // 'onFalseClass' => 'fas fa-user text-danger',
-    //         'onTrueClass' => 'fas fa-user text-warning',
-    //     ],
-    //     'only_guest' => [
-    //         'flag' => true,
-    //         'label' => 'Guest Only',
-    //         // 'onFalseClass' => 'fas fa-user text-danger',
-    //         'onTrueClass' => 'fas fa-user text-secondary',
-    //     ],
-    //     'parent_id' => [
-    //         // 'linkType' => 'fk',
-    //         // 'accessor' => 'parent',
-    //         'property' => 'title',
-    //         // 'linkRoute' => 'cms.api.pages.id',
-    //         'label' => 'Parent',
-    //     ],
-    //     'description' => [
-    //         'hide-sm' => true,
-    //         'label' => 'Description',
-    //         'html' => true,
-    //     ],
-    // ],
+    'withTableColumns' => $columns,
 ])

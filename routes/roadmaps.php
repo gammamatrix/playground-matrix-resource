@@ -9,11 +9,23 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Matrix Routes: Roadmap
+| Matrix Resource Routes: Roadmap
 |--------------------------------------------------------------------------
 |
 |
 */
+
+Route::group([
+    'prefix' => 'api/matrix/roadmap',
+    'middleware' => config('playground-matrix-resource.middleware.default'),
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
+], function () {
+
+    Route::get('/{roadmap:slug}', [
+        'as' => 'playground.matrix.resource.roadmaps.slug',
+        'uses' => 'RoadmapController@show',
+    ])->where('slug', '[a-zA-Z0-9\-]+');
+});
 
 Route::group([
     'prefix' => 'resource/matrix/roadmaps',
@@ -22,6 +34,11 @@ Route::group([
 ], function () {
     Route::get('/', [
         'as' => 'playground.matrix.resource.roadmaps',
+        'uses' => 'RoadmapController@index',
+    ])->can('index', Playground\Matrix\Models\Roadmap::class);
+
+    Route::post('/index', [
+        'as' => 'playground.matrix.resource.roadmaps.index',
         'uses' => 'RoadmapController@index',
     ])->can('index', Playground\Matrix\Models\Roadmap::class);
 
@@ -35,8 +52,7 @@ Route::group([
     Route::get('/edit/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.edit',
         'uses' => 'RoadmapController@edit',
-    ])->whereUuid('roadmap')
-        ->can('edit', 'roadmap');
+    ])->whereUuid('roadmap')->can('edit', 'roadmap');
 
     // Route::get('/go/{id}', [
     //     'as' => 'playground.matrix.resource.roadmaps.go',
@@ -46,46 +62,29 @@ Route::group([
     Route::get('/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.show',
         'uses' => 'RoadmapController@show',
-    ])->whereUuid('roadmap')
-        ->can('detail', 'roadmap');
-
-    // Route::get('/{slug}', [
-    //     'as' => 'playground.matrix.resource.roadmaps.slug',
-    //     'uses' => 'RoadmapController@slug',
-    // ])->where('slug', '[a-zA-Z0-9\-]+');
-
-    // Route::post('/store', [
-    //     'as' => 'playground.matrix.resource.roadmaps.store',
-    //     'uses' => 'RoadmapController@store',
-    // ])->can('store', Playground\Matrix\Models\Roadmap::class);
+    ])->whereUuid('roadmap')->can('detail', 'roadmap');
 
     // API
 
     Route::put('/lock/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.lock',
         'uses' => 'RoadmapController@lock',
-    ])->whereUuid('roadmap')
-        ->can('lock', 'roadmap');
+    ])->whereUuid('roadmap')->can('lock', 'roadmap');
 
     Route::delete('/lock/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.unlock',
         'uses' => 'RoadmapController@unlock',
-    ])->whereUuid('roadmap')
-        ->can('unlock', 'roadmap');
+    ])->whereUuid('roadmap')->can('unlock', 'roadmap');
 
     Route::delete('/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.destroy',
         'uses' => 'RoadmapController@destroy',
-    ])->whereUuid('roadmap')
-        ->can('delete', 'roadmap')
-        ->withTrashed();
+    ])->whereUuid('roadmap')->can('delete', 'roadmap')->withTrashed();
 
     Route::put('/restore/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.restore',
         'uses' => 'RoadmapController@restore',
-    ])->whereUuid('roadmap')
-        ->can('restore', 'roadmap')
-        ->withTrashed();
+    ])->whereUuid('roadmap')->can('restore', 'roadmap')->withTrashed();
 
     Route::post('/', [
         'as' => 'playground.matrix.resource.roadmaps.post',

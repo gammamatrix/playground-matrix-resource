@@ -94,7 +94,7 @@ class EpicController extends Controller
     /**
      * Edit the Epic resource in storage.
      *
-     * @route GET /resource/matrix/epics/edit playground.matrix.resource.epics.edit
+     * @route GET /resource/matrix/epics/edit/{epic} playground.matrix.resource.epics.edit
      */
     public function edit(
         Epic $epic,
@@ -143,7 +143,7 @@ class EpicController extends Controller
     /**
      * Remove the Epic resource from storage.
      *
-     * @route DELETE /resource/matrix/{epic} playground.matrix.resource.epics.destroy
+     * @route DELETE /resource/matrix/epics/{epic} playground.matrix.resource.epics.destroy
      */
     public function destroy(
         Epic $epic,
@@ -180,7 +180,7 @@ class EpicController extends Controller
     /**
      * Lock the Epic resource in storage.
      *
-     * @route PUT /resource/matrix/{epic} playground.matrix.resource.epics.lock
+     * @route PUT /resource/matrix/epics/{epic} playground.matrix.resource.epics.lock
      */
     public function lock(
         Epic $epic,
@@ -227,7 +227,7 @@ class EpicController extends Controller
     /**
      * Display a listing of Epic resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.epics
+     * @route GET /resource/matrix/epics playground.matrix.resource.epics
      */
     public function index(
         Requests\Epic\IndexRequest $request
@@ -299,7 +299,7 @@ class EpicController extends Controller
     /**
      * Restore the Epic resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{epic} playground.matrix.resource.epics.restore
+     * @route PUT /resource/matrix/epics/restore/{epic} playground.matrix.resource.epics.restore
      */
     public function restore(
         Epic $epic,
@@ -337,7 +337,7 @@ class EpicController extends Controller
     /**
      * Display the Epic resource.
      *
-     * @route GET /resource/matrix/{epic} playground.matrix.resource.epics.show
+     * @route GET /resource/matrix/epics/{epic} playground.matrix.resource.epics.show
      */
     public function show(
         Epic $epic,
@@ -376,7 +376,7 @@ class EpicController extends Controller
     /**
      * Store a newly created API Epic resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.epics.post
+     * @route POST /resource/matrix/epics playground.matrix.resource.epics.post
      */
     public function store(
         Requests\Epic\StoreRequest $request
@@ -415,7 +415,7 @@ class EpicController extends Controller
     /**
      * Unlock the Epic resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{epic} playground.matrix.resource.epics.unlock
+     * @route DELETE /resource/matrix/epics/lock/{epic} playground.matrix.resource.epics.unlock
      */
     public function unlock(
         Epic $epic,
@@ -455,7 +455,7 @@ class EpicController extends Controller
     /**
      * Update the Epic resource in storage.
      *
-     * @route PATCH /resource/matrix/{epic} playground.matrix.resource.epics.patch
+     * @route PATCH /resource/matrix/epics/{epic} playground.matrix.resource.epics.patch
      */
     public function update(
         Epic $epic,

@@ -24,7 +24,6 @@ class FormRequest extends BaseFormRequest
      */
     public function authorize(): bool
     {
-        // return true;
         $user = $this->user();
 
         if (empty($user)) {

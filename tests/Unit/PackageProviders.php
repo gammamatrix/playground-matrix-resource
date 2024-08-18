@@ -11,8 +11,6 @@ namespace Tests\Unit\Playground\Matrix\Resource;
  */
 trait PackageProviders
 {
-    protected string $package_providers_dir = __DIR__;
-
     protected function getPackageProviders($app)
     {
         return [
