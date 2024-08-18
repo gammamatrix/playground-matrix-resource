@@ -94,7 +94,7 @@ class SourceController extends Controller
     /**
      * Edit the Source resource in storage.
      *
-     * @route GET /resource/matrix/sources/edit playground.matrix.resource.sources.edit
+     * @route GET /resource/matrix/sources/edit/{source} playground.matrix.resource.sources.edit
      */
     public function edit(
         Source $source,
@@ -143,7 +143,7 @@ class SourceController extends Controller
     /**
      * Remove the Source resource from storage.
      *
-     * @route DELETE /resource/matrix/{source} playground.matrix.resource.sources.destroy
+     * @route DELETE /resource/matrix/sources/{source} playground.matrix.resource.sources.destroy
      */
     public function destroy(
         Source $source,
@@ -180,7 +180,7 @@ class SourceController extends Controller
     /**
      * Lock the Source resource in storage.
      *
-     * @route PUT /resource/matrix/{source} playground.matrix.resource.sources.lock
+     * @route PUT /resource/matrix/sources/{source} playground.matrix.resource.sources.lock
      */
     public function lock(
         Source $source,
@@ -227,7 +227,7 @@ class SourceController extends Controller
     /**
      * Display a listing of Source resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.sources
+     * @route GET /resource/matrix/sources playground.matrix.resource.sources
      */
     public function index(
         Requests\Source\IndexRequest $request
@@ -299,7 +299,7 @@ class SourceController extends Controller
     /**
      * Restore the Source resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{source} playground.matrix.resource.sources.restore
+     * @route PUT /resource/matrix/sources/restore/{source} playground.matrix.resource.sources.restore
      */
     public function restore(
         Source $source,
@@ -337,7 +337,7 @@ class SourceController extends Controller
     /**
      * Display the Source resource.
      *
-     * @route GET /resource/matrix/{source} playground.matrix.resource.sources.show
+     * @route GET /resource/matrix/sources/{source} playground.matrix.resource.sources.show
      */
     public function show(
         Source $source,
@@ -376,7 +376,7 @@ class SourceController extends Controller
     /**
      * Store a newly created API Source resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.sources.post
+     * @route POST /resource/matrix/sources playground.matrix.resource.sources.post
      */
     public function store(
         Requests\Source\StoreRequest $request
@@ -415,7 +415,7 @@ class SourceController extends Controller
     /**
      * Unlock the Source resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{source} playground.matrix.resource.sources.unlock
+     * @route DELETE /resource/matrix/sources/lock/{source} playground.matrix.resource.sources.unlock
      */
     public function unlock(
         Source $source,
@@ -455,7 +455,7 @@ class SourceController extends Controller
     /**
      * Update the Source resource in storage.
      *
-     * @route PATCH /resource/matrix/{source} playground.matrix.resource.sources.patch
+     * @route PATCH /resource/matrix/sources/{source} playground.matrix.resource.sources.patch
      */
     public function update(
         Source $source,

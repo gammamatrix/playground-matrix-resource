@@ -24,6 +24,6 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource',
         'uses' => 'IndexController@index',
-    ])->can('view', Playground\Matrix\Models\Ticket::class);
+    ])->can('index', Playground\Matrix\Models\Matrix::class);
 
 });

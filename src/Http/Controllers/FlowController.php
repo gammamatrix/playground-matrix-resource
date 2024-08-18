@@ -94,7 +94,7 @@ class FlowController extends Controller
     /**
      * Edit the Flow resource in storage.
      *
-     * @route GET /resource/matrix/flows/edit playground.matrix.resource.flows.edit
+     * @route GET /resource/matrix/flows/edit/{flow} playground.matrix.resource.flows.edit
      */
     public function edit(
         Flow $flow,
@@ -143,7 +143,7 @@ class FlowController extends Controller
     /**
      * Remove the Flow resource from storage.
      *
-     * @route DELETE /resource/matrix/{flow} playground.matrix.resource.flows.destroy
+     * @route DELETE /resource/matrix/flows/{flow} playground.matrix.resource.flows.destroy
      */
     public function destroy(
         Flow $flow,
@@ -180,7 +180,7 @@ class FlowController extends Controller
     /**
      * Lock the Flow resource in storage.
      *
-     * @route PUT /resource/matrix/{flow} playground.matrix.resource.flows.lock
+     * @route PUT /resource/matrix/flows/{flow} playground.matrix.resource.flows.lock
      */
     public function lock(
         Flow $flow,
@@ -227,7 +227,7 @@ class FlowController extends Controller
     /**
      * Display a listing of Flow resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.flows
+     * @route GET /resource/matrix/flows playground.matrix.resource.flows
      */
     public function index(
         Requests\Flow\IndexRequest $request
@@ -299,7 +299,7 @@ class FlowController extends Controller
     /**
      * Restore the Flow resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{flow} playground.matrix.resource.flows.restore
+     * @route PUT /resource/matrix/flows/restore/{flow} playground.matrix.resource.flows.restore
      */
     public function restore(
         Flow $flow,
@@ -337,7 +337,7 @@ class FlowController extends Controller
     /**
      * Display the Flow resource.
      *
-     * @route GET /resource/matrix/{flow} playground.matrix.resource.flows.show
+     * @route GET /resource/matrix/flows/{flow} playground.matrix.resource.flows.show
      */
     public function show(
         Flow $flow,
@@ -376,7 +376,7 @@ class FlowController extends Controller
     /**
      * Store a newly created API Flow resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.flows.post
+     * @route POST /resource/matrix/flows playground.matrix.resource.flows.post
      */
     public function store(
         Requests\Flow\StoreRequest $request
@@ -415,7 +415,7 @@ class FlowController extends Controller
     /**
      * Unlock the Flow resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{flow} playground.matrix.resource.flows.unlock
+     * @route DELETE /resource/matrix/flows/lock/{flow} playground.matrix.resource.flows.unlock
      */
     public function unlock(
         Flow $flow,
@@ -455,7 +455,7 @@ class FlowController extends Controller
     /**
      * Update the Flow resource in storage.
      *
-     * @route PATCH /resource/matrix/{flow} playground.matrix.resource.flows.patch
+     * @route PATCH /resource/matrix/flows/{flow} playground.matrix.resource.flows.patch
      */
     public function update(
         Flow $flow,

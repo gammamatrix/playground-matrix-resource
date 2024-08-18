@@ -94,7 +94,7 @@ class TeamController extends Controller
     /**
      * Edit the Team resource in storage.
      *
-     * @route GET /resource/matrix/teams/edit playground.matrix.resource.teams.edit
+     * @route GET /resource/matrix/teams/edit/{team} playground.matrix.resource.teams.edit
      */
     public function edit(
         Team $team,
@@ -143,7 +143,7 @@ class TeamController extends Controller
     /**
      * Remove the Team resource from storage.
      *
-     * @route DELETE /resource/matrix/{team} playground.matrix.resource.teams.destroy
+     * @route DELETE /resource/matrix/teams/{team} playground.matrix.resource.teams.destroy
      */
     public function destroy(
         Team $team,
@@ -180,7 +180,7 @@ class TeamController extends Controller
     /**
      * Lock the Team resource in storage.
      *
-     * @route PUT /resource/matrix/{team} playground.matrix.resource.teams.lock
+     * @route PUT /resource/matrix/teams/{team} playground.matrix.resource.teams.lock
      */
     public function lock(
         Team $team,
@@ -227,7 +227,7 @@ class TeamController extends Controller
     /**
      * Display a listing of Team resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.teams
+     * @route GET /resource/matrix/teams playground.matrix.resource.teams
      */
     public function index(
         Requests\Team\IndexRequest $request
@@ -299,7 +299,7 @@ class TeamController extends Controller
     /**
      * Restore the Team resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{team} playground.matrix.resource.teams.restore
+     * @route PUT /resource/matrix/teams/restore/{team} playground.matrix.resource.teams.restore
      */
     public function restore(
         Team $team,
@@ -337,7 +337,7 @@ class TeamController extends Controller
     /**
      * Display the Team resource.
      *
-     * @route GET /resource/matrix/{team} playground.matrix.resource.teams.show
+     * @route GET /resource/matrix/teams/{team} playground.matrix.resource.teams.show
      */
     public function show(
         Team $team,
@@ -376,7 +376,7 @@ class TeamController extends Controller
     /**
      * Store a newly created API Team resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.teams.post
+     * @route POST /resource/matrix/teams playground.matrix.resource.teams.post
      */
     public function store(
         Requests\Team\StoreRequest $request
@@ -415,7 +415,7 @@ class TeamController extends Controller
     /**
      * Unlock the Team resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{team} playground.matrix.resource.teams.unlock
+     * @route DELETE /resource/matrix/teams/lock/{team} playground.matrix.resource.teams.unlock
      */
     public function unlock(
         Team $team,
@@ -455,7 +455,7 @@ class TeamController extends Controller
     /**
      * Update the Team resource in storage.
      *
-     * @route PATCH /resource/matrix/{team} playground.matrix.resource.teams.patch
+     * @route PATCH /resource/matrix/teams/{team} playground.matrix.resource.teams.patch
      */
     public function update(
         Team $team,

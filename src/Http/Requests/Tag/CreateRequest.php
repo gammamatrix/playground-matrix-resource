@@ -17,9 +17,9 @@ class CreateRequest extends FormRequest
      * @var array<string, string|array<mixed>>
      */
     public const RULES = [
+        'tag_type' => ['nullable', 'string'],
         'owned_by_id' => ['nullable', 'uuid'],
         'parent_id' => ['nullable', 'uuid'],
-        'tag_type' => ['nullable', 'string'],
         'matrix_id' => ['nullable', 'uuid'],
         'gids' => ['integer'],
         'po' => ['integer'],
@@ -44,11 +44,15 @@ class CreateRequest extends FormRequest
         'latitude' => ['nullable', 'numeric'],
         'longitude' => ['nullable', 'numeric'],
         'active' => ['boolean'],
+        'cron' => ['boolean'],
+        'featured' => ['boolean'],
         'flagged' => ['boolean'],
         'internal' => ['boolean'],
         'locked' => ['boolean'],
         'retired' => ['boolean'],
+        'special' => ['boolean'],
         'unknown' => ['boolean'],
+        'locale' => ['string'],
         'label' => ['string'],
         'title' => ['string'],
         'byline' => ['string'],

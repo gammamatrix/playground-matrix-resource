@@ -16,13 +16,14 @@
     </x-playground::forms.column>
 
     <x-playground::forms.column column="slug" label="SLUG" :autocomplete="false" :rules="[
+        'required' => !empty($_method) && 'patch' === $_method,
         'maxlength' => 255,
     ]" />
 
     <x-playground::forms.column column="backlog_type" label="Backlog Type" :rules="['maxlength' => 255]" />
 
     @if (!empty($parents))
-        <x-playground::forms.column-select column="parent_id" key="label" label="Parent Backlog" :records="$parents" />
+    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Backlog" :records="$parents"/>
     @endif
 
 </fieldset>

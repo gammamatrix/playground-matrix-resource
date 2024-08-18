@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\VersionController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\VersionPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionTestCase
  */
-#[CoversClass(VersionController::class)]
-#[CoversClass(VersionPolicy::class)]
-#[CoversClass(Requests\Version\CreateRequest::class)]
-#[CoversClass(Requests\Version\DestroyRequest::class)]
-#[CoversClass(Requests\Version\EditRequest::class)]
-#[CoversClass(Requests\Version\IndexRequest::class)]
-#[CoversClass(Requests\Version\LockRequest::class)]
-#[CoversClass(Requests\Version\RestoreRequest::class)]
-#[CoversClass(Requests\Version\ShowRequest::class)]
-#[CoversClass(Requests\Version\StoreRequest::class)]
-#[CoversClass(Requests\Version\UnlockRequest::class)]
-#[CoversClass(Requests\Version\UpdateRequest::class)]
-#[CoversClass(Resources\Version::class)]
-#[CoversClass(Resources\VersionCollection::class)]
 class VersionTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Version::class;
@@ -57,15 +37,31 @@ class VersionTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'version_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'version_type',
         'matrix_id',
+        'project_id',
+        'tag_id',
+        'team_id',
+        'ticket_id',
         'created_at',
         'updated_at',
         'deleted_at',
+        'canceled_at',
+        'closed_at',
+        'embargo_at',
+        'planned_end_at',
+        'planned_start_at',
+        'postponed_at',
+        'published_at',
+        'resolved_at',
+        'resumed_at',
+        'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -89,11 +85,27 @@ class VersionTestCase extends TestCase
         'latitude',
         'longitude',
         'active',
+        'canceled',
+        'closed',
+        'completed',
+        'cron',
+        'featured',
+        'fixed',
         'flagged',
         'internal',
         'locked',
+        'pending',
+        'planned',
+        'prioritized',
+        'problem',
+        'published',
+        'released',
+        'resolved',
         'retired',
+        'special',
+        'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',

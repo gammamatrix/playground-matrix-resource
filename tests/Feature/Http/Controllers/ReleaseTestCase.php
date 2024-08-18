@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\ReleaseController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\ReleasePolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ReleaseTestCase
  */
-#[CoversClass(ReleaseController::class)]
-#[CoversClass(ReleasePolicy::class)]
-#[CoversClass(Requests\Release\CreateRequest::class)]
-#[CoversClass(Requests\Release\DestroyRequest::class)]
-#[CoversClass(Requests\Release\EditRequest::class)]
-#[CoversClass(Requests\Release\IndexRequest::class)]
-#[CoversClass(Requests\Release\LockRequest::class)]
-#[CoversClass(Requests\Release\RestoreRequest::class)]
-#[CoversClass(Requests\Release\ShowRequest::class)]
-#[CoversClass(Requests\Release\StoreRequest::class)]
-#[CoversClass(Requests\Release\UnlockRequest::class)]
-#[CoversClass(Requests\Release\UpdateRequest::class)]
-#[CoversClass(Resources\Release::class)]
-#[CoversClass(Resources\ReleaseCollection::class)]
 class ReleaseTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Release::class;
@@ -57,11 +37,11 @@ class ReleaseTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'release_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'release_type',
         'backlog_id',
         'board_id',
         'epic_id',
@@ -80,18 +60,18 @@ class ReleaseTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
+        'resolved_at',
         'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -119,16 +99,21 @@ class ReleaseTestCase extends TestCase
         'closed',
         'completed',
         'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
         'published',
         'released',
+        'retired',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -146,6 +131,7 @@ class ReleaseTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

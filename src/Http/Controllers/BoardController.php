@@ -94,7 +94,7 @@ class BoardController extends Controller
     /**
      * Edit the Board resource in storage.
      *
-     * @route GET /resource/matrix/boards/edit playground.matrix.resource.boards.edit
+     * @route GET /resource/matrix/boards/edit/{board} playground.matrix.resource.boards.edit
      */
     public function edit(
         Board $board,
@@ -143,7 +143,7 @@ class BoardController extends Controller
     /**
      * Remove the Board resource from storage.
      *
-     * @route DELETE /resource/matrix/{board} playground.matrix.resource.boards.destroy
+     * @route DELETE /resource/matrix/boards/{board} playground.matrix.resource.boards.destroy
      */
     public function destroy(
         Board $board,
@@ -180,7 +180,7 @@ class BoardController extends Controller
     /**
      * Lock the Board resource in storage.
      *
-     * @route PUT /resource/matrix/{board} playground.matrix.resource.boards.lock
+     * @route PUT /resource/matrix/boards/{board} playground.matrix.resource.boards.lock
      */
     public function lock(
         Board $board,
@@ -227,7 +227,7 @@ class BoardController extends Controller
     /**
      * Display a listing of Board resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.boards
+     * @route GET /resource/matrix/boards playground.matrix.resource.boards
      */
     public function index(
         Requests\Board\IndexRequest $request
@@ -299,7 +299,7 @@ class BoardController extends Controller
     /**
      * Restore the Board resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{board} playground.matrix.resource.boards.restore
+     * @route PUT /resource/matrix/boards/restore/{board} playground.matrix.resource.boards.restore
      */
     public function restore(
         Board $board,
@@ -337,7 +337,7 @@ class BoardController extends Controller
     /**
      * Display the Board resource.
      *
-     * @route GET /resource/matrix/{board} playground.matrix.resource.boards.show
+     * @route GET /resource/matrix/boards/{board} playground.matrix.resource.boards.show
      */
     public function show(
         Board $board,
@@ -376,7 +376,7 @@ class BoardController extends Controller
     /**
      * Store a newly created API Board resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.boards.post
+     * @route POST /resource/matrix/boards playground.matrix.resource.boards.post
      */
     public function store(
         Requests\Board\StoreRequest $request
@@ -415,7 +415,7 @@ class BoardController extends Controller
     /**
      * Unlock the Board resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{board} playground.matrix.resource.boards.unlock
+     * @route DELETE /resource/matrix/boards/lock/{board} playground.matrix.resource.boards.unlock
      */
     public function unlock(
         Board $board,
@@ -455,7 +455,7 @@ class BoardController extends Controller
     /**
      * Update the Board resource in storage.
      *
-     * @route PATCH /resource/matrix/{board} playground.matrix.resource.boards.patch
+     * @route PATCH /resource/matrix/boards/{board} playground.matrix.resource.boards.patch
      */
     public function update(
         Board $board,

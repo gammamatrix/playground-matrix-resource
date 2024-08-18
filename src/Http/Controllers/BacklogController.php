@@ -94,7 +94,7 @@ class BacklogController extends Controller
     /**
      * Edit the Backlog resource in storage.
      *
-     * @route GET /resource/matrix/backlogs/edit playground.matrix.resource.backlogs.edit
+     * @route GET /resource/matrix/backlogs/edit/{backlog} playground.matrix.resource.backlogs.edit
      */
     public function edit(
         Backlog $backlog,
@@ -143,7 +143,7 @@ class BacklogController extends Controller
     /**
      * Remove the Backlog resource from storage.
      *
-     * @route DELETE /resource/matrix/{backlog} playground.matrix.resource.backlogs.destroy
+     * @route DELETE /resource/matrix/backlogs/{backlog} playground.matrix.resource.backlogs.destroy
      */
     public function destroy(
         Backlog $backlog,
@@ -180,7 +180,7 @@ class BacklogController extends Controller
     /**
      * Lock the Backlog resource in storage.
      *
-     * @route PUT /resource/matrix/{backlog} playground.matrix.resource.backlogs.lock
+     * @route PUT /resource/matrix/backlogs/{backlog} playground.matrix.resource.backlogs.lock
      */
     public function lock(
         Backlog $backlog,
@@ -227,7 +227,7 @@ class BacklogController extends Controller
     /**
      * Display a listing of Backlog resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.backlogs
+     * @route GET /resource/matrix/backlogs playground.matrix.resource.backlogs
      */
     public function index(
         Requests\Backlog\IndexRequest $request
@@ -299,7 +299,7 @@ class BacklogController extends Controller
     /**
      * Restore the Backlog resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{backlog} playground.matrix.resource.backlogs.restore
+     * @route PUT /resource/matrix/backlogs/restore/{backlog} playground.matrix.resource.backlogs.restore
      */
     public function restore(
         Backlog $backlog,
@@ -337,7 +337,7 @@ class BacklogController extends Controller
     /**
      * Display the Backlog resource.
      *
-     * @route GET /resource/matrix/{backlog} playground.matrix.resource.backlogs.show
+     * @route GET /resource/matrix/backlogs/{backlog} playground.matrix.resource.backlogs.show
      */
     public function show(
         Backlog $backlog,
@@ -376,7 +376,7 @@ class BacklogController extends Controller
     /**
      * Store a newly created API Backlog resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.backlogs.post
+     * @route POST /resource/matrix/backlogs playground.matrix.resource.backlogs.post
      */
     public function store(
         Requests\Backlog\StoreRequest $request
@@ -415,7 +415,7 @@ class BacklogController extends Controller
     /**
      * Unlock the Backlog resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{backlog} playground.matrix.resource.backlogs.unlock
+     * @route DELETE /resource/matrix/backlogs/lock/{backlog} playground.matrix.resource.backlogs.unlock
      */
     public function unlock(
         Backlog $backlog,
@@ -455,7 +455,7 @@ class BacklogController extends Controller
     /**
      * Update the Backlog resource in storage.
      *
-     * @route PATCH /resource/matrix/{backlog} playground.matrix.resource.backlogs.patch
+     * @route PATCH /resource/matrix/backlogs/{backlog} playground.matrix.resource.backlogs.patch
      */
     public function update(
         Backlog $backlog,

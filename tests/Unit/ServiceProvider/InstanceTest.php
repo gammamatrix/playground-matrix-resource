@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Tests\Unit\Playground\Matrix\Resource\ServiceProvider;
 
 use Illuminate\Database\Eloquent\Model;
-use PHPUnit\Framework\Attributes\CoversClass;
 use Playground\Matrix\Resource\ServiceProvider;
 use Tests\Unit\Playground\Matrix\Resource\TestCase;
 use TiMacDonald\Log\LogEntry;
@@ -16,7 +15,6 @@ use TiMacDonald\Log\LogFake;
 /**
  * \Tests\Unit\Playground\Matrix\Resource\ServiceProvider\InstanceTest
  */
-#[CoversClass(ServiceProvider::class)]
 class InstanceTest extends TestCase
 {
     public function test_version_matches(): void

@@ -33,6 +33,7 @@ database/migrations/*.disabled
 resources/packages
 
 composer.lock
+package-lock.json
 
 tmp-*
 temp-*
@@ -59,11 +60,13 @@ public/storage
 
 output
 
+public/docs
+
 public/tests
 
-phpunit.xml
-
 phpstan.neon
+
+phpunit.xml
 
 .phpunit.cache
 
@@ -97,4 +100,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-

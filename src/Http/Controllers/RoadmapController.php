@@ -94,7 +94,7 @@ class RoadmapController extends Controller
     /**
      * Edit the Roadmap resource in storage.
      *
-     * @route GET /resource/matrix/roadmaps/edit playground.matrix.resource.roadmaps.edit
+     * @route GET /resource/matrix/roadmaps/edit/{roadmap} playground.matrix.resource.roadmaps.edit
      */
     public function edit(
         Roadmap $roadmap,
@@ -143,7 +143,7 @@ class RoadmapController extends Controller
     /**
      * Remove the Roadmap resource from storage.
      *
-     * @route DELETE /resource/matrix/{roadmap} playground.matrix.resource.roadmaps.destroy
+     * @route DELETE /resource/matrix/roadmaps/{roadmap} playground.matrix.resource.roadmaps.destroy
      */
     public function destroy(
         Roadmap $roadmap,
@@ -180,7 +180,7 @@ class RoadmapController extends Controller
     /**
      * Lock the Roadmap resource in storage.
      *
-     * @route PUT /resource/matrix/{roadmap} playground.matrix.resource.roadmaps.lock
+     * @route PUT /resource/matrix/roadmaps/{roadmap} playground.matrix.resource.roadmaps.lock
      */
     public function lock(
         Roadmap $roadmap,
@@ -227,7 +227,7 @@ class RoadmapController extends Controller
     /**
      * Display a listing of Roadmap resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.roadmaps
+     * @route GET /resource/matrix/roadmaps playground.matrix.resource.roadmaps
      */
     public function index(
         Requests\Roadmap\IndexRequest $request
@@ -299,7 +299,7 @@ class RoadmapController extends Controller
     /**
      * Restore the Roadmap resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{roadmap} playground.matrix.resource.roadmaps.restore
+     * @route PUT /resource/matrix/roadmaps/restore/{roadmap} playground.matrix.resource.roadmaps.restore
      */
     public function restore(
         Roadmap $roadmap,
@@ -337,7 +337,7 @@ class RoadmapController extends Controller
     /**
      * Display the Roadmap resource.
      *
-     * @route GET /resource/matrix/{roadmap} playground.matrix.resource.roadmaps.show
+     * @route GET /resource/matrix/roadmaps/{roadmap} playground.matrix.resource.roadmaps.show
      */
     public function show(
         Roadmap $roadmap,
@@ -376,7 +376,7 @@ class RoadmapController extends Controller
     /**
      * Store a newly created API Roadmap resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.roadmaps.post
+     * @route POST /resource/matrix/roadmaps playground.matrix.resource.roadmaps.post
      */
     public function store(
         Requests\Roadmap\StoreRequest $request
@@ -415,7 +415,7 @@ class RoadmapController extends Controller
     /**
      * Unlock the Roadmap resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{roadmap} playground.matrix.resource.roadmaps.unlock
+     * @route DELETE /resource/matrix/roadmaps/lock/{roadmap} playground.matrix.resource.roadmaps.unlock
      */
     public function unlock(
         Roadmap $roadmap,
@@ -455,7 +455,7 @@ class RoadmapController extends Controller
     /**
      * Update the Roadmap resource in storage.
      *
-     * @route PATCH /resource/matrix/{roadmap} playground.matrix.resource.roadmaps.patch
+     * @route PATCH /resource/matrix/roadmaps/{roadmap} playground.matrix.resource.roadmaps.patch
      */
     public function update(
         Roadmap $roadmap,

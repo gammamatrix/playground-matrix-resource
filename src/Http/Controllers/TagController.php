@@ -94,7 +94,7 @@ class TagController extends Controller
     /**
      * Edit the Tag resource in storage.
      *
-     * @route GET /resource/matrix/tags/edit playground.matrix.resource.tags.edit
+     * @route GET /resource/matrix/tags/edit/{tag} playground.matrix.resource.tags.edit
      */
     public function edit(
         Tag $tag,
@@ -143,7 +143,7 @@ class TagController extends Controller
     /**
      * Remove the Tag resource from storage.
      *
-     * @route DELETE /resource/matrix/{tag} playground.matrix.resource.tags.destroy
+     * @route DELETE /resource/matrix/tags/{tag} playground.matrix.resource.tags.destroy
      */
     public function destroy(
         Tag $tag,
@@ -180,7 +180,7 @@ class TagController extends Controller
     /**
      * Lock the Tag resource in storage.
      *
-     * @route PUT /resource/matrix/{tag} playground.matrix.resource.tags.lock
+     * @route PUT /resource/matrix/tags/{tag} playground.matrix.resource.tags.lock
      */
     public function lock(
         Tag $tag,
@@ -227,7 +227,7 @@ class TagController extends Controller
     /**
      * Display a listing of Tag resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.tags
+     * @route GET /resource/matrix/tags playground.matrix.resource.tags
      */
     public function index(
         Requests\Tag\IndexRequest $request
@@ -299,7 +299,7 @@ class TagController extends Controller
     /**
      * Restore the Tag resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{tag} playground.matrix.resource.tags.restore
+     * @route PUT /resource/matrix/tags/restore/{tag} playground.matrix.resource.tags.restore
      */
     public function restore(
         Tag $tag,
@@ -337,7 +337,7 @@ class TagController extends Controller
     /**
      * Display the Tag resource.
      *
-     * @route GET /resource/matrix/{tag} playground.matrix.resource.tags.show
+     * @route GET /resource/matrix/tags/{tag} playground.matrix.resource.tags.show
      */
     public function show(
         Tag $tag,
@@ -376,7 +376,7 @@ class TagController extends Controller
     /**
      * Store a newly created API Tag resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.tags.post
+     * @route POST /resource/matrix/tags playground.matrix.resource.tags.post
      */
     public function store(
         Requests\Tag\StoreRequest $request
@@ -415,7 +415,7 @@ class TagController extends Controller
     /**
      * Unlock the Tag resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{tag} playground.matrix.resource.tags.unlock
+     * @route DELETE /resource/matrix/tags/lock/{tag} playground.matrix.resource.tags.unlock
      */
     public function unlock(
         Tag $tag,
@@ -455,7 +455,7 @@ class TagController extends Controller
     /**
      * Update the Tag resource in storage.
      *
-     * @route PATCH /resource/matrix/{tag} playground.matrix.resource.tags.patch
+     * @route PATCH /resource/matrix/tags/{tag} playground.matrix.resource.tags.patch
      */
     public function update(
         Tag $tag,

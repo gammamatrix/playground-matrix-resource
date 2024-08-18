@@ -94,7 +94,7 @@ class SprintController extends Controller
     /**
      * Edit the Sprint resource in storage.
      *
-     * @route GET /resource/matrix/sprints/edit playground.matrix.resource.sprints.edit
+     * @route GET /resource/matrix/sprints/edit/{sprint} playground.matrix.resource.sprints.edit
      */
     public function edit(
         Sprint $sprint,
@@ -143,7 +143,7 @@ class SprintController extends Controller
     /**
      * Remove the Sprint resource from storage.
      *
-     * @route DELETE /resource/matrix/{sprint} playground.matrix.resource.sprints.destroy
+     * @route DELETE /resource/matrix/sprints/{sprint} playground.matrix.resource.sprints.destroy
      */
     public function destroy(
         Sprint $sprint,
@@ -180,7 +180,7 @@ class SprintController extends Controller
     /**
      * Lock the Sprint resource in storage.
      *
-     * @route PUT /resource/matrix/{sprint} playground.matrix.resource.sprints.lock
+     * @route PUT /resource/matrix/sprints/{sprint} playground.matrix.resource.sprints.lock
      */
     public function lock(
         Sprint $sprint,
@@ -227,7 +227,7 @@ class SprintController extends Controller
     /**
      * Display a listing of Sprint resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.sprints
+     * @route GET /resource/matrix/sprints playground.matrix.resource.sprints
      */
     public function index(
         Requests\Sprint\IndexRequest $request
@@ -299,7 +299,7 @@ class SprintController extends Controller
     /**
      * Restore the Sprint resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{sprint} playground.matrix.resource.sprints.restore
+     * @route PUT /resource/matrix/sprints/restore/{sprint} playground.matrix.resource.sprints.restore
      */
     public function restore(
         Sprint $sprint,
@@ -337,7 +337,7 @@ class SprintController extends Controller
     /**
      * Display the Sprint resource.
      *
-     * @route GET /resource/matrix/{sprint} playground.matrix.resource.sprints.show
+     * @route GET /resource/matrix/sprints/{sprint} playground.matrix.resource.sprints.show
      */
     public function show(
         Sprint $sprint,
@@ -376,7 +376,7 @@ class SprintController extends Controller
     /**
      * Store a newly created API Sprint resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.sprints.post
+     * @route POST /resource/matrix/sprints playground.matrix.resource.sprints.post
      */
     public function store(
         Requests\Sprint\StoreRequest $request
@@ -415,7 +415,7 @@ class SprintController extends Controller
     /**
      * Unlock the Sprint resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{sprint} playground.matrix.resource.sprints.unlock
+     * @route DELETE /resource/matrix/sprints/lock/{sprint} playground.matrix.resource.sprints.unlock
      */
     public function unlock(
         Sprint $sprint,
@@ -455,7 +455,7 @@ class SprintController extends Controller
     /**
      * Update the Sprint resource in storage.
      *
-     * @route PATCH /resource/matrix/{sprint} playground.matrix.resource.sprints.patch
+     * @route PATCH /resource/matrix/sprints/{sprint} playground.matrix.resource.sprints.patch
      */
     public function update(
         Sprint $sprint,

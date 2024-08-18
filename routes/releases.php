@@ -9,11 +9,23 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Matrix Routes: Release
+| Matrix Resource Routes: Release
 |--------------------------------------------------------------------------
 |
 |
 */
+
+Route::group([
+    'prefix' => 'api/matrix/release',
+    'middleware' => config('playground-matrix-resource.middleware.default'),
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
+], function () {
+
+    Route::get('/{release:slug}', [
+        'as' => 'playground.matrix.resource.releases.slug',
+        'uses' => 'ReleaseController@show',
+    ])->where('slug', '[a-zA-Z0-9\-]+');
+});
 
 Route::group([
     'prefix' => 'resource/matrix/releases',
@@ -22,6 +34,11 @@ Route::group([
 ], function () {
     Route::get('/', [
         'as' => 'playground.matrix.resource.releases',
+        'uses' => 'ReleaseController@index',
+    ])->can('index', Playground\Matrix\Models\Release::class);
+
+    Route::post('/index', [
+        'as' => 'playground.matrix.resource.releases.index',
         'uses' => 'ReleaseController@index',
     ])->can('index', Playground\Matrix\Models\Release::class);
 
@@ -35,8 +52,7 @@ Route::group([
     Route::get('/edit/{release}', [
         'as' => 'playground.matrix.resource.releases.edit',
         'uses' => 'ReleaseController@edit',
-    ])->whereUuid('release')
-        ->can('edit', 'release');
+    ])->whereUuid('release')->can('edit', 'release');
 
     // Route::get('/go/{id}', [
     //     'as' => 'playground.matrix.resource.releases.go',
@@ -46,46 +62,29 @@ Route::group([
     Route::get('/{release}', [
         'as' => 'playground.matrix.resource.releases.show',
         'uses' => 'ReleaseController@show',
-    ])->whereUuid('release')
-        ->can('detail', 'release');
-
-    // Route::get('/{slug}', [
-    //     'as' => 'playground.matrix.resource.releases.slug',
-    //     'uses' => 'ReleaseController@slug',
-    // ])->where('slug', '[a-zA-Z0-9\-]+');
-
-    // Route::post('/store', [
-    //     'as' => 'playground.matrix.resource.releases.store',
-    //     'uses' => 'ReleaseController@store',
-    // ])->can('store', Playground\Matrix\Models\Release::class);
+    ])->whereUuid('release')->can('detail', 'release');
 
     // API
 
     Route::put('/lock/{release}', [
         'as' => 'playground.matrix.resource.releases.lock',
         'uses' => 'ReleaseController@lock',
-    ])->whereUuid('release')
-        ->can('lock', 'release');
+    ])->whereUuid('release')->can('lock', 'release');
 
     Route::delete('/lock/{release}', [
         'as' => 'playground.matrix.resource.releases.unlock',
         'uses' => 'ReleaseController@unlock',
-    ])->whereUuid('release')
-        ->can('unlock', 'release');
+    ])->whereUuid('release')->can('unlock', 'release');
 
     Route::delete('/{release}', [
         'as' => 'playground.matrix.resource.releases.destroy',
         'uses' => 'ReleaseController@destroy',
-    ])->whereUuid('release')
-        ->can('delete', 'release')
-        ->withTrashed();
+    ])->whereUuid('release')->can('delete', 'release')->withTrashed();
 
     Route::put('/restore/{release}', [
         'as' => 'playground.matrix.resource.releases.restore',
         'uses' => 'ReleaseController@restore',
-    ])->whereUuid('release')
-        ->can('restore', 'release')
-        ->withTrashed();
+    ])->whereUuid('release')->can('restore', 'release')->withTrashed();
 
     Route::post('/', [
         'as' => 'playground.matrix.resource.releases.post',

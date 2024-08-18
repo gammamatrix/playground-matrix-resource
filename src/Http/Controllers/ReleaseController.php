@@ -94,7 +94,7 @@ class ReleaseController extends Controller
     /**
      * Edit the Release resource in storage.
      *
-     * @route GET /resource/matrix/releases/edit playground.matrix.resource.releases.edit
+     * @route GET /resource/matrix/releases/edit/{release} playground.matrix.resource.releases.edit
      */
     public function edit(
         Release $release,
@@ -143,7 +143,7 @@ class ReleaseController extends Controller
     /**
      * Remove the Release resource from storage.
      *
-     * @route DELETE /resource/matrix/{release} playground.matrix.resource.releases.destroy
+     * @route DELETE /resource/matrix/releases/{release} playground.matrix.resource.releases.destroy
      */
     public function destroy(
         Release $release,
@@ -180,7 +180,7 @@ class ReleaseController extends Controller
     /**
      * Lock the Release resource in storage.
      *
-     * @route PUT /resource/matrix/{release} playground.matrix.resource.releases.lock
+     * @route PUT /resource/matrix/releases/{release} playground.matrix.resource.releases.lock
      */
     public function lock(
         Release $release,
@@ -227,7 +227,7 @@ class ReleaseController extends Controller
     /**
      * Display a listing of Release resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.releases
+     * @route GET /resource/matrix/releases playground.matrix.resource.releases
      */
     public function index(
         Requests\Release\IndexRequest $request
@@ -299,7 +299,7 @@ class ReleaseController extends Controller
     /**
      * Restore the Release resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{release} playground.matrix.resource.releases.restore
+     * @route PUT /resource/matrix/releases/restore/{release} playground.matrix.resource.releases.restore
      */
     public function restore(
         Release $release,
@@ -337,7 +337,7 @@ class ReleaseController extends Controller
     /**
      * Display the Release resource.
      *
-     * @route GET /resource/matrix/{release} playground.matrix.resource.releases.show
+     * @route GET /resource/matrix/releases/{release} playground.matrix.resource.releases.show
      */
     public function show(
         Release $release,
@@ -376,7 +376,7 @@ class ReleaseController extends Controller
     /**
      * Store a newly created API Release resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.releases.post
+     * @route POST /resource/matrix/releases playground.matrix.resource.releases.post
      */
     public function store(
         Requests\Release\StoreRequest $request
@@ -415,7 +415,7 @@ class ReleaseController extends Controller
     /**
      * Unlock the Release resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{release} playground.matrix.resource.releases.unlock
+     * @route DELETE /resource/matrix/releases/lock/{release} playground.matrix.resource.releases.unlock
      */
     public function unlock(
         Release $release,
@@ -455,7 +455,7 @@ class ReleaseController extends Controller
     /**
      * Update the Release resource in storage.
      *
-     * @route PATCH /resource/matrix/{release} playground.matrix.resource.releases.patch
+     * @route PATCH /resource/matrix/releases/{release} playground.matrix.resource.releases.patch
      */
     public function update(
         Release $release,

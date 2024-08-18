@@ -9,11 +9,23 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Matrix Routes: Board
+| Matrix Resource Routes: Board
 |--------------------------------------------------------------------------
 |
 |
 */
+
+Route::group([
+    'prefix' => 'api/matrix/board',
+    'middleware' => config('playground-matrix-resource.middleware.default'),
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
+], function () {
+
+    Route::get('/{board:slug}', [
+        'as' => 'playground.matrix.resource.boards.slug',
+        'uses' => 'BoardController@show',
+    ])->where('slug', '[a-zA-Z0-9\-]+');
+});
 
 Route::group([
     'prefix' => 'resource/matrix/boards',
@@ -22,6 +34,11 @@ Route::group([
 ], function () {
     Route::get('/', [
         'as' => 'playground.matrix.resource.boards',
+        'uses' => 'BoardController@index',
+    ])->can('index', Playground\Matrix\Models\Board::class);
+
+    Route::post('/index', [
+        'as' => 'playground.matrix.resource.boards.index',
         'uses' => 'BoardController@index',
     ])->can('index', Playground\Matrix\Models\Board::class);
 
@@ -35,8 +52,7 @@ Route::group([
     Route::get('/edit/{board}', [
         'as' => 'playground.matrix.resource.boards.edit',
         'uses' => 'BoardController@edit',
-    ])->whereUuid('board')
-        ->can('edit', 'board');
+    ])->whereUuid('board')->can('edit', 'board');
 
     // Route::get('/go/{id}', [
     //     'as' => 'playground.matrix.resource.boards.go',
@@ -46,46 +62,29 @@ Route::group([
     Route::get('/{board}', [
         'as' => 'playground.matrix.resource.boards.show',
         'uses' => 'BoardController@show',
-    ])->whereUuid('board')
-        ->can('detail', 'board');
-
-    // Route::get('/{slug}', [
-    //     'as' => 'playground.matrix.resource.boards.slug',
-    //     'uses' => 'BoardController@slug',
-    // ])->where('slug', '[a-zA-Z0-9\-]+');
-
-    // Route::post('/store', [
-    //     'as' => 'playground.matrix.resource.boards.store',
-    //     'uses' => 'BoardController@store',
-    // ])->can('store', Playground\Matrix\Models\Board::class);
+    ])->whereUuid('board')->can('detail', 'board');
 
     // API
 
     Route::put('/lock/{board}', [
         'as' => 'playground.matrix.resource.boards.lock',
         'uses' => 'BoardController@lock',
-    ])->whereUuid('board')
-        ->can('lock', 'board');
+    ])->whereUuid('board')->can('lock', 'board');
 
     Route::delete('/lock/{board}', [
         'as' => 'playground.matrix.resource.boards.unlock',
         'uses' => 'BoardController@unlock',
-    ])->whereUuid('board')
-        ->can('unlock', 'board');
+    ])->whereUuid('board')->can('unlock', 'board');
 
     Route::delete('/{board}', [
         'as' => 'playground.matrix.resource.boards.destroy',
         'uses' => 'BoardController@destroy',
-    ])->whereUuid('board')
-        ->can('delete', 'board')
-        ->withTrashed();
+    ])->whereUuid('board')->can('delete', 'board')->withTrashed();
 
     Route::put('/restore/{board}', [
         'as' => 'playground.matrix.resource.boards.restore',
         'uses' => 'BoardController@restore',
-    ])->whereUuid('board')
-        ->can('restore', 'board')
-        ->withTrashed();
+    ])->whereUuid('board')->can('restore', 'board')->withTrashed();
 
     Route::post('/', [
         'as' => 'playground.matrix.resource.boards.post',

@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\NoteController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\NotePolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteTestCase
  */
-#[CoversClass(NoteController::class)]
-#[CoversClass(NotePolicy::class)]
-#[CoversClass(Requests\Note\CreateRequest::class)]
-#[CoversClass(Requests\Note\DestroyRequest::class)]
-#[CoversClass(Requests\Note\EditRequest::class)]
-#[CoversClass(Requests\Note\IndexRequest::class)]
-#[CoversClass(Requests\Note\LockRequest::class)]
-#[CoversClass(Requests\Note\RestoreRequest::class)]
-#[CoversClass(Requests\Note\ShowRequest::class)]
-#[CoversClass(Requests\Note\StoreRequest::class)]
-#[CoversClass(Requests\Note\UnlockRequest::class)]
-#[CoversClass(Requests\Note\UpdateRequest::class)]
-#[CoversClass(Resources\Note::class)]
-#[CoversClass(Resources\NoteCollection::class)]
 class NoteTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Note::class;
@@ -57,11 +37,11 @@ class NoteTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'note_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'note_type',
         'matrix_id',
         'tag_id',
         'created_at',
@@ -93,13 +73,22 @@ class NoteTestCase extends TestCase
         'canceled',
         'closed',
         'completed',
+        'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
+        'published',
+        'released',
+        'retired',
+        'special',
+        'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',

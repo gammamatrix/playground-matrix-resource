@@ -94,7 +94,7 @@ class MilestoneController extends Controller
     /**
      * Edit the Milestone resource in storage.
      *
-     * @route GET /resource/matrix/milestones/edit playground.matrix.resource.milestones.edit
+     * @route GET /resource/matrix/milestones/edit/{milestone} playground.matrix.resource.milestones.edit
      */
     public function edit(
         Milestone $milestone,
@@ -143,7 +143,7 @@ class MilestoneController extends Controller
     /**
      * Remove the Milestone resource from storage.
      *
-     * @route DELETE /resource/matrix/{milestone} playground.matrix.resource.milestones.destroy
+     * @route DELETE /resource/matrix/milestones/{milestone} playground.matrix.resource.milestones.destroy
      */
     public function destroy(
         Milestone $milestone,
@@ -180,7 +180,7 @@ class MilestoneController extends Controller
     /**
      * Lock the Milestone resource in storage.
      *
-     * @route PUT /resource/matrix/{milestone} playground.matrix.resource.milestones.lock
+     * @route PUT /resource/matrix/milestones/{milestone} playground.matrix.resource.milestones.lock
      */
     public function lock(
         Milestone $milestone,
@@ -227,7 +227,7 @@ class MilestoneController extends Controller
     /**
      * Display a listing of Milestone resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.milestones
+     * @route GET /resource/matrix/milestones playground.matrix.resource.milestones
      */
     public function index(
         Requests\Milestone\IndexRequest $request
@@ -299,7 +299,7 @@ class MilestoneController extends Controller
     /**
      * Restore the Milestone resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{milestone} playground.matrix.resource.milestones.restore
+     * @route PUT /resource/matrix/milestones/restore/{milestone} playground.matrix.resource.milestones.restore
      */
     public function restore(
         Milestone $milestone,
@@ -337,7 +337,7 @@ class MilestoneController extends Controller
     /**
      * Display the Milestone resource.
      *
-     * @route GET /resource/matrix/{milestone} playground.matrix.resource.milestones.show
+     * @route GET /resource/matrix/milestones/{milestone} playground.matrix.resource.milestones.show
      */
     public function show(
         Milestone $milestone,
@@ -376,7 +376,7 @@ class MilestoneController extends Controller
     /**
      * Store a newly created API Milestone resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.milestones.post
+     * @route POST /resource/matrix/milestones playground.matrix.resource.milestones.post
      */
     public function store(
         Requests\Milestone\StoreRequest $request
@@ -415,7 +415,7 @@ class MilestoneController extends Controller
     /**
      * Unlock the Milestone resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{milestone} playground.matrix.resource.milestones.unlock
+     * @route DELETE /resource/matrix/milestones/lock/{milestone} playground.matrix.resource.milestones.unlock
      */
     public function unlock(
         Milestone $milestone,
@@ -455,7 +455,7 @@ class MilestoneController extends Controller
     /**
      * Update the Milestone resource in storage.
      *
-     * @route PATCH /resource/matrix/{milestone} playground.matrix.resource.milestones.patch
+     * @route PATCH /resource/matrix/milestones/{milestone} playground.matrix.resource.milestones.patch
      */
     public function update(
         Milestone $milestone,

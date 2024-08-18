@@ -94,7 +94,7 @@ class VersionController extends Controller
     /**
      * Edit the Version resource in storage.
      *
-     * @route GET /resource/matrix/versions/edit playground.matrix.resource.versions.edit
+     * @route GET /resource/matrix/versions/edit/{version} playground.matrix.resource.versions.edit
      */
     public function edit(
         Version $version,
@@ -143,7 +143,7 @@ class VersionController extends Controller
     /**
      * Remove the Version resource from storage.
      *
-     * @route DELETE /resource/matrix/{version} playground.matrix.resource.versions.destroy
+     * @route DELETE /resource/matrix/versions/{version} playground.matrix.resource.versions.destroy
      */
     public function destroy(
         Version $version,
@@ -180,7 +180,7 @@ class VersionController extends Controller
     /**
      * Lock the Version resource in storage.
      *
-     * @route PUT /resource/matrix/{version} playground.matrix.resource.versions.lock
+     * @route PUT /resource/matrix/versions/{version} playground.matrix.resource.versions.lock
      */
     public function lock(
         Version $version,
@@ -227,7 +227,7 @@ class VersionController extends Controller
     /**
      * Display a listing of Version resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.versions
+     * @route GET /resource/matrix/versions playground.matrix.resource.versions
      */
     public function index(
         Requests\Version\IndexRequest $request
@@ -299,7 +299,7 @@ class VersionController extends Controller
     /**
      * Restore the Version resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{version} playground.matrix.resource.versions.restore
+     * @route PUT /resource/matrix/versions/restore/{version} playground.matrix.resource.versions.restore
      */
     public function restore(
         Version $version,
@@ -337,7 +337,7 @@ class VersionController extends Controller
     /**
      * Display the Version resource.
      *
-     * @route GET /resource/matrix/{version} playground.matrix.resource.versions.show
+     * @route GET /resource/matrix/versions/{version} playground.matrix.resource.versions.show
      */
     public function show(
         Version $version,
@@ -376,7 +376,7 @@ class VersionController extends Controller
     /**
      * Store a newly created API Version resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.versions.post
+     * @route POST /resource/matrix/versions playground.matrix.resource.versions.post
      */
     public function store(
         Requests\Version\StoreRequest $request
@@ -415,7 +415,7 @@ class VersionController extends Controller
     /**
      * Unlock the Version resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{version} playground.matrix.resource.versions.unlock
+     * @route DELETE /resource/matrix/versions/lock/{version} playground.matrix.resource.versions.unlock
      */
     public function unlock(
         Version $version,
@@ -455,7 +455,7 @@ class VersionController extends Controller
     /**
      * Update the Version resource in storage.
      *
-     * @route PATCH /resource/matrix/{version} playground.matrix.resource.versions.patch
+     * @route PATCH /resource/matrix/versions/{version} playground.matrix.resource.versions.patch
      */
     public function update(
         Version $version,

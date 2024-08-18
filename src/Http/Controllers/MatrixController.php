@@ -94,7 +94,7 @@ class MatrixController extends Controller
     /**
      * Edit the Matrix resource in storage.
      *
-     * @route GET /resource/matrix/matrices/edit playground.matrix.resource.matrices.edit
+     * @route GET /resource/matrix/matrices/edit/{matrix} playground.matrix.resource.matrices.edit
      */
     public function edit(
         Matrix $matrix,
@@ -143,7 +143,7 @@ class MatrixController extends Controller
     /**
      * Remove the Matrix resource from storage.
      *
-     * @route DELETE /resource/matrix/{matrix} playground.matrix.resource.matrices.destroy
+     * @route DELETE /resource/matrix/matrices/{matrix} playground.matrix.resource.matrices.destroy
      */
     public function destroy(
         Matrix $matrix,
@@ -180,7 +180,7 @@ class MatrixController extends Controller
     /**
      * Lock the Matrix resource in storage.
      *
-     * @route PUT /resource/matrix/{matrix} playground.matrix.resource.matrices.lock
+     * @route PUT /resource/matrix/matrices/{matrix} playground.matrix.resource.matrices.lock
      */
     public function lock(
         Matrix $matrix,
@@ -227,7 +227,7 @@ class MatrixController extends Controller
     /**
      * Display a listing of Matrix resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.matrices
+     * @route GET /resource/matrix/matrices playground.matrix.resource.matrices
      */
     public function index(
         Requests\Matrix\IndexRequest $request
@@ -299,7 +299,7 @@ class MatrixController extends Controller
     /**
      * Restore the Matrix resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{matrix} playground.matrix.resource.matrices.restore
+     * @route PUT /resource/matrix/matrices/restore/{matrix} playground.matrix.resource.matrices.restore
      */
     public function restore(
         Matrix $matrix,
@@ -337,7 +337,7 @@ class MatrixController extends Controller
     /**
      * Display the Matrix resource.
      *
-     * @route GET /resource/matrix/{matrix} playground.matrix.resource.matrices.show
+     * @route GET /resource/matrix/matrices/{matrix} playground.matrix.resource.matrices.show
      */
     public function show(
         Matrix $matrix,
@@ -376,7 +376,7 @@ class MatrixController extends Controller
     /**
      * Store a newly created API Matrix resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.matrices.post
+     * @route POST /resource/matrix/matrices playground.matrix.resource.matrices.post
      */
     public function store(
         Requests\Matrix\StoreRequest $request
@@ -415,7 +415,7 @@ class MatrixController extends Controller
     /**
      * Unlock the Matrix resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{matrix} playground.matrix.resource.matrices.unlock
+     * @route DELETE /resource/matrix/matrices/lock/{matrix} playground.matrix.resource.matrices.unlock
      */
     public function unlock(
         Matrix $matrix,
@@ -455,7 +455,7 @@ class MatrixController extends Controller
     /**
      * Update the Matrix resource in storage.
      *
-     * @route PATCH /resource/matrix/{matrix} playground.matrix.resource.matrices.patch
+     * @route PATCH /resource/matrix/matrices/{matrix} playground.matrix.resource.matrices.patch
      */
     public function update(
         Matrix $matrix,

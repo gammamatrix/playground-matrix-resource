@@ -22,9 +22,7 @@
                     <h1>Matrix</h1>
                 </div>
                 <div class="card-body">
-
                     <div class="row">
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -35,7 +33,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -46,7 +43,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -57,7 +53,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -68,7 +63,16 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-sm-6">
+                            <div class="card m-1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Matrices</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Manage matrices</h6>
+                                    <p class="card-text"></p>
+                                    <a class="card-link" href="{{ route('playground.matrix.resource.matrices') }}">View Matrices</a>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -79,7 +83,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -90,7 +93,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -101,7 +103,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -112,7 +113,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -123,7 +123,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -134,7 +133,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -145,7 +143,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -156,7 +153,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -167,7 +163,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">
@@ -178,7 +173,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
                             <div class="card m-1">
                                 <div class="card-body">

@@ -9,11 +9,23 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Matrix Routes: Matrix
+| Matrix Resource Routes: Matrix
 |--------------------------------------------------------------------------
 |
 |
 */
+
+Route::group([
+    'prefix' => 'api/matrix/matrix',
+    'middleware' => config('playground-matrix-resource.middleware.default'),
+    'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
+], function () {
+
+    Route::get('/{matrix:slug}', [
+        'as' => 'playground.matrix.resource.matrices.slug',
+        'uses' => 'MatrixController@show',
+    ])->where('slug', '[a-zA-Z0-9\-]+');
+});
 
 Route::group([
     'prefix' => 'resource/matrix/matrices',
@@ -22,6 +34,11 @@ Route::group([
 ], function () {
     Route::get('/', [
         'as' => 'playground.matrix.resource.matrices',
+        'uses' => 'MatrixController@index',
+    ])->can('index', Playground\Matrix\Models\Matrix::class);
+
+    Route::post('/index', [
+        'as' => 'playground.matrix.resource.matrices.index',
         'uses' => 'MatrixController@index',
     ])->can('index', Playground\Matrix\Models\Matrix::class);
 
@@ -35,8 +52,7 @@ Route::group([
     Route::get('/edit/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.edit',
         'uses' => 'MatrixController@edit',
-    ])->whereUuid('matrix')
-        ->can('edit', 'matrix');
+    ])->whereUuid('matrix')->can('edit', 'matrix');
 
     // Route::get('/go/{id}', [
     //     'as' => 'playground.matrix.resource.matrices.go',
@@ -46,46 +62,29 @@ Route::group([
     Route::get('/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.show',
         'uses' => 'MatrixController@show',
-    ])->whereUuid('matrix')
-        ->can('detail', 'matrix');
-
-    // Route::get('/{slug}', [
-    //     'as' => 'playground.matrix.resource.matrices.slug',
-    //     'uses' => 'MatrixController@slug',
-    // ])->where('slug', '[a-zA-Z0-9\-]+');
-
-    // Route::post('/store', [
-    //     'as' => 'playground.matrix.resource.matrices.store',
-    //     'uses' => 'MatrixController@store',
-    // ])->can('store', Playground\Matrix\Models\Matrix::class);
+    ])->whereUuid('matrix')->can('detail', 'matrix');
 
     // API
 
     Route::put('/lock/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.lock',
         'uses' => 'MatrixController@lock',
-    ])->whereUuid('matrix')
-        ->can('lock', 'matrix');
+    ])->whereUuid('matrix')->can('lock', 'matrix');
 
     Route::delete('/lock/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.unlock',
         'uses' => 'MatrixController@unlock',
-    ])->whereUuid('matrix')
-        ->can('unlock', 'matrix');
+    ])->whereUuid('matrix')->can('unlock', 'matrix');
 
     Route::delete('/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.destroy',
         'uses' => 'MatrixController@destroy',
-    ])->whereUuid('matrix')
-        ->can('delete', 'matrix')
-        ->withTrashed();
+    ])->whereUuid('matrix')->can('delete', 'matrix')->withTrashed();
 
     Route::put('/restore/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.restore',
         'uses' => 'MatrixController@restore',
-    ])->whereUuid('matrix')
-        ->can('restore', 'matrix')
-        ->withTrashed();
+    ])->whereUuid('matrix')->can('restore', 'matrix')->withTrashed();
 
     Route::post('/', [
         'as' => 'playground.matrix.resource.matrices.post',

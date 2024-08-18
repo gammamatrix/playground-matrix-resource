@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\TeamController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\TeamPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamTestCase
  */
-#[CoversClass(TeamController::class)]
-#[CoversClass(TeamPolicy::class)]
-#[CoversClass(Requests\Team\CreateRequest::class)]
-#[CoversClass(Requests\Team\DestroyRequest::class)]
-#[CoversClass(Requests\Team\EditRequest::class)]
-#[CoversClass(Requests\Team\IndexRequest::class)]
-#[CoversClass(Requests\Team\LockRequest::class)]
-#[CoversClass(Requests\Team\RestoreRequest::class)]
-#[CoversClass(Requests\Team\ShowRequest::class)]
-#[CoversClass(Requests\Team\StoreRequest::class)]
-#[CoversClass(Requests\Team\UnlockRequest::class)]
-#[CoversClass(Requests\Team\UpdateRequest::class)]
-#[CoversClass(Resources\Team::class)]
-#[CoversClass(Resources\TeamCollection::class)]
 class TeamTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Team::class;
@@ -57,11 +37,11 @@ class TeamTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'team_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'team_type',
         'backlog_id',
         'board_id',
         'epic_id',
@@ -80,16 +60,18 @@ class TeamTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
+        'published_at',
+        'resolved_at',
         'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -117,15 +99,21 @@ class TeamTestCase extends TestCase
         'closed',
         'completed',
         'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
+        'published',
+        'released',
         'retired',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -143,6 +131,7 @@ class TeamTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

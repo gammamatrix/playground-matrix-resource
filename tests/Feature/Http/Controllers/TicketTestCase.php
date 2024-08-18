@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\TicketController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\TicketPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketTestCase
  */
-#[CoversClass(TicketController::class)]
-#[CoversClass(TicketPolicy::class)]
-#[CoversClass(Requests\Ticket\CreateRequest::class)]
-#[CoversClass(Requests\Ticket\DestroyRequest::class)]
-#[CoversClass(Requests\Ticket\EditRequest::class)]
-#[CoversClass(Requests\Ticket\IndexRequest::class)]
-#[CoversClass(Requests\Ticket\LockRequest::class)]
-#[CoversClass(Requests\Ticket\RestoreRequest::class)]
-#[CoversClass(Requests\Ticket\ShowRequest::class)]
-#[CoversClass(Requests\Ticket\StoreRequest::class)]
-#[CoversClass(Requests\Ticket\UnlockRequest::class)]
-#[CoversClass(Requests\Ticket\UpdateRequest::class)]
-#[CoversClass(Resources\Ticket::class)]
-#[CoversClass(Resources\TicketCollection::class)]
 class TicketTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Ticket::class;
@@ -57,48 +37,47 @@ class TicketTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'ticket_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'ticket_type',
         'backlog_id',
         'board_id',
-        'completed_by_id',
-        'duplicate_id',
         'epic_id',
-        'fixed_by_id',
         'flow_id',
         'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
         'release_id',
-        'reported_by_id',
         'roadmap_id',
         'source_id',
         'sprint_id',
         'tag_id',
         'team_id',
-        'version_fixed_id',
         'version_id',
+        'completed_by_id',
+        'duplicate_id',
+        'fixed_by_id',
+        'reported_by_id',
+        'version_fixed_id',
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
         'fixed_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
-        'resumed_at',
         'resolved_at',
+        'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -127,6 +106,7 @@ class TicketTestCase extends TestCase
         'completed',
         'cron',
         'duplicate',
+        'featured',
         'fixed',
         'flagged',
         'internal',
@@ -137,10 +117,12 @@ class TicketTestCase extends TestCase
         'problem',
         'published',
         'released',
-        'retired',
         'resolved',
+        'retired',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',

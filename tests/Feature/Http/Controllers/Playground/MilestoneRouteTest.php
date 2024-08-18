@@ -1,9 +1,9 @@
 <?php
-
-declare(strict_types=1);
 /**
  * Playground
  */
+
+declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground;
 
 use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase;
@@ -14,6 +14,4 @@ use Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase;
 class MilestoneRouteTest extends MilestoneTestCase
 {
     protected bool $load_migrations_playground = true;
-
-    protected bool $setUpUserForPlayground = true;
 }

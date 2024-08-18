@@ -18,8 +18,8 @@ class IndexRequest extends BaseIndexRequest
      */
     protected array $paginationDates = [
         'created_at' => ['column' => 'created_at', 'label' => 'Created at', 'nullable' => true],
-        'deleted_at' => ['column' => 'deleted_at', 'label' => 'Deleted at', 'nullable' => true],
         'updated_at' => ['column' => 'updated_at', 'label' => 'Updated at', 'nullable' => true],
+        'deleted_at' => ['column' => 'deleted_at', 'label' => 'Deleted at', 'nullable' => true],
     ];
 
     /**
@@ -30,12 +30,20 @@ class IndexRequest extends BaseIndexRequest
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'icon' => 'fa-solid fa-ban text-warning'],
         'closed' => ['column' => 'closed', 'label' => 'Closed', 'icon' => 'fa-solid fa-xmark'],
         'completed' => ['column' => 'completed', 'label' => 'Completed', 'icon' => 'fa-solid fa-check'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'icon' => 'fa-regular fa-clock'],
+        'featured' => ['column' => 'featured', 'label' => 'Featured', 'icon' => 'fa-solid fa-star text-warning'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'icon' => 'fa-solid fa-flag'],
         'internal' => ['column' => 'internal', 'label' => 'Internal', 'icon' => 'fa-solid fa-server'],
         'locked' => ['column' => 'locked', 'label' => 'Locked', 'icon' => 'fa-solid fa-lock text-warning'],
         'pending' => ['column' => 'pending', 'label' => 'Pending', 'icon' => 'fa-solid fa-circle-pause text-warning'],
         'planned' => ['column' => 'planned', 'label' => 'Planned', 'icon' => 'fa-solid fa-circle-pause text-success'],
+        'prioritized' => ['column' => 'prioritized', 'label' => 'Prioritized', 'icon' => 'fa-solid fa-triangle-exclamation text-success'],
         'problem' => ['column' => 'problem', 'label' => 'Problem', 'icon' => 'fa-solid fa-triangle-exclamation text-danger'],
+        'published' => ['column' => 'published', 'label' => 'Published', 'icon' => 'fa-solid fa-book'],
+        'released' => ['column' => 'released', 'label' => 'Released', 'icon' => 'fa-solid fa-dove'],
+        'retired' => ['column' => 'retired', 'label' => 'Retired', 'icon' => 'fa-solid fa-chair text-success'],
+        'special' => ['column' => 'special', 'label' => 'Special', 'icon' => 'fa-solid fa-star text-success'],
+        'suspended' => ['column' => 'suspended', 'label' => 'Suspended', 'icon' => 'fa-solid fa-hand text-danger'],
         'unknown' => ['column' => 'unknown', 'label' => 'Unknown', 'icon' => 'fa-solid fa-question text-warning'],
     ];
 
@@ -43,11 +51,12 @@ class IndexRequest extends BaseIndexRequest
      * @var array<string, array<string, mixed>>
      */
     protected array $paginationIds = [
+        'id' => ['column' => 'id', 'label' => 'ID', 'type' => 'string', 'nullable' => true],
+        'note_type' => ['column' => 'note_type', 'label' => 'Note Type', 'type' => 'string', 'nullable' => true],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created by id', 'type' => 'uuid', 'nullable' => true],
         'modified_by_id' => ['column' => 'modified_by_id', 'label' => 'Modified by id', 'type' => 'uuid', 'nullable' => true],
-        'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'uuid', 'nullable' => true],
-        'note_type' => ['column' => 'note_type', 'label' => 'Note type', 'type' => 'string', 'nullable' => true],
         'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'uuid', 'nullable' => true],
+        'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'uuid', 'nullable' => true],
         'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'uuid', 'nullable' => true],
         'tag_id' => ['column' => 'tag_id', 'label' => 'Tag id', 'type' => 'uuid', 'nullable' => true],
     ];
@@ -56,6 +65,7 @@ class IndexRequest extends BaseIndexRequest
      * @var array<string, array<string, mixed>>
      */
     protected array $paginationColumns = [
+        'locale' => ['column' => 'locale', 'label' => 'Locale', 'type' => 'string', 'nullable' => true],
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string', 'nullable' => true],
         'title' => ['column' => 'title', 'label' => 'Title', 'type' => 'string', 'nullable' => true],
         'byline' => ['column' => 'byline', 'label' => 'Byline', 'type' => 'string', 'nullable' => true],
@@ -71,11 +81,12 @@ class IndexRequest extends BaseIndexRequest
      * @var array<string, array<string, mixed>>
      */
     protected array $sortable = [
+        'id' => ['column' => 'id', 'label' => 'ID', 'type' => 'string'],
+        'note_type' => ['column' => 'note_type', 'label' => 'Note Type', 'type' => 'string'],
         'created_by_id' => ['column' => 'created_by_id', 'label' => 'Created by id', 'type' => 'string'],
         'modified_by_id' => ['column' => 'modified_by_id', 'label' => 'Modified by id', 'type' => 'string'],
         'owned_by_id' => ['column' => 'owned_by_id', 'label' => 'Owned by id', 'type' => 'string'],
         'parent_id' => ['column' => 'parent_id', 'label' => 'Parent id', 'type' => 'string'],
-        'note_type' => ['column' => 'note_type', 'label' => 'Note type', 'type' => 'string'],
         'matrix_id' => ['column' => 'matrix_id', 'label' => 'Matrix id', 'type' => 'string'],
         'tag_id' => ['column' => 'tag_id', 'label' => 'Tag id', 'type' => 'string'],
         'created_at' => ['column' => 'created_at', 'label' => 'Created At', 'type' => 'string'],
@@ -107,13 +118,22 @@ class IndexRequest extends BaseIndexRequest
         'canceled' => ['column' => 'canceled', 'label' => 'Canceled', 'type' => 'boolean'],
         'closed' => ['column' => 'closed', 'label' => 'Closed', 'type' => 'boolean'],
         'completed' => ['column' => 'completed', 'label' => 'Completed', 'type' => 'boolean'],
+        'cron' => ['column' => 'cron', 'label' => 'Cron', 'type' => 'boolean'],
+        'featured' => ['column' => 'featured', 'label' => 'Featured', 'type' => 'boolean'],
         'flagged' => ['column' => 'flagged', 'label' => 'Flagged', 'type' => 'boolean'],
         'internal' => ['column' => 'internal', 'label' => 'Internal', 'type' => 'boolean'],
         'locked' => ['column' => 'locked', 'label' => 'Locked', 'type' => 'boolean'],
         'pending' => ['column' => 'pending', 'label' => 'Pending', 'type' => 'boolean'],
         'planned' => ['column' => 'planned', 'label' => 'Planned', 'type' => 'boolean'],
+        'prioritized' => ['column' => 'prioritized', 'label' => 'Prioritized', 'type' => 'boolean'],
         'problem' => ['column' => 'problem', 'label' => 'Problem', 'type' => 'boolean'],
+        'published' => ['column' => 'published', 'label' => 'Published', 'type' => 'boolean'],
+        'released' => ['column' => 'released', 'label' => 'Released', 'type' => 'boolean'],
+        'retired' => ['column' => 'retired', 'label' => 'Retired', 'type' => 'boolean'],
+        'special' => ['column' => 'special', 'label' => 'Special', 'type' => 'boolean'],
+        'suspended' => ['column' => 'suspended', 'label' => 'Suspended', 'type' => 'boolean'],
         'unknown' => ['column' => 'unknown', 'label' => 'Unknown', 'type' => 'boolean'],
+        'locale' => ['column' => 'locale', 'label' => 'Locale', 'type' => 'string'],
         'label' => ['column' => 'label', 'label' => 'Label', 'type' => 'string'],
         'title' => ['column' => 'title', 'label' => 'Title', 'type' => 'string'],
         'byline' => ['column' => 'byline', 'label' => 'Byline', 'type' => 'string'],

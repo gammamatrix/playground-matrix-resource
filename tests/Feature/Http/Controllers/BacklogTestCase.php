@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\BacklogController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\BacklogPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase
  */
-#[CoversClass(BacklogController::class)]
-#[CoversClass(BacklogPolicy::class)]
-#[CoversClass(Requests\Backlog\CreateRequest::class)]
-#[CoversClass(Requests\Backlog\DestroyRequest::class)]
-#[CoversClass(Requests\Backlog\EditRequest::class)]
-#[CoversClass(Requests\Backlog\IndexRequest::class)]
-#[CoversClass(Requests\Backlog\LockRequest::class)]
-#[CoversClass(Requests\Backlog\RestoreRequest::class)]
-#[CoversClass(Requests\Backlog\ShowRequest::class)]
-#[CoversClass(Requests\Backlog\StoreRequest::class)]
-#[CoversClass(Requests\Backlog\UnlockRequest::class)]
-#[CoversClass(Requests\Backlog\UpdateRequest::class)]
-#[CoversClass(Resources\Backlog::class)]
-#[CoversClass(Resources\BacklogCollection::class)]
 class BacklogTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Backlog::class;
@@ -57,11 +37,11 @@ class BacklogTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'backlog_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'backlog_type',
         'board_id',
         'epic_id',
         'flow_id',
@@ -80,20 +60,18 @@ class BacklogTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
         'canceled_at',
         'closed_at',
         'embargo_at',
-        'fixed_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
         'published_at',
-        'released_at',
-        'resumed_at',
         'resolved_at',
+        'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -121,20 +99,21 @@ class BacklogTestCase extends TestCase
         'closed',
         'completed',
         'cron',
-        'duplicate',
-        'fixed',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
         'published',
         'released',
         'retired',
-        'resolved',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -152,6 +131,7 @@ class BacklogTestCase extends TestCase
         'backlog',
         'board',
         'flow',
+        'history',
         'meta',
         'notes',
         'options',

@@ -1,0 +1,25 @@
+get:
+  tags:
+    - Matrix
+  summary: 'Create a matrix form.'
+  operationId: create_matrix
+  responses:
+    200:
+      description: 'The create matrix information (JSON) or (HTML).'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../models/matrix.yml
+              meta:
+                type: object
+        text/html:
+          schema:
+            type: string
+            example: '<html><body><form method="POST" action="/resource/matrix/matrices">Create a matrix</form></body></html>'
+    401:
+      description: Unauthorized
+    403:
+      description: Forbidden

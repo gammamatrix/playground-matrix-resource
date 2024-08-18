@@ -6,29 +6,9 @@
 declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
-use PHPUnit\Framework\Attributes\CoversClass;
-use Playground\Matrix\Resource\Http\Controllers\FlowController;
-use Playground\Matrix\Resource\Http\Requests;
-use Playground\Matrix\Resource\Http\Resources;
-use Playground\Matrix\Resource\Policies\FlowPolicy;
-
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\FlowTestCase
  */
-#[CoversClass(FlowController::class)]
-#[CoversClass(FlowPolicy::class)]
-#[CoversClass(Requests\Flow\CreateRequest::class)]
-#[CoversClass(Requests\Flow\DestroyRequest::class)]
-#[CoversClass(Requests\Flow\EditRequest::class)]
-#[CoversClass(Requests\Flow\IndexRequest::class)]
-#[CoversClass(Requests\Flow\LockRequest::class)]
-#[CoversClass(Requests\Flow\RestoreRequest::class)]
-#[CoversClass(Requests\Flow\ShowRequest::class)]
-#[CoversClass(Requests\Flow\StoreRequest::class)]
-#[CoversClass(Requests\Flow\UnlockRequest::class)]
-#[CoversClass(Requests\Flow\UpdateRequest::class)]
-#[CoversClass(Resources\Flow::class)]
-#[CoversClass(Resources\FlowCollection::class)]
 class FlowTestCase extends TestCase
 {
     public string $fqdn = \Playground\Matrix\Models\Flow::class;
@@ -57,11 +37,11 @@ class FlowTestCase extends TestCase
      */
     protected $structure_model = [
         'id',
+        'flow_type',
         'created_by_id',
         'modified_by_id',
         'owned_by_id',
         'parent_id',
-        'flow_type',
         'matrix_id',
         'note_id',
         'tag_id',
@@ -69,14 +49,18 @@ class FlowTestCase extends TestCase
         'created_at',
         'updated_at',
         'deleted_at',
-        'start_at',
-        'planned_start_at',
-        'end_at',
-        'planned_end_at',
+        'canceled_at',
+        'closed_at',
         'embargo_at',
+        'planned_end_at',
+        'planned_start_at',
         'postponed_at',
+        'published_at',
+        'resolved_at',
         'resumed_at',
         'suspended_at',
+        'timer_end_at',
+        'timer_start_at',
         'gids',
         'po',
         'pg',
@@ -100,16 +84,25 @@ class FlowTestCase extends TestCase
         'latitude',
         'longitude',
         'active',
+        'canceled',
+        'closed',
+        'completed',
         'cron',
+        'featured',
         'flagged',
         'internal',
         'locked',
         'pending',
         'planned',
+        'prioritized',
         'problem',
+        'published',
+        'released',
         'retired',
+        'special',
         'suspended',
         'unknown',
+        'locale',
         'label',
         'title',
         'byline',
@@ -124,13 +117,9 @@ class FlowTestCase extends TestCase
         'avatar',
         'ui',
         'assets',
-        'backlog',
-        'board',
-        'flow',
         'meta',
         'notes',
         'options',
-        'roadmap',
         'sources',
     ];
 }

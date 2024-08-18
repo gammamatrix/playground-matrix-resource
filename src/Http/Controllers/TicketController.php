@@ -97,7 +97,7 @@ class TicketController extends Controller
     /**
      * Edit the Ticket resource in storage.
      *
-     * @route GET /resource/matrix/tickets/edit playground.matrix.resource.tickets.edit
+     * @route GET /resource/matrix/tickets/edit/{ticket} playground.matrix.resource.tickets.edit
      */
     public function edit(
         Ticket $ticket,
@@ -146,7 +146,7 @@ class TicketController extends Controller
     /**
      * Remove the Ticket resource from storage.
      *
-     * @route DELETE /resource/matrix/{ticket} playground.matrix.resource.tickets.destroy
+     * @route DELETE /resource/matrix/tickets/{ticket} playground.matrix.resource.tickets.destroy
      */
     public function destroy(
         Ticket $ticket,
@@ -183,7 +183,7 @@ class TicketController extends Controller
     /**
      * Lock the Ticket resource in storage.
      *
-     * @route PUT /resource/matrix/{ticket} playground.matrix.resource.tickets.lock
+     * @route PUT /resource/matrix/tickets/{ticket} playground.matrix.resource.tickets.lock
      */
     public function lock(
         Ticket $ticket,
@@ -230,7 +230,7 @@ class TicketController extends Controller
     /**
      * Display a listing of Ticket resources.
      *
-     * @route GET /resource/matrix playground.matrix.resource.tickets
+     * @route GET /resource/matrix/tickets playground.matrix.resource.tickets
      */
     public function index(
         Requests\Ticket\IndexRequest $request
@@ -302,7 +302,7 @@ class TicketController extends Controller
     /**
      * Restore the Ticket resource from the trash.
      *
-     * @route PUT /resource/matrix/restore/{ticket} playground.matrix.resource.tickets.restore
+     * @route PUT /resource/matrix/tickets/restore/{ticket} playground.matrix.resource.tickets.restore
      */
     public function restore(
         Ticket $ticket,
@@ -340,7 +340,7 @@ class TicketController extends Controller
     /**
      * Display the Ticket resource.
      *
-     * @route GET /resource/matrix/{ticket} playground.matrix.resource.tickets.show
+     * @route GET /resource/matrix/tickets/{ticket} playground.matrix.resource.tickets.show
      */
     public function show(
         Ticket $ticket,
@@ -379,7 +379,7 @@ class TicketController extends Controller
     /**
      * Store a newly created API Ticket resource in storage.
      *
-     * @route POST /resource/matrix playground.matrix.resource.tickets.post
+     * @route POST /resource/matrix/tickets playground.matrix.resource.tickets.post
      */
     public function store(
         Requests\Ticket\StoreRequest $request
@@ -420,7 +420,7 @@ class TicketController extends Controller
     /**
      * Unlock the Ticket resource in storage.
      *
-     * @route DELETE /resource/matrix/lock/{ticket} playground.matrix.resource.tickets.unlock
+     * @route DELETE /resource/matrix/tickets/lock/{ticket} playground.matrix.resource.tickets.unlock
      */
     public function unlock(
         Ticket $ticket,
@@ -460,7 +460,7 @@ class TicketController extends Controller
     /**
      * Update the Ticket resource in storage.
      *
-     * @route PATCH /resource/matrix/{ticket} playground.matrix.resource.tickets.patch
+     * @route PATCH /resource/matrix/tickets/{ticket} playground.matrix.resource.tickets.patch
      */
     public function update(
         Ticket $ticket,
