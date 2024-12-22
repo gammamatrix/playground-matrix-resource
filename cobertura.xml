@@ -1,10 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="1" branch-rate="0" lines-covered="4538" lines-valid="4538" branches-covered="0" branches-valid="0" complexity="1015" version="0.4" timestamp="1723964403">
+<coverage line-rate="0.98569903948773" branch-rate="0" lines-covered="4618" lines-valid="4685" branches-covered="0" branches-valid="0" complexity="1061" version="0.4" timestamp="1734890273">
   <sources>
     <source>/app/src</source>
   </sources>
   <packages>
+    <package name="Dashboard/AbstractDashboard.php" line-rate="0.31111111111111" branch-rate="0" complexity="27">
+      <classes>
+        <class name="Playground\Matrix\Resource\Dashboard\AbstractDashboard" filename="Dashboard/AbstractDashboard.php" line-rate="0.31111111111111" branch-rate="0" complexity="27">
+          <methods>
+            <method name="getCount" signature="string $key" line-rate="0.8" branch-rate="0" complexity="4">
+              <lines>
+                <line number="35" hits="1"/>
+                <line number="36" hits="1"/>
+                <line number="37" hits="1"/>
+                <line number="39" hits="0"/>
+                <line number="42" hits="1"/>
+              </lines>
+            </method>
+            <method name="setCount" signature="string $key, int|null $value" line-rate="1" branch-rate="0" complexity="2">
+              <lines>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="51" hits="1"/>
+              </lines>
+            </method>
+            <method name="decrementCount" signature="string $key, int $value" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="56" hits="0"/>
+                <line number="57" hits="0"/>
+                <line number="58" hits="0"/>
+                <line number="59" hits="0"/>
+                <line number="60" hits="0"/>
+                <line number="62" hits="0"/>
+                <line number="63" hits="0"/>
+                <line number="64" hits="0"/>
+                <line number="66" hits="0"/>
+                <line number="69" hits="0"/>
+              </lines>
+            </method>
+            <method name="incrementCount" signature="string $key, int $value" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="74" hits="0"/>
+                <line number="75" hits="0"/>
+                <line number="76" hits="0"/>
+                <line number="77" hits="0"/>
+                <line number="78" hits="0"/>
+                <line number="80" hits="0"/>
+                <line number="81" hits="0"/>
+                <line number="82" hits="0"/>
+                <line number="84" hits="0"/>
+                <line number="87" hits="0"/>
+              </lines>
+            </method>
+            <method name="setLabel" signature="string $key, string $label" line-rate="1" branch-rate="0" complexity="3">
+              <lines>
+                <line number="92" hits="1"/>
+                <line number="93" hits="1"/>
+                <line number="96" hits="1"/>
+              </lines>
+            </method>
+            <method name="hasLinks" signature="string $key" line-rate="1" branch-rate="0" complexity="3">
+              <lines>
+                <line number="101" hits="1"/>
+                <line number="102" hits="1"/>
+                <line number="103" hits="1"/>
+                <line number="104" hits="1"/>
+              </lines>
+            </method>
+            <method name="addLink" signature="string $key, array $options" line-rate="0" branch-rate="0" complexity="3">
+              <lines>
+                <line number="112" hits="0"/>
+                <line number="113" hits="0"/>
+                <line number="114" hits="0"/>
+                <line number="116" hits="0"/>
+                <line number="119" hits="0"/>
+              </lines>
+            </method>
+            <method name="getLinks" signature="string $key" line-rate="0" branch-rate="0" complexity="4">
+              <lines>
+                <line number="127" hits="0"/>
+                <line number="128" hits="0"/>
+                <line number="129" hits="0"/>
+                <line number="131" hits="0"/>
+                <line number="134" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="35" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="39" hits="0"/>
+            <line number="42" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="51" hits="1"/>
+            <line number="56" hits="0"/>
+            <line number="57" hits="0"/>
+            <line number="58" hits="0"/>
+            <line number="59" hits="0"/>
+            <line number="60" hits="0"/>
+            <line number="62" hits="0"/>
+            <line number="63" hits="0"/>
+            <line number="64" hits="0"/>
+            <line number="66" hits="0"/>
+            <line number="69" hits="0"/>
+            <line number="74" hits="0"/>
+            <line number="75" hits="0"/>
+            <line number="76" hits="0"/>
+            <line number="77" hits="0"/>
+            <line number="78" hits="0"/>
+            <line number="80" hits="0"/>
+            <line number="81" hits="0"/>
+            <line number="82" hits="0"/>
+            <line number="84" hits="0"/>
+            <line number="87" hits="0"/>
+            <line number="92" hits="1"/>
+            <line number="93" hits="1"/>
+            <line number="96" hits="1"/>
+            <line number="101" hits="1"/>
+            <line number="102" hits="1"/>
+            <line number="103" hits="1"/>
+            <line number="104" hits="1"/>
+            <line number="112" hits="0"/>
+            <line number="113" hits="0"/>
+            <line number="114" hits="0"/>
+            <line number="116" hits="0"/>
+            <line number="119" hits="0"/>
+            <line number="127" hits="0"/>
+            <line number="128" hits="0"/>
+            <line number="129" hits="0"/>
+            <line number="131" hits="0"/>
+            <line number="134" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Dashboard/DashboardLink.php" line-rate="0" branch-rate="0" complexity="14">
+      <classes>
+        <class name="Playground\Matrix\Resource\Dashboard\DashboardLink" filename="Dashboard/DashboardLink.php" line-rate="0" branch-rate="0" complexity="14">
+          <methods>
+            <method name="__construct" signature="array $options" line-rate="0" branch-rate="0" complexity="9">
+              <lines>
+                <line number="28" hits="0"/>
+                <line number="29" hits="0"/>
+                <line number="31" hits="0"/>
+                <line number="34" hits="0"/>
+                <line number="35" hits="0"/>
+                <line number="37" hits="0"/>
+                <line number="40" hits="0"/>
+                <line number="41" hits="0"/>
+                <line number="43" hits="0"/>
+                <line number="46" hits="0"/>
+                <line number="47" hits="0"/>
+                <line number="49" hits="0"/>
+              </lines>
+            </method>
+            <method name="toArray" signature="" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="58" hits="0"/>
+                <line number="59" hits="0"/>
+                <line number="60" hits="0"/>
+                <line number="61" hits="0"/>
+                <line number="62" hits="0"/>
+                <line number="63" hits="0"/>
+              </lines>
+            </method>
+            <method name="setDescription" signature="string $description" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="68" hits="0"/>
+                <line number="70" hits="0"/>
+              </lines>
+            </method>
+            <method name="setLabel" signature="string $label" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="75" hits="0"/>
+                <line number="77" hits="0"/>
+              </lines>
+            </method>
+            <method name="setTarget" signature="string $target" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="82" hits="0"/>
+                <line number="84" hits="0"/>
+              </lines>
+            </method>
+            <method name="setUri" signature="string $uri" line-rate="0" branch-rate="0" complexity="1">
+              <lines>
+                <line number="89" hits="0"/>
+                <line number="91" hits="0"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="28" hits="0"/>
+            <line number="29" hits="0"/>
+            <line number="31" hits="0"/>
+            <line number="34" hits="0"/>
+            <line number="35" hits="0"/>
+            <line number="37" hits="0"/>
+            <line number="40" hits="0"/>
+            <line number="41" hits="0"/>
+            <line number="43" hits="0"/>
+            <line number="46" hits="0"/>
+            <line number="47" hits="0"/>
+            <line number="49" hits="0"/>
+            <line number="58" hits="0"/>
+            <line number="59" hits="0"/>
+            <line number="60" hits="0"/>
+            <line number="61" hits="0"/>
+            <line number="62" hits="0"/>
+            <line number="63" hits="0"/>
+            <line number="68" hits="0"/>
+            <line number="70" hits="0"/>
+            <line number="75" hits="0"/>
+            <line number="77" hits="0"/>
+            <line number="82" hits="0"/>
+            <line number="84" hits="0"/>
+            <line number="89" hits="0"/>
+            <line number="91" hits="0"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Dashboard/Index.php" line-rate="0" branch-rate="0" complexity="0">
+      <classes>
+        <class name="Playground\Matrix\Resource\Dashboard\Index" filename="Dashboard/Index.php" line-rate="0" branch-rate="0" complexity="0">
+          <methods/>
+          <lines/>
+        </class>
+      </classes>
+    </package>
     <package name="Http/Controllers/BacklogController.php" line-rate="1" branch-rate="0" complexity="46">
       <classes>
         <class name="Playground\Matrix\Resource\Http\Controllers\BacklogController" filename="Http/Controllers/BacklogController.php" line-rate="1" branch-rate="0" complexity="46">
@@ -981,6 +1207,160 @@
             <line number="488" hits="1"/>
             <line number="489" hits="1"/>
             <line number="490" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="Http/Controllers/Concerns/Loading.php" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+      <classes>
+        <class name="Playground\Matrix\Resource\Http\Controllers\Concerns\Loading" filename="Http/Controllers/Concerns/Loading.php" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+          <methods>
+            <method name="loadMatrix" signature="Illuminate\Http\Request $request, string $route" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+              <lines>
+                <line number="24" hits="1"/>
+                <line number="25" hits="1"/>
+                <line number="27" hits="1"/>
+                <line number="29" hits="1"/>
+                <line number="30" hits="1"/>
+                <line number="31" hits="1"/>
+                <line number="32" hits="1"/>
+                <line number="33" hits="1"/>
+                <line number="34" hits="1"/>
+                <line number="35" hits="1"/>
+                <line number="36" hits="1"/>
+                <line number="37" hits="1"/>
+                <line number="38" hits="1"/>
+                <line number="39" hits="1"/>
+                <line number="40" hits="1"/>
+                <line number="41" hits="1"/>
+                <line number="42" hits="1"/>
+                <line number="43" hits="1"/>
+                <line number="44" hits="1"/>
+                <line number="45" hits="1"/>
+                <line number="46" hits="1"/>
+                <line number="47" hits="1"/>
+                <line number="48" hits="1"/>
+                <line number="49" hits="1"/>
+                <line number="50" hits="1"/>
+                <line number="51" hits="1"/>
+                <line number="52" hits="1"/>
+                <line number="53" hits="1"/>
+                <line number="54" hits="1"/>
+                <line number="55" hits="1"/>
+                <line number="56" hits="1"/>
+                <line number="57" hits="1"/>
+                <line number="58" hits="1"/>
+                <line number="59" hits="1"/>
+                <line number="60" hits="1"/>
+                <line number="61" hits="1"/>
+                <line number="62" hits="1"/>
+                <line number="63" hits="1"/>
+                <line number="64" hits="1"/>
+                <line number="65" hits="1"/>
+                <line number="66" hits="1"/>
+                <line number="67" hits="1"/>
+                <line number="68" hits="1"/>
+                <line number="69" hits="1"/>
+                <line number="70" hits="1"/>
+                <line number="71" hits="1"/>
+                <line number="72" hits="1"/>
+                <line number="73" hits="1"/>
+                <line number="74" hits="1"/>
+                <line number="75" hits="1"/>
+                <line number="76" hits="1"/>
+                <line number="77" hits="1"/>
+                <line number="78" hits="1"/>
+                <line number="80" hits="1"/>
+                <line number="81" hits="1"/>
+                <line number="82" hits="1"/>
+                <line number="84" hits="1"/>
+                <line number="85" hits="1"/>
+                <line number="87" hits="1"/>
+                <line number="88" hits="0"/>
+                <line number="89" hits="0"/>
+                <line number="90" hits="0"/>
+                <line number="91" hits="0"/>
+                <line number="92" hits="0"/>
+                <line number="93" hits="0"/>
+                <line number="94" hits="0"/>
+                <line number="95" hits="0"/>
+                <line number="96" hits="0"/>
+                <line number="97" hits="0"/>
+                <line number="109" hits="1"/>
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="24" hits="1"/>
+            <line number="25" hits="1"/>
+            <line number="27" hits="1"/>
+            <line number="29" hits="1"/>
+            <line number="30" hits="1"/>
+            <line number="31" hits="1"/>
+            <line number="32" hits="1"/>
+            <line number="33" hits="1"/>
+            <line number="34" hits="1"/>
+            <line number="35" hits="1"/>
+            <line number="36" hits="1"/>
+            <line number="37" hits="1"/>
+            <line number="38" hits="1"/>
+            <line number="39" hits="1"/>
+            <line number="40" hits="1"/>
+            <line number="41" hits="1"/>
+            <line number="42" hits="1"/>
+            <line number="43" hits="1"/>
+            <line number="44" hits="1"/>
+            <line number="45" hits="1"/>
+            <line number="46" hits="1"/>
+            <line number="47" hits="1"/>
+            <line number="48" hits="1"/>
+            <line number="49" hits="1"/>
+            <line number="50" hits="1"/>
+            <line number="51" hits="1"/>
+            <line number="52" hits="1"/>
+            <line number="53" hits="1"/>
+            <line number="54" hits="1"/>
+            <line number="55" hits="1"/>
+            <line number="56" hits="1"/>
+            <line number="57" hits="1"/>
+            <line number="58" hits="1"/>
+            <line number="59" hits="1"/>
+            <line number="60" hits="1"/>
+            <line number="61" hits="1"/>
+            <line number="62" hits="1"/>
+            <line number="63" hits="1"/>
+            <line number="64" hits="1"/>
+            <line number="65" hits="1"/>
+            <line number="66" hits="1"/>
+            <line number="67" hits="1"/>
+            <line number="68" hits="1"/>
+            <line number="69" hits="1"/>
+            <line number="70" hits="1"/>
+            <line number="71" hits="1"/>
+            <line number="72" hits="1"/>
+            <line number="73" hits="1"/>
+            <line number="74" hits="1"/>
+            <line number="75" hits="1"/>
+            <line number="76" hits="1"/>
+            <line number="77" hits="1"/>
+            <line number="78" hits="1"/>
+            <line number="80" hits="1"/>
+            <line number="81" hits="1"/>
+            <line number="82" hits="1"/>
+            <line number="84" hits="1"/>
+            <line number="85" hits="1"/>
+            <line number="87" hits="1"/>
+            <line number="88" hits="0"/>
+            <line number="89" hits="0"/>
+            <line number="90" hits="0"/>
+            <line number="91" hits="0"/>
+            <line number="92" hits="0"/>
+            <line number="93" hits="0"/>
+            <line number="94" hits="0"/>
+            <line number="95" hits="0"/>
+            <line number="96" hits="0"/>
+            <line number="97" hits="0"/>
+            <line number="109" hits="1"/>
           </lines>
         </class>
       </classes>
@@ -1973,18 +2353,30 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/IndexController.php" line-rate="1" branch-rate="0" complexity="1">
+    <package name="Http/Controllers/IndexController.php" line-rate="1" branch-rate="0" complexity="2">
       <classes>
-        <class name="Playground\Matrix\Resource\Http\Controllers\IndexController" filename="Http/Controllers/IndexController.php" line-rate="1" branch-rate="0" complexity="1">
+        <class name="Playground\Matrix\Resource\Http\Controllers\IndexController" filename="Http/Controllers/IndexController.php" line-rate="1" branch-rate="0" complexity="2">
           <methods>
-            <method name="index" signature="" line-rate="1" branch-rate="0" complexity="1">
+            <method name="index" signature="Illuminate\Http\Request $request" line-rate="1" branch-rate="0" complexity="2">
               <lines>
-                <line number="21" hits="1"/>
+                <line number="24" hits="1"/>
+                <line number="30" hits="1"/>
+                <line number="31" hits="1"/>
+                <line number="32" hits="1"/>
+                <line number="33" hits="1"/>
+                <line number="34" hits="1"/>
+                <line number="36" hits="1"/>
               </lines>
             </method>
           </methods>
           <lines>
-            <line number="21" hits="1"/>
+            <line number="24" hits="1"/>
+            <line number="30" hits="1"/>
+            <line number="31" hits="1"/>
+            <line number="32" hits="1"/>
+            <line number="33" hits="1"/>
+            <line number="34" hits="1"/>
+            <line number="36" hits="1"/>
           </lines>
         </class>
       </classes>

@@ -1,16 +1,170 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-08-18 07:00:03</timestamp>
+  <timestamp>2024-12-22 17:57:53</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>281</methodCount>
-    <crapMethodCount>0</crapMethodCount>
-    <crapLoad>0</crapLoad>
-    <totalCrap>1015</totalCrap>
-    <crapMethodPercent>0</crapMethodPercent>
+    <methodCount>296</methodCount>
+    <crapMethodCount>1</crapMethodCount>
+    <crapLoad>9</crapLoad>
+    <totalCrap>1204.18</totalCrap>
+    <crapMethodPercent>0.34</crapMethodPercent>
   </stats>
   <methods>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>getCount</methodName>
+      <methodSignature>getCount(string $key): int|null</methodSignature>
+      <fullMethod>getCount(string $key): int|null</fullMethod>
+      <crap>4.13</crap>
+      <complexity>4</complexity>
+      <coverage>80</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>setCount</methodName>
+      <methodSignature>setCount(string $key, int|null $value): self</methodSignature>
+      <fullMethod>setCount(string $key, int|null $value): self</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>decrementCount</methodName>
+      <methodSignature>decrementCount(string $key, int $value): self</methodSignature>
+      <fullMethod>decrementCount(string $key, int $value): self</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>incrementCount</methodName>
+      <methodSignature>incrementCount(string $key, int $value): self</methodSignature>
+      <fullMethod>incrementCount(string $key, int $value): self</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>setLabel</methodName>
+      <methodSignature>setLabel(string $key, string $label): self</methodSignature>
+      <fullMethod>setLabel(string $key, string $label): self</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>hasLinks</methodName>
+      <methodSignature>hasLinks(string $key): bool</methodSignature>
+      <fullMethod>hasLinks(string $key): bool</fullMethod>
+      <crap>3</crap>
+      <complexity>3</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>addLink</methodName>
+      <methodSignature>addLink(string $key, array $options): self</methodSignature>
+      <fullMethod>addLink(string $key, array $options): self</fullMethod>
+      <crap>12</crap>
+      <complexity>3</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\AbstractDashboard</className>
+      <methodName>getLinks</methodName>
+      <methodSignature>getLinks(string $key): array</methodSignature>
+      <fullMethod>getLinks(string $key): array</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>__construct</methodName>
+      <methodSignature>__construct(array $options)</methodSignature>
+      <fullMethod>__construct(array $options)</fullMethod>
+      <crap>90</crap>
+      <complexity>9</complexity>
+      <coverage>0</coverage>
+      <crapLoad>9</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>toArray</methodName>
+      <methodSignature>toArray(): array</methodSignature>
+      <fullMethod>toArray(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>setDescription</methodName>
+      <methodSignature>setDescription(string $description): self</methodSignature>
+      <fullMethod>setDescription(string $description): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>setLabel</methodName>
+      <methodSignature>setLabel(string $label): self</methodSignature>
+      <fullMethod>setLabel(string $label): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>setTarget</methodName>
+      <methodSignature>setTarget(string $target): self</methodSignature>
+      <fullMethod>setTarget(string $target): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Dashboard</package>
+      <className>Playground\Matrix\Resource\Dashboard\DashboardLink</className>
+      <methodName>setUri</methodName>
+      <methodSignature>setUri(string $uri): self</methodSignature>
+      <fullMethod>setUri(string $uri): self</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
     <method>
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\BacklogController</className>
@@ -229,6 +383,17 @@
       <crap>5</crap>
       <complexity>5</complexity>
       <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Controllers\Concerns</package>
+      <className>Playground\Matrix\Resource\Http\Controllers\Concerns\Loading</className>
+      <methodName>loadMatrix</methodName>
+      <methodSignature>loadMatrix(Illuminate\Http\Request $request, string $route): Playground\Matrix\Resource\Dashboard\Index</methodSignature>
+      <fullMethod>loadMatrix(Illuminate\Http\Request $request, string $route): Playground\Matrix\Resource\Dashboard\Index</fullMethod>
+      <crap>4.05</crap>
+      <complexity>4</complexity>
+      <coverage>85.71</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -455,10 +620,10 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\IndexController</className>
       <methodName>index</methodName>
-      <methodSignature>index(): Illuminate\View\View</methodSignature>
-      <fullMethod>index(): Illuminate\View\View</fullMethod>
-      <crap>1</crap>
-      <complexity>1</complexity>
+      <methodSignature>index(Illuminate\Http\Request $request): Illuminate\View\View</methodSignature>
+      <fullMethod>index(Illuminate\Http\Request $request): Illuminate\View\View</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
