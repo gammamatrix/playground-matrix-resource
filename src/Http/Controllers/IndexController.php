@@ -33,6 +33,6 @@ class IndexController extends Controller
                 'playground.matrix.resource',
             );
         }
-        return view('playground-matrix-resource::index', $data);
+        return view('playground-matrix-resource::index/index', $data);
     }
 }

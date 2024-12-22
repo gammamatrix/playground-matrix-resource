@@ -71,6 +71,9 @@ trait Loading
             ],
             'Ticket' => [
                 'route' => 'tickets',
+                // 'orderBy' => [
+                //     'updated_at' => 'desc',
+                // ],
             ],
             'Version' => [
                 'route' => 'versions',
