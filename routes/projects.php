@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/project',
+    'prefix' => 'resource/matrix/project',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {

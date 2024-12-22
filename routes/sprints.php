@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/sprint',
+    'prefix' => 'resource/matrix/sprint',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {

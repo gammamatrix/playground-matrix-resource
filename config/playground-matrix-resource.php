@@ -30,9 +30,13 @@ return [
     |
     | By default, translations and views are loaded.
     |
+    | For a faster load time on /resource/matrix, disable PLAYGROUND_MATRIX_RESOURCE_LOAD_MATRIX
+    | from loading the model counts in the database.
+    |
     */
 
     'load' => [
+        'matrix' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_MATRIX', true),
         'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
         'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
         'translations' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_TRANSLATIONS', true),
