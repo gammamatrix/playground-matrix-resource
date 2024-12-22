@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2024-12-22 17:57:53</timestamp>
+  <timestamp>2024-12-22 18:59:41</timestamp>
   <stats>
     <name>Method Crap Stats</name>
     <methodCount>296</methodCount>
     <crapMethodCount>1</crapMethodCount>
     <crapLoad>9</crapLoad>
-    <totalCrap>1204.18</totalCrap>
+    <totalCrap>1204.17</totalCrap>
     <crapMethodPercent>0.34</crapMethodPercent>
   </stats>
   <methods>
@@ -391,9 +391,9 @@
       <methodName>loadMatrix</methodName>
       <methodSignature>loadMatrix(Illuminate\Http\Request $request, string $route): Playground\Matrix\Resource\Dashboard\Index</methodSignature>
       <fullMethod>loadMatrix(Illuminate\Http\Request $request, string $route): Playground\Matrix\Resource\Dashboard\Index</fullMethod>
-      <crap>4.05</crap>
+      <crap>4.04</crap>
       <complexity>4</complexity>
-      <coverage>85.71</coverage>
+      <coverage>86.3</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>

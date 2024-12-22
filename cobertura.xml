@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage line-rate="0.98569903948773" branch-rate="0" lines-covered="4618" lines-valid="4685" branches-covered="0" branches-valid="0" complexity="1061" version="0.4" timestamp="1734890273">
+<coverage line-rate="0.98570819112628" branch-rate="0" lines-covered="4621" lines-valid="4688" branches-covered="0" branches-valid="0" complexity="1061" version="0.4" timestamp="1734893981">
   <sources>
     <source>/app/src</source>
   </sources>
@@ -1211,11 +1211,11 @@
         </class>
       </classes>
     </package>
-    <package name="Http/Controllers/Concerns/Loading.php" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+    <package name="Http/Controllers/Concerns/Loading.php" line-rate="0.86301369863014" branch-rate="0" complexity="4">
       <classes>
-        <class name="Playground\Matrix\Resource\Http\Controllers\Concerns\Loading" filename="Http/Controllers/Concerns/Loading.php" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+        <class name="Playground\Matrix\Resource\Http\Controllers\Concerns\Loading" filename="Http/Controllers/Concerns/Loading.php" line-rate="0.86301369863014" branch-rate="0" complexity="4">
           <methods>
-            <method name="loadMatrix" signature="Illuminate\Http\Request $request, string $route" line-rate="0.85714285714286" branch-rate="0" complexity="4">
+            <method name="loadMatrix" signature="Illuminate\Http\Request $request, string $route" line-rate="0.86301369863014" branch-rate="0" complexity="4">
               <lines>
                 <line number="24" hits="1"/>
                 <line number="25" hits="1"/>
@@ -1270,15 +1270,15 @@
                 <line number="76" hits="1"/>
                 <line number="77" hits="1"/>
                 <line number="78" hits="1"/>
+                <line number="79" hits="1"/>
                 <line number="80" hits="1"/>
                 <line number="81" hits="1"/>
-                <line number="82" hits="1"/>
+                <line number="83" hits="1"/>
                 <line number="84" hits="1"/>
                 <line number="85" hits="1"/>
                 <line number="87" hits="1"/>
-                <line number="88" hits="0"/>
-                <line number="89" hits="0"/>
-                <line number="90" hits="0"/>
+                <line number="88" hits="1"/>
+                <line number="90" hits="1"/>
                 <line number="91" hits="0"/>
                 <line number="92" hits="0"/>
                 <line number="93" hits="0"/>
@@ -1286,7 +1286,10 @@
                 <line number="95" hits="0"/>
                 <line number="96" hits="0"/>
                 <line number="97" hits="0"/>
-                <line number="109" hits="1"/>
+                <line number="98" hits="0"/>
+                <line number="99" hits="0"/>
+                <line number="100" hits="0"/>
+                <line number="112" hits="1"/>
               </lines>
             </method>
           </methods>
@@ -1344,15 +1347,15 @@
             <line number="76" hits="1"/>
             <line number="77" hits="1"/>
             <line number="78" hits="1"/>
+            <line number="79" hits="1"/>
             <line number="80" hits="1"/>
             <line number="81" hits="1"/>
-            <line number="82" hits="1"/>
+            <line number="83" hits="1"/>
             <line number="84" hits="1"/>
             <line number="85" hits="1"/>
             <line number="87" hits="1"/>
-            <line number="88" hits="0"/>
-            <line number="89" hits="0"/>
-            <line number="90" hits="0"/>
+            <line number="88" hits="1"/>
+            <line number="90" hits="1"/>
             <line number="91" hits="0"/>
             <line number="92" hits="0"/>
             <line number="93" hits="0"/>
@@ -1360,7 +1363,10 @@
             <line number="95" hits="0"/>
             <line number="96" hits="0"/>
             <line number="97" hits="0"/>
-            <line number="109" hits="1"/>
+            <line number="98" hits="0"/>
+            <line number="99" hits="0"/>
+            <line number="100" hits="0"/>
+            <line number="112" hits="1"/>
           </lines>
         </class>
       </classes>
