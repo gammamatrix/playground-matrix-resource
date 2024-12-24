@@ -3,17 +3,16 @@
 @section('title', 'Dashboard: Matrix')
 
 @section('breadcrumbs')
-<div class="container-fluid mt-3">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('playground.matrix.resource') }}">Matrix</a></li>
-        </ol>
-    </nav>
-</div>
+<nav aria-label="breadcrumb" class="container-fluid mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('playground.matrix.resource') }}">Matrix</a></li>
+    </ol>
+</nav>
 @endsection
 <?php
-// $hasMatrices = !empty($matrices) && $matrices instanceof \Illuminate\Database\Eloquent\Collection
+$user = \Illuminate\Support\Facades\Auth::user();
+
 ?>
 @section('content')
 <div class="container-fluid">
