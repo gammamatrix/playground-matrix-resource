@@ -291,6 +291,13 @@ class TicketController extends Controller
             'info' => $this->packageInfo,
         ];
 
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$validated' => $validated,
+        //     '$meta[rules]' => $meta['rules'],
+        //     '$request->input()' => $request->input(),
+        // ]);
+
         $data = [
             'paginator' => $paginator,
             'meta' => $meta,

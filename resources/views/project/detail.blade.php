@@ -4,6 +4,7 @@ $routePatch = !$data ? '' : route(sprintf('%1$s.patch', $meta['info']['model_rou
 $routeShow = !$data ? '' : route(sprintf('%1$s.show', $meta['info']['model_route']), [$meta['info']['model_slug'] => $data->getAttributeValue('id')]);
 $modelLabel = $meta['info']['model_label'];
 $modelColumn = 'project_id';
+$modulelLabel = $meta['info']['module_label'];
 
 $flags = [
     'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running', 'badge' => 'text-bg-success'],
@@ -32,14 +33,16 @@ $flags = [
 ?>
 @extends('playground::layouts.resource.detail', [
     'withInfo' => false,
+    'withAccordion' => true,
+    'withCard' => false,
 ])
 
 @section('detail-information-flags')
 @include('playground::layouts.resource.detail-flags')
 @endsection
 
-@section('detail-card-body-header')
-<div class="row">
+@section('detail-accordion-body-header')
+<div class="row mb-3">
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-sprint')
     </div>
@@ -47,7 +50,13 @@ $flags = [
         @include('playground-matrix-resource::io/manage-epic')
     </div>
     <div class="col-sm-6 col-md-4 mb-3">
+        @include('playground-matrix-resource::io/manage-ticket')
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version')
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
+        @include('playground-matrix-resource::io/manage-milestone')
     </div>
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-board')
@@ -68,16 +77,10 @@ $flags = [
         @include('playground-matrix-resource::io/manage-release')
     </div>
     <div class="col-sm-6 col-md-4 mb-3">
-        @include('playground-matrix-resource::io/manage-roadmap')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-tag')
     </div>
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-team')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
-        @include('playground-matrix-resource::io/manage-version')
     </div>
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-source')
@@ -85,5 +88,15 @@ $flags = [
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-note')
     </div>
+</div>
+@endsection
+
+@section('section-primary')
+<div class="my-3">
+    @include('playground-matrix-resource::io/list-tickets', [
+        'headerLabel' => 'Project Tickets',
+        'tickets' => Playground\Matrix\Models\Ticket::where('project_id', $data->id)->get(),
+        'withProject' => false,
+    ])
 </div>
 @endsection

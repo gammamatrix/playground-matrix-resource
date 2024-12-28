@@ -26,4 +26,10 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col">
+            <x-playground::forms.column type="datetime-local" column="closed_at" label="Closed At"/>
+        </div>
+    </div>
+
 </fieldset>

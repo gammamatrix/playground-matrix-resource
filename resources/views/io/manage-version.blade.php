@@ -6,7 +6,7 @@
             {{ __('Create') }}
         </a>
         @endif
-        <h2>{{ __('Create') }}Version</h2>
+        <h2>{{ __('Version') }}</h2>
     </div>
 
     @if($data->version_id)

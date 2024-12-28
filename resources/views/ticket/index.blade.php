@@ -1,9 +1,7 @@
 <?php
-$sort = empty($sort) || ! is_array($sort) ? [] : $sort;
+$sort = empty($sort) || !is_array($sort) ? [] : $sort;
 
-$filters = empty($filters) || ! is_array($filters) ? [] : $filters;
-
-$validated = empty($validated) || ! is_array($validated) ? [] : $validated;
+$filters = empty($filters) || !is_array($filters) ? [] : $filters;
 
 $columnsViewable = [
     'ticket_type' => [
@@ -13,6 +11,12 @@ $columnsViewable = [
     'created_by_id' => [
         'hide-sm' => true,
         'label' => 'Created by id',
+        'accessor' => 'creator',
+        'property' => 'name',
+        'with-image' => true,
+        'with-name' => true,
+        'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'modified_by_id' => [
         'hide-sm' => true,
@@ -20,71 +24,171 @@ $columnsViewable = [
     ],
     'owned_by_id' => [
         'hide-sm' => true,
+        'accessor' => 'owner',
         'label' => 'Owned by id',
+        'property' => 'name',
+        'with-image' => true,
+        'with-initials' => true,
     ],
     'parent_id' => [
         'hide-sm' => true,
-        'label' => 'Parent id',
+        'label' => 'Parent',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.tickets.show',
+        'accessor' => 'parent',
+        'property' => 'label_or_title',
+        'routeParameter' => 'ticket',
+        'routeParameterKey' => 'parent_id',
     ],
     'backlog_id' => [
         'hide-sm' => true,
         'label' => 'Backlog id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.backlogs.show',
+        'accessor' => 'backlog',
+        'property' => 'label_or_title',
+        'routeParameter' => 'backlog',
+        'routeParameterKey' => 'backlog_id',
     ],
     'board_id' => [
         'hide-sm' => true,
-        'label' => 'Board id',
+        'label' => 'Board',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.boards.show',
+        'accessor' => 'board',
+        'property' => 'label_or_title',
+        'routeParameter' => 'board',
+        'routeParameterKey' => 'board_id',
     ],
     'epic_id' => [
         'hide-sm' => true,
         'label' => 'Epic id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.epics.show',
+        'accessor' => 'epic',
+        'property' => 'label_or_title',
+        'routeParameter' => 'epic',
+        'routeParameterKey' => 'epic_id',
     ],
     'flow_id' => [
         'hide-sm' => true,
         'label' => 'Flow id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.flows.show',
+        'accessor' => 'flow',
+        'property' => 'label_or_title',
+        'routeParameter' => 'flow',
+        'routeParameterKey' => 'flow_id',
     ],
     'matrix_id' => [
         'hide-sm' => true,
         'label' => 'Matrix id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.matrices.show',
+        'accessor' => 'matrix',
+        'property' => 'label_or_title',
+        'routeParameter' => 'matrix',
+        'routeParameterKey' => 'matrix_id',
     ],
     'milestone_id' => [
         'hide-sm' => true,
         'label' => 'Milestone id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.milestones.show',
+        'accessor' => 'milestone',
+        'property' => 'label_or_title',
+        'routeParameter' => 'milestone',
+        'routeParameterKey' => 'milestone_id',
     ],
     'note_id' => [
         'hide-sm' => true,
         'label' => 'Note id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.notes.show',
+        'accessor' => 'note',
+        'property' => 'label_or_title',
+        'routeParameter' => 'note',
+        'routeParameterKey' => 'note_id',
     ],
     'project_id' => [
         'hide-sm' => true,
         'label' => 'Project id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.projects.show',
+        'accessor' => 'project',
+        'property' => 'label_or_title',
+        'routeParameter' => 'project',
+        'routeParameterKey' => 'project_id',
     ],
     'release_id' => [
         'hide-sm' => true,
         'label' => 'Release id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.releases.show',
+        'accessor' => 'release',
+        'property' => 'label_or_title',
+        'routeParameter' => 'release',
+        'routeParameterKey' => 'release_id',
     ],
     'roadmap_id' => [
         'hide-sm' => true,
         'label' => 'Roadmap id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.roadmaps.show',
+        'accessor' => 'roadmap',
+        'property' => 'label_or_title',
+        'routeParameter' => 'roadmap',
+        'routeParameterKey' => 'roadmap_id',
     ],
     'source_id' => [
         'hide-sm' => true,
         'label' => 'Source id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.sources.show',
+        'accessor' => 'source',
+        'property' => 'label_or_title',
+        'routeParameter' => 'source',
+        'routeParameterKey' => 'source_id',
     ],
     'sprint_id' => [
         'hide-sm' => true,
         'label' => 'Sprint id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.sprints.show',
+        'accessor' => 'sprint',
+        'property' => 'label_or_title',
+        'routeParameter' => 'sprint',
+        'routeParameterKey' => 'sprint_id',
     ],
     'tag_id' => [
         'hide-sm' => true,
         'label' => 'Tag id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.tags.show',
+        'accessor' => 'tag',
+        'property' => 'label_or_title',
+        'routeParameter' => 'tag',
+        'routeParameterKey' => 'tag_id',
     ],
     'team_id' => [
         'hide-sm' => true,
         'label' => 'Team id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.teams.show',
+        'accessor' => 'team',
+        'property' => 'label_or_title',
+        'routeParameter' => 'team',
+        'routeParameterKey' => 'team_id',
     ],
     'version_id' => [
         'hide-sm' => true,
         'label' => 'Version id',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.versions.show',
+        'accessor' => 'version',
+        'property' => 'label_or_title',
+        'routeParameter' => 'version',
+        'routeParameterKey' => 'version_id',
     ],
     'completed_by_id' => [
         'hide-sm' => true,
@@ -514,33 +618,19 @@ $columnsViewable = [
     ],
 ];
 
-$columnsMobile = [
-    'title',
-    'ticket_type',
-    'slug',
-    'description',
-    'published',
-];
+$columnsMobile = ['title', 'ticket_type', 'slug', 'description', 'published'];
 
-$columnsStandard = [
-    'title',
-    'ticket_type',
-    'slug',
-    'label',
-    'description',
-    'published',
-    'revision',
-    'created_at',
-    'updated_at',
-];
+$columnsStandard = ['title', 'ticket_type', 'slug', 'label', 'description', 'published', 'revision', 'created_at', 'updated_at'];
 
-$viewableColumns = ! empty($validated['columns'])
-    && is_string($validated['columns'])
-    && in_array($validated['columns'], [
-        'all',
-        'standard',
-        'mobile',
-    ]) ? $validated['columns'] : 'standard';
+$viewableColumns = 'standard';
+if (!empty($meta['validated'])
+    && !empty($meta['validated']['columns'])
+    && is_string($meta['validated']['columns'])
+    && in_array($meta['validated']['columns'], ['all', 'standard', 'mobile'])
+) {
+    $viewableColumns = $meta['validated']['columns'];
+
+}
 
 if ($viewableColumns === 'all') {
     $columns = $columnsViewable;

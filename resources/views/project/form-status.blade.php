@@ -14,6 +14,13 @@
             </div>
             <div class="col">
                 <div class="form-check form-check-inline">
+                    <input type="hidden" name="closed" value="0">
+                    <input class="form-check-input" type="checkbox" id="status_closed" name="closed" value="1" {{old('closed') ? 'checked' : ''}}>
+                    <label class="form-check-label" for="status_closed">Closed</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-check form-check-inline">
                     <input type="hidden" name="planned" value="0">
                     <input class="form-check-input" type="checkbox" id="status_planned" name="planned" value="1" {{old('planned') ? 'checked' : ''}}>
                     <label class="form-check-label" for="status_planned">Planned</label>
