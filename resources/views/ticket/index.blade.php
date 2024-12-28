@@ -10,7 +10,7 @@ $columnsViewable = [
     ],
     'created_by_id' => [
         'hide-sm' => true,
-        'label' => 'Created by id',
+        'label' => 'Creator',
         'accessor' => 'creator',
         'property' => 'name',
         'with-image' => true,
@@ -20,15 +20,22 @@ $columnsViewable = [
     ],
     'modified_by_id' => [
         'hide-sm' => true,
-        'label' => 'Modified by id',
+        'label' => 'Modifier',
+        'accessor' => 'modifier',
+        'property' => 'name',
+        'with-image' => true,
+        'with-name' => true,
+        'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'owned_by_id' => [
         'hide-sm' => true,
         'accessor' => 'owner',
-        'label' => 'Owned by id',
+        'label' => 'Owner',
         'property' => 'name',
         'with-image' => true,
         'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'parent_id' => [
         'hide-sm' => true,
@@ -42,7 +49,7 @@ $columnsViewable = [
     ],
     'backlog_id' => [
         'hide-sm' => true,
-        'label' => 'Backlog id',
+        'label' => 'Backlog',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.backlogs.show',
         'accessor' => 'backlog',
@@ -62,7 +69,7 @@ $columnsViewable = [
     ],
     'epic_id' => [
         'hide-sm' => true,
-        'label' => 'Epic id',
+        'label' => 'Epic',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.epics.show',
         'accessor' => 'epic',
@@ -72,7 +79,7 @@ $columnsViewable = [
     ],
     'flow_id' => [
         'hide-sm' => true,
-        'label' => 'Flow id',
+        'label' => 'Flow',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.flows.show',
         'accessor' => 'flow',
@@ -82,7 +89,7 @@ $columnsViewable = [
     ],
     'matrix_id' => [
         'hide-sm' => true,
-        'label' => 'Matrix id',
+        'label' => 'Matrix',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.matrices.show',
         'accessor' => 'matrix',
@@ -92,7 +99,7 @@ $columnsViewable = [
     ],
     'milestone_id' => [
         'hide-sm' => true,
-        'label' => 'Milestone id',
+        'label' => 'Milestone',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.milestones.show',
         'accessor' => 'milestone',
@@ -102,7 +109,7 @@ $columnsViewable = [
     ],
     'note_id' => [
         'hide-sm' => true,
-        'label' => 'Note id',
+        'label' => 'Note',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.notes.show',
         'accessor' => 'note',
@@ -112,7 +119,7 @@ $columnsViewable = [
     ],
     'project_id' => [
         'hide-sm' => true,
-        'label' => 'Project id',
+        'label' => 'Project',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.projects.show',
         'accessor' => 'project',
@@ -122,7 +129,7 @@ $columnsViewable = [
     ],
     'release_id' => [
         'hide-sm' => true,
-        'label' => 'Release id',
+        'label' => 'Release',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.releases.show',
         'accessor' => 'release',
@@ -132,7 +139,7 @@ $columnsViewable = [
     ],
     'roadmap_id' => [
         'hide-sm' => true,
-        'label' => 'Roadmap id',
+        'label' => 'Roadmap',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.roadmaps.show',
         'accessor' => 'roadmap',
@@ -142,7 +149,7 @@ $columnsViewable = [
     ],
     'source_id' => [
         'hide-sm' => true,
-        'label' => 'Source id',
+        'label' => 'Source',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.sources.show',
         'accessor' => 'source',
@@ -152,7 +159,7 @@ $columnsViewable = [
     ],
     'sprint_id' => [
         'hide-sm' => true,
-        'label' => 'Sprint id',
+        'label' => 'Sprint',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.sprints.show',
         'accessor' => 'sprint',
@@ -162,7 +169,7 @@ $columnsViewable = [
     ],
     'tag_id' => [
         'hide-sm' => true,
-        'label' => 'Tag id',
+        'label' => 'Tag',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.tags.show',
         'accessor' => 'tag',
@@ -172,7 +179,7 @@ $columnsViewable = [
     ],
     'team_id' => [
         'hide-sm' => true,
-        'label' => 'Team id',
+        'label' => 'Team',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.teams.show',
         'accessor' => 'team',
@@ -182,7 +189,7 @@ $columnsViewable = [
     ],
     'version_id' => [
         'hide-sm' => true,
-        'label' => 'Version id',
+        'label' => 'Version',
         'linkType' => 'fk',
         'linkRoute' => 'playground.matrix.resource.versions.show',
         'accessor' => 'version',
@@ -192,23 +199,55 @@ $columnsViewable = [
     ],
     'completed_by_id' => [
         'hide-sm' => true,
-        'label' => 'Completed by id',
+        'label' => 'Completed by',
+        'hide-sm' => true,
+        'label' => 'Creator',
+        'accessor' => 'creator',
+        'property' => 'name',
+        'with-image' => true,
+        'with-name' => true,
+        'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'duplicate_id' => [
         'hide-sm' => true,
-        'label' => 'Duplicate id',
+        'label' => 'Duplicate',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.tickets.show',
+        'accessor' => 'ticket',
+        'property' => 'label_or_title',
+        'routeParameter' => 'ticket',
+        'routeParameterKey' => 'duplicate_id',
     ],
     'fixed_by_id' => [
         'hide-sm' => true,
-        'label' => 'Fixed by id',
+        'label' => 'Fixed by',
+        'accessor' => 'fixedBy',
+        'property' => 'name',
+        'with-image' => true,
+        'with-name' => true,
+        'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'reported_by_id' => [
         'hide-sm' => true,
-        'label' => 'Reported by id',
+        'label' => 'Reported by',
+        'accessor' => 'reportedBy',
+        'property' => 'name',
+        'with-image' => true,
+        'with-name' => true,
+        'with-initials' => true,
+        'linkType' => 'filter-id',
     ],
     'version_fixed_id' => [
         'hide-sm' => true,
-        'label' => 'Version fixed id',
+        'label' => 'Version Fixed',
+        'linkType' => 'fk',
+        'linkRoute' => 'playground.matrix.resource.versions.show',
+        'accessor' => 'versionFixed',
+        'property' => 'label_or_title',
+        'routeParameter' => 'version',
+        'routeParameterKey' => 'version_fixed_id',
     ],
     'locale' => [
         'hide-sm' => true,
@@ -629,7 +668,6 @@ if (!empty($meta['validated'])
     && in_array($meta['validated']['columns'], ['all', 'standard', 'mobile'])
 ) {
     $viewableColumns = $meta['validated']['columns'];
-
 }
 
 if ($viewableColumns === 'all') {
