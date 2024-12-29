@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/version',
+    'prefix' => 'resource/matrix/version',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{version}', [
         'as' => 'playground.matrix.resource.versions.show',
         'uses' => 'VersionController@show',
-    ])->whereUuid('version')->can('detail', 'version');
+    ])->whereUuid('version')->can('detail', 'version')->withTrashed();
 
     // API
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/note',
+    'prefix' => 'resource/matrix/note',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{note}', [
         'as' => 'playground.matrix.resource.notes.show',
         'uses' => 'NoteController@show',
-    ])->whereUuid('note')->can('detail', 'note');
+    ])->whereUuid('note')->can('detail', 'note')->withTrashed();
 
     // API
 

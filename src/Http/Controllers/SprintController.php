@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -466,11 +467,11 @@ class SprintController extends Controller
 
         $user = $request->user();
 
-        $sprint->update($validated);
-
         if ($user?->id) {
             $sprint->modified_by_id = $user->id;
         }
+
+        $sprint->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Sprint($sprint))->additional(['meta' => [

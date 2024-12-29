@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/flow',
+    'prefix' => 'resource/matrix/flow',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{flow}', [
         'as' => 'playground.matrix.resource.flows.show',
         'uses' => 'FlowController@show',
-    ])->whereUuid('flow')->can('detail', 'flow');
+    ])->whereUuid('flow')->can('detail', 'flow')->withTrashed();
 
     // API
 

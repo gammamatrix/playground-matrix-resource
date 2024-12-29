@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/backlog',
+    'prefix' => 'resource/matrix/backlog',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{backlog}', [
         'as' => 'playground.matrix.resource.backlogs.show',
         'uses' => 'BacklogController@show',
-    ])->whereUuid('backlog')->can('detail', 'backlog');
+    ])->whereUuid('backlog')->can('detail', 'backlog')->withTrashed();
 
     // API
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/board',
+    'prefix' => 'resource/matrix/board',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{board}', [
         'as' => 'playground.matrix.resource.boards.show',
         'uses' => 'BoardController@show',
-    ])->whereUuid('board')->can('detail', 'board');
+    ])->whereUuid('board')->can('detail', 'board')->withTrashed();
 
     // API
 

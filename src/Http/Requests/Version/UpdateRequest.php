@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -82,7 +83,7 @@ class UpdateRequest extends BaseUpdateRequest
         'unknown' => ['boolean'],
         'locale' => ['string'],
         'label' => ['string'],
-        'title' => ['string', 'required'],
+        'title' => ['string'],
         'byline' => ['string'],
         'slug' => ['nullable', 'string'],
         'url' => ['string'],

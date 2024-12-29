@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/ticket',
+    'prefix' => 'resource/matrix/ticket',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{ticket}', [
         'as' => 'playground.matrix.resource.tickets.show',
         'uses' => 'TicketController@show',
-    ])->whereUuid('ticket')->can('detail', 'ticket');
+    ])->whereUuid('ticket')->can('detail', 'ticket')->withTrashed();
 
     // API
 

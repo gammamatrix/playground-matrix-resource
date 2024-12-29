@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/tag',
+    'prefix' => 'resource/matrix/tag',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{tag}', [
         'as' => 'playground.matrix.resource.tags.show',
         'uses' => 'TagController@show',
-    ])->whereUuid('tag')->can('detail', 'tag');
+    ])->whereUuid('tag')->can('detail', 'tag')->withTrashed();
 
     // API
 

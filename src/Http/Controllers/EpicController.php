@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -466,11 +467,11 @@ class EpicController extends Controller
 
         $user = $request->user();
 
-        $epic->update($validated);
-
         if ($user?->id) {
             $epic->modified_by_id = $user->id;
         }
+
+        $epic->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Epic($epic))->additional(['meta' => [

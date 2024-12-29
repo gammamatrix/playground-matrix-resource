@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -466,11 +467,11 @@ class VersionController extends Controller
 
         $user = $request->user();
 
-        $version->update($validated);
-
         if ($user?->id) {
             $version->modified_by_id = $user->id;
         }
+
+        $version->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Version($version))->additional(['meta' => [

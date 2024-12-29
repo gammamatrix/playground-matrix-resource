@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -291,6 +292,13 @@ class TicketController extends Controller
             'info' => $this->packageInfo,
         ];
 
+        // dump([
+        //     '__METHOD__' => __METHOD__,
+        //     '$validated' => $validated,
+        //     '$meta[rules]' => $meta['rules'],
+        //     '$request->input()' => $request->input(),
+        // ]);
+
         $data = [
             'paginator' => $paginator,
             'meta' => $meta,
@@ -471,11 +479,11 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        $ticket->update($validated);
-
         if ($user?->id) {
             $ticket->modified_by_id = $user->id;
         }
+
+        $ticket->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Ticket($ticket))->additional(['meta' => [

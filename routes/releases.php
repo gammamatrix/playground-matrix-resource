@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/release',
+    'prefix' => 'resource/matrix/release',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{release}', [
         'as' => 'playground.matrix.resource.releases.show',
         'uses' => 'ReleaseController@show',
-    ])->whereUuid('release')->can('detail', 'release');
+    ])->whereUuid('release')->can('detail', 'release')->withTrashed();
 
     // API
 

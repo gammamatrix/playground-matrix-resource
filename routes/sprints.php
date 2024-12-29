@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/sprint',
+    'prefix' => 'resource/matrix/sprint',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{sprint}', [
         'as' => 'playground.matrix.resource.sprints.show',
         'uses' => 'SprintController@show',
-    ])->whereUuid('sprint')->can('detail', 'sprint');
+    ])->whereUuid('sprint')->can('detail', 'sprint')->withTrashed();
 
     // API
 

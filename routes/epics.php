@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/epic',
+    'prefix' => 'resource/matrix/epic',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{epic}', [
         'as' => 'playground.matrix.resource.epics.show',
         'uses' => 'EpicController@show',
-    ])->whereUuid('epic')->can('detail', 'epic');
+    ])->whereUuid('epic')->can('detail', 'epic')->withTrashed();
 
     // API
 

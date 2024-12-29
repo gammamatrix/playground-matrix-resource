@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'prefix' => 'api/matrix/roadmap',
+    'prefix' => 'resource/matrix/roadmap',
     'middleware' => config('playground-matrix-resource.middleware.default'),
     'namespace' => '\Playground\Matrix\Resource\Http\Controllers',
 ], function () {
@@ -62,7 +63,7 @@ Route::group([
     Route::get('/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.show',
         'uses' => 'RoadmapController@show',
-    ])->whereUuid('roadmap')->can('detail', 'roadmap');
+    ])->whereUuid('roadmap')->can('detail', 'roadmap')->withTrashed();
 
     // API
 

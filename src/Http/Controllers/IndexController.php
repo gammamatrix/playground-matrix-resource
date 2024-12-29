@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -6,6 +7,7 @@
 declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 /**
@@ -13,11 +15,26 @@ use Illuminate\View\View;
  */
 class IndexController extends Controller
 {
+    use Concerns\Loading;
+
     /**
      * Show the index.
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('playground-matrix-resource::index');
+        $data = [];
+        // dd([
+        //     '__METHOD__' => __METHOD__,
+        //     'config' => config('playground-matrix-resource'),
+        // ]);
+
+        if (! empty(config('playground-matrix-resource.load.matrix'))) {
+            $data['dashboard'] = $this->loadMatrix(
+                $request,
+                'playground.matrix.resource',
+            );
+        }
+
+        return view('playground-matrix-resource::index/index', $data);
     }
 }

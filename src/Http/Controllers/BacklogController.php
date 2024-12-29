@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -466,11 +467,11 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
-        $backlog->update($validated);
-
         if ($user?->id) {
             $backlog->modified_by_id = $user->id;
         }
+
+        $backlog->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Backlog($backlog))->additional(['meta' => [
