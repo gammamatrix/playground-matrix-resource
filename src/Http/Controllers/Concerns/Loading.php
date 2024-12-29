@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -7,8 +8,6 @@ declare(strict_types=1);
 namespace Playground\Matrix\Resource\Http\Controllers\Concerns;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
-use Playground\Matrix\Models;
 use Playground\Matrix\Resource\Dashboard\Index as IndexDashboard;
 
 /**
@@ -19,8 +18,7 @@ trait Loading
     public function loadMatrix(
         Request $request,
         string $route,
-    ): IndexDashboard
-    {
+    ): IndexDashboard {
         $dashboard = new IndexDashboard;
         $data = [];
 
@@ -87,7 +85,7 @@ trait Loading
             $dashboard->setLabel($key, $key);
             $dashboard->setCount($key, $data[$key]->count());
 
-            foreach($data[$key] as $model) {
+            foreach ($data[$key] as $model) {
                 $dashboard->addLink($key, [
                     'description' => $model->description,
                     'label' => $model->label ?: $model->title,

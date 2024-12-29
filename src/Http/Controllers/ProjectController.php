@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -466,11 +467,11 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
-        $project->update($validated);
-
         if ($user?->id) {
             $project->modified_by_id = $user->id;
         }
+
+        $project->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Project($project))->additional(['meta' => [

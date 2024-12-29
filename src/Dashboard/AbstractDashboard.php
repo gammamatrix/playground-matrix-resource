@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Playground
  */
@@ -33,8 +34,8 @@ class AbstractDashboard
     public function getCount(string $key): int|null
     {
         if (empty($key)
-            || !array_key_exists($key, $this->counts)
-            || !is_int($this->counts[$key])
+            || ! array_key_exists($key, $this->counts)
+            || ! is_int($this->counts[$key])
         ) {
             return null;
         }
@@ -44,7 +45,7 @@ class AbstractDashboard
 
     public function setCount(string $key, int|null $value): self
     {
-        if (!empty($key) ) {
+        if (! empty($key) ) {
             $this->counts[$key] = $value;
         }
 
@@ -59,8 +60,8 @@ class AbstractDashboard
                 $value
             ));
         }
-        if (!empty($key) ) {
-            if (!array_key_exists($key, $this->counts)) {
+        if (! empty($key) ) {
+            if (! array_key_exists($key, $this->counts)) {
                 $this->counts[$key] = 0;
             }
             $this->counts[$key] -= $value;
@@ -77,8 +78,8 @@ class AbstractDashboard
                 $value
             ));
         }
-        if (!empty($key) ) {
-            if (!array_key_exists($key, $this->counts)) {
+        if (! empty($key) ) {
+            if (! array_key_exists($key, $this->counts)) {
                 $this->counts[$key] = 0;
             }
             $this->counts[$key] -= $value;
@@ -89,7 +90,7 @@ class AbstractDashboard
 
     public function setLabel(string $key, string $label): self
     {
-        if (!empty($key) && !empty($label)) {
+        if (! empty($key) && ! empty($label)) {
             $this->labels[$key] = $label;
         }
 
@@ -98,10 +99,9 @@ class AbstractDashboard
 
     public function hasLinks(string $key): bool
     {
-        return !empty($key)
+        return ! empty($key)
             && array_key_exists($key, $this->links)
-            && !empty($this->links[$key])
-        ;
+            && ! empty($this->links[$key]);
     }
 
     /**
@@ -109,8 +109,8 @@ class AbstractDashboard
      */
     public function addLink(string $key, array $options = []): self
     {
-        if (!empty($key)) {
-            if (!array_key_exists($key, $this->links)) {
+        if (! empty($key)) {
+            if (! array_key_exists($key, $this->links)) {
                 $this->links[$key] = [];
             }
             $this->links[$key][] = new DashboardLink($options);
@@ -125,7 +125,7 @@ class AbstractDashboard
     public function getLinks(string $key): array
     {
         if (empty($key)
-            || !array_key_exists($key, $this->links)
+            || ! array_key_exists($key, $this->links)
             || empty($this->links[$key])
         ) {
             return [];

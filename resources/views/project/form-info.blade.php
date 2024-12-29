@@ -42,7 +42,7 @@
     @if ($parents->isEmpty())
     <input type="hidden" name="parent_id" value="" />
     @else
-    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Project" :records="$parents"/>
+    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Project" :records="$parents->toArray()"/>
     @endif
 
     @php $boards = Playground\Matrix\Models\Board::all() @endphp
