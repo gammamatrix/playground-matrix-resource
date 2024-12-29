@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{version}', [
         'as' => 'playground.matrix.resource.versions.show',
         'uses' => 'VersionController@show',
-    ])->whereUuid('version')->can('detail', 'version');
+    ])->whereUuid('version')->can('detail', 'version')->withTrashed();
 
     // API
 

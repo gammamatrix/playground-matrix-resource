@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{board}', [
         'as' => 'playground.matrix.resource.boards.show',
         'uses' => 'BoardController@show',
-    ])->whereUuid('board')->can('detail', 'board');
+    ])->whereUuid('board')->can('detail', 'board')->withTrashed();
 
     // API
 

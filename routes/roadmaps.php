@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{roadmap}', [
         'as' => 'playground.matrix.resource.roadmaps.show',
         'uses' => 'RoadmapController@show',
-    ])->whereUuid('roadmap')->can('detail', 'roadmap');
+    ])->whereUuid('roadmap')->can('detail', 'roadmap')->withTrashed();
 
     // API
 

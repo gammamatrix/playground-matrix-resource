@@ -467,11 +467,11 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        $flow->update($validated);
-
         if ($user?->id) {
             $flow->modified_by_id = $user->id;
         }
+
+        $flow->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Flow($flow))->additional(['meta' => [

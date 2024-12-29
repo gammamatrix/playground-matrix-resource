@@ -467,11 +467,11 @@ class MatrixController extends Controller
 
         $user = $request->user();
 
-        $matrix->update($validated);
-
         if ($user?->id) {
             $matrix->modified_by_id = $user->id;
         }
+
+        $matrix->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Matrix($matrix))->additional(['meta' => [

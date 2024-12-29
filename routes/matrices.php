@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{matrix}', [
         'as' => 'playground.matrix.resource.matrices.show',
         'uses' => 'MatrixController@show',
-    ])->whereUuid('matrix')->can('detail', 'matrix');
+    ])->whereUuid('matrix')->can('detail', 'matrix')->withTrashed();
 
     // API
 

@@ -467,11 +467,11 @@ class TagController extends Controller
 
         $user = $request->user();
 
-        $tag->update($validated);
-
         if ($user?->id) {
             $tag->modified_by_id = $user->id;
         }
+
+        $tag->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Tag($tag))->additional(['meta' => [

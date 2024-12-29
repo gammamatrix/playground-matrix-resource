@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{tag}', [
         'as' => 'playground.matrix.resource.tags.show',
         'uses' => 'TagController@show',
-    ])->whereUuid('tag')->can('detail', 'tag');
+    ])->whereUuid('tag')->can('detail', 'tag')->withTrashed();
 
     // API
 

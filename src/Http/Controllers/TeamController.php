@@ -467,11 +467,11 @@ class TeamController extends Controller
 
         $user = $request->user();
 
-        $team->update($validated);
-
         if ($user?->id) {
             $team->modified_by_id = $user->id;
         }
+
+        $team->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Team($team))->additional(['meta' => [

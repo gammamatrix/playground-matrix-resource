@@ -467,11 +467,11 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        $note->update($validated);
-
         if ($user?->id) {
             $note->modified_by_id = $user->id;
         }
+
+        $note->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Note($note))->additional(['meta' => [

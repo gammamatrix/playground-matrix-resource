@@ -467,11 +467,11 @@ class RoadmapController extends Controller
 
         $user = $request->user();
 
-        $roadmap->update($validated);
-
         if ($user?->id) {
             $roadmap->modified_by_id = $user->id;
         }
+
+        $roadmap->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Roadmap($roadmap))->additional(['meta' => [

@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{backlog}', [
         'as' => 'playground.matrix.resource.backlogs.show',
         'uses' => 'BacklogController@show',
-    ])->whereUuid('backlog')->can('detail', 'backlog');
+    ])->whereUuid('backlog')->can('detail', 'backlog')->withTrashed();
 
     // API
 

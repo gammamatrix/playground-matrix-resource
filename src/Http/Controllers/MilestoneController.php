@@ -467,11 +467,11 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
-        $milestone->update($validated);
-
         if ($user?->id) {
             $milestone->modified_by_id = $user->id;
         }
+
+        $milestone->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Milestone($milestone))->additional(['meta' => [

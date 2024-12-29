@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{milestone}', [
         'as' => 'playground.matrix.resource.milestones.show',
         'uses' => 'MilestoneController@show',
-    ])->whereUuid('milestone')->can('detail', 'milestone');
+    ])->whereUuid('milestone')->can('detail', 'milestone')->withTrashed();
 
     // API
 

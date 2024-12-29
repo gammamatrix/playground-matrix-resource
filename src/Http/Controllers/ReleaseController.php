@@ -467,11 +467,11 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
-        $release->update($validated);
-
         if ($user?->id) {
             $release->modified_by_id = $user->id;
         }
+
+        $release->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Release($release))->additional(['meta' => [

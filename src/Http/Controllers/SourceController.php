@@ -467,11 +467,11 @@ class SourceController extends Controller
 
         $user = $request->user();
 
-        $source->update($validated);
-
         if ($user?->id) {
             $source->modified_by_id = $user->id;
         }
+
+        $source->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Source($source))->additional(['meta' => [

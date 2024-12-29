@@ -467,11 +467,11 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        $board->update($validated);
-
         if ($user?->id) {
             $board->modified_by_id = $user->id;
         }
+
+        $board->update($validated);
 
         if ($request->expectsJson()) {
             return (new Resources\Board($board))->additional(['meta' => [

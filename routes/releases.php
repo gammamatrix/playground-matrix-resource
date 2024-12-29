@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{release}', [
         'as' => 'playground.matrix.resource.releases.show',
         'uses' => 'ReleaseController@show',
-    ])->whereUuid('release')->can('detail', 'release');
+    ])->whereUuid('release')->can('detail', 'release')->withTrashed();
 
     // API
 

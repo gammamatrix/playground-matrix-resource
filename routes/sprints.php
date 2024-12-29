@@ -63,7 +63,7 @@ Route::group([
     Route::get('/{sprint}', [
         'as' => 'playground.matrix.resource.sprints.show',
         'uses' => 'SprintController@show',
-    ])->whereUuid('sprint')->can('detail', 'sprint');
+    ])->whereUuid('sprint')->can('detail', 'sprint')->withTrashed();
 
     // API
 
