@@ -23,10 +23,6 @@ class IndexController extends Controller
     public function index(Request $request): View
     {
         $data = [];
-        // dd([
-        //     '__METHOD__' => __METHOD__,
-        //     'config' => config('playground-matrix-resource'),
-        // ]);
 
         if (! empty(config('playground-matrix-resource.load.matrix'))) {
             $data['dashboard'] = $this->loadMatrix(
