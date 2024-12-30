@@ -1,7 +1,6 @@
 <div class="card">
 
     <div class="card-header">
-        @endif
         <h2> {{ __('Parent') }}</h2>
     </div>
 
@@ -28,7 +27,7 @@
                     <select class="form-select" aria-label=" {{ __('set the parent') }}" name="parent_id" required>
                         <option selected value=""> {{ __('set the parent') }}</option>
                         @foreach ($parents as $parent)
-                        <option value="{{$parent->id}}">{{$parent->label ? $parent->title }}</option>
+                        <option value="{{$parent->id}}">{{$parent->label ?: $parent->title }}</option>
                         @endforeach
                     </select>
                     <button class="btn btn-success" role="button">

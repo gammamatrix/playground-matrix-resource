@@ -1,7 +1,6 @@
 <div class="card">
 
     <div class="card-header">
-        @endif
         <h2> {{ __('Owner') }}</h2>
     </div>
 

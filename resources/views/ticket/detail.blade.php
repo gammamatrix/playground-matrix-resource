@@ -98,21 +98,21 @@ $flags = [
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version')
     </div>
-    <div class="col-sm-6 col-md-4 mb-3">
+    {{-- <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-completed-by')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
+    </div> --}}
+    {{-- <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-duplicate')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
+    </div> --}}
+    {{-- <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-fixed-by')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
+    </div> --}}
+    {{-- <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-reported-by')
-    </div>
-    <div class="col-sm-6 col-md-4 mb-3">
+    </div> --}}
+    {{-- <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version-fixed')
-    </div>
+    </div> --}}
 </div>
 @endsection
 
