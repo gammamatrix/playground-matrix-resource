@@ -1,0 +1,17 @@
+{
+    "class": "BacklogCollection",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/BacklogCollection",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "BacklogCollection",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": true,
+    "model": "Backlog",
+    "model_fqdn": "Playground/Matrix/Models/Backlog",
+    "model_slug": "backlog",
+    "type": "",
+    "models": []
+}

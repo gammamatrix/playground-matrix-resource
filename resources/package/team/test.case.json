@@ -1,0 +1,22 @@
+{
+    "class": "TeamTestCase",
+    "config": "playground-matrix-resource",
+    "extends": "TestCase",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers/TeamTestCase",
+    "model": "Team",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "TeamTestCase",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-controller-model-case",
+    "uses": [],
+    "models": {
+        "Team": "resources/configurations/playground-matrix/model.team.json"
+    },
+    "package_providers": []
+}

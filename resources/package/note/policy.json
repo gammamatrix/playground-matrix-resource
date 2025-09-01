@@ -1,0 +1,31 @@
+{
+    "class": "NotePolicy",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Policies/Note",
+    "model": "Note",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Note",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "withTests": true,
+    "playground": false,
+    "models": [],
+    "uses": [],
+    "rolesForAction": [
+        "publisher",
+        "manager",
+        "admin",
+        "root"
+    ],
+    "rolesToView": [
+        "user",
+        "staff",
+        "publisher",
+        "manager",
+        "admin",
+        "root"
+    ]
+}

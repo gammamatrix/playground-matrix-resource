@@ -1,0 +1,22 @@
+{
+    "class": "NoteTestCase",
+    "config": "playground-matrix-resource",
+    "extends": "TestCase",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers/NoteTestCase",
+    "model": "Note",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "NoteTestCase",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-controller-model-case",
+    "uses": [],
+    "models": {
+        "Note": "resources/configurations/playground-matrix/model.note.json"
+    },
+    "package_providers": []
+}

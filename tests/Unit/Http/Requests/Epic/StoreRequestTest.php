@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests\Epic;
 
 use Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest;
@@ -17,7 +18,7 @@ class StoreRequestTest extends RequestTestCase
 {
     protected string $requestClass = StoreRequest::class;
 
-    public function test_StoreRequest_rules_with_optional_revisions_disabled(): void
+    public function test_store_request_rules_with_optional_revisions_disabled(): void
     {
         config(['playground-matrix-resource.revisions.optional' => false]);
         $instance = new StoreRequest;
@@ -27,7 +28,7 @@ class StoreRequestTest extends RequestTestCase
         $this->assertArrayNotHasKey('revision', $rules);
     }
 
-    public function test_StoreRequest_rules_with_optional_revisions_enabled(): void
+    public function test_store_request_rules_with_optional_revisions_enabled(): void
     {
         config(['playground-matrix-resource.revisions.optional' => true]);
         $instance = new StoreRequest;

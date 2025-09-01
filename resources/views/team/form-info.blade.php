@@ -22,8 +22,21 @@
 
     <x-playground::forms.column column="team_type" label="Team Type" :rules="['maxlength' => 255]" />
 
-    @if (!empty($parents))
-    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Team" :records="$parents"/>
+
+
+    @php
+    if ('patch' === $_method) {
+        $parents = Playground\Matrix\Models\Team::where('id', '!=', $data->id)->get();
+    } else {
+        $parents = Playground\Matrix\Models\Team::isNotClosed()->isActive()->get();
+    }
+    @endphp
+    @if ($parents->isEmpty())
+    <input type="hidden" name="parent_id" value="" />
+    @else
+    <x-playground::forms.column-select column="parent_id" key="label" label="Team" :records="$parents->toArray()"/>
     @endif
+
+
 
 </fieldset>

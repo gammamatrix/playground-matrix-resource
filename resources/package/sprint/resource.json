@@ -1,0 +1,17 @@
+{
+    "class": "Sprint",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/Sprint",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Sprint",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": false,
+    "model": "Sprint",
+    "model_fqdn": "Playground/Matrix/Models/Sprint",
+    "model_slug": "sprint",
+    "type": "",
+    "models": []
+}

@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Requests\FormRequest;
 
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class InstanceTest extends TestCase
 {
     protected bool $load_migrations_playground = true;
 
-    public function test_FormRequest_authorize_with_admin(): void
+    public function test_form_request_authorize_with_admin(): void
     {
         /**
          * @var User $user

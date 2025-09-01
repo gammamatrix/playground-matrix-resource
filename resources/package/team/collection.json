@@ -1,0 +1,17 @@
+{
+    "class": "TeamCollection",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/TeamCollection",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "TeamCollection",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": true,
+    "model": "Team",
+    "model_fqdn": "Playground/Matrix/Models/Team",
+    "model_slug": "team",
+    "type": "",
+    "models": []
+}

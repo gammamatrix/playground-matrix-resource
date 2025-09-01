@@ -1,0 +1,17 @@
+{
+    "class": "RoadmapCollection",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/RoadmapCollection",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "RoadmapCollection",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": true,
+    "model": "Roadmap",
+    "model_fqdn": "Playground/Matrix/Models/Roadmap",
+    "model_slug": "roadmap",
+    "type": "",
+    "models": []
+}

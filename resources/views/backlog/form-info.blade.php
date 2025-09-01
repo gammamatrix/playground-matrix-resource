@@ -22,8 +22,21 @@
 
     <x-playground::forms.column column="backlog_type" label="Backlog Type" :rules="['maxlength' => 255]" />
 
-    @if (!empty($parents))
-    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Backlog" :records="$parents"/>
+
+
+    @php
+    if ('patch' === $_method) {
+        $parents = Playground\Matrix\Models\Backlog::where('id', '!=', $data->id)->get();
+    } else {
+        $parents = Playground\Matrix\Models\Backlog::isNotClosed()->isActive()->get();
+    }
+    @endphp
+    @if ($parents->isEmpty())
+    <input type="hidden" name="parent_id" value="" />
+    @else
+    <x-playground::forms.column-select column="parent_id" key="label" label="Backlog" :records="$parents->toArray()"/>
     @endif
+
+
 
 </fieldset>

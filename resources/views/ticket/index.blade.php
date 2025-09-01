@@ -1,4 +1,9 @@
 <?php
+$sort = empty($sort) || ! is_array($sort) ? [] : $sort;
+
+$filters = empty($filters) || ! is_array($filters) ? [] : $filters;
+
+$validated = empty($validated) || ! is_array($validated) ? [] : $validated;
 
 $columnsViewable = [
     'ticket_type' => [
@@ -214,36 +219,6 @@ $columnsViewable = [
         'linkType' => null,
         'linkRoute' => null,
         'label' => 'Points',
-    ],
-    'actual' => [
-        'hide-sm' => true,
-        'linkType' => null,
-        'linkRoute' => null,
-        'label' => 'Actual',
-    ],
-    'expected' => [
-        'hide-sm' => true,
-        'linkType' => null,
-        'linkRoute' => null,
-        'label' => 'Expected',
-    ],
-    'story' => [
-        'hide-sm' => true,
-        'linkType' => null,
-        'linkRoute' => null,
-        'label' => 'Story',
-    ],
-    'steps' => [
-        'hide-sm' => true,
-        'linkType' => null,
-        'linkRoute' => null,
-        'label' => 'Steps',
-    ],
-    'criteria' => [
-        'hide-sm' => true,
-        'linkType' => null,
-        'linkRoute' => null,
-        'label' => 'Criteria',
     ],
     'reproducibility' => [
         'hide-sm' => true,
@@ -529,14 +504,13 @@ $columnsStandard = [
     'updated_at',
 ];
 
-$viewableColumns = 'standard';
-if (!empty($meta['validated'])
-    && !empty($meta['validated']['columns'])
-    && is_string($meta['validated']['columns'])
-    && in_array($meta['validated']['columns'], ['all', 'standard', 'mobile'])
-) {
-    $viewableColumns = $meta['validated']['columns'];
-}
+$viewableColumns = ! empty($validated['columns'])
+    && is_string($validated['columns'])
+    && in_array($validated['columns'], [
+        'all',
+        'standard',
+        'mobile',
+    ]) ? $validated['columns'] : 'standard';
 
 if ($viewableColumns === 'all') {
     $columns = $columnsViewable;

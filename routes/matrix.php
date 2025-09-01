@@ -25,6 +25,6 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource',
         'uses' => 'IndexController@index',
-    ])->can('index', Playground\Matrix\Models\Matrix::class);
+    ])->can('index', Playground\Matrix\Models\Backlog::class);
 
 });

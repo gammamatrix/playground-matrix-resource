@@ -1,0 +1,30 @@
+{
+    "class": "PackageProviders",
+    "config": "playground-matrix-resource",
+    "extends": "",
+    "fqdn": "Tests/Unit/Playground/Matrix/Resource/PackageProviders",
+    "model": "",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "PackageProviders",
+    "namespace": "Tests/Unit/Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "unit",
+    "type": "providers-resource",
+    "uses": [],
+    "models": [],
+    "package_providers": [
+        "\\Playground\\Test\\ServiceProvider::class",
+        "\\Playground\\ServiceProvider::class",
+        "\\Playground\\Auth\\ServiceProvider::class",
+        "\\Playground\\Blade\\ServiceProvider::class",
+        "\\Playground\\Http\\ServiceProvider::class",
+        "\\Playground\\Login\\Blade\\ServiceProvider::class",
+        "\\Playground\\Site\\Blade\\ServiceProvider::class",
+        "\\Playground\\Matrix\\ServiceProvider::class",
+        "\\Playground\\Matrix\\Resource\\ServiceProvider::class"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "class": "flow/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "flow/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Flow",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "flow",
+    "model": "Flow",
+    "model_column": "flow",
+    "model_label": "Flow",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Flow",
+    "models": {
+        "Flow": "resources/configurations/playground-matrix/model.flow.json"
+    }
+}

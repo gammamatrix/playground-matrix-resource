@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Dashboard;
 
 /**
@@ -12,16 +13,16 @@ namespace Playground\Matrix\Resource\Dashboard;
  */
 class DashboardLink
 {
-    public string|null $description = null;
+    public ?string $description = null;
 
-    public string|null $label = null;
+    public ?string $label = null;
 
-    public string|null $target = null;
+    public ?string $target = null;
 
-    public string|null $uri = null;
+    public ?string $uri = null;
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function __construct(array $options = [])
     {

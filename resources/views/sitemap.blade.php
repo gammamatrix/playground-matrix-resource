@@ -128,13 +128,10 @@ if (!$viewBacklogs && !$viewBoards && !$viewEpics && !$viewFlows && !$viewMatric
             <div class="col-sm-6 mb-3">
                 <div class="card">
                     <div class="card-header">
-                        <small class="text-muted">backlogs, boards, epics, flows, matrices, milestones, notes, projects, releases, roadmaps, sources, sprints, tags, teams, tickets and versions</small>
+                    Matrix Backlog
+                    <small class="text-muted">backlogs, boards, epics, flows, matrices, milestones, notes, projects, releases, roadmaps, sources, sprints, tags, teams, tickets and versions</small>
                     </div>
                     <ul class="list-group list-group-flush">
-
-                        <a href="{{ route('playground.matrix.resource') }}" class="list-group-item list-group-item-action">
-                            Matrix Index
-                        </a>
 
                         @if ($viewBacklogs)
                         <a href="{{ route('playground.matrix.resource.backlogs') }}" class="list-group-item list-group-item-action">

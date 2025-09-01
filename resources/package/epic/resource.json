@@ -1,0 +1,17 @@
+{
+    "class": "Epic",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/Epic",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Epic",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": false,
+    "model": "Epic",
+    "model_fqdn": "Playground/Matrix/Models/Epic",
+    "model_slug": "epic",
+    "type": "",
+    "models": []
+}

@@ -1,0 +1,17 @@
+{
+    "class": "SourceCollection",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/SourceCollection",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "SourceCollection",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": true,
+    "model": "Source",
+    "model_fqdn": "Playground/Matrix/Models/Source",
+    "model_slug": "source",
+    "type": "",
+    "models": []
+}

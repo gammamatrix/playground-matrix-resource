@@ -3,7 +3,7 @@
 $routePatch = !$data ? '' : route(sprintf('%1$s.patch', $meta['info']['model_route']), [$meta['info']['model_slug'] => $data->getAttributeValue('id')]);
 $routeShow = !$data ? '' : route(sprintf('%1$s.show', $meta['info']['model_route']), [$meta['info']['model_slug'] => $data->getAttributeValue('id')]);
 $modelLabel = $meta['info']['model_label'];
-$modelColumn = 'project_id';
+$modelColumn = sprintf('%1$s_id', $meta['info']['model_slug']);
 $modulelLabel = $meta['info']['module_label'];
 
 $flags = [
@@ -97,15 +97,5 @@ $flags = [
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version')
     </div>
-</div>
-@endsection
-
-@section('section-primary')
-<div class="my-3">
-    @include('playground-matrix-resource::io/list-tickets', [
-        'headerLabel' => 'Project Tickets',
-        'tickets' => Playground\Matrix\Models\Ticket::where('project_id', $data->id)->get(),
-        'withProject' => false,
-    ])
 </div>
 @endsection

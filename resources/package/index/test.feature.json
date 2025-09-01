@@ -1,0 +1,20 @@
+{
+    "class": "IndexRouteTest",
+    "config": "playground-matrix-resource",
+    "extends": "",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/IndexRouteTest",
+    "model": "Backlog",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "IndexRouteTest",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-index",
+    "uses": [],
+    "models": [],
+    "package_providers": []
+}

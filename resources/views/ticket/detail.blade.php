@@ -3,9 +3,8 @@
 $routePatch = !$data ? '' : route(sprintf('%1$s.patch', $meta['info']['model_route']), [$meta['info']['model_slug'] => $data->getAttributeValue('id')]);
 $routeShow = !$data ? '' : route(sprintf('%1$s.show', $meta['info']['model_route']), [$meta['info']['model_slug'] => $data->getAttributeValue('id')]);
 $modelLabel = $meta['info']['model_label'];
-$modelColumn = 'ticket_id';
+$modelColumn = sprintf('%1$s_id', $meta['info']['model_slug']);
 $modulelLabel = $meta['info']['module_label'];
-$accordionlLabel = 'Configuration';
 
 $flags = [
     'active' => ['column' => 'active', 'label' => 'Active', 'icon' => 'fa-solid fa-person-running', 'badge' => 'text-bg-success'],
@@ -98,32 +97,20 @@ $flags = [
     <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version')
     </div>
-    {{-- <div class="col-sm-6 col-md-4 mb-3">
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-completed-by')
-    </div> --}}
-    {{-- <div class="col-sm-6 col-md-4 mb-3">
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-duplicate')
-    </div> --}}
-    {{-- <div class="col-sm-6 col-md-4 mb-3">
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-fixed-by')
-    </div> --}}
-    {{-- <div class="col-sm-6 col-md-4 mb-3">
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-reported-by')
-    </div> --}}
-    {{-- <div class="col-sm-6 col-md-4 mb-3">
+    </div>
+    <div class="col-sm-6 col-md-4 mb-3">
         @include('playground-matrix-resource::io/manage-version-fixed')
-    </div> --}}
-</div>
-@endsection
-
-@section('section-primary')
-<div class="my-3">
-    @include('playground-matrix-resource::io/list-tickets', [
-        'headerLabel' => 'Subtickets',
-        'modelLabel' => 'Parent Ticket',
-        'modelColumn' => 'parent_id',
-        'tickets' => Playground\Matrix\Models\Ticket::where('parent_id', $data->id)->get(),
-        'withParent' => false,
-    ])
+    </div>
 </div>
 @endsection

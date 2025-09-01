@@ -1,0 +1,22 @@
+{
+    "class": "milestone/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "milestone/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Milestone",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "milestone",
+    "model": "Milestone",
+    "model_column": "milestone",
+    "model_label": "Milestone",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Milestone",
+    "models": {
+        "Milestone": "resources/configurations/playground-matrix/model.milestone.json"
+    }
+}

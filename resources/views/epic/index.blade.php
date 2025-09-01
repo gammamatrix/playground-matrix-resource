@@ -1,4 +1,9 @@
 <?php
+$sort = empty($sort) || ! is_array($sort) ? [] : $sort;
+
+$filters = empty($filters) || ! is_array($filters) ? [] : $filters;
+
+$validated = empty($validated) || ! is_array($validated) ? [] : $validated;
 
 $columnsViewable = [
     'epic_type' => [
@@ -385,14 +390,13 @@ $columnsStandard = [
     'updated_at',
 ];
 
-$viewableColumns = 'standard';
-if (!empty($meta['validated'])
-    && !empty($meta['validated']['columns'])
-    && is_string($meta['validated']['columns'])
-    && in_array($meta['validated']['columns'], ['all', 'standard', 'mobile'])
-) {
-    $viewableColumns = $meta['validated']['columns'];
-}
+$viewableColumns = ! empty($validated['columns'])
+    && is_string($validated['columns'])
+    && in_array($validated['columns'], [
+        'all',
+        'standard',
+        'mobile',
+    ]) ? $validated['columns'] : 'standard';
 
 if ($viewableColumns === 'all') {
     $columns = $columnsViewable;

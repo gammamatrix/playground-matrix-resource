@@ -1,0 +1,22 @@
+{
+    "class": "StoreRequest",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Requests/Roadmap/Roadmap",
+    "model": "Roadmap",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Roadmap",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "abstract": false,
+    "pagination": false,
+    "playground": false,
+    "store": false,
+    "slug": false,
+    "type": "store",
+    "extends": "BaseStoreRequest",
+    "extends_use": "Playground/Http/Requests/StoreRequest as BaseStoreRequest",
+    "models": []
+}

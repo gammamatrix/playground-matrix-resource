@@ -1,0 +1,22 @@
+{
+    "class": "team/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "team/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Team",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "team",
+    "model": "Team",
+    "model_column": "team",
+    "model_label": "Team",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Team",
+    "models": {
+        "Team": "resources/configurations/playground-matrix/model.team.json"
+    }
+}

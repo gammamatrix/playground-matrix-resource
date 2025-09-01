@@ -1,0 +1,22 @@
+{
+    "class": "roadmap/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "roadmap/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Roadmap",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "roadmap",
+    "model": "Roadmap",
+    "model_column": "roadmap",
+    "model_label": "Roadmap",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Roadmap",
+    "models": {
+        "Roadmap": "resources/configurations/playground-matrix/model.roadmap.json"
+    }
+}

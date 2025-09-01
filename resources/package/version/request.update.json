@@ -1,0 +1,22 @@
+{
+    "class": "UpdateRequest",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Requests/Version/Version",
+    "model": "Version",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Version",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "abstract": false,
+    "pagination": false,
+    "playground": false,
+    "store": false,
+    "slug": false,
+    "type": "update",
+    "extends": "BaseUpdateRequest",
+    "extends_use": "Playground/Http/Requests/UpdateRequest as BaseUpdateRequest",
+    "models": []
+}

@@ -1,0 +1,22 @@
+{
+    "class": "note/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "note/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Note",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "note",
+    "model": "Note",
+    "model_column": "note",
+    "model_label": "Note",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Note",
+    "models": {
+        "Note": "resources/configurations/playground-matrix/model.note.json"
+    }
+}

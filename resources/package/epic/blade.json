@@ -1,0 +1,22 @@
+{
+    "class": "epic/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "epic/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Epic",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "epic",
+    "model": "Epic",
+    "model_column": "epic",
+    "model_label": "Epic",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Epic",
+    "models": {
+        "Epic": "resources/configurations/playground-matrix/model.epic.json"
+    }
+}

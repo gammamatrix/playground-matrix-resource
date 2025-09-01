@@ -1,0 +1,22 @@
+{
+    "class": "RoadmapTestCase",
+    "config": "playground-matrix-resource",
+    "extends": "TestCase",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers/RoadmapTestCase",
+    "model": "Roadmap",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "RoadmapTestCase",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource/Http/Controllers",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-controller-model-case",
+    "uses": [],
+    "models": {
+        "Roadmap": "resources/configurations/playground-matrix/model.roadmap.json"
+    },
+    "package_providers": []
+}

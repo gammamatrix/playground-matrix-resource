@@ -1,0 +1,22 @@
+{
+    "class": "CreateRequest",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Requests/Backlog/Backlog",
+    "model": "Backlog",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Backlog",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "abstract": false,
+    "pagination": false,
+    "playground": false,
+    "store": false,
+    "slug": false,
+    "type": "create",
+    "extends": "FormRequest",
+    "extends_use": "Playground/Matrix/Resource/Http/Requests/FormRequest",
+    "models": []
+}
