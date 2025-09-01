@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Requests\Tag;
 
 use Playground\Http\Requests\IndexRequest as BaseIndexRequest;

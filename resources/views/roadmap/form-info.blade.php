@@ -22,8 +22,21 @@
 
     <x-playground::forms.column column="roadmap_type" label="Roadmap Type" :rules="['maxlength' => 255]" />
 
-    @if (!empty($parents))
-    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Roadmap" :records="$parents"/>
+
+
+    @php
+    if ('patch' === $_method) {
+        $parents = Playground\Matrix\Models\Roadmap::where('id', '!=', $data->id)->get();
+    } else {
+        $parents = Playground\Matrix\Models\Roadmap::isNotClosed()->isActive()->get();
+    }
+    @endphp
+    @if ($parents->isEmpty())
+    <input type="hidden" name="parent_id" value="" />
+    @else
+    <x-playground::forms.column-select column="parent_id" key="label" label="Roadmap" :records="$parents->toArray()"/>
     @endif
+
+
 
 </fieldset>

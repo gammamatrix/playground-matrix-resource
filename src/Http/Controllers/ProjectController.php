@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -116,7 +117,6 @@ class ProjectController extends Controller
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
         }
 
         $meta = [
@@ -135,6 +135,10 @@ class ProjectController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
+
+        if (! empty($validated['_return_url'])) {
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         session()->flashInput($flash);
 

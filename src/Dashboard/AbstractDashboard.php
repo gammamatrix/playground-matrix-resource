@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Dashboard;
 
 use UnexpectedValueException;
@@ -31,7 +32,7 @@ class AbstractDashboard
      */
     protected array $counts = [];
 
-    public function getCount(string $key): int|null
+    public function getCount(string $key): ?int
     {
         if (empty($key)
             || ! array_key_exists($key, $this->counts)
@@ -43,9 +44,9 @@ class AbstractDashboard
         return $this->counts[$key];
     }
 
-    public function setCount(string $key, int|null $value): self
+    public function setCount(string $key, ?int $value): self
     {
-        if (! empty($key) ) {
+        if (! empty($key)) {
             $this->counts[$key] = $value;
         }
 
@@ -60,7 +61,7 @@ class AbstractDashboard
                 $value
             ));
         }
-        if (! empty($key) ) {
+        if (! empty($key)) {
             if (! array_key_exists($key, $this->counts)) {
                 $this->counts[$key] = 0;
             }
@@ -78,7 +79,7 @@ class AbstractDashboard
                 $value
             ));
         }
-        if (! empty($key) ) {
+        if (! empty($key)) {
             if (! array_key_exists($key, $this->counts)) {
                 $this->counts[$key] = 0;
             }
@@ -105,7 +106,7 @@ class AbstractDashboard
     }
 
     /**
-     * @param array<string, mixed> $options
+     * @param  array<string, mixed>  $options
      */
     public function addLink(string $key, array $options = []): self
     {

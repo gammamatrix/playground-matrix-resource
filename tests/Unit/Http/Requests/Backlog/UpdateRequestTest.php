@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests\Backlog;
 
 use Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest;
@@ -17,7 +18,7 @@ class UpdateRequestTest extends RequestTestCase
 {
     protected string $requestClass = UpdateRequest::class;
 
-    public function test_UpdateRequest_rules_with_optional_revisions_disabled(): void
+    public function test_update_request_rules_with_optional_revisions_disabled(): void
     {
         config(['playground-matrix-resource.revisions.optional' => false]);
         $instance = new UpdateRequest;
@@ -27,7 +28,7 @@ class UpdateRequestTest extends RequestTestCase
         $this->assertArrayNotHasKey('revision', $rules);
     }
 
-    public function test_UpdateRequest_rules_with_optional_revisions_enabled(): void
+    public function test_update_request_rules_with_optional_revisions_enabled(): void
     {
         config(['playground-matrix-resource.revisions.optional' => true]);
         $instance = new UpdateRequest;

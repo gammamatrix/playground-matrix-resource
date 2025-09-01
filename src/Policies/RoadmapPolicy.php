@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Policies;
 
 use Playground\Auth\Policies\ModelPolicy;

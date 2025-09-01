@@ -1,21 +1,51 @@
-# Playground Matrix Resource
+# Playground: Matrix Resource
 
 [![Playground CI Workflow](https://github.com/gammamatrix/playground-matrix-resource/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/testing/develop/testdox.txt)
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/testing/develop/coverage.svg)](tests)
-[![PHPStan Level 9 src and tests](https://img.shields.io/badge/PHPStan-level%209-brightgreen)](.github/workflows/ci.yml#L120)
 
-The `playground-matrix-resource` Laravel package.
+[//]: # ([![PHPStan Level 10]&#40;https://img.shields.io/badge/PHPStan-level%2010-brightgreen&#41;]&#40;.github/workflows/ci.yml#L128&#41;)
 
-This package provides an API and a Blade UI for interacting with the [Playground Matrix](https://github.com/gammamatrix/playground-matrix), a project management and task system.
+Playground: Matrix Resource
 
-If you only need the JSON API, the Blade UI may be disabled.
+This package provides an API and a Blade UI for interacting with the [Playground: Matrix](https://github.com/gammamatrix/playground-matrix), a project management and task system.
 
-This application provides Swagger documentation: [swagger.json](swagger.json).
-- See the [Playground Matrix Resource swagger.json on the Swagger Editor.](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/develop/swagger.json)
-- The endpoint models support locks, trash with force delete, restoring and more.
+If you need a project management system without a UI, then have a look at [Playground: Matrix API.](https://github.com/gammamatrix/playground-matrix-api)
+
+## Documentation
+
+Read more on using [Playground: Matrix Resource at Read the Docs: Playground Documentation](https://gammamatrix-playground.readthedocs.io/en/develop/components/matrix.html)
+
+### Postman
+
+[//]: # (A postman collection is provided in the repository: [postman-playground-matrix-resource.json.]&#40;postman-playground-matrix-resource.json&#41;)
+
+[//]: # (- This same collection is viewable on the [Postman: GammaMatrix Playground Workspace.]&#40;https://www.postman.com/gammamatrix/workspace/playground/documentation/1185343-1e4a5656-d4e0-45b2-8f4e-daad7a6ee2b1&#41;)
+
+### OpenAPI
+
+This application provides OpenAPI documentation: [openapi.json](openapi.json).
+- The endpoint models support locks, trash with force delete, restoring, revisions and more.
 - Index endpoints support advanced query filtering.
 
-Read more on using Playground Matrix Resource [at the Read the Docs for Playground.](https://gammamatrix-playground.readthedocs.io/)
+OpenAPI API Documentation is built with npm using Redocly.
+- npm is only needed to generate documentation and is not needed to operate the Playground: Matrix Resource API.
+
+See [package.json](package.json) requirements.
+
+Install npm.
+
+```sh
+npm install
+```
+
+Build the documentation to generate the [openapi.json](openapi.json) configuration.
+
+```sh
+npm run docs
+```
+
+Documentation
+- Preview [openapi.json on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/develop/openapi.json)
 
 ## Installation
 
@@ -25,11 +55,11 @@ You can install the package via composer:
 composer require gammamatrix/playground-matrix-resource
 ```
 
-## About
+## `artisan about`
 
 Playground provides information in the `artisan about` command.
 
-<img src="resources/docs/artisan-about-playground-matrix-resource.png" alt="screenshot of artisan about command with Playground Matrix Resource.">
+<img src="resources/docs/artisan-about-playground-matrix-resource.png" alt="screenshot of artisan about command with Playground: Matrix Resource.">
 
 ## Configuration
 
@@ -56,7 +86,6 @@ you may override the options via system environment variables.
 
 Information on [environment variables is available on the wiki for this package](https://github.com/gammamatrix/playground-matrix-resource/wiki/Environment-Variables)
 
-
 ## Migrations
 
 This package requires the migrations in [playground-matrix](https://github.com/gammamatrix/playground-matrix) a Laravel package.
@@ -68,33 +97,32 @@ composer cloc
 ```
 
 ```
-➜  playground-matrix-resource git:(develop) ✗ composer cloc
-> cloc --exclude-dir=node_modules,output,vendor .
-     747 text files.
-     441 unique files.
-     308 files ignored.
+➜  playground-matrix-resource git:(feature/GH-20) ✗ composer cloc
+    1330 text files.
+    1250 unique files.
+     330 files ignored.
 
-github.com/AlDanial/cloc v 1.98  T=0.73 s (604.6 files/s, 92585.9 lines/s)
+github.com/AlDanial/cloc v 2.06  T=0.40 s (3145.9 files/s, 258045.7 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                             3              0              0          23774
-PHP                            304           3379           4899          20135
-YAML                            92              5              0          13943
-Blade                           36            159              7            865
-XML                              3              0              5            223
-Markdown                         2             37              0             86
+JSON                           496              0              0          39807
+PHP                            470           5055           5915          23324
+YAML                           163              5              0          16613
+Blade                          112            721             15          10562
+XML                              5              0              7            313
+Markdown                         3             56              3            123
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                           441           3583           4911          59038
+SUM:                          1250           5840           5940          90754
 -------------------------------------------------------------------------------
 ```
 
 ## PHPStan
 
-Tests at level 9 on:
+Tests at level 10 on:
 - `config/`
-- `database/`
+- `lang/`
 - `resources/views/`
 - `routes/`
 - `src/`
@@ -111,12 +139,22 @@ composer analyse
 composer format
 ```
 
-## Tests
+## Testing
 
+Run unit tests:
 ```sh
 composer test
+```
+
+Run unit and feature tests:
+```sh
+composer test-dev
 ```
 
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

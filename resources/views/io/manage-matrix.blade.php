@@ -1,7 +1,11 @@
+<?php
+
+$withMatrix = class_exists('Playground\\Matrix\\Models\\Matrix');
+?>
 <div class="card">
 
     <div class="card-header">
-        @if(!empty($modelColumn) && !empty($modelLabel))
+        @if(!empty($modelColumn) && !empty($modelLabel) && Illuminate\Support\Facades\Route::has('playground.matrix.resource.matrices.create'))
         <a class="btn btn-info float-end" href="{{route('playground.matrix.resource.matrices.create', [$modelColumn => $data->id, '_return_url' => $routeShow])}}" alt=" {{ __('Create a new matrix for the :model_label', ['model_label' => $modelLabel]) }}">
             {{ __('Create') }}
         </a>
@@ -15,9 +19,13 @@
 
     @if($matrix)
     <div class="card-body">
+        @if (Illuminate\Support\Facades\Route::has('playground.matrix.resource.matrices.show'))
         <a href="{{route('playground.matrix.resource.matrices.show', ['matrix' => $matrix->id])}}" alt="{{$matrix->description}}">
             {{$matrix->title}}
         </a>
+        @else
+            {{$matrix->title}}
+        @endif
     </div>
     @if($matrix->matrix_type)
     <div class="card-footer">
@@ -27,6 +35,8 @@
     @endif
 
     @elseif(!$data->locked && $routePatch)
+
+    @if ($withMatrix)
 
     @php $matrices = Playground\Matrix\Models\Matrix::all() @endphp
 
@@ -49,6 +59,8 @@
             </div>
         </form>
     </div>
+
+    @endif
 
     @endif
 </div>

@@ -8,6 +8,53 @@ declare(strict_types=1);
 
 /**
  * Playground: Matrix Resource Configuration and Environment Variables
+ *
+ * @return array{
+ *       about: bool,
+ *       layout: string,
+ *       load: array{
+ *           policies: bool,
+ *           routes: bool,
+ *           translations: bool,
+ *           views: bool
+ *       },
+ *       middleware: array{
+ *           default: string|string[],
+ *           auth: string|string[],
+ *           guest: string|string[]
+ *       },
+ *       policies: array<
+ *           class-string<\Illuminate\Database\Eloquent\Model>,
+ *           class-string<\Playground\Auth\Policies\Policy>
+ *       >,
+ *       routes: array{
+ *           matrix: bool,
+ *           backlogs: bool,
+ *           boards: bool,
+ *           epics: bool,
+ *           flows: bool,
+ *           matrices: bool,
+ *           milestones: bool,
+ *           notes: bool,
+ *           projects: bool,
+ *           releases: bool,
+ *           roadmaps: bool,
+ *           sources: bool,
+ *           sprints: bool,
+ *           tags: bool,
+ *           teams: bool,
+ *           tickets: bool,
+ *           versions: bool,
+ *       },
+ *       blade: string,
+ *       abilities: array<string, string[]>,
+ *       sitemap: array{
+ *            enable: bool,
+ *            guest: bool,
+ *            user: bool,
+ *            view: string
+ *       }
+ *   }
  */
 return [
 
@@ -31,13 +78,9 @@ return [
     |
     | By default, translations and views are loaded.
     |
-    | For a faster load time on /resource/matrix, disable PLAYGROUND_MATRIX_RESOURCE_LOAD_MATRIX
-    | from loading the model counts in the database.
-    |
     */
 
     'load' => [
-        'matrix' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_MATRIX', true),
         'policies' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_POLICIES', true),
         'routes' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_ROUTES', true),
         'translations' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_LOAD_TRANSLATIONS', true),

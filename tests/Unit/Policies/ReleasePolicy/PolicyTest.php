@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\ReleasePolicy;
 
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -21,6 +22,7 @@ class PolicyTest extends TestCase
     {
         $instance = new ReleasePolicy;
 
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertInstanceOf(ReleasePolicy::class, $instance);
     }
 }

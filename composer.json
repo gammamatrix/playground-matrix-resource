@@ -21,16 +21,18 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.4",
         "gammamatrix/playground": "*",
         "gammamatrix/playground-auth": "*",
         "gammamatrix/playground-http": "*",
-        "gammamatrix/playground-matrix": "*"
+        "gammamatrix/playground-matrix": "*",
+        "illuminate/support": "^12.0"
     },
     "require-dev": {
         "gammamatrix/playground-test": "*",
         "gammamatrix/playground-login-blade": "*",
-        "gammamatrix/playground-site-blade": "*"
+        "gammamatrix/playground-site-blade": "*",
+        "illuminate/testing": "^12.0"
     },
     "autoload": {
         "psr-4": {
@@ -52,7 +54,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-develop": "73.x-dev"
+            "dev-develop": "74.x-dev"
         },
         "laravel": {
             "providers": [
@@ -65,10 +67,14 @@
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max",
         "cloc": "cloc --exclude-dir=node_modules,output,vendor .",
-        "format": "vendor/bin/php-cs-fixer fix",
+        "format": "vendor/bin/pint",
         "test": [
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/testbench package:test"
+        ],
+        "test-dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/phpunit -c phpunit-dev.xml"
         ]
     }
 }

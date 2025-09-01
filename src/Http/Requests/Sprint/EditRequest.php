@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Requests\Sprint;
 
 use Playground\Matrix\Resource\Http\Requests\FormRequest;

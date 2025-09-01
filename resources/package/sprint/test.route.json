@@ -1,0 +1,22 @@
+{
+    "class": "SprintRouteTest",
+    "config": "playground-matrix-resource",
+    "extends": "",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/SprintRouteTest",
+    "model": "Sprint",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "SprintRouteTest",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-controller-model-user",
+    "uses": [],
+    "models": {
+        "Sprint": "resources/configurations/playground-matrix/model.sprint.json"
+    },
+    "package_providers": []
+}

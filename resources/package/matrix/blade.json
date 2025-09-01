@@ -1,0 +1,22 @@
+{
+    "class": "matrix/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "matrix/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Matrix",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "matrix",
+    "model": "Matrix",
+    "model_column": "matrix",
+    "model_label": "Matrix",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Matrix",
+    "models": {
+        "Matrix": "resources/configurations/playground-matrix/model.matrix.json"
+    }
+}

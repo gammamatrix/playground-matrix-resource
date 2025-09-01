@@ -1,8 +1,11 @@
 @extends('playground::layouts.resource.form', [
     'withFormInfo' => 'playground-matrix-resource::release/form-info',
-    'withFormStatus' => 'playground-matrix-resource::release/form-status',
+    'withFormStatus' => 'playground-matrix-resource::release/form-flags',
 ])
 
 @section('form-tertiary')
-@include('playground-matrix-resource::release/form-publishing')
+@include('playground-matrix-resource::release/form-dates')
+@endsection
+
+@section('fieldset-content')
 @endsection

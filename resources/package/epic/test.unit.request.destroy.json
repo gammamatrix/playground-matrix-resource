@@ -1,0 +1,23 @@
+{
+    "class": "DestroyRequestTest",
+    "config": "playground-matrix-resource",
+    "extends": "RequestCase",
+    "fqdn": "Tests/Unit/Playground/Matrix/Resource/DestroyRequestTest",
+    "model": "Epic",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "DestroyRequestTest",
+    "namespace": "Tests/Unit/Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "unit",
+    "type": "playground-request-model",
+    "uses": [
+        "Tests/Unit/Playground/Matrix/Resource/PackageProviders",
+        "Playground/Test/Unit/Http/Requests/RequestCase"
+    ],
+    "models": [],
+    "package_providers": []
+}

@@ -1,0 +1,22 @@
+{
+    "class": "LockRequest",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Requests/Sprint/Sprint",
+    "model": "Sprint",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Sprint",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "abstract": false,
+    "pagination": false,
+    "playground": false,
+    "store": false,
+    "slug": false,
+    "type": "lock",
+    "extends": "FormRequest",
+    "extends_use": "Playground/Matrix/Resource/Http/Requests/FormRequest",
+    "models": []
+}

@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Unit\Playground\Matrix\Resource\Policies\TagPolicy;
 
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -21,6 +22,7 @@ class PolicyTest extends TestCase
     {
         $instance = new TagPolicy;
 
+        /** @phpstan-ignore method.alreadyNarrowedType */
         $this->assertInstanceOf(TagPolicy::class, $instance);
     }
 }

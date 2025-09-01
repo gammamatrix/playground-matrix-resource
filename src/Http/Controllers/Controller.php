@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;

@@ -22,8 +22,21 @@
 
     <x-playground::forms.column column="milestone_type" label="Milestone Type" :rules="['maxlength' => 255]" />
 
-    @if (!empty($parents))
-    <x-playground::forms.column-select column="parent_id" key="label" label="Parent Milestone" :records="$parents"/>
+
+
+    @php
+    if ('patch' === $_method) {
+        $parents = Playground\Matrix\Models\Milestone::where('id', '!=', $data->id)->get();
+    } else {
+        $parents = Playground\Matrix\Models\Milestone::isNotClosed()->isActive()->get();
+    }
+    @endphp
+    @if ($parents->isEmpty())
+    <input type="hidden" name="parent_id" value="" />
+    @else
+    <x-playground::forms.column-select column="parent_id" key="label" label="Milestone" :records="$parents->toArray()"/>
     @endif
+
+
 
 </fieldset>

@@ -1,0 +1,23 @@
+{
+    "class": "RequestTestCase",
+    "config": "playground-matrix-resource",
+    "extends": "RequestCase",
+    "fqdn": "Tests/Unit/Playground/Matrix/Resource/Http/Requests/RequestTestCase",
+    "model": "",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "RequestTestCase",
+    "namespace": "Tests/Unit/Playground/Matrix/Resource/Http/Requests",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "unit",
+    "type": "playground-request-test-case",
+    "uses": [
+        "Tests/Unit/Playground/Matrix/Resource/PackageProviders",
+        "Playground/Test/Unit/Http/Requests/RequestCase"
+    ],
+    "models": [],
+    "package_providers": []
+}

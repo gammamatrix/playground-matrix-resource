@@ -1,0 +1,17 @@
+{
+    "class": "BoardCollection",
+    "config": "playground-matrix-resource",
+    "fqdn": "Playground/Matrix/Resource/Http/Resources/BoardCollection",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "BoardCollection",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "collection": true,
+    "model": "Board",
+    "model_fqdn": "Playground/Matrix/Models/Board",
+    "model_slug": "board",
+    "type": "",
+    "models": []
+}

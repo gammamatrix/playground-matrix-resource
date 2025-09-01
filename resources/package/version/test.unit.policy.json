@@ -1,0 +1,23 @@
+{
+    "class": "PolicyTest",
+    "config": "playground-matrix-resource",
+    "extends": "",
+    "fqdn": "Tests/Unit/Playground/Matrix/Resource/Policies/VersionPolicy/PolicyTest",
+    "model": "Version",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "PolicyTest",
+    "namespace": "Tests/Unit/Playground/Matrix/Resource/Policies/VersionPolicy",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "unit",
+    "type": "policy",
+    "uses": [
+        "Tests/Unit/Playground/Matrix/Resource/TestCase",
+        "Playground/Matrix/Resource/Policies/VersionPolicy"
+    ],
+    "models": [],
+    "package_providers": []
+}

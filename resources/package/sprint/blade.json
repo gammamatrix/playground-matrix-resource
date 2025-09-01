@@ -1,0 +1,22 @@
+{
+    "class": "sprint/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "sprint/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Sprint",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "sprint",
+    "model": "Sprint",
+    "model_column": "sprint",
+    "model_label": "Sprint",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Sprint",
+    "models": {
+        "Sprint": "resources/configurations/playground-matrix/model.sprint.json"
+    }
+}

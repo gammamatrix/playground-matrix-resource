@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;

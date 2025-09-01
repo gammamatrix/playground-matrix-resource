@@ -1,0 +1,22 @@
+{
+    "class": "backlog/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "backlog/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Backlog",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "backlog",
+    "model": "Backlog",
+    "model_column": "backlog",
+    "model_label": "Backlog",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Backlog",
+    "models": {
+        "Backlog": "resources/configurations/playground-matrix/model.backlog.json"
+    }
+}

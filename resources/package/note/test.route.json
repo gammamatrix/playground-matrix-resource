@@ -1,0 +1,22 @@
+{
+    "class": "NoteRouteTest",
+    "config": "playground-matrix-resource",
+    "extends": "",
+    "fqdn": "Tests/Feature/Playground/Matrix/Resource/NoteRouteTest",
+    "model": "Note",
+    "model_fqdn": "",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "NoteRouteTest",
+    "namespace": "Tests/Feature/Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "playground": true,
+    "suite": "feature",
+    "type": "playground-resource-controller-model-user",
+    "uses": [],
+    "models": {
+        "Note": "resources/configurations/playground-matrix/model.note.json"
+    },
+    "package_providers": []
+}

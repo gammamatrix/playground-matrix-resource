@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Requests\Note;
 
 use Playground\Http\Requests\StoreRequest as BaseStoreRequest;
@@ -90,7 +91,7 @@ class StoreRequest extends BaseStoreRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, mixed>
      */
     public function rules(): array
     {

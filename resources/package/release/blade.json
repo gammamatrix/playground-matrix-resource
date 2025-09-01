@@ -1,0 +1,22 @@
+{
+    "class": "release/index.blade",
+    "config": "playground-matrix-resource",
+    "fqdn": "release/index.blade",
+    "module": "Matrix",
+    "module_slug": "matrix",
+    "name": "Release",
+    "namespace": "Playground/Matrix/Resource",
+    "organization": "Playground",
+    "package": "playground-matrix-resource",
+    "extends": "playground::layouts.resource",
+    "folder": "release",
+    "model": "Release",
+    "model_column": "release",
+    "model_label": "Release",
+    "type": "playground-resource",
+    "route": "playground.matrix.resource",
+    "title": "Release",
+    "models": {
+        "Release": "resources/configurations/playground-matrix/model.release.json"
+    }
+}

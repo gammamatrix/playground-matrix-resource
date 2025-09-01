@@ -5,6 +5,7 @@
  */
 
 declare(strict_types=1);
+
 namespace Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
@@ -119,7 +120,6 @@ class TicketController extends Controller
 
         if (! empty($validated['_return_url'])) {
             $flash['_return_url'] = $validated['_return_url'];
-            $data['_return_url'] = $validated['_return_url'];
         }
 
         $meta = [
@@ -138,6 +138,10 @@ class TicketController extends Controller
             'meta' => $meta,
             '_method' => 'patch',
         ];
+
+        if (! empty($validated['_return_url'])) {
+            $data['_return_url'] = $validated['_return_url'];
+        }
 
         session()->flashInput($flash);
 
@@ -291,13 +295,6 @@ class TicketController extends Controller
             'validated' => $validated,
             'info' => $this->packageInfo,
         ];
-
-        // dump([
-        //     '__METHOD__' => __METHOD__,
-        //     '$validated' => $validated,
-        //     '$meta[rules]' => $meta['rules'],
-        //     '$request->input()' => $request->input(),
-        // ]);
 
         $data = [
             'paginator' => $paginator,
