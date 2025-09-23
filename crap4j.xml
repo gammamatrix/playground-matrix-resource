@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2025-09-01 18:28:34</timestamp>
+  <timestamp>2025-09-23 20:57:43</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>296</methodCount>
+    <methodCount>265</methodCount>
     <crapMethodCount>1</crapMethodCount>
     <crapLoad>9</crapLoad>
-    <totalCrap>1275</totalCrap>
-    <crapMethodPercent>0.34</crapMethodPercent>
+    <totalCrap>1183.04</totalCrap>
+    <crapMethodPercent>0.38</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -28,9 +28,9 @@
       <methodName>setCount</methodName>
       <methodSignature>setCount(string $key, ?int $value): self</methodSignature>
       <fullMethod>setCount(string $key, ?int $value): self</fullMethod>
-      <crap>6</crap>
+      <crap>2</crap>
       <complexity>2</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -61,9 +61,9 @@
       <methodName>setLabel</methodName>
       <methodSignature>setLabel(string $key, string $label): self</methodSignature>
       <fullMethod>setLabel(string $key, string $label): self</fullMethod>
-      <crap>12</crap>
+      <crap>3</crap>
       <complexity>3</complexity>
-      <coverage>0</coverage>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -391,9 +391,20 @@
       <methodName>loadMatrix</methodName>
       <methodSignature>loadMatrix(Request $request, string $route): IndexDashboard</methodSignature>
       <fullMethod>loadMatrix(Request $request, string $route): IndexDashboard</fullMethod>
-      <crap>20</crap>
+      <crap>4.04</crap>
       <complexity>4</complexity>
-      <coverage>0</coverage>
+      <coverage>86.11</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Controllers</package>
+      <className>Playground\Matrix\Resource\Http\Controllers\Controller</className>
+      <methodName>packageInfo</methodName>
+      <methodSignature>packageInfo(): PackageInfo</methodSignature>
+      <fullMethod>packageInfo(): PackageInfo</fullMethod>
+      <crap>1</crap>
+      <complexity>1</complexity>
+      <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
     <method>
@@ -620,8 +631,8 @@
       <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\IndexController</className>
       <methodName>index</methodName>
-      <methodSignature>index(): View</methodSignature>
-      <fullMethod>index(): View</fullMethod>
+      <methodSignature>index(Request $request): View</methodSignature>
+      <fullMethod>index(Request $request): View</fullMethod>
       <crap>1</crap>
       <complexity>1</complexity>
       <coverage>100</coverage>
@@ -1961,31 +1972,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Backlog</package>
       <className>Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Backlog</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Backlog</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2016,31 +2005,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Board</package>
       <className>Playground\Matrix\Resource\Http\Requests\Board\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Board</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Board\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Board</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2071,31 +2038,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Epic</package>
       <className>Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Epic</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Epic</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2126,31 +2071,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Flow</package>
       <className>Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Flow</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Flow</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2214,31 +2137,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Matrix</package>
       <className>Playground\Matrix\Resource\Http\Requests\Matrix\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Matrix</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Matrix\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Matrix</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Matrix\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2269,31 +2170,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Milestone</package>
       <className>Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Milestone</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Milestone</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2324,31 +2203,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Note</package>
       <className>Playground\Matrix\Resource\Http\Requests\Note\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Note</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Note\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Note</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2379,31 +2236,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Project</package>
       <className>Playground\Matrix\Resource\Http\Requests\Project\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Project</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Project\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Project</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2434,31 +2269,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Release</package>
       <className>Playground\Matrix\Resource\Http\Requests\Release\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Release</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Release\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Release</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2489,31 +2302,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Roadmap</package>
       <className>Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Roadmap</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Roadmap</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2544,31 +2335,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Source</package>
       <className>Playground\Matrix\Resource\Http\Requests\Source\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Source</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Source\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Source</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2599,31 +2368,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Sprint</package>
       <className>Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Sprint</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Sprint</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2654,31 +2401,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Tag</package>
       <className>Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Tag</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Tag</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2709,31 +2434,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Team</package>
       <className>Playground\Matrix\Resource\Http\Requests\Team\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Team</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Team\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Team</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2764,31 +2467,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Ticket</package>
       <className>Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Ticket</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Ticket</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>
@@ -2819,31 +2500,9 @@
     <method>
       <package>Playground\Matrix\Resource\Http\Requests\Version</package>
       <className>Playground\Matrix\Resource\Http\Requests\Version\StoreRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Version</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Version\StoreRequest</className>
       <methodName>prepareForValidation</methodName>
       <methodSignature>prepareForValidation()</methodSignature>
       <fullMethod>prepareForValidation()</fullMethod>
-      <crap>2</crap>
-      <complexity>2</complexity>
-      <coverage>100</coverage>
-      <crapLoad>0</crapLoad>
-    </method>
-    <method>
-      <package>Playground\Matrix\Resource\Http\Requests\Version</package>
-      <className>Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest</className>
-      <methodName>rules</methodName>
-      <methodSignature>rules(): array</methodSignature>
-      <fullMethod>rules(): array</fullMethod>
       <crap>2</crap>
       <complexity>2</complexity>
       <coverage>100</coverage>

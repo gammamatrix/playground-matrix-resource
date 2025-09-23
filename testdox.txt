@@ -1307,83 +1307,51 @@ Sprint Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playgrou
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Backlog\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Board\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Epic\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Flow\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Matrix\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Milestone\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Note\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Project\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Release\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Roadmap\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Source\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Sprint\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Tag\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Team\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Ticket\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Store Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Version\StoreRequest)
  [x] Request instance
- [x] Store request rules with optional revisions disabled
- [x] Store request rules with optional revisions enabled
 
 Tag Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\TagRoute)
  [x] Json guest cannot get create info
@@ -1660,83 +1628,51 @@ Unlock Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Version\Unlo
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Backlog\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Board\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Epic\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Flow\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Matrix\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Milestone\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Note\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Project\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Release\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Roadmap\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Source\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Sprint\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Tag\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Team\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Ticket\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Update Request (Tests\Unit\Playground\Matrix\Resource\Http\Requests\Version\UpdateRequest)
  [x] Request instance
- [x] Update request rules with optional revisions disabled
- [x] Update request rules with optional revisions enabled
 
 Version Route (Tests\Feature\Playground\Matrix\Resource\Http\Controllers\Playground\VersionRoute)
  [x] Json guest cannot get create info
