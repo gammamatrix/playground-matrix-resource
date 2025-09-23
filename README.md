@@ -2,28 +2,26 @@
 
 [![Playground CI Workflow](https://github.com/gammamatrix/playground-matrix-resource/actions/workflows/ci.yml/badge.svg?branch=develop)](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/testing/develop/testdox.txt)
 [![Test Coverage](https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/testing/develop/coverage.svg)](tests)
-
-[//]: # ([![PHPStan Level 10]&#40;https://img.shields.io/badge/PHPStan-level%2010-brightgreen&#41;]&#40;.github/workflows/ci.yml#L128&#41;)
+[![PHPStan Level 10](https://img.shields.io/badge/PHPStan-level%2010-brightgreen)](.github/workflows/ci.yml#L128)
 
 Playground: Matrix Resource
 
-This package provides an API and a Blade UI for interacting with the [Playground: Matrix](https://github.com/gammamatrix/playground-matrix), a project management and task system.
+This package provides an API and a Blade UI for interacting with the [Playground: Matrix](https://github.com/gammamatrix/playground-matrix), a model package for Laravel.
 
-If you need a project management system without a UI, then have a look at [Playground: Matrix API.](https://github.com/gammamatrix/playground-matrix-api)
+If you need a JSON API without a UI, then have a look at [Playground: Matrix API.](https://github.com/gammamatrix/playground-matrix-api)
 
 ## Documentation
 
-Read more on using [Playground: Matrix Resource at Read the Docs: Playground Documentation](https://gammamatrix-playground.readthedocs.io/en/develop/components/matrix.html)
+Read more on using [Playground: Matrix Resource at Read the Docs: Playground Documentation](https://gammamatrix-playground.readthedocs.io/en/develop/built-components/matrix.html)
 
 ### Postman
 
-[//]: # (A postman collection is provided in the repository: [postman-playground-matrix-resource.json.]&#40;postman-playground-matrix-resource.json&#41;)
-
-[//]: # (- This same collection is viewable on the [Postman: GammaMatrix Playground Workspace.]&#40;https://www.postman.com/gammamatrix/workspace/playground/documentation/1185343-1e4a5656-d4e0-45b2-8f4e-daad7a6ee2b1&#41;)
+A postman collection is provided in the repository: [postman-playground-matrix-resource.json.](postman-playground-matrix-resource.json)
+- This same collection is viewable on the [Postman: GammaMatrix Playground Workspace.](https://www.postman.com/gammamatrix/workspace/playground/documentation/1185343-1e4a5656-d4e0-45b2-8f4e-daad7a6ee2b1)
 
 ### OpenAPI
 
-This application provides OpenAPI documentation: [openapi.json](openapi.json).
+This application provides OpenAPI documentation: [openapi.yaml](openapi.yaml).
 - The endpoint models support locks, trash with force delete, restoring, revisions and more.
 - Index endpoints support advanced query filtering.
 
@@ -38,14 +36,14 @@ Install npm.
 npm install
 ```
 
-Build the documentation to generate the [openapi.json](openapi.json) configuration.
+Build the documentation to generate the [openapi.yaml](openapi.yaml) configuration.
 
 ```sh
 npm run docs
 ```
 
 Documentation
-- Preview [openapi.json on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/develop/openapi.json)
+- Preview [openapi.yaml on the Redocly Editor UI.](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/gammamatrix/playground-matrix-resource/develop/openapi.yaml)
 
 ## Installation
 
@@ -59,7 +57,7 @@ composer require gammamatrix/playground-matrix-resource
 
 Playground provides information in the `artisan about` command.
 
-<img src="resources/docs/artisan-about-playground-matrix-resource.png" alt="screenshot of artisan about command with Playground: Matrix Resource.">
+<!-- <img src="resources/docs/artisan-about-playground-matrix-resource.png" alt="screenshot of artisan about command with Playground: Matrix Resource."> -->
 
 ## Configuration
 
@@ -97,24 +95,24 @@ composer cloc
 ```
 
 ```
-➜  playground-matrix-resource git:(feature/GH-20) ✗ composer cloc
-    1330 text files.
-    1250 unique files.
-     330 files ignored.
+➜  playground-matrix-resource git:(develop) ✗ composer cloc
+    1276 text files.
+    1254 unique files.
+      24 files ignored.
 
-github.com/AlDanial/cloc v 2.06  T=0.40 s (3145.9 files/s, 258045.7 lines/s)
+github.com/AlDanial/cloc v 2.06  T=0.34 s (3636.4 files/s, 320704.3 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-JSON                           496              0              0          39807
-PHP                            470           5055           5915          23324
-YAML                           163              5              0          16613
-Blade                          112            721             15          10562
-XML                              5              0              7            313
-Markdown                         3             56              3            123
+YAML                           164              5              0          37783
+JSON                           499              0              0          24979
+PHP                            468           5004           5990          22140
+Blade                          107            633              1          12714
+XML                             12              0              7           1138
+Markdown                         3             55              1            128
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                          1250           5840           5940          90754
+SUM:                          1254           5700           5999          98894
 -------------------------------------------------------------------------------
 ```
 
@@ -122,7 +120,6 @@ SUM:                          1250           5840           5940          90754
 
 Tests at level 10 on:
 - `config/`
-- `lang/`
 - `resources/views/`
 - `routes/`
 - `src/`
@@ -149,6 +146,11 @@ composer test
 Run unit and feature tests:
 ```sh
 composer test-dev
+```
+
+Run unit and feature tests in parallel:
+```sh
+composer test-parallel
 ```
 
 ## Changelog

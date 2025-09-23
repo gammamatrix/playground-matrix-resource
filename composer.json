@@ -32,7 +32,8 @@
         "gammamatrix/playground-test": "*",
         "gammamatrix/playground-login-blade": "*",
         "gammamatrix/playground-site-blade": "*",
-        "illuminate/testing": "^12.0"
+        "illuminate/testing": "^12.0",
+        "tomasvotruba/bladestan": "^0.11.3"
     },
     "autoload": {
         "psr-4": {
@@ -68,13 +69,15 @@
         "analyse": "vendor/bin/phpstan analyse --verbose --debug --level max",
         "cloc": "cloc --exclude-dir=node_modules,output,vendor .",
         "format": "vendor/bin/pint",
-        "test": [
-            "Composer\\Config::disableProcessTimeout",
-            "vendor/bin/testbench package:test"
-        ],
+        "format-blade": "npx prettier --write \"resources/views/**/*.blade.php\"",
+        "test": "vendor/bin/testbench package:test",
         "test-dev": [
             "Composer\\Config::disableProcessTimeout",
             "vendor/bin/phpunit -c phpunit-dev.xml"
+        ],
+        "test-parallel": [
+            "Composer\\Config::disableProcessTimeout",
+            "vendor/bin/paratest -c phpunit-dev.xml"
         ]
     }
 }

@@ -50,6 +50,8 @@ class VersionController extends Controller
         Requests\Version\CreateRequest $request
     ): JsonResponse|View|Resources\Version {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -57,8 +59,8 @@ class VersionController extends Controller
         $version = new Version($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -66,12 +68,8 @@ class VersionController extends Controller
             'session_user_id' => $user?->id,
             'id' => null,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $version,
@@ -90,7 +88,12 @@ class VersionController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -103,13 +106,15 @@ class VersionController extends Controller
         Requests\Version\EditRequest $request
     ): JsonResponse|View|Resources\Version {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -123,12 +128,8 @@ class VersionController extends Controller
             'session_user_id' => $user?->id,
             'id' => $version->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $version,
@@ -142,7 +143,12 @@ class VersionController extends Controller
 
         session()->flashInput($flash);
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -154,6 +160,8 @@ class VersionController extends Controller
         Version $version,
         Requests\Version\DestroyRequest $request
     ): Response|RedirectResponse {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -179,7 +187,7 @@ class VersionController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route($this->packageInfo['model_route']));
+        return redirect(route($packageInfo->model_route()));
     }
 
     /**
@@ -191,6 +199,8 @@ class VersionController extends Controller
         Version $version,
         Requests\Version\LockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Version {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -204,16 +214,9 @@ class VersionController extends Controller
 
         $version->save();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => $version->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'info' => $this->packageInfo,
-        ];
-
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -225,7 +228,7 @@ class VersionController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['version' => $version->id]));
     }
 
@@ -238,11 +241,22 @@ class VersionController extends Controller
         Requests\Version\IndexRequest $request
     ): JsonResponse|View|Resources\VersionCollection {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = Version::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Version::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -277,7 +291,7 @@ class VersionController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\VersionCollection($paginator))->response($request);
+            return new Resources\VersionCollection($paginator)->response($request);
         }
 
         $meta = [
@@ -290,7 +304,7 @@ class VersionController extends Controller
             'sortable' => $request->getSortable(),
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         $data = [
@@ -298,7 +312,12 @@ class VersionController extends Controller
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/index', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -311,6 +330,8 @@ class VersionController extends Controller
         Requests\Version\RestoreRequest $request
     ): JsonResponse|RedirectResponse|Resources\Version {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -322,8 +343,8 @@ class VersionController extends Controller
         $version->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -335,7 +356,7 @@ class VersionController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['version' => $version->id]));
     }
 
@@ -349,6 +370,8 @@ class VersionController extends Controller
         Requests\Version\ShowRequest $request
     ): JsonResponse|View|Resources\Version {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -357,25 +380,26 @@ class VersionController extends Controller
             'session_user_id' => $user?->id,
             'id' => $version->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $version,
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/detail', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -386,6 +410,8 @@ class VersionController extends Controller
     public function store(
         Requests\Version\StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|Resources\Version {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -400,8 +426,8 @@ class VersionController extends Controller
         $version->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -413,7 +439,7 @@ class VersionController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['version' => $version->id]));
     }
 
@@ -426,6 +452,8 @@ class VersionController extends Controller
         Version $version,
         Requests\Version\UnlockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Version {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -440,8 +468,8 @@ class VersionController extends Controller
         $version->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -453,7 +481,7 @@ class VersionController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['version' => $version->id]));
     }
 
@@ -467,6 +495,8 @@ class VersionController extends Controller
         Requests\Version\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\Version {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -478,8 +508,8 @@ class VersionController extends Controller
         $version->update($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Version($version))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Version($version)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -491,7 +521,7 @@ class VersionController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['version' => $version->id]));
     }
 }

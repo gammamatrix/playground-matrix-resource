@@ -36,7 +36,6 @@ class MilestoneCollection extends ResourceCollection
                 'session_user_id' => $request->user()?->id,
                 'sortable' => $request->getSortable(),
                 'timestamp' => Carbon::now()->toJson(),
-                'validated' => $request->validated(),
             ],
         ];
     }

@@ -2,13 +2,14 @@ includes:
     - vendor/larastan/larastan/extension.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/tomasvotruba/bladestan/config/extension.neon
 
 parameters:
     level: max
 
     paths:
         - config
-        - lang
+        # - lang
         - resources
         - routes
         - src

@@ -53,6 +53,8 @@ class TicketController extends Controller
         Requests\Ticket\CreateRequest $request
     ): JsonResponse|View|Resources\Ticket {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -60,8 +62,8 @@ class TicketController extends Controller
         $ticket = new Ticket($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -69,12 +71,8 @@ class TicketController extends Controller
             'session_user_id' => $user?->id,
             'id' => null,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $ticket,
@@ -93,7 +91,12 @@ class TicketController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -106,13 +109,15 @@ class TicketController extends Controller
         Requests\Ticket\EditRequest $request
     ): JsonResponse|View|Resources\Ticket {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -126,12 +131,8 @@ class TicketController extends Controller
             'session_user_id' => $user?->id,
             'id' => $ticket->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $ticket,
@@ -145,7 +146,12 @@ class TicketController extends Controller
 
         session()->flashInput($flash);
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -157,6 +163,8 @@ class TicketController extends Controller
         Ticket $ticket,
         Requests\Ticket\DestroyRequest $request
     ): Response|RedirectResponse {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -182,7 +190,7 @@ class TicketController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route($this->packageInfo['model_route']));
+        return redirect(route($packageInfo->model_route()));
     }
 
     /**
@@ -194,6 +202,8 @@ class TicketController extends Controller
         Ticket $ticket,
         Requests\Ticket\LockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Ticket {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -207,16 +217,9 @@ class TicketController extends Controller
 
         $ticket->save();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => $ticket->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'info' => $this->packageInfo,
-        ];
-
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -228,7 +231,7 @@ class TicketController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['ticket' => $ticket->id]));
     }
 
@@ -241,11 +244,22 @@ class TicketController extends Controller
         Requests\Ticket\IndexRequest $request
     ): JsonResponse|View|Resources\TicketCollection {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = Ticket::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Ticket::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -280,7 +294,7 @@ class TicketController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\TicketCollection($paginator))->response($request);
+            return new Resources\TicketCollection($paginator)->response($request);
         }
 
         $meta = [
@@ -293,7 +307,7 @@ class TicketController extends Controller
             'sortable' => $request->getSortable(),
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         $data = [
@@ -301,7 +315,12 @@ class TicketController extends Controller
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/index', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -314,6 +333,8 @@ class TicketController extends Controller
         Requests\Ticket\RestoreRequest $request
     ): JsonResponse|RedirectResponse|Resources\Ticket {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -325,8 +346,8 @@ class TicketController extends Controller
         $ticket->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -338,7 +359,7 @@ class TicketController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['ticket' => $ticket->id]));
     }
 
@@ -352,6 +373,8 @@ class TicketController extends Controller
         Requests\Ticket\ShowRequest $request
     ): JsonResponse|View|Resources\Ticket {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -360,25 +383,26 @@ class TicketController extends Controller
             'session_user_id' => $user?->id,
             'id' => $ticket->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $ticket,
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/detail', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -389,6 +413,8 @@ class TicketController extends Controller
     public function store(
         Requests\Ticket\StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|Resources\Ticket {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -405,8 +431,8 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -418,7 +444,7 @@ class TicketController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['ticket' => $ticket->id]));
     }
 
@@ -431,6 +457,8 @@ class TicketController extends Controller
         Ticket $ticket,
         Requests\Ticket\UnlockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Ticket {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -445,8 +473,8 @@ class TicketController extends Controller
         $ticket->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -458,7 +486,7 @@ class TicketController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['ticket' => $ticket->id]));
     }
 
@@ -472,6 +500,8 @@ class TicketController extends Controller
         Requests\Ticket\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\Ticket {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -483,8 +513,8 @@ class TicketController extends Controller
         $ticket->update($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Ticket($ticket))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -496,7 +526,7 @@ class TicketController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['ticket' => $ticket->id]));
     }
 }

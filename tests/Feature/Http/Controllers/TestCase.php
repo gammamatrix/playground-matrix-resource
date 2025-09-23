@@ -141,10 +141,6 @@ class TestCase extends BaseTestCase
                 'session_user_id',
                 'sortable',
                 'timestamp',
-                'validated' => [
-                    'perPage',
-                    'page',
-                ],
                 // 'pagination' => [
                 //     'count',
                 //     'current_page',

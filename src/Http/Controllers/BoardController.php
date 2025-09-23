@@ -50,6 +50,8 @@ class BoardController extends Controller
         Requests\Board\CreateRequest $request
     ): JsonResponse|View|Resources\Board {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -57,8 +59,8 @@ class BoardController extends Controller
         $board = new Board($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -66,12 +68,8 @@ class BoardController extends Controller
             'session_user_id' => $user?->id,
             'id' => null,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $board,
@@ -90,7 +88,12 @@ class BoardController extends Controller
             session()->flashInput($flash);
         }
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -103,13 +106,15 @@ class BoardController extends Controller
         Requests\Board\EditRequest $request
     ): JsonResponse|View|Resources\Board {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -123,12 +128,8 @@ class BoardController extends Controller
             'session_user_id' => $user?->id,
             'id' => $board->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $board,
@@ -142,7 +143,12 @@ class BoardController extends Controller
 
         session()->flashInput($flash);
 
-        return view(sprintf('%1$s/form', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/form', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -154,6 +160,8 @@ class BoardController extends Controller
         Board $board,
         Requests\Board\DestroyRequest $request
     ): Response|RedirectResponse {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -179,7 +187,7 @@ class BoardController extends Controller
             return redirect($returnUrl);
         }
 
-        return redirect(route($this->packageInfo['model_route']));
+        return redirect(route($packageInfo->model_route()));
     }
 
     /**
@@ -191,6 +199,8 @@ class BoardController extends Controller
         Board $board,
         Requests\Board\LockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Board {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -204,16 +214,9 @@ class BoardController extends Controller
 
         $board->save();
 
-        $meta = [
-            'session_user_id' => $user?->id,
-            'id' => $board->id,
-            'timestamp' => Carbon::now()->toJson(),
-            'info' => $this->packageInfo,
-        ];
-
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -225,7 +228,7 @@ class BoardController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['board' => $board->id]));
     }
 
@@ -238,11 +241,22 @@ class BoardController extends Controller
         Requests\Board\IndexRequest $request
     ): JsonResponse|View|Resources\BoardCollection {
 
+        $packageInfo = $this->packageInfo();
+
         $user = $request->user();
 
+        /**
+         * @var array{
+         *     sort: string|array<mixed>,
+         *     filter: array{
+         *         trash: string
+         *     },
+         *     perPage: int
+         * } $validated
+         */
         $validated = $request->validated();
 
-        $query = Board::addSelect(sprintf('%1$s.*', $this->packageInfo['table']));
+        $query = Board::addSelect(sprintf('%1$s.*', $packageInfo->table()));
 
         $query->sort($validated['sort'] ?? null);
 
@@ -277,7 +291,7 @@ class BoardController extends Controller
         $paginator->appends($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\BoardCollection($paginator))->response($request);
+            return new Resources\BoardCollection($paginator)->response($request);
         }
 
         $meta = [
@@ -290,7 +304,7 @@ class BoardController extends Controller
             'sortable' => $request->getSortable(),
             'timestamp' => Carbon::now()->toJson(),
             'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         $data = [
@@ -298,7 +312,12 @@ class BoardController extends Controller
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/index', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/index', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -311,6 +330,8 @@ class BoardController extends Controller
         Requests\Board\RestoreRequest $request
     ): JsonResponse|RedirectResponse|Resources\Board {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -322,8 +343,8 @@ class BoardController extends Controller
         $board->restore();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -335,7 +356,7 @@ class BoardController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['board' => $board->id]));
     }
 
@@ -349,6 +370,8 @@ class BoardController extends Controller
         Requests\Board\ShowRequest $request
     ): JsonResponse|View|Resources\Board {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -357,25 +380,26 @@ class BoardController extends Controller
             'session_user_id' => $user?->id,
             'id' => $board->id,
             'timestamp' => Carbon::now()->toJson(),
-            'validated' => $validated,
-            'info' => $this->packageInfo,
+            'info' => $packageInfo,
         ];
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
-
-        $meta['input'] = $request->input();
-        $meta['validated'] = $request->validated();
 
         $data = [
             'data' => $board,
             'meta' => $meta,
         ];
 
-        return view(sprintf('%1$s/detail', $this->packageInfo['view']), $data);
+        /**
+         * @var view-string $view
+         */
+        $view = sprintf('%1$s/detail', $packageInfo->view());
+
+        return view($view, $data);
     }
 
     /**
@@ -386,6 +410,8 @@ class BoardController extends Controller
     public function store(
         Requests\Board\StoreRequest $request
     ): Response|JsonResponse|RedirectResponse|Resources\Board {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -400,8 +426,8 @@ class BoardController extends Controller
         $board->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -413,7 +439,7 @@ class BoardController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['board' => $board->id]));
     }
 
@@ -426,6 +452,8 @@ class BoardController extends Controller
         Board $board,
         Requests\Board\UnlockRequest $request
     ): JsonResponse|RedirectResponse|Resources\Board {
+
+        $packageInfo = $this->packageInfo();
 
         $validated = $request->validated();
 
@@ -440,8 +468,8 @@ class BoardController extends Controller
         $board->save();
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -453,7 +481,7 @@ class BoardController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['board' => $board->id]));
     }
 
@@ -467,6 +495,8 @@ class BoardController extends Controller
         Requests\Board\UpdateRequest $request
     ): JsonResponse|RedirectResponse|Resources\Board {
 
+        $packageInfo = $this->packageInfo();
+
         $validated = $request->validated();
 
         $user = $request->user();
@@ -478,8 +508,8 @@ class BoardController extends Controller
         $board->update($validated);
 
         if ($request->expectsJson()) {
-            return (new Resources\Board($board))->additional(['meta' => [
-                'info' => $this->packageInfo,
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
             ]])->response($request);
         }
 
@@ -491,7 +521,7 @@ class BoardController extends Controller
 
         return redirect(route(sprintf(
             '%1$s.show',
-            $this->packageInfo['model_route']
+            $packageInfo->model_route()
         ), ['board' => $board->id]));
     }
 }

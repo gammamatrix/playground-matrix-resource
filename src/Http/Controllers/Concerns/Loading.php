@@ -23,8 +23,6 @@ trait Loading
         $dashboard = new IndexDashboard;
         $data = [];
 
-        $user = auth()->user();
-
         $load = [
             'Backlog' => [
                 'route' => 'backlogs',

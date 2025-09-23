@@ -119,27 +119,6 @@ class StoreRequest extends BaseStoreRequest
     protected string $slug_table = 'matrix_backlogs';
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, mixed>
-     */
-    public function rules(): array
-    {
-        $rules = parent::rules();
-
-        /**
-         * @var array<string, bool> $revisions
-         */
-        $revisions = config('playground-matrix-resource.revisions');
-
-        if (! empty($revisions['optional'])) {
-            $rules['revision'] = 'bool';
-        }
-
-        return $rules;
-    }
-
-    /**
      * Prepare the data for validation.
      *
      * @return void

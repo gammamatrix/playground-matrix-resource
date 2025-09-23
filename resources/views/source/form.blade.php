@@ -1,11 +1,11 @@
-@extends('playground::layouts.resource.form', [
-    'withFormInfo' => 'playground-matrix-resource::source/form-info',
-    'withFormStatus' => 'playground-matrix-resource::source/form-flags',
-])
+@extends(
+    "playground::layouts.resource.form",
+    [
+        "withFormInfo" => "playground-matrix-resource::source/form-info",
+        "withFormAccess" => true,
+    ]
+)
 
-@section('form-tertiary')
-@include('playground-matrix-resource::source/form-dates')
-@endsection
-
-@section('fieldset-content')
+@section("fieldset-content")
+    
 @endsection

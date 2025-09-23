@@ -30,9 +30,9 @@
     "slug_plural": "",
     "model_route": "playground.matrix.resource.backlogs",
     "module_route": "playground.matrix.resource",
-    "privilege": "playground-matrix-resource:backlog",
+    "privilege": "playground-matrix-resource",
     "route": "playground.matrix.resource",
-    "view": "playground-matrix-resource::backlog",
+    "view": "playground-matrix-resource",
     "implements": [],
     "uses": [],
     "packageInfo": {
@@ -47,8 +47,8 @@
         "module_label_plural": "Matrices",
         "module_route": "playground.matrix.resource",
         "module_slug": "matrix",
-        "privilege": "playground-matrix-resource:backlog",
+        "privilege": "playground-matrix-resource",
         "table": "matrix_backlogs",
-        "view": "playground-matrix-resource::backlog"
+        "view": "playground-matrix-resource"
     }
 }
