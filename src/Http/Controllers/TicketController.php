@@ -57,8 +57,6 @@ class TicketController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $ticket = new Ticket($validated);
 
         if ($request->expectsJson()) {
@@ -66,6 +64,8 @@ class TicketController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -113,13 +113,13 @@ class TicketController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Ticket($ticket)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $ticket->toArray();
 
@@ -246,8 +246,6 @@ class TicketController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -297,6 +295,8 @@ class TicketController extends Controller
             return new Resources\TicketCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -339,9 +339,7 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $ticket->modified_by_id = $user->id;
-        }
+        $ticket->modified_by_id = $user?->id;
 
         $ticket->restore();
 
@@ -375,7 +373,11 @@ class TicketController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Ticket($ticket)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -385,12 +387,6 @@ class TicketController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Ticket($ticket)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $ticket,
@@ -422,9 +418,7 @@ class TicketController extends Controller
 
         $ticket = new Ticket($validated);
 
-        if ($user?->id) {
-            $ticket->created_by_id = $user->id;
-        }
+        $ticket->created_by_id = $user?->id;
 
         $this->handleTicketCode($ticket);
 
@@ -433,7 +427,7 @@ class TicketController extends Controller
         if ($request->expectsJson()) {
             return new Resources\Ticket($ticket)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -466,9 +460,7 @@ class TicketController extends Controller
 
         $ticket->locked = false;
 
-        if ($user?->id) {
-            $ticket->modified_by_id = $user->id;
-        }
+        $ticket->modified_by_id = $user?->id;
 
         $ticket->save();
 
@@ -506,9 +498,7 @@ class TicketController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $ticket->modified_by_id = $user->id;
-        }
+        $ticket->modified_by_id = $user?->id;
 
         $ticket->update($validated);
 

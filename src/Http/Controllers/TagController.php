@@ -54,8 +54,6 @@ class TagController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $tag = new Tag($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class TagController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class TagController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Tag($tag)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $tag->toArray();
 
@@ -243,8 +243,6 @@ class TagController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class TagController extends Controller
             return new Resources\TagCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class TagController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $tag->modified_by_id = $user->id;
-        }
+        $tag->modified_by_id = $user?->id;
 
         $tag->restore();
 
@@ -372,7 +370,11 @@ class TagController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Tag($tag)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class TagController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Tag($tag)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $tag,
@@ -419,16 +415,14 @@ class TagController extends Controller
 
         $tag = new Tag($validated);
 
-        if ($user?->id) {
-            $tag->created_by_id = $user->id;
-        }
+        $tag->created_by_id = $user?->id;
 
         $tag->save();
 
         if ($request->expectsJson()) {
             return new Resources\Tag($tag)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class TagController extends Controller
 
         $tag->locked = false;
 
-        if ($user?->id) {
-            $tag->modified_by_id = $user->id;
-        }
+        $tag->modified_by_id = $user?->id;
 
         $tag->save();
 
@@ -501,9 +493,7 @@ class TagController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $tag->modified_by_id = $user->id;
-        }
+        $tag->modified_by_id = $user?->id;
 
         $tag->update($validated);
 

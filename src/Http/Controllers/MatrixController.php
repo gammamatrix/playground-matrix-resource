@@ -54,8 +54,6 @@ class MatrixController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $matrix = new Matrix($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class MatrixController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class MatrixController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Matrix($matrix)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $matrix->toArray();
 
@@ -243,8 +243,6 @@ class MatrixController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class MatrixController extends Controller
             return new Resources\MatrixCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class MatrixController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $matrix->modified_by_id = $user->id;
-        }
+        $matrix->modified_by_id = $user?->id;
 
         $matrix->restore();
 
@@ -372,7 +370,11 @@ class MatrixController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Matrix($matrix)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class MatrixController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Matrix($matrix)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $matrix,
@@ -419,16 +415,14 @@ class MatrixController extends Controller
 
         $matrix = new Matrix($validated);
 
-        if ($user?->id) {
-            $matrix->created_by_id = $user->id;
-        }
+        $matrix->created_by_id = $user?->id;
 
         $matrix->save();
 
         if ($request->expectsJson()) {
             return new Resources\Matrix($matrix)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class MatrixController extends Controller
 
         $matrix->locked = false;
 
-        if ($user?->id) {
-            $matrix->modified_by_id = $user->id;
-        }
+        $matrix->modified_by_id = $user?->id;
 
         $matrix->save();
 
@@ -501,9 +493,7 @@ class MatrixController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $matrix->modified_by_id = $user->id;
-        }
+        $matrix->modified_by_id = $user?->id;
 
         $matrix->update($validated);
 

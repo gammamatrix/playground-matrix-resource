@@ -1,8 +1,12 @@
 <?php
-if(empty($dashboard) || !($dashboard instanceof Playground\Matrix\Resource\Dashboard\Index)) {
+if (
+    empty($dashboard) ||
+    ! ($dashboard instanceof Playground\Matrix\Resource\Dashboard\Index)
+) {
     return;
 }
 ?>
+
 <div class="col-sm-6">
     <div class="card m-1">
         <div class="card-header">

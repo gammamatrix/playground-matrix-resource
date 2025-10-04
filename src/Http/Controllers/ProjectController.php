@@ -54,8 +54,6 @@ class ProjectController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $project = new Project($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class ProjectController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class ProjectController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Project($project)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $project->toArray();
 
@@ -243,8 +243,6 @@ class ProjectController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class ProjectController extends Controller
             return new Resources\ProjectCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $project->modified_by_id = $user->id;
-        }
+        $project->modified_by_id = $user?->id;
 
         $project->restore();
 
@@ -372,7 +370,11 @@ class ProjectController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Project($project)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class ProjectController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Project($project)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $project,
@@ -419,16 +415,14 @@ class ProjectController extends Controller
 
         $project = new Project($validated);
 
-        if ($user?->id) {
-            $project->created_by_id = $user->id;
-        }
+        $project->created_by_id = $user?->id;
 
         $project->save();
 
         if ($request->expectsJson()) {
             return new Resources\Project($project)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class ProjectController extends Controller
 
         $project->locked = false;
 
-        if ($user?->id) {
-            $project->modified_by_id = $user->id;
-        }
+        $project->modified_by_id = $user?->id;
 
         $project->save();
 
@@ -501,9 +493,7 @@ class ProjectController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $project->modified_by_id = $user->id;
-        }
+        $project->modified_by_id = $user?->id;
 
         $project->update($validated);
 

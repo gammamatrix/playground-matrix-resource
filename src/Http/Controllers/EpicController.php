@@ -54,8 +54,6 @@ class EpicController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $epic = new Epic($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class EpicController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class EpicController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Epic($epic)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $epic->toArray();
 
@@ -243,8 +243,6 @@ class EpicController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class EpicController extends Controller
             return new Resources\EpicCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class EpicController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $epic->modified_by_id = $user->id;
-        }
+        $epic->modified_by_id = $user?->id;
 
         $epic->restore();
 
@@ -372,7 +370,11 @@ class EpicController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Epic($epic)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class EpicController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Epic($epic)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $epic,
@@ -419,16 +415,14 @@ class EpicController extends Controller
 
         $epic = new Epic($validated);
 
-        if ($user?->id) {
-            $epic->created_by_id = $user->id;
-        }
+        $epic->created_by_id = $user?->id;
 
         $epic->save();
 
         if ($request->expectsJson()) {
             return new Resources\Epic($epic)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class EpicController extends Controller
 
         $epic->locked = false;
 
-        if ($user?->id) {
-            $epic->modified_by_id = $user->id;
-        }
+        $epic->modified_by_id = $user?->id;
 
         $epic->save();
 
@@ -501,9 +493,7 @@ class EpicController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $epic->modified_by_id = $user->id;
-        }
+        $epic->modified_by_id = $user?->id;
 
         $epic->update($validated);
 

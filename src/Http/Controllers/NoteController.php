@@ -54,8 +54,6 @@ class NoteController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $note = new Note($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class NoteController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class NoteController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Note($note)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $note->toArray();
 
@@ -243,8 +243,6 @@ class NoteController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class NoteController extends Controller
             return new Resources\NoteCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $note->modified_by_id = $user->id;
-        }
+        $note->modified_by_id = $user?->id;
 
         $note->restore();
 
@@ -372,7 +370,11 @@ class NoteController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Note($note)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class NoteController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Note($note)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $note,
@@ -419,16 +415,14 @@ class NoteController extends Controller
 
         $note = new Note($validated);
 
-        if ($user?->id) {
-            $note->created_by_id = $user->id;
-        }
+        $note->created_by_id = $user?->id;
 
         $note->save();
 
         if ($request->expectsJson()) {
             return new Resources\Note($note)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class NoteController extends Controller
 
         $note->locked = false;
 
-        if ($user?->id) {
-            $note->modified_by_id = $user->id;
-        }
+        $note->modified_by_id = $user?->id;
 
         $note->save();
 
@@ -501,9 +493,7 @@ class NoteController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $note->modified_by_id = $user->id;
-        }
+        $note->modified_by_id = $user?->id;
 
         $note->update($validated);
 

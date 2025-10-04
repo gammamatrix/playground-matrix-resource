@@ -54,8 +54,6 @@ class MilestoneController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $milestone = new Milestone($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class MilestoneController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class MilestoneController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Milestone($milestone)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $milestone->toArray();
 
@@ -243,8 +243,6 @@ class MilestoneController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class MilestoneController extends Controller
             return new Resources\MilestoneCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $milestone->modified_by_id = $user->id;
-        }
+        $milestone->modified_by_id = $user?->id;
 
         $milestone->restore();
 
@@ -372,7 +370,11 @@ class MilestoneController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Milestone($milestone)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class MilestoneController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Milestone($milestone)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $milestone,
@@ -419,16 +415,14 @@ class MilestoneController extends Controller
 
         $milestone = new Milestone($validated);
 
-        if ($user?->id) {
-            $milestone->created_by_id = $user->id;
-        }
+        $milestone->created_by_id = $user?->id;
 
         $milestone->save();
 
         if ($request->expectsJson()) {
             return new Resources\Milestone($milestone)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class MilestoneController extends Controller
 
         $milestone->locked = false;
 
-        if ($user?->id) {
-            $milestone->modified_by_id = $user->id;
-        }
+        $milestone->modified_by_id = $user?->id;
 
         $milestone->save();
 
@@ -501,9 +493,7 @@ class MilestoneController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $milestone->modified_by_id = $user->id;
-        }
+        $milestone->modified_by_id = $user?->id;
 
         $milestone->update($validated);
 

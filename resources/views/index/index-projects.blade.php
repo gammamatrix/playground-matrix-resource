@@ -1,9 +1,13 @@
 <?php
-if(empty($dashboard) || !($dashboard instanceof Playground\Matrix\Resource\Dashboard\Index)) {
+if (
+    empty($dashboard) ||
+    ! ($dashboard instanceof Playground\Matrix\Resource\Dashboard\Index)
+) {
     return;
 }
 $user = \Illuminate\Support\Facades\Auth::user();
 ?>
+
 <?php
 $withCreateMatrix = \Playground\Auth\Facades\Can::access($user, [
     "allow" => false,

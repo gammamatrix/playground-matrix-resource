@@ -54,8 +54,6 @@ class FlowController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $flow = new Flow($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class FlowController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class FlowController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Flow($flow)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $flow->toArray();
 
@@ -243,8 +243,6 @@ class FlowController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class FlowController extends Controller
             return new Resources\FlowCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $flow->modified_by_id = $user->id;
-        }
+        $flow->modified_by_id = $user?->id;
 
         $flow->restore();
 
@@ -372,7 +370,11 @@ class FlowController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Flow($flow)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class FlowController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Flow($flow)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $flow,
@@ -419,16 +415,14 @@ class FlowController extends Controller
 
         $flow = new Flow($validated);
 
-        if ($user?->id) {
-            $flow->created_by_id = $user->id;
-        }
+        $flow->created_by_id = $user?->id;
 
         $flow->save();
 
         if ($request->expectsJson()) {
             return new Resources\Flow($flow)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class FlowController extends Controller
 
         $flow->locked = false;
 
-        if ($user?->id) {
-            $flow->modified_by_id = $user->id;
-        }
+        $flow->modified_by_id = $user?->id;
 
         $flow->save();
 
@@ -501,9 +493,7 @@ class FlowController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $flow->modified_by_id = $user->id;
-        }
+        $flow->modified_by_id = $user?->id;
 
         $flow->update($validated);
 

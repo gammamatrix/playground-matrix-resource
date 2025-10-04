@@ -54,8 +54,6 @@ class BoardController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $board = new Board($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class BoardController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class BoardController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Board($board)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $board->toArray();
 
@@ -243,8 +243,6 @@ class BoardController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class BoardController extends Controller
             return new Resources\BoardCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $board->modified_by_id = $user->id;
-        }
+        $board->modified_by_id = $user?->id;
 
         $board->restore();
 
@@ -372,7 +370,11 @@ class BoardController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Board($board)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class BoardController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Board($board)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $board,
@@ -419,16 +415,14 @@ class BoardController extends Controller
 
         $board = new Board($validated);
 
-        if ($user?->id) {
-            $board->created_by_id = $user->id;
-        }
+        $board->created_by_id = $user?->id;
 
         $board->save();
 
         if ($request->expectsJson()) {
             return new Resources\Board($board)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class BoardController extends Controller
 
         $board->locked = false;
 
-        if ($user?->id) {
-            $board->modified_by_id = $user->id;
-        }
+        $board->modified_by_id = $user?->id;
 
         $board->save();
 
@@ -501,9 +493,7 @@ class BoardController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $board->modified_by_id = $user->id;
-        }
+        $board->modified_by_id = $user?->id;
 
         $board->update($validated);
 

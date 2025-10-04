@@ -54,8 +54,6 @@ class BacklogController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $backlog = new Backlog($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class BacklogController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class BacklogController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Backlog($backlog)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $backlog->toArray();
 
@@ -243,8 +243,6 @@ class BacklogController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class BacklogController extends Controller
             return new Resources\BacklogCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $backlog->modified_by_id = $user->id;
-        }
+        $backlog->modified_by_id = $user?->id;
 
         $backlog->restore();
 
@@ -372,7 +370,11 @@ class BacklogController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Backlog($backlog)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class BacklogController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Backlog($backlog)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $backlog,
@@ -419,16 +415,14 @@ class BacklogController extends Controller
 
         $backlog = new Backlog($validated);
 
-        if ($user?->id) {
-            $backlog->created_by_id = $user->id;
-        }
+        $backlog->created_by_id = $user?->id;
 
         $backlog->save();
 
         if ($request->expectsJson()) {
             return new Resources\Backlog($backlog)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class BacklogController extends Controller
 
         $backlog->locked = false;
 
-        if ($user?->id) {
-            $backlog->modified_by_id = $user->id;
-        }
+        $backlog->modified_by_id = $user?->id;
 
         $backlog->save();
 
@@ -501,9 +493,7 @@ class BacklogController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $backlog->modified_by_id = $user->id;
-        }
+        $backlog->modified_by_id = $user?->id;
 
         $backlog->update($validated);
 

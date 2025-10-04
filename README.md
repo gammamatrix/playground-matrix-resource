@@ -67,7 +67,7 @@ You can publish the config file with:
 php artisan vendor:publish --provider="Playground\Matrix\Resource\ServiceProvider" --tag="playground-config"
 ```
 
-All routes are enabled by default. They may be disabled via enviroment variable or the configuration.
+All routes are enabled by default. They may be disabled via environment variable or the configuration.
 
 See the contents of the published config file: [config/playground-matrix-resource.php](config/playground-matrix-resource.php)
 
@@ -98,21 +98,21 @@ composer cloc
 ➜  playground-matrix-resource git:(develop) ✗ composer cloc
     1276 text files.
     1254 unique files.
-      24 files ignored.
+     256 files ignored.
 
-github.com/AlDanial/cloc v 2.06  T=0.34 s (3636.4 files/s, 320704.3 lines/s)
+github.com/AlDanial/cloc v 2.06  T=0.38 s (3318.2 files/s, 293934.6 lines/s)
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
 YAML                           164              5              0          37783
-JSON                           499              0              0          24979
-PHP                            468           5004           5990          22140
-Blade                          107            633              1          12714
-XML                             12              0              7           1138
-Markdown                         3             55              1            128
+JSON                           499              0              0          24987
+PHP                            468           4988           5990          21999
+Blade                          107            554              1          13594
+XML                             12              0              7            965
+Markdown                         3             58              1            137
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                          1254           5700           5999          98894
+SUM:                          1254           5608           5999          99477
 -------------------------------------------------------------------------------
 ```
 
@@ -132,8 +132,20 @@ composer analyse
 
 ## Coding Standards
 
+Format source code:
 ```sh
 composer format
+```
+
+Format blades in resources/views:
+
+```sh
+composer format-blade
+```
+- **NOTE:** requires installing dev packages from package.json.
+
+```sh
+npm install
 ```
 
 ## Testing

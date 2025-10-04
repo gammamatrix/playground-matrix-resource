@@ -54,8 +54,6 @@ class SprintController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $sprint = new Sprint($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class SprintController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class SprintController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Sprint($sprint)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $sprint->toArray();
 
@@ -243,8 +243,6 @@ class SprintController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class SprintController extends Controller
             return new Resources\SprintCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class SprintController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $sprint->modified_by_id = $user->id;
-        }
+        $sprint->modified_by_id = $user?->id;
 
         $sprint->restore();
 
@@ -372,7 +370,11 @@ class SprintController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Sprint($sprint)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class SprintController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Sprint($sprint)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $sprint,
@@ -419,16 +415,14 @@ class SprintController extends Controller
 
         $sprint = new Sprint($validated);
 
-        if ($user?->id) {
-            $sprint->created_by_id = $user->id;
-        }
+        $sprint->created_by_id = $user?->id;
 
         $sprint->save();
 
         if ($request->expectsJson()) {
             return new Resources\Sprint($sprint)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class SprintController extends Controller
 
         $sprint->locked = false;
 
-        if ($user?->id) {
-            $sprint->modified_by_id = $user->id;
-        }
+        $sprint->modified_by_id = $user?->id;
 
         $sprint->save();
 
@@ -501,9 +493,7 @@ class SprintController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $sprint->modified_by_id = $user->id;
-        }
+        $sprint->modified_by_id = $user?->id;
 
         $sprint->update($validated);
 

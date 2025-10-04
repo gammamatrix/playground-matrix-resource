@@ -54,8 +54,6 @@ class ReleaseController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         $release = new Release($validated);
 
         if ($request->expectsJson()) {
@@ -63,6 +61,8 @@ class ReleaseController extends Controller
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $meta = [
             'session_user_id' => $user?->id,
@@ -110,13 +110,13 @@ class ReleaseController extends Controller
 
         $validated = $request->validated();
 
-        $user = $request->user();
-
         if ($request->expectsJson()) {
             return new Resources\Release($release)->additional(['meta' => [
                 'info' => $packageInfo,
             ]])->response($request);
         }
+
+        $user = $request->user();
 
         $flash = $release->toArray();
 
@@ -243,8 +243,6 @@ class ReleaseController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $user = $request->user();
-
         /**
          * @var array{
          *     sort: string|array<mixed>,
@@ -294,6 +292,8 @@ class ReleaseController extends Controller
             return new Resources\ReleaseCollection($paginator)->response($request);
         }
 
+        $user = $request->user();
+
         $meta = [
             'session_user_id' => $user?->id,
             'columns' => $request->getPaginationColumns(),
@@ -336,9 +336,7 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $release->modified_by_id = $user->id;
-        }
+        $release->modified_by_id = $user?->id;
 
         $release->restore();
 
@@ -372,7 +370,11 @@ class ReleaseController extends Controller
 
         $packageInfo = $this->packageInfo();
 
-        $validated = $request->validated();
+        if ($request->expectsJson()) {
+            return new Resources\Release($release)->additional(['meta' => [
+                'info' => $packageInfo,
+            ]])->response($request);
+        }
 
         $user = $request->user();
 
@@ -382,12 +384,6 @@ class ReleaseController extends Controller
             'timestamp' => Carbon::now()->toJson(),
             'info' => $packageInfo,
         ];
-
-        if ($request->expectsJson()) {
-            return new Resources\Release($release)->additional(['meta' => [
-                'info' => $packageInfo,
-            ]])->response($request);
-        }
 
         $data = [
             'data' => $release,
@@ -419,16 +415,14 @@ class ReleaseController extends Controller
 
         $release = new Release($validated);
 
-        if ($user?->id) {
-            $release->created_by_id = $user->id;
-        }
+        $release->created_by_id = $user?->id;
 
         $release->save();
 
         if ($request->expectsJson()) {
             return new Resources\Release($release)->additional(['meta' => [
                 'info' => $packageInfo,
-            ]])->response($request);
+            ]])->response($request)->setStatusCode(201);
         }
 
         $returnUrl = $validated['_return_url'] ?? '';
@@ -461,9 +455,7 @@ class ReleaseController extends Controller
 
         $release->locked = false;
 
-        if ($user?->id) {
-            $release->modified_by_id = $user->id;
-        }
+        $release->modified_by_id = $user?->id;
 
         $release->save();
 
@@ -501,9 +493,7 @@ class ReleaseController extends Controller
 
         $user = $request->user();
 
-        if ($user?->id) {
-            $release->modified_by_id = $user->id;
-        }
+        $release->modified_by_id = $user?->id;
 
         $release->update($validated);
 
