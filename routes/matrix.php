@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Playground\Matrix\Models\Backlog;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,6 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource',
         'uses' => 'IndexController@index',
-    ])->can('index', Playground\Matrix\Models\Backlog::class);
+    ])->can('index', Backlog::class);
 
 });

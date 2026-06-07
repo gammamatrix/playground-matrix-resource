@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Team;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamTestCase
  */
 class TeamTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Team::class;
+    public string $fqdn = Team::class;
 
     /**
      * @var array<string, string>

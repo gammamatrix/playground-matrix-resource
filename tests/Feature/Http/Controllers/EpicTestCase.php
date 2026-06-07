@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Epic;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase
  */
 class EpicTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Epic::class;
+    public string $fqdn = Epic::class;
 
     /**
      * @var array<string, string>

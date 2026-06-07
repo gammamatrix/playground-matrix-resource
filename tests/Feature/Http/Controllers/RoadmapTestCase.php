@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Roadmap;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapTestCase
  */
 class RoadmapTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Roadmap::class;
+    public string $fqdn = Roadmap::class;
 
     /**
      * @var array<string, string>

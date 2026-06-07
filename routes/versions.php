@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Playground\Matrix\Models\Version;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,19 +37,19 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource.versions',
         'uses' => 'VersionController@index',
-    ])->can('index', Playground\Matrix\Models\Version::class);
+    ])->can('index', Version::class);
 
     Route::post('/index', [
         'as' => 'playground.matrix.resource.versions.index',
         'uses' => 'VersionController@index',
-    ])->can('index', Playground\Matrix\Models\Version::class);
+    ])->can('index', Version::class);
 
     // UI
 
     Route::get('/create', [
         'as' => 'playground.matrix.resource.versions.create',
         'uses' => 'VersionController@create',
-    ])->can('create', Playground\Matrix\Models\Version::class);
+    ])->can('create', Version::class);
 
     Route::get('/edit/{version}', [
         'as' => 'playground.matrix.resource.versions.edit',
@@ -90,7 +91,7 @@ Route::group([
     Route::post('/', [
         'as' => 'playground.matrix.resource.versions.post',
         'uses' => 'VersionController@store',
-    ])->can('store', Playground\Matrix\Models\Version::class);
+    ])->can('store', Version::class);
 
     // Route::put('/', [
     //     'as' => 'playground.matrix.resource.versions.put',

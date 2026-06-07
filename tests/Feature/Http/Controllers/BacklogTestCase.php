@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Backlog;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BacklogTestCase
  */
 class BacklogTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Backlog::class;
+    public string $fqdn = Backlog::class;
 
     /**
      * @var array<string, string>

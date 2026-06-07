@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Flow;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\FlowTestCase
  */
 class FlowTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Flow::class;
+    public string $fqdn = Flow::class;
 
     /**
      * @var array<string, string>

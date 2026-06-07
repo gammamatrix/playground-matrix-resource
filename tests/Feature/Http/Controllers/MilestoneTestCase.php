@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Milestone;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase
  */
 class MilestoneTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Milestone::class;
+    public string $fqdn = Milestone::class;
 
     /**
      * @var array<string, string>

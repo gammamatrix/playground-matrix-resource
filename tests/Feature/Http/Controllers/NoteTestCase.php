@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Note;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteTestCase
  */
 class NoteTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Note::class;
+    public string $fqdn = Note::class;
 
     /**
      * @var array<string, string>

@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Release;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ReleaseTestCase
  */
 class ReleaseTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Release::class;
+    public string $fqdn = Release::class;
 
     /**
      * @var array<string, string>

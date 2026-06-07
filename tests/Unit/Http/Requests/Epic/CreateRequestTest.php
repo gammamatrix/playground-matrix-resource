@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests\Epic;
 
+use Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest;
 use Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
 
 /**
@@ -15,5 +16,5 @@ use Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
  */
 class CreateRequestTest extends RequestTestCase
 {
-    protected string $requestClass = \Playground\Matrix\Resource\Http\Requests\Epic\CreateRequest::class;
+    protected string $requestClass = CreateRequest::class;
 }

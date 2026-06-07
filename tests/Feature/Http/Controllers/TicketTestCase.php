@@ -8,12 +8,14 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Playground\Matrix\Models\Ticket;
+
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TicketTestCase
  */
 class TicketTestCase extends TestCase
 {
-    public string $fqdn = \Playground\Matrix\Models\Ticket::class;
+    public string $fqdn = Ticket::class;
 
     /**
      * @var array<string, string>

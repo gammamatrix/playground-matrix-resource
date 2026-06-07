@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Playground\Matrix\Models\Ticket;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,19 +37,19 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource.tickets',
         'uses' => 'TicketController@index',
-    ])->can('index', Playground\Matrix\Models\Ticket::class);
+    ])->can('index', Ticket::class);
 
     Route::post('/index', [
         'as' => 'playground.matrix.resource.tickets.index',
         'uses' => 'TicketController@index',
-    ])->can('index', Playground\Matrix\Models\Ticket::class);
+    ])->can('index', Ticket::class);
 
     // UI
 
     Route::get('/create', [
         'as' => 'playground.matrix.resource.tickets.create',
         'uses' => 'TicketController@create',
-    ])->can('create', Playground\Matrix\Models\Ticket::class);
+    ])->can('create', Ticket::class);
 
     Route::get('/edit/{ticket}', [
         'as' => 'playground.matrix.resource.tickets.edit',
@@ -90,7 +91,7 @@ Route::group([
     Route::post('/', [
         'as' => 'playground.matrix.resource.tickets.post',
         'uses' => 'TicketController@store',
-    ])->can('store', Playground\Matrix\Models\Ticket::class);
+    ])->can('store', Ticket::class);
 
     // Route::put('/', [
     //     'as' => 'playground.matrix.resource.tickets.put',

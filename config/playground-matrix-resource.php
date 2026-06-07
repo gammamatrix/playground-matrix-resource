@@ -5,6 +5,40 @@
  */
 
 declare(strict_types=1);
+use Illuminate\Database\Eloquent\Model;
+use Playground\Auth\Policies\Policy;
+use Playground\Matrix\Models\Backlog;
+use Playground\Matrix\Models\Board;
+use Playground\Matrix\Models\Epic;
+use Playground\Matrix\Models\Flow;
+use Playground\Matrix\Models\Matrix;
+use Playground\Matrix\Models\Milestone;
+use Playground\Matrix\Models\Note;
+use Playground\Matrix\Models\Project;
+use Playground\Matrix\Models\Release;
+use Playground\Matrix\Models\Roadmap;
+use Playground\Matrix\Models\Source;
+use Playground\Matrix\Models\Sprint;
+use Playground\Matrix\Models\Tag;
+use Playground\Matrix\Models\Team;
+use Playground\Matrix\Models\Ticket;
+use Playground\Matrix\Models\Version;
+use Playground\Matrix\Resource\Policies\BacklogPolicy;
+use Playground\Matrix\Resource\Policies\BoardPolicy;
+use Playground\Matrix\Resource\Policies\EpicPolicy;
+use Playground\Matrix\Resource\Policies\FlowPolicy;
+use Playground\Matrix\Resource\Policies\MatrixPolicy;
+use Playground\Matrix\Resource\Policies\MilestonePolicy;
+use Playground\Matrix\Resource\Policies\NotePolicy;
+use Playground\Matrix\Resource\Policies\ProjectPolicy;
+use Playground\Matrix\Resource\Policies\ReleasePolicy;
+use Playground\Matrix\Resource\Policies\RoadmapPolicy;
+use Playground\Matrix\Resource\Policies\SourcePolicy;
+use Playground\Matrix\Resource\Policies\SprintPolicy;
+use Playground\Matrix\Resource\Policies\TagPolicy;
+use Playground\Matrix\Resource\Policies\TeamPolicy;
+use Playground\Matrix\Resource\Policies\TicketPolicy;
+use Playground\Matrix\Resource\Policies\VersionPolicy;
 
 /**
  * Playground: Matrix Resource Configuration and Environment Variables
@@ -24,8 +58,8 @@ declare(strict_types=1);
  *           guest: string|string[]
  *       },
  *       policies: array<
- *           class-string<\Illuminate\Database\Eloquent\Model>,
- *           class-string<\Playground\Auth\Policies\Policy>
+ *           class-string<Model>,
+ *           class-string<Policy>
  *       >,
  *       routes: array{
  *           matrix: bool,
@@ -110,22 +144,22 @@ return [
     */
 
     'policies' => [
-        Playground\Matrix\Models\Backlog::class => Playground\Matrix\Resource\Policies\BacklogPolicy::class,
-        Playground\Matrix\Models\Board::class => Playground\Matrix\Resource\Policies\BoardPolicy::class,
-        Playground\Matrix\Models\Epic::class => Playground\Matrix\Resource\Policies\EpicPolicy::class,
-        Playground\Matrix\Models\Flow::class => Playground\Matrix\Resource\Policies\FlowPolicy::class,
-        Playground\Matrix\Models\Matrix::class => Playground\Matrix\Resource\Policies\MatrixPolicy::class,
-        Playground\Matrix\Models\Milestone::class => Playground\Matrix\Resource\Policies\MilestonePolicy::class,
-        Playground\Matrix\Models\Note::class => Playground\Matrix\Resource\Policies\NotePolicy::class,
-        Playground\Matrix\Models\Project::class => Playground\Matrix\Resource\Policies\ProjectPolicy::class,
-        Playground\Matrix\Models\Release::class => Playground\Matrix\Resource\Policies\ReleasePolicy::class,
-        Playground\Matrix\Models\Roadmap::class => Playground\Matrix\Resource\Policies\RoadmapPolicy::class,
-        Playground\Matrix\Models\Source::class => Playground\Matrix\Resource\Policies\SourcePolicy::class,
-        Playground\Matrix\Models\Sprint::class => Playground\Matrix\Resource\Policies\SprintPolicy::class,
-        Playground\Matrix\Models\Tag::class => Playground\Matrix\Resource\Policies\TagPolicy::class,
-        Playground\Matrix\Models\Team::class => Playground\Matrix\Resource\Policies\TeamPolicy::class,
-        Playground\Matrix\Models\Ticket::class => Playground\Matrix\Resource\Policies\TicketPolicy::class,
-        Playground\Matrix\Models\Version::class => Playground\Matrix\Resource\Policies\VersionPolicy::class,
+        Backlog::class => BacklogPolicy::class,
+        Board::class => BoardPolicy::class,
+        Epic::class => EpicPolicy::class,
+        Flow::class => FlowPolicy::class,
+        Matrix::class => MatrixPolicy::class,
+        Milestone::class => MilestonePolicy::class,
+        Note::class => NotePolicy::class,
+        Project::class => ProjectPolicy::class,
+        Release::class => ReleasePolicy::class,
+        Roadmap::class => RoadmapPolicy::class,
+        Source::class => SourcePolicy::class,
+        Sprint::class => SprintPolicy::class,
+        Tag::class => TagPolicy::class,
+        Team::class => TeamPolicy::class,
+        Ticket::class => TicketPolicy::class,
+        Version::class => VersionPolicy::class,
     ],
 
     /*

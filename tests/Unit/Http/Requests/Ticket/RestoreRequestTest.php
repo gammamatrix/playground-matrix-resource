@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Playground\Matrix\Resource\Http\Requests\Ticket;
 
+use Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest;
 use Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
 
 /**
@@ -15,5 +16,5 @@ use Tests\Unit\Playground\Matrix\Resource\Http\Requests\RequestTestCase;
  */
 class RestoreRequestTest extends RequestTestCase
 {
-    protected string $requestClass = \Playground\Matrix\Resource\Http\Requests\Ticket\RestoreRequest::class;
+    protected string $requestClass = RestoreRequest::class;
 }

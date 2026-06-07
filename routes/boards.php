@@ -7,6 +7,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Playground\Matrix\Models\Board;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,19 +37,19 @@ Route::group([
     Route::get('/', [
         'as' => 'playground.matrix.resource.boards',
         'uses' => 'BoardController@index',
-    ])->can('index', Playground\Matrix\Models\Board::class);
+    ])->can('index', Board::class);
 
     Route::post('/index', [
         'as' => 'playground.matrix.resource.boards.index',
         'uses' => 'BoardController@index',
-    ])->can('index', Playground\Matrix\Models\Board::class);
+    ])->can('index', Board::class);
 
     // UI
 
     Route::get('/create', [
         'as' => 'playground.matrix.resource.boards.create',
         'uses' => 'BoardController@create',
-    ])->can('create', Playground\Matrix\Models\Board::class);
+    ])->can('create', Board::class);
 
     Route::get('/edit/{board}', [
         'as' => 'playground.matrix.resource.boards.edit',
@@ -90,7 +91,7 @@ Route::group([
     Route::post('/', [
         'as' => 'playground.matrix.resource.boards.post',
         'uses' => 'BoardController@store',
-    ])->can('store', Playground\Matrix\Models\Board::class);
+    ])->can('store', Board::class);
 
     // Route::put('/', [
     //     'as' => 'playground.matrix.resource.boards.put',
