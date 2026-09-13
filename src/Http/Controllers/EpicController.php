@@ -32,6 +32,8 @@ class EpicController extends Controller
         'model_route' => 'playground.matrix.resource.epics',
         'model_slug' => 'epic',
         'model_slug_plural' => 'epics',
+        'model_variable' => 'epic',
+        'model_variable_plural' => 'epics',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

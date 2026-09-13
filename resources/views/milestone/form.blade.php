@@ -1,4 +1,4 @@
-@extends(
+@extends (
     "playground::layouts.resource.form",
     [
         "withFormInfo" => "playground-matrix-resource::milestone/form-info",
@@ -6,6 +6,6 @@
     ]
 )
 
-@section("fieldset-content")
-    
+@section ("fieldset-content")
+
 @endsection

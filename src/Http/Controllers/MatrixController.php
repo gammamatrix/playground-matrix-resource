@@ -32,6 +32,8 @@ class MatrixController extends Controller
         'model_route' => 'playground.matrix.resource.matrices',
         'model_slug' => 'matrix',
         'model_slug_plural' => 'matrices',
+        'model_variable' => 'matrix',
+        'model_variable_plural' => 'matrices',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

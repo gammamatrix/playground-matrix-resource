@@ -25,14 +25,12 @@
         "gammamatrix/playground": "*",
         "gammamatrix/playground-auth": "*",
         "gammamatrix/playground-http": "*",
-        "gammamatrix/playground-matrix": "*",
-        "illuminate/support": "^13.0"
+        "gammamatrix/playground-matrix": "*"
     },
     "require-dev": {
         "gammamatrix/playground-test": "*",
         "gammamatrix/playground-login-blade": "*",
         "gammamatrix/playground-site-blade": "*",
-        "illuminate/testing": "^13.0",
         "tomasvotruba/bladestan": "dev-main"
     },
     "autoload": {

@@ -32,6 +32,8 @@ class BacklogController extends Controller
         'model_route' => 'playground.matrix.resource.backlogs',
         'model_slug' => 'backlog',
         'model_slug_plural' => 'backlogs',
+        'model_variable' => 'backlog',
+        'model_variable_plural' => 'backlogs',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

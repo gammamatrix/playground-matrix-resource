@@ -139,7 +139,7 @@ $flags = [
 ];
 ?>
 
-@extends(
+@extends (
     "playground::layouts.resource.detail",
     [
         "withInfo" => false,
@@ -148,66 +148,66 @@ $flags = [
     ]
 )
 
-@section("detail-information-flags")
-    @include("playground::layouts.resource.detail-flags")
+@section ("detail-information-flags")
+    @include ("playground::layouts.resource.detail-flags")
 @endsection
 
-@section("detail-card-body-header")
+@section ("detail-card-body-header")
 
 @endsection
 
-@section("detail-accordion-body-header")
+@section ("detail-accordion-body-header")
     <div class="row mb-3">
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-owner")
+            @include ("playground-matrix-resource::io/manage-owner")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-parent")
+            @include ("playground-matrix-resource::io/manage-parent")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-backlog")
+            @include ("playground-matrix-resource::io/manage-backlog")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-board")
+            @include ("playground-matrix-resource::io/manage-board")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-epic")
+            @include ("playground-matrix-resource::io/manage-epic")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-flow")
+            @include ("playground-matrix-resource::io/manage-flow")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-matrix")
+            @include ("playground-matrix-resource::io/manage-matrix")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-milestone")
+            @include ("playground-matrix-resource::io/manage-milestone")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-note")
+            @include ("playground-matrix-resource::io/manage-note")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-project")
+            @include ("playground-matrix-resource::io/manage-project")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-release")
+            @include ("playground-matrix-resource::io/manage-release")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-roadmap")
+            @include ("playground-matrix-resource::io/manage-roadmap")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-source")
+            @include ("playground-matrix-resource::io/manage-source")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-sprint")
+            @include ("playground-matrix-resource::io/manage-sprint")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-tag")
+            @include ("playground-matrix-resource::io/manage-tag")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-ticket")
+            @include ("playground-matrix-resource::io/manage-ticket")
         </div>
         <div class="col-sm-6 col-md-4 mb-3">
-            @include("playground-matrix-resource::io/manage-version")
+            @include ("playground-matrix-resource::io/manage-version")
         </div>
     </div>
 @endsection

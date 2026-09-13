@@ -65,9 +65,7 @@
                                         </a>
                                     @endif
                                 </td>
-                                <td>
-                                    {{ $ticket->title }}
-                                </td>
+                                <td>{{ $ticket->title }}</td>
                                 <td>
                                     @if ($ticket->ticket_type)
                                         <a
@@ -110,12 +108,8 @@
                                         </a>
                                     @endif
                                 </td>
-                                <td>
-                                    {{ $ticket->label }}
-                                </td>
-                                <td>
-                                    {{ $ticket->state }}
-                                </td>
+                                <td>{{ $ticket->label }}</td>
+                                <td>{{ $ticket->state }}</td>
                                 <td>
                                     <time
                                         datetime="{{ $ticket->created_at?->toW3cString() }}"

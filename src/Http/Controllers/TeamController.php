@@ -32,6 +32,8 @@ class TeamController extends Controller
         'model_route' => 'playground.matrix.resource.teams',
         'model_slug' => 'team',
         'model_slug_plural' => 'teams',
+        'model_variable' => 'team',
+        'model_variable_plural' => 'teams',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

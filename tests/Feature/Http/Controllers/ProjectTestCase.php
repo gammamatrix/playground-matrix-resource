@@ -27,6 +27,8 @@ class ProjectTestCase extends TestCase
         'model_route' => 'playground.matrix.resource.projects',
         'model_slug' => 'project',
         'model_slug_plural' => 'projects',
+        'model_variable' => 'project',
+        'model_variable_plural' => 'projects',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

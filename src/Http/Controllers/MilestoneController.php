@@ -32,6 +32,8 @@ class MilestoneController extends Controller
         'model_route' => 'playground.matrix.resource.milestones',
         'model_slug' => 'milestone',
         'model_slug_plural' => 'milestones',
+        'model_variable' => 'milestone',
+        'model_variable_plural' => 'milestones',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

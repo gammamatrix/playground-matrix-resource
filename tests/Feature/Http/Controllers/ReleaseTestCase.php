@@ -27,6 +27,8 @@ class ReleaseTestCase extends TestCase
         'model_route' => 'playground.matrix.resource.releases',
         'model_slug' => 'release',
         'model_slug_plural' => 'releases',
+        'model_variable' => 'release',
+        'model_variable_plural' => 'releases',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',

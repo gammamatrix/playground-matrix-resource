@@ -28,9 +28,7 @@
                 </a>
             </div>
             @if ($note->note_type)
-                <div class="card-footer">
-                    {{ $note->note_type }}
-                </div>
+                <div class="card-footer">{{ $note->note_type }}</div>
             @endif
         @endif
     @elseif (! $data->locked && $routePatch)
@@ -46,7 +44,7 @@
                 class="needs-validation"
             >
                 @csrf
-                @method("patch")
+                @method ("patch")
                 <div
                     class="btn-toolbar mb-3"
                     role="toolbar"
