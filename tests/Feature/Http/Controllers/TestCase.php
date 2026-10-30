@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
-use Playground\Test\Feature\Http\Controllers\Resource;
 use Tests\Feature\Playground\Matrix\Resource\TestCase as BaseTestCase;
 
 /**
@@ -17,52 +16,47 @@ use Tests\Feature\Playground\Matrix\Resource\TestCase as BaseTestCase;
  */
 class TestCase extends BaseTestCase
 {
-    use Resource\Playground\CreateJsonTrait;
-    use Resource\Playground\CreateTrait;
-    use Resource\Playground\DestroyJsonTrait;
-    use Resource\Playground\DestroyTrait;
-    use Resource\Playground\EditJsonTrait;
-    use Resource\Playground\EditTrait;
-    use Resource\Playground\IndexJsonTrait;
-    use Resource\Playground\IndexTrait;
-    use Resource\Playground\LockJsonTrait;
-    use Resource\Playground\LockTrait;
-    use Resource\Playground\RestoreJsonTrait;
-    use Resource\Playground\RestoreTrait;
-    use Resource\Playground\ShowJsonTrait;
-    use Resource\Playground\ShowTrait;
-    use Resource\Playground\StoreJsonTrait;
-    use Resource\Playground\StoreTrait;
-    use Resource\Playground\UnlockJsonTrait;
-    use Resource\Playground\UnlockTrait;
-    use Resource\Playground\UpdateJsonTrait;
-    use Resource\Playground\UpdateTrait;
-
-    protected bool $setUpUserForPlayground = true;
+    /**
+     * @var class-string<Model>
+     */
+    public string $fqdn = Model::class;
 
     /**
      * @var array<string, string>
      */
     public array $packageInfo = [
-        'model_attribute' => 'title',
+        'model_attribute' => '',
+        'model_camel' => '',
+        'model_camels' => '',
+        'model_kebab' => '',
+        'model_kebabs' => '',
+        'model_lower' => '',
+        'model_lowers' => '',
         'model_label' => '',
         'model_label_plural' => '',
+        'model_labels' => '',
         'model_route' => '',
+        'model_route_param' => '',
         'model_slug' => '',
+        'model_slugs' => '',
         'model_slug_plural' => '',
+        'model_snake' => '',
+        'model_snakes' => '',
+        'model_studly' => '',
+        'model_studlies' => '',
+        'model_variable' => '',
+        'model_variables' => '',
+        'model_variable_plural' => '',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
+        'module_labels' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:',
         'table' => '',
         'view' => 'playground-matrix-resource::',
     ];
-
-    /**
-     * @var class-string<Model>
-     */
-    public string $fqdn = Model::class;
 
     /**
      * @var array<int, string>

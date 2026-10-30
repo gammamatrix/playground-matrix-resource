@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Milestone;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MilestoneTestCase
  */
-class MilestoneTestCase extends TestCase
+class MilestoneTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Milestone::class;
 
     /**
@@ -22,17 +26,32 @@ class MilestoneTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'milestone',
+        'model_camels' => 'milestones',
+        'model_kebab' => 'milestone',
+        'model_kebabs' => 'milestones',
+        'model_lower' => 'milestone',
+        'model_lowers' => 'milestones',
         'model_label' => 'Milestone',
         'model_label_plural' => 'Milestones',
+        'model_labels' => 'Milestones',
         'model_route' => 'playground.matrix.resource.milestones',
+        'model_route_param' => 'milestone',
         'model_slug' => 'milestone',
+        'model_slugs' => 'milestones',
         'model_slug_plural' => 'milestones',
+        'model_snake' => 'milestone',
+        'model_snakes' => 'milestones',
+        'model_studly' => 'Milestone',
+        'model_studlies' => 'Milestones',
         'model_variable' => 'milestone',
+        'model_variables' => 'milestones',
         'model_variable_plural' => 'milestones',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:milestone',
         'table' => 'matrix_milestones',
         'view' => 'playground.matrix.resource::milestone',
@@ -48,18 +67,17 @@ class MilestoneTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'board_id',
         'epic_id',
         'flow_id',
-        'matrix_id',
         'note_id',
         'project_id',
         'release_id',
         'roadmap_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'version_id',

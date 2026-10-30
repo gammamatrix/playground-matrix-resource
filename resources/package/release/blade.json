@@ -13,10 +13,13 @@
     "model": "Release",
     "model_column": "release",
     "model_label": "Release",
+    "model_slug": "release",
+    "model_variable": "release",
+    "model_variable_plural": "releases",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Release",
     "models": {
-        "Release": "resources/configurations/playground-matrix/model.release.json"
+        "Release": "resources/configurations/playground-matrix/release/model.json"
     }
 }

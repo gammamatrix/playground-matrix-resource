@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Roadmap;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\RoadmapTestCase
  */
-class RoadmapTestCase extends TestCase
+class RoadmapTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Roadmap::class;
 
     /**
@@ -22,17 +26,32 @@ class RoadmapTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'roadmap',
+        'model_camels' => 'roadmaps',
+        'model_kebab' => 'roadmap',
+        'model_kebabs' => 'roadmaps',
+        'model_lower' => 'roadmap',
+        'model_lowers' => 'roadmaps',
         'model_label' => 'Roadmap',
         'model_label_plural' => 'Roadmaps',
+        'model_labels' => 'Roadmaps',
         'model_route' => 'playground.matrix.resource.roadmaps',
+        'model_route_param' => 'roadmap',
         'model_slug' => 'roadmap',
+        'model_slugs' => 'roadmaps',
         'model_slug_plural' => 'roadmaps',
+        'model_snake' => 'roadmap',
+        'model_snakes' => 'roadmaps',
+        'model_studly' => 'Roadmap',
+        'model_studlies' => 'Roadmaps',
         'model_variable' => 'roadmap',
+        'model_variables' => 'roadmaps',
         'model_variable_plural' => 'roadmaps',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:roadmap',
         'table' => 'matrix_roadmaps',
         'view' => 'playground.matrix.resource::roadmap',
@@ -48,18 +67,17 @@ class RoadmapTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'board_id',
         'epic_id',
         'flow_id',
-        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
         'release_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'version_id',
@@ -141,7 +159,6 @@ class RoadmapTestCase extends TestCase
         'meta',
         'notes',
         'options',
-        'roadmap',
         'sources',
     ];
 }

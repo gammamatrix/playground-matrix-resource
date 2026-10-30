@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Board;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\BoardTestCase
  */
-class BoardTestCase extends TestCase
+class BoardTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Board::class;
 
     /**
@@ -22,17 +26,32 @@ class BoardTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'board',
+        'model_camels' => 'boards',
+        'model_kebab' => 'board',
+        'model_kebabs' => 'boards',
+        'model_lower' => 'board',
+        'model_lowers' => 'boards',
         'model_label' => 'Board',
         'model_label_plural' => 'Boards',
+        'model_labels' => 'Boards',
         'model_route' => 'playground.matrix.resource.boards',
+        'model_route_param' => 'board',
         'model_slug' => 'board',
+        'model_slugs' => 'boards',
         'model_slug_plural' => 'boards',
+        'model_snake' => 'board',
+        'model_snakes' => 'boards',
+        'model_studly' => 'Board',
+        'model_studlies' => 'Boards',
         'model_variable' => 'board',
+        'model_variables' => 'boards',
         'model_variable_plural' => 'boards',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:board',
         'table' => 'matrix_boards',
         'view' => 'playground.matrix.resource::board',
@@ -48,10 +67,10 @@ class BoardTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'epic_id',
         'flow_id',
-        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -59,7 +78,6 @@ class BoardTestCase extends TestCase
         'roadmap_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'version_id',

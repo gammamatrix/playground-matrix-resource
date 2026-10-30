@@ -20,6 +20,7 @@ use Playground\Matrix\Models\Roadmap;
 use Playground\Matrix\Models\Source;
 use Playground\Matrix\Models\Sprint;
 use Playground\Matrix\Models\Tag;
+use Playground\Matrix\Models\Tagged;
 use Playground\Matrix\Models\Team;
 use Playground\Matrix\Models\Ticket;
 use Playground\Matrix\Models\Version;
@@ -35,6 +36,7 @@ use Playground\Matrix\Resource\Policies\ReleasePolicy;
 use Playground\Matrix\Resource\Policies\RoadmapPolicy;
 use Playground\Matrix\Resource\Policies\SourcePolicy;
 use Playground\Matrix\Resource\Policies\SprintPolicy;
+use Playground\Matrix\Resource\Policies\TaggedPolicy;
 use Playground\Matrix\Resource\Policies\TagPolicy;
 use Playground\Matrix\Resource\Policies\TeamPolicy;
 use Playground\Matrix\Resource\Policies\TicketPolicy;
@@ -51,6 +53,9 @@ use Playground\Matrix\Resource\Policies\VersionPolicy;
  *           routes: bool,
  *           translations: bool,
  *           views: bool
+ *       },
+ *       matrix: array{
+ *           enabled: bool,
  *       },
  *       middleware: array{
  *           default: string|string[],
@@ -76,6 +81,7 @@ use Playground\Matrix\Resource\Policies\VersionPolicy;
  *           sources: bool,
  *           sprints: bool,
  *           tags: bool,
+ *           tagged: bool,
  *           teams: bool,
  *           tickets: bool,
  *           versions: bool,
@@ -123,6 +129,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Matrix
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'matrix' => [
+        'enabled' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_MATRIX_ENABLED', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Middleware
     |--------------------------------------------------------------------------
     |
@@ -157,6 +175,7 @@ return [
         Source::class => SourcePolicy::class,
         Sprint::class => SprintPolicy::class,
         Tag::class => TagPolicy::class,
+        Tagged::class => TaggedPolicy::class,
         Team::class => TeamPolicy::class,
         Ticket::class => TicketPolicy::class,
         Version::class => VersionPolicy::class,
@@ -185,6 +204,7 @@ return [
         'sources' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_SOURCES', true),
         'sprints' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_SPRINTS', true),
         'tags' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_TAGS', true),
+        'tagged' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_TAGGED', true),
         'teams' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_TEAMS', true),
         'tickets' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_TICKETS', true),
         'versions' => (bool) env('PLAYGROUND_MATRIX_RESOURCE_ROUTES_VERSIONS', true),
@@ -241,6 +261,7 @@ return [
             'playground-matrix-resource:source:*',
             'playground-matrix-resource:sprint:*',
             'playground-matrix-resource:tag:*',
+            'playground-matrix-resource:tagged:*',
             'playground-matrix-resource:team:*',
             'playground-matrix-resource:ticket:*',
             'playground-matrix-resource:version:*',
@@ -272,6 +293,8 @@ return [
             'playground-matrix-resource:sprint:viewAny',
             'playground-matrix-resource:tag:view',
             'playground-matrix-resource:tag:viewAny',
+            'playground-matrix-resource:tagged:view',
+            'playground-matrix-resource:tagged:viewAny',
             'playground-matrix-resource:team:view',
             'playground-matrix-resource:team:viewAny',
             'playground-matrix-resource:ticket:view',

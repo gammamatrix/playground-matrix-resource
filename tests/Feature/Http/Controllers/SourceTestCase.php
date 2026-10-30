@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Source;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\SourceTestCase
  */
-class SourceTestCase extends TestCase
+class SourceTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Source::class;
 
     /**
@@ -22,17 +26,32 @@ class SourceTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'source',
+        'model_camels' => 'sources',
+        'model_kebab' => 'source',
+        'model_kebabs' => 'sources',
+        'model_lower' => 'source',
+        'model_lowers' => 'sources',
         'model_label' => 'Source',
         'model_label_plural' => 'Sources',
+        'model_labels' => 'Sources',
         'model_route' => 'playground.matrix.resource.sources',
+        'model_route_param' => 'source',
         'model_slug' => 'source',
+        'model_slugs' => 'sources',
         'model_slug_plural' => 'sources',
+        'model_snake' => 'source',
+        'model_snakes' => 'sources',
+        'model_studly' => 'Source',
+        'model_studlies' => 'Sources',
         'model_variable' => 'source',
+        'model_variables' => 'sources',
         'model_variable_plural' => 'sources',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:source',
         'table' => 'matrix_sources',
         'view' => 'playground.matrix.resource::source',
@@ -50,7 +69,6 @@ class SourceTestCase extends TestCase
         'parent_id',
         'matrix_id',
         'note_id',
-        'tag_id',
         'team_id',
         'created_at',
         'updated_at',

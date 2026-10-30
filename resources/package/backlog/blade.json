@@ -13,10 +13,13 @@
     "model": "Backlog",
     "model_column": "backlog",
     "model_label": "Backlog",
+    "model_slug": "backlog",
+    "model_variable": "backlog",
+    "model_variable_plural": "backlogs",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Backlog",
     "models": {
-        "Backlog": "resources/configurations/playground-matrix/model.backlog.json"
+        "Backlog": "resources/configurations/playground-matrix/backlog/model.json"
     }
 }

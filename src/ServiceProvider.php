@@ -64,6 +64,7 @@ class ServiceProvider extends AuthServiceProvider
          *             sources: bool,
          *             sprints: bool,
          *             tags: bool,
+         *             tagged: bool,
          *             teams: bool,
          *             tickets: bool,
          *             versions: bool,
@@ -219,6 +220,9 @@ class ServiceProvider extends AuthServiceProvider
         if (! empty($config['tags'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/tags.php');
         }
+        if (! empty($config['tagged'])) {
+            $this->loadRoutesFrom(dirname(__DIR__).'/routes/tagged.php');
+        }
         if (! empty($config['teams'])) {
             $this->loadRoutesFrom(dirname(__DIR__).'/routes/teams.php');
         }
@@ -275,6 +279,7 @@ class ServiceProvider extends AuthServiceProvider
             '<fg=red;options=bold>Route</> sources' => ! empty($routes['sources']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> sprints' => ! empty($routes['sprints']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> tags' => ! empty($routes['tags']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
+            '<fg=red;options=bold>Route</> tagged' => ! empty($routes['tagged']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> teams' => ! empty($routes['teams']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> tickets' => ! empty($routes['tickets']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',
             '<fg=red;options=bold>Route</> versions' => ! empty($routes['versions']) ? '<fg=green;options=bold>ENABLED</>' : '<fg=yellow;options=bold>DISABLED</>',

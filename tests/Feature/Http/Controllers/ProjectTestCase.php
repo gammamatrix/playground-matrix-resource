@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Project;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\ProjectTestCase
  */
-class ProjectTestCase extends TestCase
+class ProjectTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Project::class;
 
     /**
@@ -22,17 +26,32 @@ class ProjectTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'project',
+        'model_camels' => 'projects',
+        'model_kebab' => 'project',
+        'model_kebabs' => 'projects',
+        'model_lower' => 'project',
+        'model_lowers' => 'projects',
         'model_label' => 'Project',
         'model_label_plural' => 'Projects',
+        'model_labels' => 'Projects',
         'model_route' => 'playground.matrix.resource.projects',
+        'model_route_param' => 'project',
         'model_slug' => 'project',
+        'model_slugs' => 'projects',
         'model_slug_plural' => 'projects',
+        'model_snake' => 'project',
+        'model_snakes' => 'projects',
+        'model_studly' => 'Project',
+        'model_studlies' => 'Projects',
         'model_variable' => 'project',
+        'model_variables' => 'projects',
         'model_variable_plural' => 'projects',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:project',
         'table' => 'matrix_projects',
         'view' => 'playground.matrix.resource::project',
@@ -48,18 +67,17 @@ class ProjectTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'board_id',
         'epic_id',
         'flow_id',
-        'matrix_id',
         'milestone_id',
         'note_id',
         'release_id',
         'roadmap_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'version_id',

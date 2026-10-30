@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Team;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\TeamTestCase
  */
-class TeamTestCase extends TestCase
+class TeamTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Team::class;
 
     /**
@@ -22,17 +26,32 @@ class TeamTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'team',
+        'model_camels' => 'teams',
+        'model_kebab' => 'team',
+        'model_kebabs' => 'teams',
+        'model_lower' => 'team',
+        'model_lowers' => 'teams',
         'model_label' => 'Team',
         'model_label_plural' => 'Teams',
+        'model_labels' => 'Teams',
         'model_route' => 'playground.matrix.resource.teams',
+        'model_route_param' => 'team',
         'model_slug' => 'team',
+        'model_slugs' => 'teams',
         'model_slug_plural' => 'teams',
+        'model_snake' => 'team',
+        'model_snakes' => 'teams',
+        'model_studly' => 'Team',
+        'model_studlies' => 'Teams',
         'model_variable' => 'team',
+        'model_variables' => 'teams',
         'model_variable_plural' => 'teams',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:team',
         'table' => 'matrix_teams',
         'view' => 'playground.matrix.resource::team',
@@ -48,11 +67,11 @@ class TeamTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'board_id',
         'epic_id',
         'flow_id',
-        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -60,7 +79,6 @@ class TeamTestCase extends TestCase
         'roadmap_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'ticket_id',
         'version_id',
         'created_at',

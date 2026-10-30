@@ -13,10 +13,13 @@
     "model": "Board",
     "model_column": "board",
     "model_label": "Board",
+    "model_slug": "board",
+    "model_variable": "board",
+    "model_variable_plural": "boards",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Board",
     "models": {
-        "Board": "resources/configurations/playground-matrix/model.board.json"
+        "Board": "resources/configurations/playground-matrix/board/model.json"
     }
 }

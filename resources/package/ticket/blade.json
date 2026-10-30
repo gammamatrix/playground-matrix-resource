@@ -13,10 +13,13 @@
     "model": "Ticket",
     "model_column": "ticket",
     "model_label": "Ticket",
+    "model_slug": "ticket",
+    "model_variable": "ticket",
+    "model_variable_plural": "tickets",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Ticket",
     "models": {
-        "Ticket": "resources/configurations/playground-matrix/model.ticket.json"
+        "Ticket": "resources/configurations/playground-matrix/ticket/model.json"
     }
 }

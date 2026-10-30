@@ -13,10 +13,13 @@
     "model": "Project",
     "model_column": "project",
     "model_label": "Project",
+    "model_slug": "project",
+    "model_variable": "project",
+    "model_variable_plural": "projects",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Project",
     "models": {
-        "Project": "resources/configurations/playground-matrix/model.project.json"
+        "Project": "resources/configurations/playground-matrix/project/model.json"
     }
 }

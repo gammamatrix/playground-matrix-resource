@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Version;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\VersionTestCase
  */
-class VersionTestCase extends TestCase
+class VersionTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Version::class;
 
     /**
@@ -22,17 +26,32 @@ class VersionTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'version',
+        'model_camels' => 'versions',
+        'model_kebab' => 'version',
+        'model_kebabs' => 'versions',
+        'model_lower' => 'version',
+        'model_lowers' => 'versions',
         'model_label' => 'Version',
         'model_label_plural' => 'Versions',
+        'model_labels' => 'Versions',
         'model_route' => 'playground.matrix.resource.versions',
+        'model_route_param' => 'version',
         'model_slug' => 'version',
+        'model_slugs' => 'versions',
         'model_slug_plural' => 'versions',
+        'model_snake' => 'version',
+        'model_snakes' => 'versions',
+        'model_studly' => 'Version',
+        'model_studlies' => 'Versions',
         'model_variable' => 'version',
+        'model_variables' => 'versions',
         'model_variable_plural' => 'versions',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:version',
         'table' => 'matrix_versions',
         'view' => 'playground.matrix.resource::version',
@@ -50,7 +69,6 @@ class VersionTestCase extends TestCase
         'parent_id',
         'matrix_id',
         'project_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'created_at',

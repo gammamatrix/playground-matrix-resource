@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Epic;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\EpicTestCase
  */
-class EpicTestCase extends TestCase
+class EpicTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Epic::class;
 
     /**
@@ -22,17 +26,32 @@ class EpicTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'epic',
+        'model_camels' => 'epics',
+        'model_kebab' => 'epic',
+        'model_kebabs' => 'epics',
+        'model_lower' => 'epic',
+        'model_lowers' => 'epics',
         'model_label' => 'Epic',
         'model_label_plural' => 'Epics',
+        'model_labels' => 'Epics',
         'model_route' => 'playground.matrix.resource.epics',
+        'model_route_param' => 'epic',
         'model_slug' => 'epic',
+        'model_slugs' => 'epics',
         'model_slug_plural' => 'epics',
+        'model_snake' => 'epic',
+        'model_snakes' => 'epics',
+        'model_studly' => 'Epic',
+        'model_studlies' => 'Epics',
         'model_variable' => 'epic',
+        'model_variables' => 'epics',
         'model_variable_plural' => 'epics',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:epic',
         'table' => 'matrix_epics',
         'view' => 'playground.matrix.resource::epic',
@@ -48,10 +67,10 @@ class EpicTestCase extends TestCase
         'modified_by_id',
         'owned_by_id',
         'parent_id',
+        'matrix_id',
         'backlog_id',
         'board_id',
         'flow_id',
-        'matrix_id',
         'milestone_id',
         'note_id',
         'project_id',
@@ -59,7 +78,6 @@ class EpicTestCase extends TestCase
         'roadmap_id',
         'source_id',
         'sprint_id',
-        'tag_id',
         'team_id',
         'ticket_id',
         'version_id',

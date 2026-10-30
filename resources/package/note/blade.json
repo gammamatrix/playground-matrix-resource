@@ -13,10 +13,13 @@
     "model": "Note",
     "model_column": "note",
     "model_label": "Note",
+    "model_slug": "note",
+    "model_variable": "note",
+    "model_variable_plural": "notes",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Note",
     "models": {
-        "Note": "resources/configurations/playground-matrix/model.note.json"
+        "Note": "resources/configurations/playground-matrix/note/model.json"
     }
 }

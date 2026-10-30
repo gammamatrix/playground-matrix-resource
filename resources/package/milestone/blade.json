@@ -13,10 +13,13 @@
     "model": "Milestone",
     "model_column": "milestone",
     "model_label": "Milestone",
+    "model_slug": "milestone",
+    "model_variable": "milestone",
+    "model_variable_plural": "milestones",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Milestone",
     "models": {
-        "Milestone": "resources/configurations/playground-matrix/model.milestone.json"
+        "Milestone": "resources/configurations/playground-matrix/milestone/model.json"
     }
 }

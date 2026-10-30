@@ -32,13 +32,13 @@ See [package.json](package.json) requirements.
 
 Install npm.
 
-```sh
+```shell
 npm install
 ```
 
 Build the documentation to generate the [openapi.yaml](openapi.yaml) configuration.
 
-```sh
+```shell
 npm run docs
 ```
 
@@ -49,7 +49,7 @@ Documentation
 
 You can install the package via composer:
 
-```bash
+```shell
 composer require gammamatrix/playground-matrix-resource
 ```
 
@@ -63,7 +63,7 @@ Playground provides information in the `artisan about` command.
 
 You can publish the config file with:
 
-```bash
+```shell
 php artisan vendor:publish --provider="Playground\Matrix\Resource\ServiceProvider" --tag="playground-config"
 ```
 
@@ -72,7 +72,7 @@ All routes are enabled by default. They may be disabled via environment variable
 See the contents of the published config file: [config/playground-matrix-resource.php](config/playground-matrix-resource.php)
 
 You can publish the routes file with:
-```bash
+```shell
 php artisan vendor:publish --provider="Playground\Matrix\Resource\ServiceProvider" --tag="playground-routes"
 ```
 - The routes while be published in a folder at `routes/playground-matrix-resource`
@@ -90,29 +90,23 @@ This package requires the migrations in [playground-matrix](https://github.com/g
 
 ## Cloc
 
-```sh
+```shell
 composer cloc
 ```
 
-```
-➜  playground-matrix-resource git:(develop) ✗ composer cloc
-    1276 text files.
-    1254 unique files.
-     256 files ignored.
-
-github.com/AlDanial/cloc v 2.06  T=0.38 s (3318.2 files/s, 293934.6 lines/s)
+```terminaloutput
 -------------------------------------------------------------------------------
 Language                     files          blank        comment           code
 -------------------------------------------------------------------------------
-YAML                           164              5              0          37783
-JSON                           499              0              0          24987
-PHP                            468           4988           5990          21999
-Blade                          107            554              1          13594
-XML                             12              0              7            965
-Markdown                         3             58              1            137
+YAML                           164              4              0          37753
+PHP                            480           5112           6185          23229
+JSON                           511              0              0          22910
+Blade                          107            538              1          11734
+XML                              3              0              7            215
+Markdown                         3             57              1            120
 INI                              1              3              0             12
 -------------------------------------------------------------------------------
-SUM:                          1254           5608           5999          99477
+SUM:                          1269           5714           6194          95973
 -------------------------------------------------------------------------------
 ```
 
@@ -126,42 +120,42 @@ Tests at level 10 on:
 - `tests/Feature/`
 - `tests/Unit/`
 
-```sh
+```shell
 composer analyse
 ```
 
 ## Coding Standards
 
 Format source code:
-```sh
+```shell
 composer format
 ```
 
 Format blades in resources/views:
 
-```sh
+```shell
 composer format-blade
 ```
 - **NOTE:** requires installing dev packages from package.json.
 
-```sh
+```shell
 npm install
 ```
 
 ## Testing
 
 Run unit tests:
-```sh
+```shell
 composer test
 ```
 
 Run unit and feature tests:
-```sh
+```shell
 composer test-dev
 ```
 
 Run unit and feature tests in parallel:
-```sh
+```shell
 composer test-parallel
 ```
 

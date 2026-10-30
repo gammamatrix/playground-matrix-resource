@@ -2,139 +2,122 @@
 $user = \Illuminate\Support\Facades\Auth::user();
 
 $viewBacklogs = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:backlog:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:backlog:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewBoards = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:board:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:board:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewEpics = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:epic:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:epic:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewFlows = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:flow:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:flow:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewMatrices = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:matrix:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:matrix:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewMilestones = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:milestone:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:milestone:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewNotes = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:note:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:note:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewProjects = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:project:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:project:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewReleases = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:release:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:release:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewRoadmaps = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:roadmap:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:roadmap:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewSources = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:source:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:source:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewSprints = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:sprint:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:sprint:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewTags = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:tag:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:tag:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewTeams = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:team:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:team:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewTickets = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:ticket:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:ticket:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
 $viewVersions = \Playground\Auth\Facades\Can::access($user, [
-    "allow" => false,
-    "any" => true,
-    "privilege" => "playground-matrix-resource:version:viewAny",
-    "roles" => ["admin", "manager", "publisher"],
+    'allow' => false,
+    'any' => true,
+    'privilege' => 'playground-matrix-resource:version:viewAny',
+    'roles' => ['admin', 'manager', 'publisher'],
 ])->allowed();
 
-if (
-    ! $viewBacklogs &&
-    ! $viewBoards &&
-    ! $viewEpics &&
-    ! $viewFlows &&
-    ! $viewMatrices &&
-    ! $viewMilestones &&
-    ! $viewNotes &&
-    ! $viewProjects &&
-    ! $viewReleases &&
-    ! $viewRoadmaps &&
-    ! $viewSources &&
-    ! $viewSprints &&
-    ! $viewTags &&
-    ! $viewTeams &&
-    ! $viewTickets &&
-    ! $viewVersions
-) {
+
+if (!$viewBacklogs && !$viewBoards && !$viewEpics && !$viewFlows && !$viewMatrices && !$viewMilestones && !$viewNotes && !$viewProjects && !$viewReleases && !$viewRoadmaps && !$viewSources && !$viewSprints && !$viewTags && !$viewTeams && !$viewTickets && !$viewVersions) {
     return;
 }
 ?>
-
 <div class="card my-1">
     <div class="card-body">
         <h2>Matrix</h2>
@@ -144,16 +127,17 @@ if (
                 <div class="card">
                     <div class="card-header">
                         Matrix Backlog
-                        <small class="text-muted">
-                            backlogs, boards, epics, flows, matrices,
+                        <small class="text-muted"
+                            >backlogs, boards, epics, flows, matrices,
                             milestones, notes, projects, releases, roadmaps,
-                            sources, sprints, tags, teams, tickets and versions
-                        </small>
+                            sources, sprints, tags, teams, tickets and
+                            versions</small
+                        >
                     </div>
                     <ul class="list-group list-group-flush">
                         @if ($viewBacklogs)
                             <a
-                                href="{{ route("playground.matrix.resource.backlogs") }}"
+                                href="{{ route('playground.matrix.resource.backlogs') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Backlogs
@@ -162,7 +146,7 @@ if (
 
                         @if ($viewBoards)
                             <a
-                                href="{{ route("playground.matrix.resource.boards") }}"
+                                href="{{ route('playground.matrix.resource.boards') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Boards
@@ -171,7 +155,7 @@ if (
 
                         @if ($viewEpics)
                             <a
-                                href="{{ route("playground.matrix.resource.epics") }}"
+                                href="{{ route('playground.matrix.resource.epics') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Epics
@@ -180,7 +164,7 @@ if (
 
                         @if ($viewFlows)
                             <a
-                                href="{{ route("playground.matrix.resource.flows") }}"
+                                href="{{ route('playground.matrix.resource.flows') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Flows
@@ -189,7 +173,7 @@ if (
 
                         @if ($viewMatrices)
                             <a
-                                href="{{ route("playground.matrix.resource.matrices") }}"
+                                href="{{ route('playground.matrix.resource.matrices') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Matrices
@@ -198,7 +182,7 @@ if (
 
                         @if ($viewMilestones)
                             <a
-                                href="{{ route("playground.matrix.resource.milestones") }}"
+                                href="{{ route('playground.matrix.resource.milestones') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Milestones
@@ -207,7 +191,7 @@ if (
 
                         @if ($viewNotes)
                             <a
-                                href="{{ route("playground.matrix.resource.notes") }}"
+                                href="{{ route('playground.matrix.resource.notes') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Notes
@@ -216,7 +200,7 @@ if (
 
                         @if ($viewProjects)
                             <a
-                                href="{{ route("playground.matrix.resource.projects") }}"
+                                href="{{ route('playground.matrix.resource.projects') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Projects
@@ -225,7 +209,7 @@ if (
 
                         @if ($viewReleases)
                             <a
-                                href="{{ route("playground.matrix.resource.releases") }}"
+                                href="{{ route('playground.matrix.resource.releases') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Releases
@@ -234,7 +218,7 @@ if (
 
                         @if ($viewRoadmaps)
                             <a
-                                href="{{ route("playground.matrix.resource.roadmaps") }}"
+                                href="{{ route('playground.matrix.resource.roadmaps') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Roadmaps
@@ -243,7 +227,7 @@ if (
 
                         @if ($viewSources)
                             <a
-                                href="{{ route("playground.matrix.resource.sources") }}"
+                                href="{{ route('playground.matrix.resource.sources') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Sources
@@ -252,7 +236,7 @@ if (
 
                         @if ($viewSprints)
                             <a
-                                href="{{ route("playground.matrix.resource.sprints") }}"
+                                href="{{ route('playground.matrix.resource.sprints') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Sprints
@@ -261,7 +245,7 @@ if (
 
                         @if ($viewTags)
                             <a
-                                href="{{ route("playground.matrix.resource.tags") }}"
+                                href="{{ route('playground.matrix.resource.tags') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Tags
@@ -270,7 +254,7 @@ if (
 
                         @if ($viewTeams)
                             <a
-                                href="{{ route("playground.matrix.resource.teams") }}"
+                                href="{{ route('playground.matrix.resource.teams') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Teams
@@ -279,7 +263,7 @@ if (
 
                         @if ($viewTickets)
                             <a
-                                href="{{ route("playground.matrix.resource.tickets") }}"
+                                href="{{ route('playground.matrix.resource.tickets') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Tickets
@@ -288,7 +272,7 @@ if (
 
                         @if ($viewVersions)
                             <a
-                                href="{{ route("playground.matrix.resource.versions") }}"
+                                href="{{ route('playground.matrix.resource.versions') }}"
                                 class="list-group-item list-group-item-action"
                             >
                                 Versions

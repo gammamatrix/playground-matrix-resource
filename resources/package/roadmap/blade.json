@@ -13,10 +13,13 @@
     "model": "Roadmap",
     "model_column": "roadmap",
     "model_label": "Roadmap",
+    "model_slug": "roadmap",
+    "model_variable": "roadmap",
+    "model_variable_plural": "roadmaps",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Roadmap",
     "models": {
-        "Roadmap": "resources/configurations/playground-matrix/model.roadmap.json"
+        "Roadmap": "resources/configurations/playground-matrix/roadmap/model.json"
     }
 }

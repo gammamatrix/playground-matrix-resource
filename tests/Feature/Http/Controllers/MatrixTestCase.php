@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Matrix;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\MatrixTestCase
  */
-class MatrixTestCase extends TestCase
+class MatrixTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Matrix::class;
 
     /**
@@ -22,17 +26,32 @@ class MatrixTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'matrix',
+        'model_camels' => 'matrices',
+        'model_kebab' => 'matrix',
+        'model_kebabs' => 'matrices',
+        'model_lower' => 'matrix',
+        'model_lowers' => 'matrices',
         'model_label' => 'Matrix',
         'model_label_plural' => 'Matrices',
+        'model_labels' => 'Matrices',
         'model_route' => 'playground.matrix.resource.matrices',
+        'model_route_param' => 'matrix',
         'model_slug' => 'matrix',
+        'model_slugs' => 'matrices',
         'model_slug_plural' => 'matrices',
+        'model_snake' => 'matrix',
+        'model_snakes' => 'matrices',
+        'model_studly' => 'Matrix',
+        'model_studlies' => 'Matrices',
         'model_variable' => 'matrix',
+        'model_variables' => 'matrices',
         'model_variable_plural' => 'matrices',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:matrix',
         'table' => 'matrix_matrices',
         'view' => 'playground.matrix.resource::matrix',

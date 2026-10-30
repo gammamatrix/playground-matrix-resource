@@ -13,10 +13,13 @@
     "model": "Flow",
     "model_column": "flow",
     "model_label": "Flow",
+    "model_slug": "flow",
+    "model_variable": "flow",
+    "model_variable_plural": "flows",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Flow",
     "models": {
-        "Flow": "resources/configurations/playground-matrix/model.flow.json"
+        "Flow": "resources/configurations/playground-matrix/flow/model.json"
     }
 }

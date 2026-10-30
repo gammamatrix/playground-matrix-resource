@@ -13,10 +13,13 @@
     "model": "Tag",
     "model_column": "tag",
     "model_label": "Tag",
+    "model_slug": "tag",
+    "model_variable": "tag",
+    "model_variable_plural": "tags",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Tag",
     "models": {
-        "Tag": "resources/configurations/playground-matrix/model.tag.json"
+        "Tag": "resources/configurations/playground-matrix/tag/model.json"
     }
 }

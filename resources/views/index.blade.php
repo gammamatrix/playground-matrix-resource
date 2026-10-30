@@ -8,9 +8,9 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    <a href="{{ route("playground.matrix.resource") }}">
-                        Matrix
-                    </a>
+                    <a href="{{ route("playground.matrix.resource") }}"
+                        >Matrix</a
+                    >
                 </li>
             </ol>
         </nav>
@@ -39,10 +39,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.backlogs") }}"
+                                            href="{{ route('playground.matrix.resource.backlogs') }}"
+                                            >View Backlogs</a
                                         >
-                                            View Backlogs
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -58,10 +57,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.boards") }}"
+                                            href="{{ route('playground.matrix.resource.boards') }}"
+                                            >View Boards</a
                                         >
-                                            View Boards
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -77,10 +75,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.epics") }}"
+                                            href="{{ route('playground.matrix.resource.epics') }}"
+                                            >View Epics</a
                                         >
-                                            View Epics
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -96,10 +93,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.flows") }}"
+                                            href="{{ route('playground.matrix.resource.flows') }}"
+                                            >View Flows</a
                                         >
-                                            View Flows
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -115,10 +111,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.matrices") }}"
+                                            href="{{ route('playground.matrix.resource.matrices') }}"
+                                            >View Matrices</a
                                         >
-                                            View Matrices
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -134,10 +129,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.milestones") }}"
+                                            href="{{ route('playground.matrix.resource.milestones') }}"
+                                            >View Milestones</a
                                         >
-                                            View Milestones
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -153,10 +147,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.notes") }}"
+                                            href="{{ route('playground.matrix.resource.notes') }}"
+                                            >View Notes</a
                                         >
-                                            View Notes
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -172,10 +165,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.projects") }}"
+                                            href="{{ route('playground.matrix.resource.projects') }}"
+                                            >View Projects</a
                                         >
-                                            View Projects
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -191,10 +183,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.releases") }}"
+                                            href="{{ route('playground.matrix.resource.releases') }}"
+                                            >View Releases</a
                                         >
-                                            View Releases
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -210,10 +201,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.roadmaps") }}"
+                                            href="{{ route('playground.matrix.resource.roadmaps') }}"
+                                            >View Roadmaps</a
                                         >
-                                            View Roadmaps
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -229,10 +219,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.sources") }}"
+                                            href="{{ route('playground.matrix.resource.sources') }}"
+                                            >View Sources</a
                                         >
-                                            View Sources
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -248,10 +237,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.sprints") }}"
+                                            href="{{ route('playground.matrix.resource.sprints') }}"
+                                            >View Sprints</a
                                         >
-                                            View Sprints
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -267,10 +255,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.tags") }}"
+                                            href="{{ route('playground.matrix.resource.tags') }}"
+                                            >View Tags</a
                                         >
-                                            View Tags
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -286,10 +273,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.teams") }}"
+                                            href="{{ route('playground.matrix.resource.teams') }}"
+                                            >View Teams</a
                                         >
-                                            View Teams
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -305,10 +291,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.tickets") }}"
+                                            href="{{ route('playground.matrix.resource.tickets') }}"
+                                            >View Tickets</a
                                         >
-                                            View Tickets
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -324,10 +309,9 @@
                                         <p class="card-text"></p>
                                         <a
                                             class="card-link"
-                                            href="{{ route("playground.matrix.resource.versions") }}"
+                                            href="{{ route('playground.matrix.resource.versions') }}"
+                                            >View Versions</a
                                         >
-                                            View Versions
-                                        </a>
                                     </div>
                                 </div>
                             </div>

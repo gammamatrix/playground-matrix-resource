@@ -13,10 +13,13 @@
     "model": "Matrix",
     "model_column": "matrix",
     "model_label": "Matrix",
+    "model_slug": "matrix",
+    "model_variable": "matrix",
+    "model_variable_plural": "matrices",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Matrix",
     "models": {
-        "Matrix": "resources/configurations/playground-matrix/model.matrix.json"
+        "Matrix": "resources/configurations/playground-matrix/matrix/model.json"
     }
 }

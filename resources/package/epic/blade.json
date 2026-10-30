@@ -13,10 +13,13 @@
     "model": "Epic",
     "model_column": "epic",
     "model_label": "Epic",
+    "model_slug": "epic",
+    "model_variable": "epic",
+    "model_variable_plural": "epics",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Epic",
     "models": {
-        "Epic": "resources/configurations/playground-matrix/model.epic.json"
+        "Epic": "resources/configurations/playground-matrix/epic/model.json"
     }
 }

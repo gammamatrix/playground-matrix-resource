@@ -13,10 +13,13 @@
     "model": "Version",
     "model_column": "version",
     "model_label": "Version",
+    "model_slug": "version",
+    "model_variable": "version",
+    "model_variable_plural": "versions",
     "type": "playground-resource",
     "route": "playground.matrix.resource",
     "title": "Version",
     "models": {
-        "Version": "resources/configurations/playground-matrix/model.version.json"
+        "Version": "resources/configurations/playground-matrix/version/model.json"
     }
 }

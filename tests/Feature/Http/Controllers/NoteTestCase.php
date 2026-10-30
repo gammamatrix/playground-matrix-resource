@@ -8,13 +8,17 @@ declare(strict_types=1);
 
 namespace Tests\Feature\Playground\Matrix\Resource\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Playground\Matrix\Models\Note;
 
 /**
  * \Tests\Feature\Playground\Matrix\Resource\Http\Controllers\NoteTestCase
  */
-class NoteTestCase extends TestCase
+class NoteTestCase extends PlaygroundCase
 {
+    /**
+     * @var class-string<Model>
+     */
     public string $fqdn = Note::class;
 
     /**
@@ -22,17 +26,32 @@ class NoteTestCase extends TestCase
      */
     public array $packageInfo = [
         'model_attribute' => 'title',
+        'model_camel' => 'note',
+        'model_camels' => 'notes',
+        'model_kebab' => 'note',
+        'model_kebabs' => 'notes',
+        'model_lower' => 'note',
+        'model_lowers' => 'notes',
         'model_label' => 'Note',
         'model_label_plural' => 'Notes',
+        'model_labels' => 'Notes',
         'model_route' => 'playground.matrix.resource.notes',
+        'model_route_param' => 'note',
         'model_slug' => 'note',
+        'model_slugs' => 'notes',
         'model_slug_plural' => 'notes',
+        'model_snake' => 'note',
+        'model_snakes' => 'notes',
+        'model_studly' => 'Note',
+        'model_studlies' => 'Notes',
         'model_variable' => 'note',
+        'model_variables' => 'notes',
         'model_variable_plural' => 'notes',
         'module_label' => 'Matrix',
         'module_label_plural' => 'Matrices',
         'module_route' => 'playground.matrix.resource',
         'module_slug' => 'matrix',
+        'module_slugs' => 'matrices',
         'privilege' => 'playground-matrix-resource:note',
         'table' => 'matrix_notes',
         'view' => 'playground.matrix.resource::note',
@@ -49,7 +68,6 @@ class NoteTestCase extends TestCase
         'owned_by_id',
         'parent_id',
         'matrix_id',
-        'tag_id',
         'created_at',
         'updated_at',
         'deleted_at',

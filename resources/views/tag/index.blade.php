@@ -17,230 +17,355 @@ $filters = empty($filters) || ! is_array($filters) ? [] : $filters;
 $validated = empty($validated) || ! is_array($validated) ? [] : $validated;
 
 $columnsViewable = [
-    "tag_type" => [
-        "hide-sm" => false,
-        "label" => "Tag Type",
+    'tag_type' => [
+        'hide-sm' => false,
+        'label' => 'Tag Type',
     ],
-    "created_by_id" => [
-        "hide-sm" => true,
-        "label" => "Created by id",
+    'created_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Created by ID',
     ],
-    "modified_by_id" => [
-        "hide-sm" => true,
-        "label" => "Modified by id",
+    'modified_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Modified by ID',
     ],
-    "owned_by_id" => [
-        "hide-sm" => true,
-        "label" => "Owned by id",
+    'owned_by_id' => [
+        'hide-sm' => true,
+        'label' => 'Owned by ID',
     ],
-    "parent_id" => [
-        "hide-sm" => true,
-        "label" => "Parent id",
+    'parent_id' => [
+        'hide-sm' => true,
+        'label' => 'Parent id',
     ],
-    "matrix_id" => [
-        "hide-sm" => true,
-        "label" => "Matrix id",
+    'matrix_id' => [
+        'hide-sm' => true,
+        'label' => 'Matrix id',
     ],
-    "locale" => [
-        "hide-sm" => true,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Locale",
+    'locale' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Locale',
     ],
-    "label" => [
-        "hide-sm" => false,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Label",
+    'label' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Label',
     ],
-    "title" => [
-        "hide-sm" => false,
-        "linkType" => "id",
-        "linkRoute" => sprintf('%1$s.show', $packageInfo->model_route()),
-        "label" => "Title",
+    'title' => [
+        'hide-sm' => false,
+        'linkType' => 'id',
+        'linkRoute' => sprintf('%1$s.show', $packageInfo->model_route()),
+        'label' => 'Title',
     ],
-    "byline" => [
-        "hide-sm" => true,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Byline",
+    'byline' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Byline',
     ],
-    "slug" => [
-        "hide-sm" => false,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Slug",
+    'slug' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Slug',
     ],
-    "url" => [
-        "hide-sm" => true,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Url",
+    'url' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Url',
     ],
-    "description" => [
-        "hide-sm" => false,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Description",
+    'description' => [
+        'hide-sm' => false,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Description',
     ],
-    "introduction" => [
-        "hide-sm" => true,
-        "linkType" => null,
-        "linkRoute" => null,
-        "label" => "Introduction",
+    'introduction' => [
+        'hide-sm' => true,
+        'linkType' => null,
+        'linkRoute' => null,
+        'label' => 'Introduction',
     ],
-    "icon" => [
-        "hide-sm" => true,
-        "label" => "Icon",
+    'icon' => [
+        'hide-sm' => true,
+        'label' => 'Icon',
     ],
-    "image" => [
-        "hide-sm" => true,
-        "label" => "Image",
+    'image' => [
+        'hide-sm' => true,
+        'label' => 'Image',
     ],
-    "avatar" => [
-        "hide-sm" => true,
-        "label" => "Avatar",
+    'avatar' => [
+        'hide-sm' => true,
+        'label' => 'Avatar',
     ],
-    "active" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Active",
-        "onTrueClass" => "fa-solid fa-person-running",
+    'active' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Active',
+        'onTrueClass' => 'fa-solid fa-person-running',
     ],
-    "cron" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Cron",
-        "onTrueClass" => "fa-regular fa-clock",
+    'canceled' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Canceled',
+        'onTrueClass' => 'fa-solid fa-ban text-warning',
     ],
-    "featured" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Featured",
-        "onTrueClass" => "fa-solid fa-star text-warning",
+    'closed' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Closed',
+        'onTrueClass' => 'fa-solid fa-xmark',
     ],
-    "flagged" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Flagged",
-        "onTrueClass" => "fa-solid fa-flag",
+    'completed' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Completed',
+        'onTrueClass' => 'fa-solid fa-check',
     ],
-    "internal" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Internal",
-        "onTrueClass" => "fa-solid fa-server",
+    'cron' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Cron',
+        'onTrueClass' => 'fa-regular fa-clock',
     ],
-    "locked" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Locked",
-        "onTrueClass" => "fa-solid fa-lock text-warning",
+    'duplicate' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Duplicate',
+        'onTrueClass' => 'fa-solid fa-clone',
     ],
-    "retired" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Retired",
-        "onTrueClass" => "fa-solid fa-chair text-success",
+    'fixed' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Fixed',
+        'onTrueClass' => 'fa-solid fa-wrench text-success',
     ],
-    "special" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Special",
-        "onTrueClass" => "fa-solid fa-star text-success",
+    'flagged' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Flagged',
+        'onTrueClass' => 'fa-solid fa-flag',
     ],
-    "unknown" => [
-        "hide-sm" => true,
-        "flag" => true,
-        "label" => "Unknown",
-        "onTrueClass" => "fa-solid fa-question text-warning",
+    'internal' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Internal',
+        'onTrueClass' => 'fa-solid fa-server',
     ],
-    "created_at" => [
-        "hide-sm" => true,
-        "label" => "Created at",
+    'locked' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Locked',
+        'onTrueClass' => 'fa-solid fa-lock text-warning',
     ],
-    "updated_at" => [
-        "hide-sm" => true,
-        "label" => "Updated at",
+    'pending' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Pending',
+        'onTrueClass' => 'fa-solid fa-circle-pause text-warning',
     ],
-    "gids" => [
-        "hide-sm" => true,
-        "label" => "Gids",
-        "onTrueClass" => "",
+    'planned' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Planned',
+        'onTrueClass' => 'fa-solid fa-circle-pause text-success',
     ],
-    "po" => [
-        "hide-sm" => true,
-        "label" => "Po",
-        "onTrueClass" => "",
+    'prioritized' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Prioritized',
+        'onTrueClass' => 'fa-solid fa-triangle-exclamation text-success',
     ],
-    "pg" => [
-        "hide-sm" => true,
-        "label" => "Pg",
-        "onTrueClass" => "",
+    'problem' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Problem',
+        'onTrueClass' => 'fa-solid fa-triangle-exclamation text-danger',
     ],
-    "pw" => [
-        "hide-sm" => true,
-        "label" => "Pw",
-        "onTrueClass" => "",
+    'published' => [
+        'hide-sm' => false,
+        'flag' => true,
+        'label' => 'Published',
+        'onTrueClass' => 'fa-solid fa-book',
     ],
-    "only_admin" => [
-        "hide-sm" => true,
-        "label" => "Only admin",
-        "onTrueClass" => "fa-solid fa-user-gear",
+    'released' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Released',
+        'onTrueClass' => 'fa-solid fa-dove',
     ],
-    "only_user" => [
-        "hide-sm" => true,
-        "label" => "Only user",
-        "onTrueClass" => "fa-solid fa-user",
+    'resolved' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Resolved',
+        'onTrueClass' => 'fa-solid fa-check-double text-success',
     ],
-    "only_guest" => [
-        "hide-sm" => true,
-        "label" => "Only guest",
-        "onTrueClass" => "fa-solid fa-person-rays",
+    'retired' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Retired',
+        'onTrueClass' => 'fa-solid fa-chair text-success',
     ],
-    "allow_public" => [
-        "hide-sm" => true,
-        "label" => "Allow public",
-        "onTrueClass" => "fa-solid fa-users-line",
+    'suspended' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Suspended',
+        'onTrueClass' => 'fa-solid fa-hand text-danger',
     ],
-    "status" => [
-        "hide-sm" => true,
-        "label" => "Status",
+    'unknown' => [
+        'hide-sm' => true,
+        'flag' => true,
+        'label' => 'Unknown',
+        'onTrueClass' => 'fa-solid fa-question text-warning',
     ],
-    "rank" => [
-        "hide-sm" => true,
-        "label" => "Rank",
+    'created_at' => [
+        'hide-sm' => true,
+        'label' => 'Created at',
     ],
-    "size" => [
-        "hide-sm" => true,
-        "label" => "Size",
+    'updated_at' => [
+        'hide-sm' => true,
+        'label' => 'Updated at',
+    ],
+    'canceled_at' => [
+        'hide-sm' => true,
+        'label' => 'Canceled at',
+    ],
+    'closed_at' => [
+        'hide-sm' => true,
+        'label' => 'Closed at',
+    ],
+    'embargo_at' => [
+        'hide-sm' => true,
+        'label' => 'Embargo at',
+    ],
+    'planned_end_at' => [
+        'hide-sm' => true,
+        'label' => 'Planned end at',
+    ],
+    'planned_start_at' => [
+        'hide-sm' => true,
+        'label' => 'Planned start at',
+    ],
+    'postponed_at' => [
+        'hide-sm' => true,
+        'label' => 'Postponed at',
+    ],
+    'published_at' => [
+        'hide-sm' => true,
+        'label' => 'Published at',
+    ],
+    'released_at' => [
+        'hide-sm' => true,
+        'label' => 'Released at',
+    ],
+    'resolved_at' => [
+        'hide-sm' => true,
+        'label' => 'Resolved at',
+    ],
+    'resumed_at' => [
+        'hide-sm' => true,
+        'label' => 'Resumed at',
+    ],
+    'suspended_at' => [
+        'hide-sm' => true,
+        'label' => 'Suspended at',
+    ],
+    'timer_end_at' => [
+        'hide-sm' => true,
+        'label' => 'Timer end at',
+    ],
+    'timer_start_at' => [
+        'hide-sm' => true,
+        'label' => 'Timer start at',
+    ],
+    'gids' => [
+        'hide-sm' => true,
+        'label' => 'Gids',
+        'onTrueClass' => '',
+    ],
+    'po' => [
+        'hide-sm' => true,
+        'label' => 'Po',
+        'onTrueClass' => '',
+    ],
+    'pg' => [
+        'hide-sm' => true,
+        'label' => 'Pg',
+        'onTrueClass' => '',
+    ],
+    'pw' => [
+        'hide-sm' => true,
+        'label' => 'Pw',
+        'onTrueClass' => '',
+    ],
+    'only_admin' => [
+        'hide-sm' => true,
+        'label' => 'Only admin',
+        'onTrueClass' => 'fa-solid fa-user-gear',
+    ],
+    'only_user' => [
+        'hide-sm' => true,
+        'label' => 'Only user',
+        'onTrueClass' => 'fa-solid fa-user',
+    ],
+    'only_guest' => [
+        'hide-sm' => true,
+        'label' => 'Only guest',
+        'onTrueClass' => 'fa-solid fa-person-rays',
+    ],
+    'allow_public' => [
+        'hide-sm' => true,
+        'label' => 'Allow public',
+        'onTrueClass' => 'fa-solid fa-users-line',
+    ],
+    'status' => [
+        'hide-sm' => true,
+        'label' => 'Status',
+    ],
+    'rank' => [
+        'hide-sm' => true,
+        'label' => 'Rank',
+    ],
+    'size' => [
+        'hide-sm' => true,
+        'label' => 'Size',
     ],
 ];
 
-$columnsMobile = ["title", "tag_type", "slug", "description", "published"];
+$columnsMobile = [
+    'title',
+    'tag_type',
+    'slug',
+    'description',
+    'published',
+];
 
 $columnsStandard = [
-    "title",
-    "tag_type",
-    "slug",
-    "label",
-    "description",
-    "published",
-    "revision",
-    "created_at",
-    "updated_at",
+    'title',
+    'tag_type',
+    'slug',
+    'label',
+    'description',
+    'published',
+    'revision',
+    'created_at',
+    'updated_at',
 ];
 
-$viewableColumns =
-    ! empty($validated["columns"]) &&
-    is_string($validated["columns"]) &&
-    in_array($validated["columns"], ["all", "standard", "mobile"])
-        ? $validated["columns"]
-        : "standard";
+$viewableColumns = ! empty($validated['columns'])
+    && is_string($validated['columns'])
+    && in_array($validated['columns'], [
+        'all',
+        'standard',
+        'mobile',
+    ]) ? $validated['columns'] : 'standard';
 
-if ($viewableColumns === "all") {
+if ($viewableColumns === 'all') {
     $columns = $columnsViewable;
-} elseif ($viewableColumns === "mobile") {
+} elseif ($viewableColumns === 'mobile') {
     $columns = Illuminate\Support\Arr::only($columnsViewable, $columnsMobile);
 } else {
     $columns = Illuminate\Support\Arr::only($columnsViewable, $columnsStandard);
