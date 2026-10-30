@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <crap_result>
   <project/>
-  <timestamp>2026-09-13 20:31:25</timestamp>
+  <timestamp>2026-10-30 20:09:04</timestamp>
   <stats>
     <name>Method Crap Stats</name>
-    <methodCount>265</methodCount>
+    <methodCount>271</methodCount>
     <crapMethodCount>1</crapMethodCount>
     <crapLoad>9</crapLoad>
-    <totalCrap>1119.04</totalCrap>
-    <crapMethodPercent>0.38</crapMethodPercent>
+    <totalCrap>1164.36</totalCrap>
+    <crapMethodPercent>0.37</crapMethodPercent>
   </stats>
   <methods>
     <method>
@@ -1630,6 +1630,39 @@
     </method>
     <method>
       <package>Playground\Matrix\Resource\Http\Controllers</package>
+      <className>Playground\Matrix\Resource\Http\Controllers\TaggedController</className>
+      <methodName>destroy</methodName>
+      <methodSignature>destroy(Tagged $tagged, Requests\Tagged\DestroyRequest $request): Response|RedirectResponse</methodSignature>
+      <fullMethod>destroy(Tagged $tagged, Requests\Tagged\DestroyRequest $request): Response|RedirectResponse</fullMethod>
+      <crap>4.25</crap>
+      <complexity>4</complexity>
+      <coverage>75</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Controllers</package>
+      <className>Playground\Matrix\Resource\Http\Controllers\TaggedController</className>
+      <methodName>store</methodName>
+      <methodSignature>store(Requests\Tagged\StoreRequest $request): Response|JsonResponse|RedirectResponse|Resources\Tagged</methodSignature>
+      <fullMethod>store(Requests\Tagged\StoreRequest $request): Response|JsonResponse|RedirectResponse|Resources\Tagged</fullMethod>
+      <crap>20</crap>
+      <complexity>4</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Controllers</package>
+      <className>Playground\Matrix\Resource\Http\Controllers\TaggedController</className>
+      <methodName>getRedirectRoute</methodName>
+      <methodSignature>getRedirectRoute(Tagged $tagged): string</methodSignature>
+      <fullMethod>getRedirectRoute(Tagged $tagged): string</fullMethod>
+      <crap>9.07</crap>
+      <complexity>4</complexity>
+      <coverage>31.82</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Controllers</package>
       <className>Playground\Matrix\Resource\Http\Controllers\TeamController</className>
       <methodName>create</methodName>
       <methodSignature>create(Requests\Team\CreateRequest $request): JsonResponse|View|Resources\Team</methodSignature>
@@ -2421,6 +2454,28 @@
       <crapLoad>0</crapLoad>
     </method>
     <method>
+      <package>Playground\Matrix\Resource\Http\Requests\Tagged</package>
+      <className>Playground\Matrix\Resource\Http\Requests\Tagged\DestroyRequest</className>
+      <methodName>rules</methodName>
+      <methodSignature>rules(): array</methodSignature>
+      <fullMethod>rules(): array</fullMethod>
+      <crap>2</crap>
+      <complexity>2</complexity>
+      <coverage>100</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Requests\Tagged</package>
+      <className>Playground\Matrix\Resource\Http\Requests\Tagged\StoreRequest</className>
+      <methodName>prepareForValidation</methodName>
+      <methodSignature>prepareForValidation()</methodSignature>
+      <fullMethod>prepareForValidation()</fullMethod>
+      <crap>6</crap>
+      <complexity>2</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
       <package>Playground\Matrix\Resource\Http\Requests\Team</package>
       <className>Playground\Matrix\Resource\Http\Requests\Team\DestroyRequest</className>
       <methodName>rules</methodName>
@@ -2807,6 +2862,17 @@
     </method>
     <method>
       <package>Playground\Matrix\Resource\Http\Resources</package>
+      <className>Playground\Matrix\Resource\Http\Resources\Tagged</className>
+      <methodName>with</methodName>
+      <methodSignature>with(Request $request): array</methodSignature>
+      <fullMethod>with(Request $request): array</fullMethod>
+      <crap>2</crap>
+      <complexity>1</complexity>
+      <coverage>0</coverage>
+      <crapLoad>0</crapLoad>
+    </method>
+    <method>
+      <package>Playground\Matrix\Resource\Http\Resources</package>
       <className>Playground\Matrix\Resource\Http\Resources\Team</className>
       <methodName>with</methodName>
       <methodSignature>with(Request $request): array</methodSignature>
@@ -2910,8 +2976,8 @@
       <methodName>routes</methodName>
       <methodSignature>routes(array $config): void</methodSignature>
       <fullMethod>routes(array $config): void</fullMethod>
-      <crap>18</crap>
-      <complexity>18</complexity>
+      <crap>19</crap>
+      <complexity>19</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
@@ -2921,8 +2987,8 @@
       <methodName>about</methodName>
       <methodSignature>about(): void</methodSignature>
       <fullMethod>about(): void</fullMethod>
-      <crap>41</crap>
-      <complexity>41</complexity>
+      <crap>42</crap>
+      <complexity>42</complexity>
       <coverage>100</coverage>
       <crapLoad>0</crapLoad>
     </method>
