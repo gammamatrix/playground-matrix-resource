@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:milestone",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::milestone",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:release",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::release",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

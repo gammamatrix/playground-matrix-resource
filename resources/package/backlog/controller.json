@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:backlog",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::backlog",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

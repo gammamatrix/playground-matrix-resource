@@ -53,6 +53,7 @@
     "privilege": "playground-matrix-resource",
     "route": "playground.matrix.resource",
     "view": "",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

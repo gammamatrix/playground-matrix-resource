@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:ticket",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::ticket",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

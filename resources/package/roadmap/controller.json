@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:roadmap",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::roadmap",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {

@@ -55,6 +55,7 @@
     "privilege": "playground-matrix-resource:team",
     "route": "playground.matrix.resource",
     "view": "playground-matrix-resource::team",
+    "actions": [],
     "implements": [],
     "uses": [],
     "packageInfo": {
