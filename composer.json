@@ -21,6 +21,7 @@
         "php": "^8.4",
         "gammamatrix/playground": "*",
         "gammamatrix/playground-auth": "*",
+        "gammamatrix/playground-blade": "*",
         "gammamatrix/playground-http": "*",
         "gammamatrix/playground-matrix": "*"
     },
